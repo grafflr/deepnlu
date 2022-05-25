@@ -1,20 +1,17 @@
-actions: coordinates
-
+actions: tokenize
 
 ## ---------------------------------------------------------- ##
-##  Purpose:    Test Coordinate Positioning
+##  Purpose:    Test Tokenization of "(RN)"
 ##  Reference:  https://github.com/grafflr/graffl-core/issues/41
 ## ---------------------------------------------------------- ##
 
 cases:
   - input: (RN)
     ## ---------------------------------------------------------- ##
-    ##  Purpose:    Demonstrate ((0,1),(1,3),(3,4))
-    ##
     ##  Change Log:
     ##  20211013    Created
     ## ---------------------------------------------------------- ##
     output: 
-      - (0, 1)
-      - (1, 3)
-      - (3, 4)
+      - (
+      - RN
+      - )

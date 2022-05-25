@@ -1,18 +1,16 @@
-actions: synonyms_nursing
-
+actions: tokenize
 
 ## ---------------------------------------------------------- ##
-##  Purpose:    Test Synonym Defect
+##  Purpose:    Test Tokenization of "registered nurse"
 ##  Reference:  https://github.com/grafflr/graffl-core/issues/46
 ## ---------------------------------------------------------- ##
 
 cases:
   - input: registered nurse
     ## ---------------------------------------------------------- ##
-    ##  Purpose:    should resolve to "registered_nurse"
-    ##
     ##  Change Log:
     ##  20211014    Created
     ## ---------------------------------------------------------- ##
     output: 
-      - registered_nurse
+      - registered
+      - nurse
