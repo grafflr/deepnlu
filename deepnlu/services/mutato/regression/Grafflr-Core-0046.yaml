@@ -1,0 +1,18 @@
+actions: synonyms_nursing
+
+
+## ---------------------------------------------------------- ##
+##  Purpose:    Test Synonym Defect
+##  Reference:  https://github.com/grafflr/graffl-core/issues/46
+## ---------------------------------------------------------- ##
+
+cases:
+  - input: registered nurse
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    should resolve to "registered_nurse"
+    ##
+    ##  Change Log:
+    ##  20211014    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - registered_nurse

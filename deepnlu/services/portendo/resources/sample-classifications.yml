@@ -1,0 +1,28 @@
+---
+SAMPLE_INCLUDE_ONE:
+  - include_one_of:
+      - alpha
+RANDOM_CATEGORIES:
+  - include_all_of:
+      - category
+      - random_query
+RANDOM_CATEGORIES_EXCLUSION:
+  - include_all_of:
+      - category
+      - random_query
+  - exclude_one_of:
+      - give
+SAMPLE_INCLUDE_ALL:
+  - include_all_of:
+      - alpha
+      - beta
+SAMPLE_MULTI_INCLUDE#1:
+  - include_one_of:
+      - alpha
+      - beta
+  - include_all_of:
+      - gamma
+      - delta
+SUMMARIZE_CONVERSATION:
+  - startswith:
+      - summarize the last

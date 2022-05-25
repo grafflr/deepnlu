@@ -1,0 +1,17 @@
+actions: segment
+
+## ---------------------------------------------------------- ##
+##  Purpose:    Test Sentence Segmentation
+##  Reference:  (does not directly tie to any github issue)
+## ---------------------------------------------------------- ##
+
+cases:
+  - input: the quick dr. fox jumped over hte lazy dog!  then that was great
+    ## ---------------------------------------------------------- ##
+    ##  Change Log:
+    ##  20210930    Created
+    ##  20211012    Aligned with YAML Standard
+    ## ---------------------------------------------------------- ##
+    output: 
+      - - the quick dr. fox jumped over hte lazy dog!
+        - then that was great.

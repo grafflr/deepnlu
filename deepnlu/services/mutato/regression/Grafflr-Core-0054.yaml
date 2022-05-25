@@ -1,0 +1,16 @@
+actions: synonyms_nursing
+
+
+## ---------------------------------------------------------- ##
+##  Purpose:    Test Synonym Outcome
+##  Reference:  https://github.com/grafflr/graffl-core/issues/54
+## ---------------------------------------------------------- ##
+
+cases:
+  - input: clinical outcome evaluations
+    ## ---------------------------------------------------------- ##
+    ##  Change Log:
+    ##  20211015    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - clinical_outcome_evaluation

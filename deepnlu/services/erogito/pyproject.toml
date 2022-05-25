@@ -1,0 +1,24 @@
+[tool.poetry]
+authors = ["Craig <craig@grafflr.ai>"]
+description = ""
+name = "erogito"
+version = "0.1.0"
+
+[tool.poetry.dependencies.en_core_web_sm]
+url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.2.0/en_core_web_sm-3.2.0.tar.gz"
+
+[tool.poetry.dependencies]
+baseblock = "0.1.1"
+pandas = "^1.4.0"
+python = "3.8.5"
+scipy = "1.8.0"
+spacy = "3.2.4"
+textacy = "0.12.0"
+
+[tool.poetry.dev-dependencies]
+datablock = {path = "../../blocks/datablock"}
+pytest = "^7.1.1"
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]

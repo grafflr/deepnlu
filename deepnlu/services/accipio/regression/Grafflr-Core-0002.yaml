@@ -1,0 +1,66 @@
+actions: tokenize
+
+## ---------------------------------------------------------- ##
+##  Purpose:    Test Tokenization
+##  Reference:  (does not directly tie to any github issue)
+## ---------------------------------------------------------- ##
+
+cases:
+  - input: 1.06 billion
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Demonstrate Proper Tokenization of Floats
+    ##  Input:      1.06 billion
+    ##
+    ##  Change Log:
+    ##  20211001    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - 1.06
+      - billion
+
+  - input: $1.06 billion
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Demonstrate Tokenization of Floats with Currency Symbols
+    ##  Input:      $1.06 billion
+    ##
+    ##  Change Log:
+    ##  20211001    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - $
+      - 1.06
+      - billion
+
+  - input: 325,000
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Demonstrate Tokenization of Comma Delimited Numbers
+    ##  Input:      325,000
+    ##
+    ##  Change Log:
+    ##  20211001    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - 325,000
+
+  - input: 325,000,000,000.00
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Demonstrate Tokenization of Commas and Periods
+    ##  Input:      325,000,000,000.00
+    ##
+    ##  Change Log:
+    ##  20211001    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - 325,000,000,000.00
+
+  - input: Women's
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Demonstrate Tokenization of Apostrophe
+    ##  Input:      Women's
+    ##
+    ##  Change Log:
+    ##  20211001    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - Women's
+

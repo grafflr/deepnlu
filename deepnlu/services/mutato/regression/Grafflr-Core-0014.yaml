@@ -1,0 +1,38 @@
+actions: sliding_window_1
+
+
+## ---------------------------------------------------------- ##
+##  Purpose:    Test Sliding Window
+##  Reference:  https://github.com/grafflr/graffl-core/issues/14
+## ---------------------------------------------------------- ##
+
+cases:
+  - input: americans
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    should create a sliding window for variant unigram
+    ##
+    ##  Change Log:
+    ##  20211011    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - americans
+
+  - input: associations
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    should create a sliding window for variant unigram
+    ##
+    ##  Change Log:
+    ##  20211011    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - associations
+
+  - input: association
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    should create a sliding window for canonical unigram
+    ##
+    ##  Change Log:
+    ##  20211011    Created
+    ## ---------------------------------------------------------- ##
+    output: 
+      - association
