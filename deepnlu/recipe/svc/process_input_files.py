@@ -16,12 +16,6 @@ from baseblock import BaseObject
 class ProcessInputFiles(BaseObject):
     """ Orchestrator the deepNLU Processing of an Input File """
 
-    __slots__ = (
-        '_input_files',
-        '_output_dir',
-        '_ontologies'
-    )
-
     def __init__(self,
                  input_files: list,
                  output_dir: str,

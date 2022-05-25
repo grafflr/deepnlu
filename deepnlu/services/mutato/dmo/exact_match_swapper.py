@@ -18,12 +18,6 @@ from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 class ExactMatchSwapper(BaseObject):
     """ Perform Synonym Swapping with Exact Matches """
 
-    __slots__ = (
-        '_syn_finder',
-        '_ner_finder',
-        '_create_swap',
-    )
-
     def __init__(self,
                  ner_finder: FindNER,
                  syn_finder: FindSynonyms,

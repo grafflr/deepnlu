@@ -11,10 +11,6 @@ from deepnlu.services.accipio.stemmer.svc import PerformPorterStemming
 class Stemmer(object):
     """ Text Stemming API """
 
-    __slots__ = (
-        '_stem',
-    )
-
     def __init__(self):
         self._stem = PerformPorterStemming().process
 

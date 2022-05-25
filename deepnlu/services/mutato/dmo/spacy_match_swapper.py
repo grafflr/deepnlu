@@ -17,10 +17,6 @@ from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 class SpacyMatchSwapper(BaseObject):
     """ Perform Synonym Swapping with Spacy Entities """
 
-    __slots__ = (
-        '_create_swap',
-    )
-
     def __init__(self,
                  ontologies: list):
         """

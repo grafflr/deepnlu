@@ -14,11 +14,6 @@ from baseblock import BaseObject
 class GenerateDisplacyOutput(BaseObject):
     """ Generate Output for Displacy Visualizations in Jupyter """
 
-    __slots__ = (
-        '_master',
-        '_d_buffer',
-    )
-
     def __init__(self):
         """
         Created:

@@ -22,11 +22,6 @@ from deepnlu.datablock.dmo import GenericDataFinder
 class FindRecommendations(BaseObject):
     """ Facade to find Recommendations """
 
-    __slots__ = (
-        '_fwd',
-        '_rev',
-    )
-
     def __init__(self):
         """
         Created:

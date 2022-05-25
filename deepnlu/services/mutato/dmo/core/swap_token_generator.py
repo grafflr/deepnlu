@@ -16,10 +16,6 @@ from baseblock import Enforcer
 class SwapTokenGenerator(BaseObject):
     """ Generate a Swapped Token """
 
-    __slots__ = (
-        '_ontologies'
-    )
-
     def __init__(self,
                  ontologies: list):
         """

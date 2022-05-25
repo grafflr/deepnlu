@@ -9,9 +9,6 @@ from baseblock import BaseObject
 class GrafflParserSquots(BaseObject):
     """ Transform unigram squots into unigram dquots """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

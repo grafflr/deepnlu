@@ -11,9 +11,6 @@ from baseblock import BaseObject
 class GrafflParserResultSet(BaseObject):
     """ Add Wordnet Flag to Token """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

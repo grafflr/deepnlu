@@ -19,12 +19,6 @@ from deepnlu.services.mutato.dmo import SwapTokenGenerator
 class HierarchyMatchSwapper(BaseObject):
     """ Perform Synonym Swapping with Hierarchal Matches """
 
-    __slots__ = (
-        '_create_swap',
-        '_swap_token',
-        '_gram_size',
-    )
-
     def __init__(self,
                  find_types_cb: object,
                  ontology_name: object = None):

@@ -15,11 +15,6 @@ from deepnlu.datablock.dmo import GenericDataFinder
 class FindSimilar(BaseObject):
     """ Generic Facade to interact with Similarity relationships """
 
-    __slots__ = (
-        '_fwd',
-        '_rev',
-    )
-
     def __init__(self,
                  ontology_name: object = None):
         """

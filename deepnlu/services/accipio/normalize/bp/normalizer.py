@@ -13,10 +13,6 @@ from deepnlu.services.accipio.normalize.svc import NormalizeText
 class Normalizer(BaseObject):
     """ Normalize Input Text """
 
-    __slots__ = (
-        '_svc',
-    )
-
     def __init__(self):
         """
         Created:

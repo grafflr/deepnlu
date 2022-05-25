@@ -25,10 +25,6 @@ class InputTokensTransform(BaseObject):
         }
     """
 
-    __slots__ = (
-        '_input_tokens',
-    )
-
     def __init__(self,
                  input_tokens: list):
         """

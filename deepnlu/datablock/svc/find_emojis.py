@@ -14,9 +14,6 @@ from deepnlu.datablock.os.emojis import emojis
 class FindEmojis(BaseObject):
     """ Generic Facade to interact with Emojis """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

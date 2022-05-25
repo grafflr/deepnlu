@@ -18,11 +18,6 @@ from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 class SpanMatchSwapper(BaseObject):
     """ Perform Synonym Swapping with Spanned Matches """
 
-    __slots__ = (
-        '_ner_finder',
-        '_create_swap',
-    )
-
     def __init__(self,
                  ner_finder: FindNER,
                  ontologies: list):

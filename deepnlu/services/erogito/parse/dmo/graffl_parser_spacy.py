@@ -15,10 +15,6 @@ from deepnlu.datablock import FindWordnet
 class GrafflParserSpacy(BaseObject):
     """ Perform spaCy parse and retokenization """
 
-    __slots__ = (
-        '_nlp',
-    )
-
     def __init__(self):
         """
         Created:

@@ -38,9 +38,6 @@ from deepnlu.datablock.os.wordnet import wordnet_terms_z
 class FindWordnet(BaseObject):
     """ Facade to find Wordnet Data on Disk """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

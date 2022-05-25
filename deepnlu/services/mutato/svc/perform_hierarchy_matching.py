@@ -21,11 +21,6 @@ from deepnlu.services.mutato.dmo import HierarchyMatchSwapper
 class PerformHierarchyMatching(BaseObject):
     """ Use Token Hierarchies to perform Inferred Matching """
 
-    __slots__ = (
-        '_find_types',
-        '_swap_token',
-    )
-
     def __init__(self,
                  find_types_cb: object,
                  ontology_name: object = None):

@@ -17,9 +17,6 @@ from deepnlu.services.mutato.dmo import SlidingWindowExtract
 class HierarchyMatchFinder(BaseObject):
     """ Use Token Hierarchies to Find Matches """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

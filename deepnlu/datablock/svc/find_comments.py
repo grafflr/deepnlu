@@ -15,10 +15,6 @@ from deepnlu.datablock.dmo import GenericDataFinder
 class FindComments(BaseObject):
     """ Generic Facade to interact with Comment Lookups """
 
-    __slots__ = (
-        '_fwd',
-    )
-
     def __init__(self,
                  ontology_name: object = None):
         """

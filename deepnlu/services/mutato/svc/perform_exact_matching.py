@@ -21,11 +21,6 @@ from deepnlu.services.mutato.dmo import ExactMatchSwapper
 class PerformExactMatching(BaseObject):
     """ Perform Exact Matching """
 
-    __slots__ = (
-        '_d_lookup_data',
-        '_exact_match_swapper',
-    )
-
     def __init__(self,
                  ner_finder: FindNER,
                  syn_finder: FindSynonyms,

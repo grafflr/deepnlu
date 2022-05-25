@@ -23,13 +23,6 @@ from deepnlu.datablock.dmo import NerTaxonomyFinder
 class FindNER(BaseObject):
     """ Find spaCy NER (Named Entity Recognition) Types """
 
-    __slots__ = (
-        '_find_depth',
-        '_find_type',
-        '_find_pallete',
-        '_find_taxonomy',
-    )
-
     def __init__(self,
                  ontology_name: object = None):
         """

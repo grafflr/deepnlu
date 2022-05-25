@@ -16,11 +16,6 @@ from deepnlu.datablock.dmo import GenericDataFinder
 class FindRoles(BaseObject):
     """ Generic Facade to interact with Roles """
 
-    __slots__ = (
-        '_fwd',
-        '_rev',
-    )
-
     def __init__(self):
         """
         Created:

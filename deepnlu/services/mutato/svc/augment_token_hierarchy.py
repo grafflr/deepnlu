@@ -21,11 +21,6 @@ from deepnlu.services.mutato.dmo import ExactMatchSwapper
 class AugmentTokenHierarchy(BaseObject):
     """ Augment Tokens with Descendant and Ancestory Hierarchy for Inference Purposes """
 
-    __slots__ = (
-        '_d_lookup_data',
-        '_exact_match_swapper',
-    )
-
     def __init__(self,
                  find_types_cb: object,
                  ontology_name: object = None):

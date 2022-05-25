@@ -3,8 +3,6 @@
 """ Perform Span Matching """
 
 
-
-
 import pprint
 import logging
 
@@ -37,11 +35,6 @@ class PerformSpanMatching(BaseObject):
         the nursing_history
     """
 
-    __slots__ = (
-        '_span_match_finder',
-        '_span_match_swapper',
-    )
-
     def __init__(self,
                  ner_finder: FindNER,
                  syn_finder: FindSynonyms,
@@ -66,10 +59,10 @@ class PerformSpanMatching(BaseObject):
     def _process(self,
                  tokens: list) -> list:
 
-        print ("TOKENS: ", tokens)
+        print("TOKENS: ", tokens)
 
         matching_rules = self._span_match_finder(tokens)
-        print ("MATCHING RULES: ", matching_rules)
+        print("MATCHING RULES: ", matching_rules)
         if not matching_rules or not len(matching_rules):
             return tokens
 

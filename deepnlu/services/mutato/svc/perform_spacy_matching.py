@@ -30,9 +30,6 @@ class PerformSpacyMatching(BaseObject):
         and john_doe said
     """
 
-    __slots__ = (
-    )
-
     def __init__(self,
                  ontology_name: object = None):
         """

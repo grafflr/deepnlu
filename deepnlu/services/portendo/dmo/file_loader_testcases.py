@@ -14,9 +14,6 @@ from baseblock import Stopwatch
 class FileLoaderTestCases(BaseObject):
     """Load Test Files"""
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

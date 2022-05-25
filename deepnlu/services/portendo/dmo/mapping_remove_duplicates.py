@@ -30,10 +30,6 @@ class MappingRemoveDuplicates(BaseObject):
             'GICS_CODE_40301040_2': {'coverage': 0.5, 'weight': 1}}
     """
 
-    __slots__ = (
-        '_results',
-    )
-
     def __init__(self,
                  results: dict):
         """

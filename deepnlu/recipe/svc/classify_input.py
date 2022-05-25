@@ -18,11 +18,6 @@ from deepnlu.services.portendo import Portendo
 class ClassifyInput(BaseObject):
     """ Classify Input using the Portendo Microservice """
 
-    __slots__ = (
-        '_d_parse_ast',
-        '_portendo',
-    )
-
     def __init__(self,
                  d_parse_ast: dict,
                  ontology_name: str,

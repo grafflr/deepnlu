@@ -13,9 +13,6 @@ from baseblock import BaseObject
 class FileLoaderMapping(BaseObject):
     """Load the Mapping File for a given Test Case"""
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

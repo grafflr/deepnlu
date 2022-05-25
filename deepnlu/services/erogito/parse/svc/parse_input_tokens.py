@@ -23,9 +23,6 @@ from deepnlu.services.erogito.parse.dmo import GrafflParserResultSet
 class ParseInputTokens(BaseObject):
     """ Use spaCy to Parse Input Tokens """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

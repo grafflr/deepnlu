@@ -8,12 +8,6 @@ import functools
 class Tokenizer(object):
     """ Text Tokenization API """
 
-    __slots__ = (
-        '_spacy',
-        '_whitespace',
-        '_graffl',
-    )
-
     def __init__(self):
         self._spacy = None
         self._graffl = None

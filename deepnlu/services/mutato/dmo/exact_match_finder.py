@@ -21,11 +21,6 @@ from deepnlu.datablock.os import d_candidate_synonym_blacklist
 class ExactMatchFinder(BaseObject):
     """ Perform Sliding Window Extraction for Candidate Synonym Swapping """
 
-    __slots__ = (
-        '_d_lookup',
-        '_gram_size',
-    )
-
     def __init__(self,
                  gram_size: int,
                  d_lookup: dict):

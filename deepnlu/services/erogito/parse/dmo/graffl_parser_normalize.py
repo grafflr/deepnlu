@@ -9,9 +9,6 @@ from baseblock import BaseObject
 class GrafflParserNormalize(BaseObject):
     """ Apply Trailing Spaces to Text where appropriate """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

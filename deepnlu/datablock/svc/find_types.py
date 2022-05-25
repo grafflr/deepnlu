@@ -14,11 +14,6 @@ from deepnlu.datablock.dmo import GenericDataFinder
 class FindTypes(BaseObject):
     """ Generic Facade to interact with Entity Taxonomies """
 
-    __slots__ = (
-        '_finders_fwd',
-        '_finders_rev',
-    )
-
     def __init__(self,
                  ontology_name: object = None):
         """

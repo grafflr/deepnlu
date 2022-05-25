@@ -21,10 +21,6 @@ class SpanMatchFinder(BaseObject):
     The Span Match Pipeline is documented here
         https://github.com/grafflr/graffl-core/issues/77#issuecomment-947342784 """
 
-    __slots__ = (
-        '_finder',
-    )
-
     def __init__(self,
                  finder: FindSpans):
         """

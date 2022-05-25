@@ -13,9 +13,6 @@ from deepnlu.datablock.os import stopwords
 class FindStopWords(BaseObject):
     """ Facade to find Wordnet Data on Disk """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

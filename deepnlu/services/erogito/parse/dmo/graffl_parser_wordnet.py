@@ -10,10 +10,6 @@ from deepnlu.datablock import FindWordnet
 class GrafflParserWordnet(BaseObject):
     """ Add Wordnet Flag to Token """
 
-    __slots__ = (
-        '_is_wordnet',
-    )
-
     def __init__(self):
         """
         Created:

@@ -9,9 +9,6 @@ from baseblock import BaseObject
 class FindDictionaries(BaseObject):
     """ Facade to find Dictionaries on Disk """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:

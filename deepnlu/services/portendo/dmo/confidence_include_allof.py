@@ -14,11 +14,6 @@ from deepnlu.services.portendo.dto import MappingResult
 class ConfidenceIncludeAllOf(BaseObject):
     """ Determine Confidence Level for Selected Mapping """
 
-    __slots__ = (
-        '_mapping',
-        '_markers',
-    )
-
     def __init__(self,
                  mapping: dict,
                  markers: Markers):

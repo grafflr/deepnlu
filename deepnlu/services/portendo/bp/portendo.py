@@ -20,11 +20,6 @@ from deepnlu.services.portendo.dmo import InputTokensTransform
 class Portendo(BaseObject):
     """ Portendo performs Predictive Classification of deepNLU parsed ASTs """
 
-    __slots__ = (
-        '_input_tokens',
-        '_ontology_name',
-    )
-
     def __init__(self,
                  ontology_name: str):
         """Initialize Portendo API

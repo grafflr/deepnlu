@@ -20,12 +20,6 @@ from deepnlu.datablock.dmo import GenericDataFinder
 class FindReviews(BaseObject):
     """ Facade to find Review Comments and Categories """
 
-    __slots__ = (
-        '_comments_fwd',
-        '_comments_rev',
-        '_categories',
-    )
-
     def __init__(self):
         """
         Created:

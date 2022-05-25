@@ -17,12 +17,6 @@ from deepnlu.datablock.dmo import GenericClassLoader
 class FindSpans(BaseObject):
     """ Generic Facade to interact with span dictionaries on disk """
 
-    __slots__ = (
-        '_d_merge_data',
-        '_finders',
-        '_ontology_name',
-    )
-
     def __init__(self,
                  ontology_name: object = None):
         """

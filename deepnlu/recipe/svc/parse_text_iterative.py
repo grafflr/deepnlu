@@ -22,10 +22,6 @@ class ParseTextIterative(BaseObject):
         over repeated 'ParseTextOneShot().process(...)' calls
     """
 
-    __slots__ = (
-        '_handle_sentence',
-    )
-
     def __init__(self,
                  ontologies: list):
         """

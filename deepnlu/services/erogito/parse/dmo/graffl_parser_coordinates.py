@@ -9,9 +9,6 @@ from baseblock import BaseObject
 class GrafflParserCoordinates(BaseObject):
     """ Add Punctuation Flag to Token """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         13-Oct-2021

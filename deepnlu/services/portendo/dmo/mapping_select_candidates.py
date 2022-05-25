@@ -13,10 +13,6 @@ from baseblock import BaseObject
 class MappingSelectCandidates(BaseObject):
     """ Select 1..* Best Candidates as the Final Result """
 
-    __slots__ = (
-        '_results',
-    )
-
     def __init__(self,
                  results: dict):
         """

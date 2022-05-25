@@ -13,10 +13,6 @@ from baseblock import BaseObject
 class MappingScoreCandidates(BaseObject):
     """ Score Candidate Mapping Results """
 
-    __slots__ = (
-        '_results',
-    )
-
     def __init__(self,
                  results: dict,
                  scoring: object):

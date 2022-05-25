@@ -22,10 +22,6 @@ from deepnlu.services.mutato.svc import AugmentTokenHierarchy
 class MutatoAPI(BaseObject):
     """ Mutato API """
 
-    __slots__ = (
-        '_ontologies',
-    )
-
     def __init__(self,
                  ontology_name: object = None):
         """

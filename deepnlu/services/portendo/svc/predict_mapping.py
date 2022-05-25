@@ -27,16 +27,6 @@ from deepnlu.services.portendo.dmo import ComputerStartsWith
 class PredictMapping(BaseObject):
     """Predict a Mapping"""
 
-    __slots__ = (
-        '_mapping',
-        '_include_one_of',
-        '_include_all_of',
-        '_exclude_one_of',
-        '_exclude_all_of',
-        '_include_r1',
-        '_include_r2',
-    )
-
     def __init__(self,
                  ontology_name: str,
                  indices: FindClassifications):

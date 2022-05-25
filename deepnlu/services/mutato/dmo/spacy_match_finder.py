@@ -41,9 +41,6 @@ class SpacyMatchFinder(BaseObject):
     -   Tokens at position 7,8 can be collapsedd into a single BETA entity
     """
 
-    __slots__ = (
-    )
-
     def __init__(self):
         """
         Created:
