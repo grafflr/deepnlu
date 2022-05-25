@@ -8,8 +8,8 @@ import functools
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from accipio.segmenter.svc import PerformParagraphSegmentation
-from accipio.segmenter.svc import PerformSentenceSegmentation
+from deepnlu.services.accipio.segmenter.svc import PerformParagraphSegmentation
+from deepnlu.services.accipio.segmenter.svc import PerformSentenceSegmentation
 
 
 class Segmenter(BaseObject):

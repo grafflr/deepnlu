@@ -11,17 +11,17 @@ from baseblock import Enforcer
 
 from datablock import FindClassifications
 
-from portendo.dto import ExplainResult
-from portendo.dto import MappingResult
-from portendo.dto import MappingResults
-from portendo.dmo import ComputerIncludeOneOf
-from portendo.dmo import ComputerIncludeRecursive
-from portendo.dmo import ComputerIncludeAllOf
-from portendo.dmo import ComputerExcludeOneOf
-from portendo.dmo import ComputerExcludeAllOf
-from portendo.dmo import ConfidenceExcludeAllOf
-from portendo.dmo import ConfidenceIncludeAllOf
-from portendo.dmo import ComputerStartsWith
+from deepnlu.services.portendo.dto import ExplainResult
+from deepnlu.services.portendo.dto import MappingResult
+from deepnlu.services.portendo.dto import MappingResults
+from deepnlu.services.portendo.dmo import ComputerIncludeOneOf
+from deepnlu.services.portendo.dmo import ComputerIncludeRecursive
+from deepnlu.services.portendo.dmo import ComputerIncludeAllOf
+from deepnlu.services.portendo.dmo import ComputerExcludeOneOf
+from deepnlu.services.portendo.dmo import ComputerExcludeAllOf
+from deepnlu.services.portendo.dmo import ConfidenceExcludeAllOf
+from deepnlu.services.portendo.dmo import ConfidenceIncludeAllOf
+from deepnlu.services.portendo.dmo import ComputerStartsWith
 
 
 class PredictMapping(BaseObject):

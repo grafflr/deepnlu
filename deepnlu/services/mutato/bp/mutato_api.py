@@ -12,11 +12,11 @@ from datablock.svc import FindTypes
 from datablock.svc import FindLookup
 from datablock.svc import FindSynonyms
 
-from mutato.svc import PerformExactMatching
-from mutato.svc import PerformSpanMatching
-from mutato.svc import PerformSpacyMatching
-from mutato.svc import PerformHierarchyMatching
-from mutato.svc import AugmentTokenHierarchy
+from deepnlu.services.mutato.svc import PerformExactMatching
+from deepnlu.services.mutato.svc import PerformSpanMatching
+from deepnlu.services.mutato.svc import PerformSpacyMatching
+from deepnlu.services.mutato.svc import PerformHierarchyMatching
+from deepnlu.services.mutato.svc import AugmentTokenHierarchy
 
 
 class MutatoAPI(BaseObject):

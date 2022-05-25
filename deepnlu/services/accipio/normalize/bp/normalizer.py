@@ -7,7 +7,7 @@ import functools
 
 from baseblock import BaseObject
 
-from accipio.normalize.svc import NormalizeText
+from deepnlu.services.accipio.normalize.svc import NormalizeText
 
 
 class Normalizer(BaseObject):

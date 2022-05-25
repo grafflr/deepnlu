@@ -14,8 +14,8 @@ from baseblock import get_ontology_name
 from datablock import FindNER
 from datablock import FindSynonyms
 
-from mutato.dmo import ExactMatchFinder
-from mutato.dmo import ExactMatchSwapper
+from deepnlu.services.mutato.dmo import ExactMatchFinder
+from deepnlu.services.mutato.dmo import ExactMatchSwapper
 
 
 class AugmentTokenHierarchy(BaseObject):

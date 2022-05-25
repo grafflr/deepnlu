@@ -1,5 +1,5 @@
-from erogito.autotaxo.svc import GenerateTaxonomyTTL
-from erogito.autotaxo.svc import GenerateTaxonomyDataFrame
+from deepnlu.services.erogito.autotaxo.svc import GenerateTaxonomyTTL
+from deepnlu.services.erogito.autotaxo.svc import GenerateTaxonomyDataFrame
 
 
 def test_service():

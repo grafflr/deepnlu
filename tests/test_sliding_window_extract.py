@@ -1,6 +1,6 @@
-from mutato import __version__
+from deepnlu.services.mutato import __version__
 
-from mutato.dmo import SlidingWindowExtract
+from deepnlu.services.mutato.dmo import SlidingWindowExtract
 
 
 def test_component():

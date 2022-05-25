@@ -1,11 +1,11 @@
-from mutato import __version__
+from deepnlu.services.mutato import __version__
 
 
 import os
 import logging
 from pprint import pprint
 
-from mutato.bp import MutatoAPI
+from deepnlu.services.mutato.bp import MutatoAPI
 
 
 def test_service():

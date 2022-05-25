@@ -1,0 +1,170 @@
+
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+# pylint:disable=bad-whitespace
+# pylint:disable=line-too-long
+# pylint:disable=too-many-lines
+# pylint:disable=invalid-name
+
+# #########################################################
+#
+#       ************** !! WARNING !! ***************
+#       ******* THIS FILE WAS AUTO-GENERATED *******
+#       ********* DO NOT MODIFY THIS FILE **********
+#
+# #########################################################
+
+class MedicalLookup(object):
+
+    @staticmethod
+    def prov() -> dict:
+        return {
+ 'action': ['router.py',
+            'plac_core.py',
+            'owl2py_orchestrator.py',
+            'generate_runtime_dictionaries.py',
+            'generate_runtime_dictionary.py',
+            'owl_data_load_dict.py',
+            'common_utils.py'],
+ 'config': {'classname': 'MedicalLookup',
+            'filename': 'medical_lookup',
+            'files': ['medical.txt'],
+            'queries': ['lookup.sparql'],
+            'transformers': ['lowercase', 'lookup']},
+ 'source': 'medical.owl',
+ 'time': '2022-04-27 21:15:55.838356'}
+
+    __data = {
+    1: [   'cytomegalovirus',
+           'transplanting',
+           'transfusions',
+           'transplanted',
+           'transplants',
+           'transfusion',
+           'transplant',
+           'intestines',
+           'infection',
+           'discharge',
+           'esophagus',
+           'childhood',
+           'condition',
+           'arteries',
+           'symptoms',
+           'children',
+           'symptom',
+           'hearing',
+           'serious',
+           'muscles',
+           'problem',
+           'healthy',
+           'illness',
+           'toddler',
+           'stomach',
+           'tongue',
+           'livers',
+           'spleen',
+           'effect',
+           'affect',
+           'infect',
+           'severe',
+           'person',
+           'babies',
+           'breast',
+           'saliva',
+           'vision',
+           'muscle',
+           'infant',
+           'organs',
+           'glands',
+           'artery',
+           'system',
+           'urine',
+           'semen',
+           'taste',
+           'happy',
+           'brain',
+           'virus',
+           'lungs',
+           'organ',
+           'touch',
+           'liver',
+           'agent',
+           'gland',
+           'birth',
+           'blood',
+           'smell',
+           'event',
+           'child',
+           'tears',
+           'sight',
+           'state',
+           'time',
+           'ears',
+           'lung',
+           'mild',
+           'eyes',
+           'baby',
+           'ear',
+           'eye',
+           'cmv'],
+    2: [   'healthy_person_immune system',
+           'congenital cytomegalovirus',
+           'weakened_immune systems',
+           'quantified_age bucket',
+           'qualified_age bucket',
+           'emotional condition',
+           'quantifiable state',
+           'physical condition',
+           'qualifiable state',
+           'parathyroid gland',
+           'quantifiable time',
+           'blood transfusion',
+           'medical procedure',
+           'immune condition',
+           'organ transplant',
+           'healthy immunity',
+           'mental condition',
+           'qualifiable time',
+           'skeletal muscle',
+           'emotional state',
+           'fluid discharge',
+           'pituitary gland',
+           'health problem',
+           'physical state',
+           'adrenal gland',
+           'immune system',
+           'weak immunity',
+           'mammary gland',
+           'health event',
+           'medical test',
+           'hearing loss',
+           'mental state',
+           'bodily event',
+           'breast milk',
+           'health gain',
+           'vision loss',
+           'young child',
+           'health loss',
+           'body fluid',
+           'taste loss',
+           'age bucket',
+           'short term',
+           'long term'],
+    3: [   'weakened immune systems',
+           'quantified age bucket',
+           'qualified age bucket',
+           'state of capability',
+           'state of being',
+           'part of body'],
+    4: ['healthy person immune system'],
+    5: [],
+    6: []}
+
+    def data(self) -> dict:
+        return self.__data
+
+    def find(self,
+             term: str) -> str or None:
+        if term in self.__data:
+            return self.__data[term]

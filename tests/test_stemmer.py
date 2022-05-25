@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from accipio.stemmer.bp import Stemmer
+from deepnlu.services.accipio.stemmer.bp import Stemmer
 
 
 ## ---------------------------------------------------------- ##

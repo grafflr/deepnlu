@@ -7,7 +7,7 @@ from baseblock import Enforcer
 from baseblock import BaseObject
 
 
-from accipio import Segmenter
+from deepnlu.services.accipio import Segmenter
 from deepnlu.dmo import SentenceHandlerOneShot
 
 

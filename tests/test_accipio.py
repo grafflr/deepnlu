@@ -1,4 +1,4 @@
-from accipio import __version__
+from deepnlu.services.accipio import __version__
 
 
 def test_version():

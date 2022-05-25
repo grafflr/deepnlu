@@ -10,9 +10,9 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from datablock.svc import FindSpans
 
-from mutato.dmo.spans import SpanContentCheck
-from mutato.dmo.spans import SpanDistanceCheck
-from mutato.dmo.spans import SpanContextCheck
+from deepnlu.services.mutato.dmo.spans import SpanContentCheck
+from deepnlu.services.mutato.dmo.spans import SpanDistanceCheck
+from deepnlu.services.mutato.dmo.spans import SpanContextCheck
 
 
 class SpanMatchFinder(BaseObject):

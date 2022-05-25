@@ -1,7 +1,7 @@
 from baseblock import Enforcer
 
-from portendo import __version__
-from portendo.bp import Portendo
+from deepnlu.services.portendo import __version__
+from deepnlu.services.portendo.bp import Portendo
 
 
 def test_version():

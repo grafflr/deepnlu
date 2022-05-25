@@ -1,9 +1,8 @@
-import os
 
-from baseblock import FileIO
+
 from baseblock import Enforcer
 
-from erogito import ErogitoAPI
+from deepnlu.services.erogito import ErogitoAPI
 
 
 def driver(input_text: str):

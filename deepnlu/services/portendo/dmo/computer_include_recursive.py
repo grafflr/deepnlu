@@ -12,7 +12,7 @@ from baseblock import Enforcer
 from datablock import FindSynonyms
 
 
-from portendo.dto import Markers
+from deepnlu.services.portendo.dto import Markers
 
 
 class ComputerIncludeRecursive(BaseObject):

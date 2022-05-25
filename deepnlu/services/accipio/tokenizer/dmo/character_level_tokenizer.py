@@ -6,7 +6,7 @@
 import pprint
 import logging
 
-from accipio.tokenizer.dto import d_currency
+from deepnlu.services.accipio.tokenizer.dto import d_currency
 
 
 class CharacterLevelTokenizer(object):

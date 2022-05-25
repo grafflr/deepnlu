@@ -1,0 +1,1 @@
+from .speech_disorder_questions_kb import speech_disorder_questions

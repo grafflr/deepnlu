@@ -1,4 +1,4 @@
-from erogito import ErogitoAPI
+from deepnlu.services.erogito import ErogitoAPI
 
 
 def test_service():

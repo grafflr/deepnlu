@@ -1,0 +1,172 @@
+
+#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+# pylint:disable=bad-whitespace
+# pylint:disable=line-too-long
+# pylint:disable=too-many-lines
+# pylint:disable=invalid-name
+
+# #########################################################
+#
+#       ************** !! WARNING !! ***************
+#       ******* THIS FILE WAS AUTO-GENERATED *******
+#       ********* DO NOT MODIFY THIS FILE **********
+#
+# #########################################################
+
+class OntologicaLookup(object):
+
+    @staticmethod
+    def prov() -> dict:
+        return {
+ 'action': ['router.py',
+            'plac_core.py',
+            'owl2py_orchestrator.py',
+            'generate_runtime_dictionaries.py',
+            'generate_runtime_dictionary.py',
+            'owl_data_load_dict.py',
+            'common_utils.py'],
+ 'config': {'classname': 'OntologicaLookup',
+            'filename': 'ontologica_lookup',
+            'files': ['ontologica.txt'],
+            'queries': ['lookup.sparql'],
+            'transformers': ['lowercase', 'lookup']},
+ 'source': 'ontologica.owl',
+ 'time': '2022-05-03 17:49:06.572946'}
+
+    __data = {
+    1: [   'classification',
+           'descendants',
+           'categories',
+           'descendant',
+           'datasource',
+           'pathology',
+           'question',
+           'quantity',
+           'cardinal',
+           'children',
+           'category',
+           'ontology',
+           'comments',
+           'similar',
+           'partial',
+           'comment',
+           'parents',
+           'ordinal',
+           'bucket',
+           'random',
+           'second',
+           'people',
+           'model',
+           'three',
+           'count',
+           'third',
+           'child',
+           'first',
+           'list',
+           'two',
+           'one',
+           'slp',
+           'all'],
+    2: [   'taxonomical classification',
+           'question_not understood',
+           'not_the_descendants of',
+           'speech_pathology model',
+           'speech_disorder model',
+           'query classification',
+           'multi_item response',
+           'question understood',
+           'ontologica ontology',
+           'text classification',
+           'three_item response',
+           'not_the_parents of',
+           'list_the_items for',
+           'appraisal ontology',
+           'not_an_ancestor of',
+           'no_descendants of',
+           'two_item response',
+           'show_me_the items',
+           'one_item response',
+           'the_ancestors of',
+           'descendant nodes',
+           'nursing ontology',
+           'no_descendant of',
+           'speech pathology',
+           'speech disorder',
+           'can_you_show me',
+           'skills ontology',
+           'not_ancestor of',
+           'not_a_parent of',
+           'ancestor nodes',
+           'descendants of',
+           'the_parent for',
+           'no_ancestor of',
+           'john_kao model',
+           'count elements',
+           'ancestors for',
+           'no_parents of',
+           'list response',
+           'descendant of',
+           'no_parent of',
+           'ancestors of',
+           'random query',
+           'total number',
+           'parent nodes',
+           'ancestor of',
+           'count nodes',
+           'no quantity',
+           'show_me the',
+           'parents for',
+           'list_all of',
+           'child nodes',
+           'count total',
+           'list query',
+           'kinda like',
+           'similar to',
+           'like this',
+           'parent of',
+           'how many',
+           'child of',
+           'john kao',
+           'close to',
+           'list the',
+           'show me'],
+    3: [   'question not understood',
+           'speech pathology model',
+           'speech disorder model',
+           'three item response',
+           'multi item response',
+           'one item response',
+           'no descendants of',
+           'two item response',
+           'no descendant of',
+           'the ancestors of',
+           'not ancestor of',
+           'no ancestor of',
+           'john kao model',
+           'the parent for',
+           'no parents of',
+           'no parent of',
+           'kind of like',
+           'show me the',
+           'list for me',
+           'list all of'],
+    4: [   'not the descendants of',
+           'not the parents of',
+           'not an ancestor of',
+           'list the items for',
+           'show me the items',
+           'can you show me',
+           'not a parent of',
+           'i want to see'],
+    5: ['show me all of the'],
+    6: []}
+
+    def data(self) -> dict:
+        return self.__data
+
+    def find(self,
+             term: str) -> str or None:
+        if term in self.__data:
+            return self.__data[term]

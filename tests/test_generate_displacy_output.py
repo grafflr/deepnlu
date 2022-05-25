@@ -6,7 +6,7 @@ from baseblock import EnvIO
 from baseblock import FileIO
 
 
-from erogito.parse.svc import GenerateDisplacyOutput
+from deepnlu.services.erogito.parse.svc import GenerateDisplacyOutput
 
 
 def test_service():

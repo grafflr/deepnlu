@@ -12,7 +12,7 @@ from baseblock import Enforcer
 from datablock import FindNER
 from datablock import FindSynonyms
 
-from mutato.dmo.core import SwapTokenGenerator
+from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 
 
 class ExactMatchSwapper(BaseObject):

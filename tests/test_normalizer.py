@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from accipio import Normalizer
+from deepnlu.services.accipio import Normalizer
 
 
 ## ---------------------------------------------------------- ##

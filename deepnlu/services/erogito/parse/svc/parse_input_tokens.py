@@ -11,13 +11,13 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 
 
-from erogito.parse.dmo import GrafflParserSpacy
-from erogito.parse.dmo import GrafflParserWordnet
-from erogito.parse.dmo import GrafflParserNormalize
-from erogito.parse.dmo import GrafflParserPunctuation
-from erogito.parse.dmo import GrafflParserCoordinates
-from erogito.parse.dmo import GrafflParserSquots
-from erogito.parse.dmo import GrafflParserResultSet
+from deepnlu.services.erogito.parse.dmo import GrafflParserSpacy
+from deepnlu.services.erogito.parse.dmo import GrafflParserWordnet
+from deepnlu.services.erogito.parse.dmo import GrafflParserNormalize
+from deepnlu.services.erogito.parse.dmo import GrafflParserPunctuation
+from deepnlu.services.erogito.parse.dmo import GrafflParserCoordinates
+from deepnlu.services.erogito.parse.dmo import GrafflParserSquots
+from deepnlu.services.erogito.parse.dmo import GrafflParserResultSet
 
 
 class ParseInputTokens(BaseObject):

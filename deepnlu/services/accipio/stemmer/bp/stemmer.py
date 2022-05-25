@@ -5,7 +5,7 @@
 
 import functools
 
-from accipio.stemmer.svc import PerformPorterStemming
+from deepnlu.services.accipio.stemmer.svc import PerformPorterStemming
 
 
 class Stemmer(object):

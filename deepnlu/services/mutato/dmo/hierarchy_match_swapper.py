@@ -12,8 +12,8 @@ from baseblock import BaseObject
 from baseblock import Enforcer
 from baseblock import get_ontology_name
 
-from mutato.dmo import SlidingWindowExtract
-from mutato.dmo import SwapTokenGenerator
+from deepnlu.services.mutato.dmo import SlidingWindowExtract
+from deepnlu.services.mutato.dmo import SwapTokenGenerator
 
 
 class HierarchyMatchSwapper(BaseObject):

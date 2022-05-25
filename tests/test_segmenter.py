@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from accipio.segmenter import Segmenter
+from deepnlu.services.accipio.segmenter import Segmenter
 
 
 ## ---------------------------------------------------------- ##

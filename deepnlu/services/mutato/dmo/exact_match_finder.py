@@ -10,10 +10,10 @@ from baseblock import EnvIO
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from mutato.dmo.exact import SlidingWindowExtract
-from mutato.dmo.exact import SlidingWindowExcludeSwaps
-from mutato.dmo.exact import SlidingWindowBlacklist
-from mutato.dmo.exact import SlidingWindowLookup
+from deepnlu.services.mutato.dmo.exact import SlidingWindowExtract
+from deepnlu.services.mutato.dmo.exact import SlidingWindowExcludeSwaps
+from deepnlu.services.mutato.dmo.exact import SlidingWindowBlacklist
+from deepnlu.services.mutato.dmo.exact import SlidingWindowLookup
 
 from datablock.os import d_candidate_synonym_blacklist
 

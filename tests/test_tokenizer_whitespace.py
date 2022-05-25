@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-from accipio.tokenizer import Tokenizer
+from deepnlu.services.accipio.tokenizer import Tokenizer
 
 
 ## ---------------------------------------------------------- ##

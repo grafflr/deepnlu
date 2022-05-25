@@ -7,7 +7,7 @@ from pprint import pformat
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from portendo.dto import Markers
+from deepnlu.services.portendo.dto import Markers
 
 
 class ComputerExcludeOneOf(BaseObject):

@@ -17,8 +17,8 @@ from datablock.svc import FindNER
 from datablock.svc import FindSpans
 from datablock.svc import FindSynonyms
 
-from mutato.dmo import SpanMatchFinder
-from mutato.dmo import SpanMatchSwapper
+from deepnlu.services.mutato.dmo import SpanMatchFinder
+from deepnlu.services.mutato.dmo import SpanMatchSwapper
 
 
 class PerformSpanMatching(BaseObject):

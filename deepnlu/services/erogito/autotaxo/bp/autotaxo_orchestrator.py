@@ -3,8 +3,8 @@
 """ Orchestrate Taxonomy Generation """
 
 
-from erogito.autotaxo.svc import GenerateTaxonomyDataFrame
-from erogito.autotaxo.svc import GenerateTaxonomyTTL
+from deepnlu.services.erogito.autotaxo.svc import GenerateTaxonomyDataFrame
+from deepnlu.services.erogito.autotaxo.svc import GenerateTaxonomyTTL
 
 from baseblock import BaseObject
 

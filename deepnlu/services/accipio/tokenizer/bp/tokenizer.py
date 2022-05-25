@@ -31,7 +31,7 @@ class Tokenizer(object):
             list: list of tokens
         """
         if not self._spacy:
-            from accipio.tokenizer.svc import TokenizeUseSpacy
+            from deepnlu.services.accipio.tokenizer.svc import TokenizeUseSpacy
             self._spacy = TokenizeUseSpacy().process
 
         return self._spacy(input_text)
@@ -48,7 +48,7 @@ class Tokenizer(object):
             list: list of tokens
         """
         if not self._whitespace:
-            from accipio.tokenizer.svc import TokenizeUseWhitespace
+            from deepnlu.services.accipio.tokenizer.svc import TokenizeUseWhitespace
             self._whitespace = TokenizeUseWhitespace().process
 
         return self._whitespace(input_text)
@@ -65,7 +65,7 @@ class Tokenizer(object):
             list: list of tokens
         """
         if not self._graffl:
-            from accipio.tokenizer.svc import TokenizeUseGraffl
+            from deepnlu.services.accipio.tokenizer.svc import TokenizeUseGraffl
             self._graffl = TokenizeUseGraffl().process
 
         return self._graffl(input_text)

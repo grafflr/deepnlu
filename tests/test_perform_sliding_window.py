@@ -1,10 +1,10 @@
-from mutato import __version__
+from deepnlu.services.mutato import __version__
 
 
 import os
 
 from datablock.svc import FindLookup
-from mutato.dmo import ExactMatchFinder
+from deepnlu.services.mutato.dmo import ExactMatchFinder
 
 os.environ['GRAFFL_ONTOLOGIES'] = "nursing"
 lookup_data = FindLookup().data()

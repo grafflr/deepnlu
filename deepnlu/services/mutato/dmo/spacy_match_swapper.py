@@ -11,7 +11,7 @@ from baseblock import BaseObject
 
 from datablock.svc import FindSynonyms
 
-from mutato.dmo.core import SwapTokenGenerator
+from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 
 
 class SpacyMatchSwapper(BaseObject):

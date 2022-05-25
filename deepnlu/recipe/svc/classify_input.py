@@ -12,7 +12,7 @@ from baseblock import BaseObject
 from baseblock import Enforcer
 
 
-from portendo import Portendo
+from deepnlu.services.portendo import Portendo
 
 
 class ClassifyInput(BaseObject):

@@ -1,4 +1,4 @@
-from mutato import __version__
+from deepnlu.services.mutato import __version__
 
 
 import os
@@ -7,7 +7,7 @@ from pprint import pprint
 from datablock import FindNER
 from datablock import FindSynonyms
 
-from mutato.dmo import ExactMatchSwapper
+from deepnlu.services.mutato.dmo import ExactMatchSwapper
 
 
 candidate_tokens = [

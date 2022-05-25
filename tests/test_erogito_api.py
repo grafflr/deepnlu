@@ -8,10 +8,10 @@ from baseblock import FileIO
 from baseblock import EnvIO
 
 
-from erogito import ErogitoAPI
+from deepnlu.services.erogito import ErogitoAPI
 
 
-from erogito import __version__
+from deepnlu.services.erogito import __version__
 assert __version__ == '0.1.0'
 
 

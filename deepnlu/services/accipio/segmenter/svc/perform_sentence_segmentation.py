@@ -9,11 +9,11 @@ import spacy
 from baseblock import BaseObject
 
 
-from accipio.segmenter.dmo import NewlinesToPeriods
-from accipio.segmenter.dmo import DelimitersToPeriods
-from accipio.segmenter.dmo import BulletPointCleaner
-from accipio.segmenter.dmo import SpacyDocSegmenter
-from accipio.segmenter.dmo import PostProcessStructure
+from deepnlu.services.accipio.segmenter.dmo import NewlinesToPeriods
+from deepnlu.services.accipio.segmenter.dmo import DelimitersToPeriods
+from deepnlu.services.accipio.segmenter.dmo import BulletPointCleaner
+from deepnlu.services.accipio.segmenter.dmo import SpacyDocSegmenter
+from deepnlu.services.accipio.segmenter.dmo import PostProcessStructure
 
 
 class PerformSentenceSegmentation(BaseObject):

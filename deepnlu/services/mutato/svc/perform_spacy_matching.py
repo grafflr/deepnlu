@@ -13,8 +13,8 @@ from baseblock import get_ontology_name
 
 from datablock.svc import FindSynonyms
 
-from mutato.dmo import SpacyMatchFinder
-from mutato.dmo import SpacyMatchSwapper
+from deepnlu.services.mutato.dmo import SpacyMatchFinder
+from deepnlu.services.mutato.dmo import SpacyMatchSwapper
 
 
 class PerformSpacyMatching(BaseObject):

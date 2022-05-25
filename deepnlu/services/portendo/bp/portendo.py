@@ -12,9 +12,9 @@ from baseblock import Enforcer
 
 from datablock import FindClassifications
 
-from portendo.svc import PredictMapping
-from portendo.svc import SelectMapping
-from portendo.dmo import InputTokensTransform
+from deepnlu.services.portendo.svc import PredictMapping
+from deepnlu.services.portendo.svc import SelectMapping
+from deepnlu.services.portendo.dmo import InputTokensTransform
 
 
 class Portendo(BaseObject):

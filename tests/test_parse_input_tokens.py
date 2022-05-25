@@ -4,7 +4,7 @@
 import pprint
 
 
-from erogito.parse.svc import ParseInputTokens
+from deepnlu.services.erogito.parse.svc import ParseInputTokens
 
 
 def execute(tokens: list):

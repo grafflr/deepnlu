@@ -1,8 +1,8 @@
-from mutato import __version__
+from deepnlu.services.mutato import __version__
 
 
 import os
-from mutato.dmo import SlidingWindowLookup
+from deepnlu.services.mutato.dmo import SlidingWindowLookup
 
 
 def test_component():

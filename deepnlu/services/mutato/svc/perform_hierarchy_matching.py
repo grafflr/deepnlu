@@ -12,10 +12,10 @@ from baseblock import BaseObject
 from baseblock import Enforcer
 from baseblock import get_ontology_name
 
-from mutato.dmo import SlidingWindowExtract
-from mutato.dmo import SwapTokenGenerator
-from mutato.dmo import HierarchyMatchFinder
-from mutato.dmo import HierarchyMatchSwapper
+from deepnlu.services.mutato.dmo import SlidingWindowExtract
+from deepnlu.services.mutato.dmo import SwapTokenGenerator
+from deepnlu.services.mutato.dmo import HierarchyMatchFinder
+from deepnlu.services.mutato.dmo import HierarchyMatchSwapper
 
 
 class PerformHierarchyMatching(BaseObject):

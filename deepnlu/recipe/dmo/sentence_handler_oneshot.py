@@ -10,11 +10,11 @@ from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from accipio import Tokenizer
-from accipio import Stemmer
-from accipio import Normalizer
-from erogito import ErogitoAPI
-from mutato import MutatoAPI
+from deepnlu.services.accipio import Tokenizer
+from deepnlu.services.accipio import Stemmer
+from deepnlu.services.accipio import Normalizer
+from deepnlu.services.erogito import ErogitoAPI
+from deepnlu.services.mutato import MutatoAPI
 
 
 class SentenceHandlerOneShot(BaseObject):
