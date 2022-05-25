@@ -1,9 +1,3 @@
-from deepnlu.services.mutato import __version__
-
-
-import os
-from pprint import pprint
-
 from deepnlu.datablock import FindNER
 from deepnlu.datablock import FindSynonyms
 

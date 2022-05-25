@@ -1,5 +1,3 @@
-from deepnlu.services.mutato import __version__
-
 from deepnlu.services.mutato.dmo import SlidingWindowExtract
 
 

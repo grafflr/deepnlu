@@ -1,11 +1,4 @@
-from baseblock import Enforcer
-
-from deepnlu.services.portendo import __version__
 from deepnlu.services.portendo.bp import Portendo
-
-
-def test_version():
-    assert __version__ == '0.1.0'
 
 
 def test_portendo():

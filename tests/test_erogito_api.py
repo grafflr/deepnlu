@@ -11,10 +11,6 @@ from baseblock import EnvIO
 from deepnlu.services.erogito import ErogitoAPI
 
 
-from deepnlu.services.erogito import __version__
-assert __version__ == '0.1.0'
-
-
 def test_api_parse():
     assert ErogitoAPI().parse(['great', 'people', ',', 'said', 'John', 'Doe'])
 

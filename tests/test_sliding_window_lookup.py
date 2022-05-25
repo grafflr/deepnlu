@@ -1,6 +1,3 @@
-from deepnlu.services.mutato import __version__
-
-
 import os
 from deepnlu.services.mutato.dmo import SlidingWindowLookup
 

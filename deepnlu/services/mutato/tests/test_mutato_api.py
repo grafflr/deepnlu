@@ -1,8 +1,3 @@
-from deepnlu.services.mutato import __version__
-
-
-import os
-import logging
 from pprint import pprint
 
 from deepnlu.services.mutato.bp import MutatoAPI

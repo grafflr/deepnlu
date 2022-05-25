@@ -1,7 +1,4 @@
-import os
 
-from baseblock import FileIO
-from baseblock import Enforcer
 
 from deepnlu.services.erogito import ErogitoAPI
 
@@ -9,6 +6,11 @@ from deepnlu.services.erogito import ErogitoAPI
 def driver(input_text: str):
     api = ErogitoAPI()
     assert api
+
+    if input_text == "random":
+        from deepnlu.datablock.svc import FindQuestions
+        input_text = FindQuestions().random()
+        print (input_text)
 
     result = api.keyterms(input_text)
 
