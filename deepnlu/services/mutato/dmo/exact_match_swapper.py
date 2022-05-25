@@ -9,8 +9,8 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
-from datablock import FindNER
-from datablock import FindSynonyms
+from deepnlu.datablock import FindNER
+from deepnlu.datablock import FindSynonyms
 
 from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 

@@ -11,11 +11,11 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 
 
-from datablock.svc import FindTypes
-from datablock.svc import FindImplies
-from datablock.svc import FindSimilar
-from datablock.svc import FindRequires
-from datablock.svc import FindSynonyms
+from deepnlu.datablock.svc import FindTypes
+from deepnlu.datablock.svc import FindImplies
+from deepnlu.datablock.svc import FindSimilar
+from deepnlu.datablock.svc import FindRequires
+from deepnlu.datablock.svc import FindSynonyms
 
 
 class FindData(BaseObject):

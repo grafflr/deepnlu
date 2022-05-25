@@ -6,7 +6,7 @@
 from baseblock import EnvIO
 from baseblock import BaseObject
 
-from datablock.dmo import GenericClassLoader
+from deepnlu.datablock.dmo import GenericClassLoader
 
 
 class GenericDataFinder(BaseObject):

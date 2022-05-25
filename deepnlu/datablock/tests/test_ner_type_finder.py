@@ -1,4 +1,4 @@
-from datablock.dmo import NerTypeFinder
+from deepnlu.datablock.dmo import NerTypeFinder
 
 
 def test_version():

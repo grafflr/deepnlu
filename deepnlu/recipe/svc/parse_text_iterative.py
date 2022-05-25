@@ -8,7 +8,7 @@ from baseblock import BaseObject
 from baseblock import get_ontology_name
 
 from deepnlu.services.accipio import Segmenter
-from deepnlu.dmo import SentenceHandlerIterative
+from deepnlu.recipe.dmo import SentenceHandlerIterative
 
 
 class ParseTextIterative(BaseObject):

@@ -8,7 +8,7 @@ from baseblock import BaseObject
 
 
 from deepnlu.services.accipio import Segmenter
-from deepnlu.dmo import SentenceHandlerOneShot
+from deepnlu.recipe.dmo import SentenceHandlerOneShot
 
 
 class ParseTextOneShot(BaseObject):

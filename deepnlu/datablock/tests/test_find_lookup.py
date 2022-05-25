@@ -3,7 +3,7 @@
 import os
 from baseblock import Stopwatch
 
-from datablock.svc import FindLookup
+from deepnlu.datablock.svc import FindLookup
 
 
 def test_exists():

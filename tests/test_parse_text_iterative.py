@@ -4,7 +4,7 @@
 from pprint import pprint
 
 
-from deepnlu.svc import ParseTextIterative
+from deepnlu.recipe.svc import ParseTextIterative
 
 
 def test_process_input_text_1():

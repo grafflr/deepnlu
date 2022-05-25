@@ -9,7 +9,7 @@ from spacy.lang.en import English
 
 
 from baseblock import BaseObject
-from datablock import FindWordnet
+from deepnlu.datablock import FindWordnet
 
 
 class GrafflParserSpacy(BaseObject):

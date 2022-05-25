@@ -15,7 +15,7 @@ from deepnlu.services.mutato.dmo.exact import SlidingWindowExcludeSwaps
 from deepnlu.services.mutato.dmo.exact import SlidingWindowBlacklist
 from deepnlu.services.mutato.dmo.exact import SlidingWindowLookup
 
-from datablock.os import d_candidate_synonym_blacklist
+from deepnlu.datablock.os import d_candidate_synonym_blacklist
 
 
 class ExactMatchFinder(BaseObject):

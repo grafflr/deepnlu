@@ -8,7 +8,7 @@ from pprint import pprint
 from baseblock import BaseObject
 from baseblock import get_ontology_name
 
-from datablock.dmo import GenericDataFinder
+from deepnlu.datablock.dmo import GenericDataFinder
 
 
 class FindTypes(BaseObject):

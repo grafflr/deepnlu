@@ -6,7 +6,7 @@ from deepnlu.services.mutato.dmo import SlidingWindowLookup
 
 
 def test_component():
-    from datablock.svc import FindLookup
+    from deepnlu.datablock.svc import FindLookup
 
     os.environ['GRAFFL_ONTOLOGIES'] = 'nursing'
     lookup_data = FindLookup().data()

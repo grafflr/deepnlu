@@ -7,7 +7,7 @@ from random import sample
 
 from baseblock import BaseObject
 
-from datablock.os.praxis_pathology import praxis_pathology_questions
+from deepnlu.datablock.os.praxis_pathology import praxis_pathology_questions
 
 
 class FindPraxisPathology(BaseObject):

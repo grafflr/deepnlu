@@ -1,7 +1,7 @@
 
 
-from datablock.bp import FindData
-from datablock.svc import FindRequires
+from deepnlu.datablock.bp import FindData
+from deepnlu.datablock.svc import FindRequires
 from baseblock import Stopwatch
 
 

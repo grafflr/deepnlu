@@ -22,30 +22,30 @@ class FindDictionaries(BaseObject):
 
     @staticmethod
     def hyphens() -> dict:
-        from datablock.os import d_hyphens
+        from deepnlu.datablock.os import d_hyphens
         return d_hyphens
 
     @staticmethod
     def currency() -> dict:
-        from datablock.os import d_currency
+        from deepnlu.datablock.os import d_currency
         return d_currency
 
     @staticmethod
     def squotes() -> dict:
-        from datablock.os import d_squotes
+        from deepnlu.datablock.os import d_squotes
         return d_squotes
 
     @staticmethod
     def dquotes() -> dict:
-        from datablock.os import d_dquotes
+        from deepnlu.datablock.os import d_dquotes
         return d_dquotes
 
     @staticmethod
     def enclitics() -> dict:
-        from datablock.os import d_enclitics
+        from deepnlu.datablock.os import d_enclitics
         return d_enclitics
 
     @staticmethod
     def abbreviations() -> dict:
-        from datablock.os import d_abbreviations
+        from deepnlu.datablock.os import d_abbreviations
         return d_abbreviations

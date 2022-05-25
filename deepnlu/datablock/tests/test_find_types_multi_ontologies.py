@@ -4,7 +4,7 @@ import os
 from pprint import pprint
 
 
-from datablock.svc import FindSynonyms
+from deepnlu.datablock.svc import FindSynonyms
 from baseblock import Stopwatch
 
 

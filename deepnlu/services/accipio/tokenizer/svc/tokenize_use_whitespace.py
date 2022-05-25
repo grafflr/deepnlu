@@ -3,7 +3,7 @@
 """ Whitespace Tokenizer """
 
 
-from datablock.svc import FindDictionaries
+from deepnlu.datablock.svc import FindDictionaries
 
 
 class TokenizeUseWhitespace(object):

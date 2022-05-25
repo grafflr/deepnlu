@@ -1,6 +1,6 @@
 import os
 
-from datablock.bp import FindData
+from deepnlu.datablock.bp import FindData
 
 
 def test_find_data() -> None:

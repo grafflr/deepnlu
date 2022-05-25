@@ -4,7 +4,7 @@ import os
 from pprint import pprint
 
 
-from datablock.svc import FindTypes
+from deepnlu.datablock.svc import FindTypes
 from baseblock import Stopwatch
 
 

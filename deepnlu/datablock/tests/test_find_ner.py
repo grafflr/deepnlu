@@ -1,6 +1,6 @@
 
 
-from datablock.svc import FindNER
+from deepnlu.datablock.svc import FindNER
 from baseblock import Stopwatch
 
 

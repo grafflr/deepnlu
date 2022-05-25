@@ -10,7 +10,7 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
-from datablock import FindClassifications
+from deepnlu.datablock import FindClassifications
 
 from deepnlu.services.portendo.svc import PredictMapping
 from deepnlu.services.portendo.svc import SelectMapping

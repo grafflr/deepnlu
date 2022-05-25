@@ -1,5 +1,4 @@
 from .normalize import *
-from .regression import *
 from .segmenter import *
 from .stemmer import *
 from .tokenizer import *

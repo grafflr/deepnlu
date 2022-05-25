@@ -5,7 +5,7 @@ from pprint import pprint
 from baseblock import Enforcer
 from baseblock import Stopwatch
 
-from datablock.svc import FindRecommendations
+from deepnlu.datablock.svc import FindRecommendations
 
 
 def test_exists():

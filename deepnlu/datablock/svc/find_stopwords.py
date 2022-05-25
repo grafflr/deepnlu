@@ -7,7 +7,7 @@ from string import ascii_lowercase
 
 from baseblock import BaseObject
 
-from datablock.os import stopwords
+from deepnlu.datablock.os import stopwords
 
 
 class FindStopWords(BaseObject):

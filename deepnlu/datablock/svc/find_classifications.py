@@ -9,7 +9,7 @@ from pprint import pprint
 
 from baseblock import BaseObject
 
-from datablock.dmo import GenericFunctionLoader
+from deepnlu.datablock.dmo import GenericFunctionLoader
 
 
 class FindClassifications(BaseObject):

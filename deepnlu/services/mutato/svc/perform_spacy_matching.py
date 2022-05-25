@@ -11,7 +11,7 @@ from baseblock import BaseObject
 from baseblock import Enforcer
 from baseblock import get_ontology_name
 
-from datablock.svc import FindSynonyms
+from deepnlu.datablock.svc import FindSynonyms
 
 from deepnlu.services.mutato.dmo import SpacyMatchFinder
 from deepnlu.services.mutato.dmo import SpacyMatchSwapper

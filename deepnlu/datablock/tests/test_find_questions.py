@@ -7,7 +7,7 @@ def test_find_question():
 
     sw = Stopwatch()
 
-    from datablock.svc import FindQuestions
+    from deepnlu.datablock.svc import FindQuestions
     # print (f"1 - Perform Import: {str(sw)}")
 
     svc = FindQuestions()

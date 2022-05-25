@@ -2,7 +2,7 @@
 import pprint
 
 
-from deepnlu.svc import ParseTextOneShot
+from deepnlu.recipe.svc import ParseTextOneShot
 
 
 def test_service():

@@ -4,7 +4,7 @@
 
 from baseblock import Enforcer
 
-from datablock.svc import FindRoles
+from deepnlu.datablock.svc import FindRoles
 
 
 def test_service():

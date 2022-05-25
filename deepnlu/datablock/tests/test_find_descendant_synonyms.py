@@ -6,7 +6,7 @@ from pprint import pprint
 from baseblock import Stopwatch
 
 
-from datablock.bp import FindData
+from deepnlu.datablock.bp import FindData
 
 
 def test_recipe_1():

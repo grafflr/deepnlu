@@ -6,7 +6,7 @@ from random import sample
 
 from baseblock import BaseObject
 
-from datablock.os.jokes import dad_jokes
+from deepnlu.datablock.os.jokes import dad_jokes
 
 
 class FindJokes(BaseObject):

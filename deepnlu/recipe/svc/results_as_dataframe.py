@@ -4,7 +4,7 @@
 
 
 from baseblock import BaseObject
-from datablock.svc import FindLabels
+from deepnlu.datablock.svc import FindLabels
 
 
 class ResultsAsDataFrame(BaseObject):

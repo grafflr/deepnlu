@@ -8,7 +8,7 @@ from functools import lru_cache
 
 from baseblock import BaseObject
 
-from datablock.os.emojis import emojis
+from deepnlu.datablock.os.emojis import emojis
 
 
 class FindEmojis(BaseObject):
@@ -84,7 +84,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: a list of similar emojis (if any)
         """
-        from datablock.os.emojis import d_emoji_cluster_fwd
+        from deepnlu.datablock.os.emojis import d_emoji_cluster_fwd
 
         if cluster in d_emoji_cluster_fwd:
             return d_emoji_cluster_fwd[cluster]
@@ -100,7 +100,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: a list of similar emojis (if any)
         """
-        from datablock.os.emojis import d_emoji_cluster_rev
+        from deepnlu.datablock.os.emojis import d_emoji_cluster_rev
 
         emoji_name = emoji_name.lower().strip()
         if emoji_name not in d_emoji_cluster_rev:
@@ -127,7 +127,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: a list of emojis by gender
         """
-        from datablock.os.emojis import d_emoji_gender_fwd
+        from deepnlu.datablock.os.emojis import d_emoji_gender_fwd
 
         gender = gender.lower().strip()
         if gender in d_emoji_gender_fwd:
@@ -144,7 +144,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: a list of similar emojis (if any)
         """
-        from datablock.os.emojis import d_emoji_gender_rev
+        from deepnlu.datablock.os.emojis import d_emoji_gender_rev
 
         emoji_name = emoji_name.lower().strip()
         if emoji_name in d_emoji_gender_rev:
@@ -170,7 +170,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: a list of emojis by funniness level
         """
-        from datablock.os.emojis import d_emoji_funny_fwd
+        from deepnlu.datablock.os.emojis import d_emoji_funny_fwd
 
         if level in d_emoji_funny_fwd:
             return d_emoji_funny_fwd[level]
@@ -186,7 +186,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: a list of similar emojis (if any)
         """
-        from datablock.os.emojis import d_emoji_funny_rev
+        from deepnlu.datablock.os.emojis import d_emoji_funny_rev
 
         emoji_name = emoji_name.lower().strip()
         if emoji_name in d_emoji_funny_rev:
@@ -212,7 +212,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: a list of funnier emojis (if any)
         """
-        from datablock.os.emojis import d_emoji_funny_rev
+        from deepnlu.datablock.os.emojis import d_emoji_funny_rev
 
         emoji_name = emoji_name.lower().strip()
         if emoji_name in d_emoji_funny_rev:
@@ -229,7 +229,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: all known 'ironic' emojis
         """
-        from datablock.os.emojis import emoji_ironic
+        from deepnlu.datablock.os.emojis import emoji_ironic
 
         return emoji_ironic
 
@@ -253,7 +253,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: a list of emojis by positive level
         """
-        from datablock.os.emojis import d_emoji_positive_fwd
+        from deepnlu.datablock.os.emojis import d_emoji_positive_fwd
 
         if level in d_emoji_positive_fwd:
             return d_emoji_positive_fwd[level]
@@ -269,7 +269,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: a list of similar emojis (if any)
         """
-        from datablock.os.emojis import d_emoji_positive_rev
+        from deepnlu.datablock.os.emojis import d_emoji_positive_rev
 
         emoji_name = emoji_name.lower().strip()
         if emoji_name in d_emoji_positive_rev:
@@ -290,7 +290,7 @@ class FindEmojis(BaseObject):
         Returns:
             list or None: all known 'face' emojis
         """
-        from datablock.os.emojis import emoji_face
+        from deepnlu.datablock.os.emojis import emoji_face
 
         return emoji_face
 

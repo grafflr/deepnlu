@@ -9,7 +9,7 @@ from collections import Counter
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from datablock import FindSynonyms
+from deepnlu.datablock import FindSynonyms
 
 
 from deepnlu.services.portendo.dto import Markers

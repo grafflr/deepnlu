@@ -4,7 +4,7 @@
 
 
 from baseblock import BaseObject
-from datablock import FindDictionaries
+from deepnlu.datablock import FindDictionaries
 
 
 class NormalizeText(BaseObject):

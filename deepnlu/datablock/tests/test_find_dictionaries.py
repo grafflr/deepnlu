@@ -1,4 +1,4 @@
-from datablock.svc import FindDictionaries
+from deepnlu.datablock.svc import FindDictionaries
 
 finder = FindDictionaries()
 assert finder

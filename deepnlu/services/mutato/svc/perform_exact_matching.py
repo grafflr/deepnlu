@@ -11,8 +11,8 @@ from baseblock import BaseObject
 from baseblock import Enforcer
 from baseblock import get_ontology_name
 
-from datablock import FindNER
-from datablock import FindSynonyms
+from deepnlu.datablock import FindNER
+from deepnlu.datablock import FindSynonyms
 
 from deepnlu.services.mutato.dmo import ExactMatchFinder
 from deepnlu.services.mutato.dmo import ExactMatchSwapper

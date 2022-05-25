@@ -6,10 +6,10 @@
 from baseblock import BaseObject
 from baseblock import get_ontology_name
 
-from deepnlu.svc import ProcessInputFiles
-from deepnlu.svc import ParseTextOneShot
-from deepnlu.svc import ResultsAsDataFrame
-from deepnlu.dmo import InputPathReader
+from deepnlu.recipe.svc import ProcessInputFiles
+from deepnlu.recipe.svc import ParseTextOneShot
+from deepnlu.recipe.svc import ResultsAsDataFrame
+from deepnlu.recipe.dmo import InputPathReader
 
 from baseblock.enforce_type import Enforcer
 

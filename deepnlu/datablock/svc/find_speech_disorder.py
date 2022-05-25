@@ -7,7 +7,7 @@ from random import sample
 
 from baseblock import BaseObject
 
-from datablock.os.speech_disorder import speech_disorder_questions
+from deepnlu.datablock.os.speech_disorder import speech_disorder_questions
 
 
 class FindSpeechDisorder(BaseObject):

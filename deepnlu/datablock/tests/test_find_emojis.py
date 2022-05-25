@@ -7,7 +7,7 @@ from baseblock import Enforcer
 from baseblock import Stopwatch
 
 
-from datablock.svc import FindEmojis
+from deepnlu.datablock.svc import FindEmojis
 
 svc = FindEmojis()
 assert svc

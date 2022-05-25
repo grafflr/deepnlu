@@ -8,7 +8,7 @@ import logging
 
 from baseblock import Stopwatch
 from baseblock import BaseObject
-from datablock.svc import FindSpans
+from deepnlu.datablock.svc import FindSpans
 
 from deepnlu.services.mutato.dmo.spans import SpanContentCheck
 from deepnlu.services.mutato.dmo.spans import SpanDistanceCheck

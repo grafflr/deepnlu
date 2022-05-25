@@ -4,7 +4,7 @@ import os
 import pprint
 
 
-from datablock.svc import FindSpans
+from deepnlu.datablock.svc import FindSpans
 from baseblock import Stopwatch
 
 

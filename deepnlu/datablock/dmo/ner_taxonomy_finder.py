@@ -13,7 +13,7 @@ from baseblock import FileIO
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from datablock.dmo import GenericDataFinder
+from deepnlu.datablock.dmo import GenericDataFinder
 
 
 class NerTaxonomyFinder(BaseObject):

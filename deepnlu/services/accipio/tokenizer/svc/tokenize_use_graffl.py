@@ -3,7 +3,7 @@
 """ Graffl Tokenizer """
 
 
-from datablock.svc import FindDictionaries
+from deepnlu.datablock.svc import FindDictionaries
 
 
 class TokenizeUseGraffl(object):

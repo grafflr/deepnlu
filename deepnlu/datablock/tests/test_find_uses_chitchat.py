@@ -1,6 +1,6 @@
 
 
-from datablock.svc import FindUses
+from deepnlu.datablock.svc import FindUses
 from baseblock import Stopwatch
 
 

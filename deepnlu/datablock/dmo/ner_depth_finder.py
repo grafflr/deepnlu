@@ -13,7 +13,7 @@ from baseblock import FileIO
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from datablock.dmo import GenericClassLoader
+from deepnlu.datablock.dmo import GenericClassLoader
 
 
 class NerDepthFinder(BaseObject):

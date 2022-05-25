@@ -1,7 +1,7 @@
 
 from pprint import pprint
 
-from datablock.svc import FindReviews
+from deepnlu.datablock.svc import FindReviews
 
 finder = FindReviews()
 assert finder

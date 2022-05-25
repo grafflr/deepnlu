@@ -10,8 +10,8 @@ from random import sample
 
 from baseblock import BaseObject
 
-from datablock.dmo import GenericFunctionLoader
-from datablock.os.qlists import list_of_questions
+from deepnlu.datablock.dmo import GenericFunctionLoader
+from deepnlu.datablock.os.qlists import list_of_questions
 
 
 class FindQuestions(BaseObject):

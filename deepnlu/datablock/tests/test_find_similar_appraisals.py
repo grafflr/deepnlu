@@ -1,7 +1,7 @@
 import os
 
 
-from datablock.svc import FindSimilar
+from deepnlu.datablock.svc import FindSimilar
 
 
 def test_load() -> None:

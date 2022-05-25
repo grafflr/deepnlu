@@ -1,6 +1,6 @@
 from baseblock import Enforcer
 
-from datablock.svc import FindPronouns
+from deepnlu.datablock.svc import FindPronouns
 
 
 def test_find_pronouns() -> None:

@@ -6,9 +6,9 @@
 from baseblock import BaseObject
 
 
-from datablock.os import first_person_pronouns
-from datablock.os import second_person_pronouns
-from datablock.os import third_person_pronouns
+from deepnlu.datablock.os import first_person_pronouns
+from deepnlu.datablock.os import second_person_pronouns
+from deepnlu.datablock.os import third_person_pronouns
 
 
 class FindPronouns(BaseObject):

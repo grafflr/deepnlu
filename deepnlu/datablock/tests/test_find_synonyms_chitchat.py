@@ -3,7 +3,7 @@ import os
 
 from baseblock import Stopwatch
 
-from datablock.svc import FindSynonyms
+from deepnlu.datablock.svc import FindSynonyms
 
 
 def test_finder():

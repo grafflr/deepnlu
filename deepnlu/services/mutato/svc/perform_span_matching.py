@@ -13,9 +13,9 @@ from baseblock import BaseObject
 from baseblock import Enforcer
 from baseblock import get_ontology_name
 
-from datablock.svc import FindNER
-from datablock.svc import FindSpans
-from datablock.svc import FindSynonyms
+from deepnlu.datablock.svc import FindNER
+from deepnlu.datablock.svc import FindSpans
+from deepnlu.datablock.svc import FindSynonyms
 
 from deepnlu.services.mutato.dmo import SpanMatchFinder
 from deepnlu.services.mutato.dmo import SpanMatchSwapper

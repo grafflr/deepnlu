@@ -7,32 +7,32 @@ from string import ascii_lowercase
 
 
 from baseblock import BaseObject
-from datablock.os.wordnet import wordnet_terms_a
-from datablock.os.wordnet import wordnet_terms_b
-from datablock.os.wordnet import wordnet_terms_c
-from datablock.os.wordnet import wordnet_terms_d
-from datablock.os.wordnet import wordnet_terms_e
-from datablock.os.wordnet import wordnet_terms_f
-from datablock.os.wordnet import wordnet_terms_g
-from datablock.os.wordnet import wordnet_terms_h
-from datablock.os.wordnet import wordnet_terms_i
-from datablock.os.wordnet import wordnet_terms_j
-from datablock.os.wordnet import wordnet_terms_k
-from datablock.os.wordnet import wordnet_terms_l
-from datablock.os.wordnet import wordnet_terms_m
-from datablock.os.wordnet import wordnet_terms_n
-from datablock.os.wordnet import wordnet_terms_o
-from datablock.os.wordnet import wordnet_terms_p
-from datablock.os.wordnet import wordnet_terms_q
-from datablock.os.wordnet import wordnet_terms_r
-from datablock.os.wordnet import wordnet_terms_s
-from datablock.os.wordnet import wordnet_terms_t
-from datablock.os.wordnet import wordnet_terms_u
-from datablock.os.wordnet import wordnet_terms_v
-from datablock.os.wordnet import wordnet_terms_w
-from datablock.os.wordnet import wordnet_terms_x
-from datablock.os.wordnet import wordnet_terms_y
-from datablock.os.wordnet import wordnet_terms_z
+from deepnlu.datablock.os.wordnet import wordnet_terms_a
+from deepnlu.datablock.os.wordnet import wordnet_terms_b
+from deepnlu.datablock.os.wordnet import wordnet_terms_c
+from deepnlu.datablock.os.wordnet import wordnet_terms_d
+from deepnlu.datablock.os.wordnet import wordnet_terms_e
+from deepnlu.datablock.os.wordnet import wordnet_terms_f
+from deepnlu.datablock.os.wordnet import wordnet_terms_g
+from deepnlu.datablock.os.wordnet import wordnet_terms_h
+from deepnlu.datablock.os.wordnet import wordnet_terms_i
+from deepnlu.datablock.os.wordnet import wordnet_terms_j
+from deepnlu.datablock.os.wordnet import wordnet_terms_k
+from deepnlu.datablock.os.wordnet import wordnet_terms_l
+from deepnlu.datablock.os.wordnet import wordnet_terms_m
+from deepnlu.datablock.os.wordnet import wordnet_terms_n
+from deepnlu.datablock.os.wordnet import wordnet_terms_o
+from deepnlu.datablock.os.wordnet import wordnet_terms_p
+from deepnlu.datablock.os.wordnet import wordnet_terms_q
+from deepnlu.datablock.os.wordnet import wordnet_terms_r
+from deepnlu.datablock.os.wordnet import wordnet_terms_s
+from deepnlu.datablock.os.wordnet import wordnet_terms_t
+from deepnlu.datablock.os.wordnet import wordnet_terms_u
+from deepnlu.datablock.os.wordnet import wordnet_terms_v
+from deepnlu.datablock.os.wordnet import wordnet_terms_w
+from deepnlu.datablock.os.wordnet import wordnet_terms_x
+from deepnlu.datablock.os.wordnet import wordnet_terms_y
+from deepnlu.datablock.os.wordnet import wordnet_terms_z
 
 
 class FindWordnet(BaseObject):

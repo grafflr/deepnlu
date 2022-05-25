@@ -7,7 +7,7 @@ from nltk.stem import PorterStemmer
 from nltk.tokenize import sent_tokenize, word_tokenize
 
 from baseblock import BaseObject
-from datablock import FindDictionaries
+from deepnlu.datablock import FindDictionaries
 
 class PerformPorterStemming(BaseObject):
 

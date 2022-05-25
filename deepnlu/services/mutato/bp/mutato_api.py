@@ -7,10 +7,10 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import get_ontology_name
 
-from datablock.svc import FindNER
-from datablock.svc import FindTypes
-from datablock.svc import FindLookup
-from datablock.svc import FindSynonyms
+from deepnlu.datablock.svc import FindNER
+from deepnlu.datablock.svc import FindTypes
+from deepnlu.datablock.svc import FindLookup
+from deepnlu.datablock.svc import FindSynonyms
 
 from deepnlu.services.mutato.svc import PerformExactMatching
 from deepnlu.services.mutato.svc import PerformSpanMatching

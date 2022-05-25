@@ -4,7 +4,7 @@ import os
 from pprint import pprint
 
 
-from datablock.svc import FindLabels
+from deepnlu.datablock.svc import FindLabels
 from baseblock import Stopwatch
 
 

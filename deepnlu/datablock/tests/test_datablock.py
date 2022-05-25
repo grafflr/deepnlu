@@ -1,4 +1,4 @@
-from datablock import __version__
+from deepnlu.datablock import __version__
 
 
 def test_version():

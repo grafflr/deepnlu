@@ -3,7 +3,7 @@ from deepnlu.services.mutato import __version__
 
 import os
 
-from datablock.svc import FindLookup
+from deepnlu.datablock.svc import FindLookup
 from deepnlu.services.mutato.dmo import ExactMatchFinder
 
 os.environ['GRAFFL_ONTOLOGIES'] = "nursing"

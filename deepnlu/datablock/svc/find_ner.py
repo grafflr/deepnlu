@@ -14,10 +14,10 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import get_ontology_name
 
-from datablock.dmo import NerTypeFinder
-from datablock.dmo import NerDepthFinder
-from datablock.dmo import NerPalleteLookup
-from datablock.dmo import NerTaxonomyFinder
+from deepnlu.datablock.dmo import NerTypeFinder
+from deepnlu.datablock.dmo import NerDepthFinder
+from deepnlu.datablock.dmo import NerPalleteLookup
+from deepnlu.datablock.dmo import NerTaxonomyFinder
 
 
 class FindNER(BaseObject):

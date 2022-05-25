@@ -1,7 +1,7 @@
 
 from baseblock import Stopwatch
 
-from datablock.svc import FindWordnet
+from deepnlu.datablock.svc import FindWordnet
 
 finder = FindWordnet()
 assert finder

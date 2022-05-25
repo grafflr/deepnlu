@@ -1,6 +1,6 @@
 
 
-from datablock.svc import FindReviews
+from deepnlu.datablock.svc import FindReviews
 
 
 def test_dict() -> None:

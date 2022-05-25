@@ -1,7 +1,7 @@
 from deepnlu.services.mutato import __version__
 
 from deepnlu.services.mutato.dmo import SlidingWindowBlacklist
-from datablock.os import d_candidate_synonym_blacklist
+from deepnlu.datablock.os import d_candidate_synonym_blacklist
 
 
 def test_component():

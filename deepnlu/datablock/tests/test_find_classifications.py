@@ -1,6 +1,6 @@
 import os
 
-from datablock.svc import FindClassifications
+from deepnlu.datablock.svc import FindClassifications
 
 
 def test_load() -> None:

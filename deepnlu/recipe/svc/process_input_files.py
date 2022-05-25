@@ -71,7 +71,7 @@ class ProcessInputFiles(BaseObject):
             f"\tOutput Path: {output_path}"]))
 
     def process(self) -> list:
-        from deepnlu.svc import ParseTextOneShot
+        from deepnlu.recipe.svc import ParseTextOneShot
 
         sw = Stopwatch()
 

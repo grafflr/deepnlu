@@ -4,7 +4,7 @@ import os
 from pprint import pprint
 
 
-from datablock.svc import FindInference
+from deepnlu.datablock.svc import FindInference
 from baseblock import Stopwatch
 
 

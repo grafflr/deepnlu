@@ -9,7 +9,7 @@ import logging
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from datablock.svc import FindSynonyms
+from deepnlu.datablock.svc import FindSynonyms
 
 from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 

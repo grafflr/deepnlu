@@ -4,8 +4,8 @@ from deepnlu.services.mutato import __version__
 import os
 from pprint import pprint
 
-from datablock import FindNER
-from datablock import FindSynonyms
+from deepnlu.datablock import FindNER
+from deepnlu.datablock import FindSynonyms
 
 from deepnlu.services.mutato.dmo import ExactMatchSwapper
 

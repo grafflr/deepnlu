@@ -13,7 +13,7 @@ from baseblock import BaseObject
 from baseblock import Enforcer
 from baseblock import get_ontology_name
 
-from datablock.dmo import GenericClassLoader
+from deepnlu.datablock.dmo import GenericClassLoader
 
 
 class FindTemplateConstraints(BaseObject):
