@@ -1,7 +1,6 @@
 from .owl import *
 from .wordnet import *
 from .manifest import *
-from .emojis import *
 from .qlists import *
 from .jokes import *
 from .speech_disorder import *
