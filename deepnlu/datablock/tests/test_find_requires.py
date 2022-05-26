@@ -10,7 +10,7 @@ import os
 
 def test_skills():
 
-    finder = FindRequires('skills')
+    finder = FindRequires(['skills'])
     assert finder
 
     assert finder.requires('lecturer')
@@ -22,7 +22,7 @@ def test_by_ancestor():
     assert api
 
     result = api.find_requires(entity_name='late_train',
-                               ontology_name='chitchat')
+                               ontologies=['chitchat'])
     print(result)
     # assert result
 
@@ -32,7 +32,7 @@ def test_chitchat_adorkable():
     assert api
 
     result = api.find_requires(entity_name='adorkable',
-                               ontology_name='chitchat')
+                               ontologies=['chitchat'])
     print(result)
     assert result
 

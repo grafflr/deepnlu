@@ -4,10 +4,9 @@
 
 
 from random import sample
-from pprint import pprint
 
+from baseblock import Enforcer
 from baseblock import BaseObject
-from baseblock import get_ontology_name
 
 from deepnlu.datablock.dmo import GenericDataFinder
 
@@ -16,15 +15,25 @@ class FindSimilar(BaseObject):
     """ Generic Facade to interact with Similarity relationships """
 
     def __init__(self,
-                 ontology_name: object = None):
-        """
+                 ontologies: list):
+        """ Change History
+
         Created:
             25-Feb-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/199
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
 
         self._fwd = GenericDataFinder(class_suffix='Similar',
                                       module_suffix='similar',

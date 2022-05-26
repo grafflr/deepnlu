@@ -5,7 +5,6 @@
 
 from baseblock import Enforcer
 from baseblock import BaseObject
-from baseblock import get_ontology_name
 
 from deepnlu.services.accipio import Segmenter
 from deepnlu.recipe.dmo import SentenceHandlerIterative
@@ -24,7 +23,8 @@ class ParseTextIterative(BaseObject):
 
     def __init__(self,
                  ontologies: list):
-        """
+        """ Change History
+
         Created:
             1-Oct-2021
             craig@grafflr.ai
@@ -38,14 +38,13 @@ class ParseTextIterative(BaseObject):
             craig@grafflr.ai
             *   add total-sentences parameter in pursuit of
                 https://github.com/grafflr/graffl-core/issues/208
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
             Enforcer.is_list(ontologies)
-
-            self.logger.debug('\n'.join([
-                "Initialized Service",
-                f"\tOntologies: {ontologies}"]))
 
         self._handle_sentence = SentenceHandlerIterative(ontologies).process
 

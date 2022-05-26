@@ -3,9 +3,8 @@
 """ Generic Facade to interact with Label Lookups """
 
 
+from baseblock import Enforcer
 from baseblock import BaseObject
-from baseblock import get_ontology_name
-
 
 from deepnlu.datablock.dmo import GenericDataFinder
 
@@ -14,7 +13,7 @@ class FindLabels(BaseObject):
     """ Generic Facade to interact with Label Lookups """
 
     def __init__(self,
-                 ontology_name: object = None):
+                 ontologies: list):
         """ Change History
 
         Created:
@@ -34,12 +33,18 @@ class FindLabels(BaseObject):
             craig@grafflr.ai
             *   refactored in pursuit of
                 https://github.com/grafflr/graffl-core/issues/384
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
 
         Args:
-            ontology_name (object, optional): the Ontology Name(s) to use for data. Defaults to None.
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
 
         self._fwd = GenericDataFinder(
             class_suffix='Labels',

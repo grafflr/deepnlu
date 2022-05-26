@@ -3,10 +3,8 @@
 """ Generic Facade to interact with Entity Taxonomies """
 
 
-from pprint import pprint
-
+from baseblock import Enforcer
 from baseblock import BaseObject
-from baseblock import get_ontology_name
 
 from deepnlu.datablock.dmo import GenericDataFinder
 
@@ -15,8 +13,9 @@ class FindTypes(BaseObject):
     """ Generic Facade to interact with Entity Taxonomies """
 
     def __init__(self,
-                 ontology_name: object = None):
-        """
+                 ontologies: list):
+        """ Change History
+
         Created:
             29-Oct-2021
             craig@grafflr.ai
@@ -39,9 +38,18 @@ class FindTypes(BaseObject):
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027468040
             *   a finder initialization is a contract
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027474785
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
 
         self._finders_fwd = GenericDataFinder(class_suffix='Types',
                                               module_suffix='types',

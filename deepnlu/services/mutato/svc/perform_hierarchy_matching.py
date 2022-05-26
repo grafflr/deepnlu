@@ -3,17 +3,12 @@
 """ Use Token Hierarchies to perform Inferred Matching """
 
 
-import logging
-import itertools
-from pprint import pprint
+from typing import Callable
 
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from baseblock import get_ontology_name
 
-from deepnlu.services.mutato.dmo import SlidingWindowExtract
-from deepnlu.services.mutato.dmo import SwapTokenGenerator
 from deepnlu.services.mutato.dmo import HierarchyMatchFinder
 from deepnlu.services.mutato.dmo import HierarchyMatchSwapper
 
@@ -22,19 +17,32 @@ class PerformHierarchyMatching(BaseObject):
     """ Use Token Hierarchies to perform Inferred Matching """
 
     def __init__(self,
-                 find_types_cb: object,
-                 ontology_name: object = None):
-        """
+                 find_types_cb: Callable,
+                 ontologies: list):
+        """ Change History
+
         Created:
             14-Feb-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/188
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            find_types_cb (Callable): callback to the FindTypes object
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         self._finder = HierarchyMatchFinder().process
         self._swapper = HierarchyMatchSwapper(
             find_types_cb=find_types_cb,
-            ontology_name=ontology_name).process
+            ontologies=ontologies).process
 
     def _process(self,
                  tokens: list) -> tuple:

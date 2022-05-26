@@ -10,7 +10,7 @@ import os
 def runner(ontology_name: str,
            input_text: str) -> None:
 
-    finder = FindSynonyms(ontology_name)
+    finder = FindSynonyms([ontology_name])
     print(finder.find_canon(input_text))
 
 

@@ -3,9 +3,9 @@
 """ Mutato API """
 
 
+from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
-from baseblock import get_ontology_name
 
 from deepnlu.datablock.svc import FindNER
 from deepnlu.datablock.svc import FindTypes
@@ -23,8 +23,9 @@ class MutatoAPI(BaseObject):
     """ Mutato API """
 
     def __init__(self,
-                 ontology_name: object = None):
-        """
+                 ontologies: list):
+        """ Change History
+
         Created:
             6-Oct-2021
             craig@grafflr.ai
@@ -34,9 +35,18 @@ class MutatoAPI(BaseObject):
             craig@grafflr.ai
             *   a finder initialization is a contract
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027474785
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
 
         ner_finder = FindNER(ontologies)
 
@@ -49,22 +59,20 @@ class MutatoAPI(BaseObject):
             ner_finder=ner_finder,
             syn_finder=syn_finder,
             d_lookup_data=d_lookup_data,
-            ontology_name=ontologies).process
+            ontologies=ontologies).process
 
         self._perform_span_matching = PerformSpanMatching(
             ner_finder=ner_finder,
-            syn_finder=syn_finder,
-            ontology_name=ontologies).process
+            ontologies=ontologies).process
 
         self._perform_hierarchal_matching = PerformHierarchyMatching(
-            ontology_name=ontologies,
+            ontologies=ontologies,
             find_types_cb=type_finder).process
 
         self._perform_spacy_matching = PerformSpacyMatching(
-            ontology_name=ontologies).process
+            ontologies=ontologies).process
 
         self._augment_hierarchy = AugmentTokenHierarchy(
-            ontology_name=ontologies,
             find_types_cb=type_finder).process
 
     def swap(self,

@@ -8,9 +8,7 @@ from deepnlu.datablock.svc import FindTypes
 from baseblock import Stopwatch
 
 
-os.environ['GRAFFL_ONTOLOGIES'] = "nursing"
-
-finder = FindTypes()
+finder = FindTypes(['nursing'])
 assert finder
 assert finder.fwd_data()
 assert finder.exists('nursing')

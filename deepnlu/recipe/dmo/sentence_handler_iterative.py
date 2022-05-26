@@ -28,7 +28,8 @@ class SentenceHandlerIterative(BaseObject):
 
     def __init__(self,
                  ontologies: list):
-        """
+        """ Change History
+
         Created:
             21-Feb-2022
             craig@grafflr.ai
@@ -36,13 +37,18 @@ class SentenceHandlerIterative(BaseObject):
                 with the additional of a tokenization cache for optimization and
                 a modification to the output structure to preserve ontological identity
                 https://github.com/grafflr/graffl-core/issues/193#issuecomment-1047303350
+        Updated:
             28-Feb-2022
             craig@grafflr.ai
             *   update summary output in response to defect with spaCy types found in
                 https://github.com/grafflr/graffl-core/issues/205
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        Enforcer.is_list(ontologies)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
 
         self._ontologies = ontologies
         self._stemmer = Stemmer()
@@ -102,7 +108,7 @@ class SentenceHandlerIterative(BaseObject):
 
         tokens = self._tokenize(input_text)
         for ontology in self._ontologies:
-            result = MutatoAPI(ontology).swap(tokens)
+            result = MutatoAPI([ontology]).swap(tokens)
 
             def summary() -> list:
                 def is_valid(d_token: dict) -> bool:

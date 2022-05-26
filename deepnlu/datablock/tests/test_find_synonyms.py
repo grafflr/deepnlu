@@ -9,8 +9,7 @@ import os
 
 def test_skills():
 
-    os.environ['GRAFFL_ONTOLOGIES'] = "skills"
-    finder = FindSynonyms()
+    finder = FindSynonyms(['skills'])
 
     print(finder.find_canon("national_economic_policy"))
     assert finder.find_canon(
@@ -21,8 +20,7 @@ def test_skills():
 
 def test_nursing():
 
-    os.environ['GRAFFL_ONTOLOGIES'] = "nursing"
-    finder = FindSynonyms()
+    finder = FindSynonyms(['nursing'])
 
     # https://github.com/grafflr/graffl-core/issues/46
     assert finder.find_canon('registered_nurse') == "registered_nurse"
@@ -59,8 +57,7 @@ def test_nursing():
 
 def test_multiple():
 
-    os.environ['GRAFFL_ONTOLOGIES'] = "skills, nursing, medical"
-    finder = FindSynonyms()
+    finder = FindSynonyms(['skills', 'nursing', 'medical'])
 
     import pprint
     pprint.pprint(finder.fwd_data())

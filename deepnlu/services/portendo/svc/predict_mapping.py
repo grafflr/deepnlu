@@ -69,17 +69,6 @@ class PredictMapping(BaseObject):
             d_mapping=indices.mapping,
             d_startswith=indices.startswith).process
 
-        # TODO: include inference via taxonomical relationships
-        # self._include_r1 = ComputerIncludeRecursive(
-        #     indices=indices,
-        #     recursion_level=1,
-        #     ontology_name=ontology_name).process
-
-        # self._include_r2 = ComputerIncludeRecursive(
-        #     indices=indices,
-        #     recursion_level=2,
-        #     ontology_name=ontology_name).process
-
     def _process(self,
                  d_tokens: dict) -> MappingResults:
         mapping_results = []

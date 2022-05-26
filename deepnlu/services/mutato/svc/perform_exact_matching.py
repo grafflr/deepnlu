@@ -3,13 +3,9 @@
 """ Perform Exact Matching """
 
 
-import logging
-from pprint import pprint
-
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from baseblock import get_ontology_name
 
 from deepnlu.datablock import FindNER
 from deepnlu.datablock import FindSynonyms
@@ -25,16 +21,30 @@ class PerformExactMatching(BaseObject):
                  ner_finder: FindNER,
                  syn_finder: FindSynonyms,
                  d_lookup_data: dict,
-                 ontology_name: object = None):
-        """
+                 ontologies: list):
+        """ Change History
+
         Created:
             20-Oct-2021
             craig@grafflr.ai
             *   refactored out of 'mutato-api'
                 https://github.com/grafflr/graffl-core/issues/77
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            ner_finder (FindNER): _description_
+            syn_finder (FindSynonyms): _description_
+            d_lookup_data (dict): _description_
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         self._d_lookup_data = d_lookup_data
 
         self._exact_match_swapper = ExactMatchSwapper(

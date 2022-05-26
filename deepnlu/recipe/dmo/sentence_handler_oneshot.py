@@ -35,7 +35,8 @@ class SentenceHandlerOneShot(BaseObject):
 
     def __init__(self,
                  ontologies: list):
-        """
+        """ Change History
+
         Created:
             1-Oct-2021
             craig@grafflr.ai
@@ -59,9 +60,13 @@ class SentenceHandlerOneShot(BaseObject):
             craig@grafflr.ai
             *   renamed from 'deep-sentence-handler' for consistency with 'sentence-handler-oneshot'
                 https://github.com/grafflr/graffl-core/issues/193#issuecomment-1047303350
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        Enforcer.is_list(ontologies)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
 
         self._ontologies = ontologies
         self._stemmer = Stemmer()

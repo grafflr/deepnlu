@@ -3,13 +3,9 @@
 """ Perform Synonym Swapping with Spacy Entities """
 
 
-import pprint
-import logging
-
-from baseblock import Stopwatch
+from baseblock import Enforcer
 from baseblock import BaseObject
 
-from deepnlu.datablock.svc import FindSynonyms
 
 from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 
@@ -19,7 +15,8 @@ class SpacyMatchSwapper(BaseObject):
 
     def __init__(self,
                  ontologies: list):
-        """
+        """ Change History
+
         Created:
             20-Oct-2021
             craig@grafflr.ai
@@ -30,8 +27,14 @@ class SpacyMatchSwapper(BaseObject):
             craig@grafflr.ai
             *   pass 'ontologies' as list param
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         self._create_swap = SwapTokenGenerator(ontologies).process
 
     def process(self,

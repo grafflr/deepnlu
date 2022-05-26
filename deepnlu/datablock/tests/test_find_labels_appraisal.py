@@ -10,7 +10,7 @@ from baseblock import Stopwatch
 
 def test_label():
 
-    finder = FindLabels('appraisal')
+    finder = FindLabels(['appraisal'])
     result = finder.label('Ethics')
 
     result = finder.label('Is Sincere')
