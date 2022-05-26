@@ -6,7 +6,7 @@
 from pprint import pprint
 
 from baseblock import BaseObject
-from baseblock import get_ontology_name
+from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.datablock.dmo import GenericDataFinder
 

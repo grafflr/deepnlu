@@ -3,15 +3,10 @@
 """ Leverage spaCy NERs """
 
 
-import pprint
-import logging
-
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from baseblock import get_ontology_name
-
-from deepnlu.datablock.svc import FindSynonyms
+from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.services.mutato.dmo import SpacyMatchFinder
 from deepnlu.services.mutato.dmo import SpacyMatchSwapper

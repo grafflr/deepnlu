@@ -3,19 +3,10 @@
 """ Augment Tokens with Descendant and Ancestory Hierarchy for Inference Purposes """
 
 
-import logging
-from pprint import pprint
-
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from baseblock import get_ontology_name
-
-from deepnlu.datablock import FindNER
-from deepnlu.datablock import FindSynonyms
-
-from deepnlu.services.mutato.dmo import ExactMatchFinder
-from deepnlu.services.mutato.dmo import ExactMatchSwapper
+from deepnlu.datablock.dto import get_ontology_name
 
 
 class AugmentTokenHierarchy(BaseObject):

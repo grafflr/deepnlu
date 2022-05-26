@@ -3,17 +3,13 @@
 """ Perform Span Matching """
 
 
-import pprint
-import logging
-
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from baseblock import get_ontology_name
+from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.datablock.svc import FindNER
 from deepnlu.datablock.svc import FindSpans
-from deepnlu.datablock.svc import FindSynonyms
 
 from deepnlu.services.mutato.dmo import SpanMatchFinder
 from deepnlu.services.mutato.dmo import SpanMatchSwapper
@@ -37,7 +33,6 @@ class PerformSpanMatching(BaseObject):
 
     def __init__(self,
                  ner_finder: FindNER,
-                 syn_finder: FindSynonyms,
                  ontology_name: object = None):
         """
         Created:

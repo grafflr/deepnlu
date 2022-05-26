@@ -3,14 +3,12 @@
 """ Use Token Hierarchies to perform Inferred Matching """
 
 
-import logging
-import itertools
-from pprint import pprint
+from typing import Callable
 
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from baseblock import get_ontology_name
+from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.services.mutato.dmo import SlidingWindowExtract
 from deepnlu.services.mutato.dmo import SwapTokenGenerator
@@ -22,7 +20,7 @@ class PerformHierarchyMatching(BaseObject):
     """ Use Token Hierarchies to perform Inferred Matching """
 
     def __init__(self,
-                 find_types_cb: object,
+                 find_types_cb: Callable,
                  ontology_name: object = None):
         """
         Created:

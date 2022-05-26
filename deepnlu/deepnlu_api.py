@@ -4,7 +4,7 @@
 
 
 from baseblock import BaseObject
-from baseblock import get_ontology_name
+from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.recipe.svc import ProcessInputFiles
 from deepnlu.recipe.svc import ParseTextOneShot

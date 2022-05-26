@@ -11,7 +11,7 @@ from baseblock import EnvIO
 from baseblock import FileIO
 from baseblock import Stopwatch
 from baseblock import BaseObject
-from baseblock import get_ontology_name
+from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.datablock.dmo import GenericClassLoader
 
