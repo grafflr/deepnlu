@@ -15,18 +15,18 @@ def test_api_parse():
     assert ErogitoAPI().parse(['great', 'people', ',', 'said', 'John', 'Doe'])
 
 
-def test_api_displacy():
-    relative_path = 'apps/recipes/deepnlu/regression/output/Grafflr-Core-0020-003.json'
+# def test_api_displacy():
+#     relative_path = 'apps/recipes/deepnlu/regression/output/Grafflr-Core-0020-003.json'
 
-    file_path = os.path.normpath(os.path.join(
-        EnvIO.str_or_exception('GRAFFLR_HOME'),
-        relative_path))
+#     file_path = os.path.normpath(os.path.join(
+#         EnvIO.str_or_exception('GRAFFLR_HOME'),
+#         relative_path))
 
-    FileIO.exists_or_error(file_path)
+#     FileIO.exists_or_error(file_path)
 
-    tokens = FileIO.read_json(file_path)
+#     tokens = FileIO.read_json(file_path)
 
-    assert ErogitoAPI().displacy(tokens)
+#     assert ErogitoAPI().displacy(tokens)
 
 
 def main():
