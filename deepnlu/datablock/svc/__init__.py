@@ -9,12 +9,8 @@ from .find_labels import FindLabels
 from .find_requires import FindRequires
 from .find_stopwords import FindStopWords
 from .find_implies import FindImplies
-from .find_uses import FindUses
-from .find_reviews import FindReviews
 from .find_classifications import FindClassifications
 from .find_similar import FindSimilar
-from .find_recommendations import FindRecommendations
 from .find_roles import FindRoles
 from .find_questions import FindQuestions
 from .find_pronouns import FindPronouns
-from .find_slack_ids import FindSlackIDs
