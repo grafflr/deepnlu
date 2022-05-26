@@ -2,7 +2,6 @@ from .owl import *
 from .wordnet import *
 from .manifest import *
 from .qlists import *
-from .speech_disorder import *
 from .currency_kb import d_currency
 from .hyphens_kb import d_hyphens
 from .squotes_kb import d_squotes
