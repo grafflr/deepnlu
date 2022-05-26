@@ -3,7 +3,7 @@
 """ Load Inference Data Dictionaries """
 
 
-from baseblock import EnvIO
+from baseblock import Enforcer
 from baseblock import BaseObject
 
 from deepnlu.datablock.dmo import GenericClassLoader
@@ -35,8 +35,10 @@ class GenericDataFinder(BaseObject):
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
         """
         BaseObject.__init__(self, __name__)
-        if type(ontologies) != list:
-            raise ValueError('Incorrect DataType')
+        if self.isEnabledForDebug:
+            Enforcer.is_str(class_suffix)
+            Enforcer.is_str(module_suffix)
+            Enforcer.is_list(ontologies)
 
         load = GenericClassLoader().load
 

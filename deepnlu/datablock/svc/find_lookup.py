@@ -3,6 +3,7 @@
 """ Generic Facade to interact with lookup dictionaries on disk """
 
 
+from baseblock import Enforcer
 from baseblock import BaseObject
 
 from deepnlu.datablock.dmo import GenericClassLoader
@@ -43,6 +44,9 @@ class FindLookup(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+        
         load = GenericClassLoader().load
         self._finders = {x: load(package_name=x,
                                  class_suffix="Lookup",

@@ -3,6 +3,7 @@
 """ Find spaCy NER (Named Entity Recognition) Types """
 
 
+from baseblock import Enforcer
 from baseblock import BaseObject
 
 from deepnlu.datablock.dmo import NerTypeFinder

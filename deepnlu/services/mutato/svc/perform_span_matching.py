@@ -50,6 +50,9 @@ class PerformSpanMatching(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         span_finder = FindSpans(ontologies)
 
         self._span_match_finder = SpanMatchFinder(

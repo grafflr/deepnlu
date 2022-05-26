@@ -30,18 +30,13 @@ class ProcessInputFiles(BaseObject):
         Args:
             input_files (list): a list of one or more paths
             output_dir (str): the output directory
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
             Enforcer.is_list(input_files)
             Enforcer.is_str(output_dir)
             Enforcer.is_list(ontologies)
-
-            self.logger.debug('\n'.join([
-                "Initialized Service",
-                f"\tTotal Input Files: {len(input_files)}",
-                f"\tOutput Dir: {output_dir}",
-                f"\tOntologies: {ontologies}"]))
 
         self._input_files = input_files
         self._output_dir = output_dir

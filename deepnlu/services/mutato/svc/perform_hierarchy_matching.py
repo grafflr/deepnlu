@@ -36,6 +36,9 @@ class PerformHierarchyMatching(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         self._finder = HierarchyMatchFinder().process
         self._swapper = HierarchyMatchSwapper(
             find_types_cb=find_types_cb,

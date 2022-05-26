@@ -5,6 +5,7 @@
 
 from random import sample
 
+from baseblock import Enforcer
 from baseblock import BaseObject
 
 from deepnlu.datablock.dmo import GenericDataFinder
@@ -31,6 +32,8 @@ class FindSimilar(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
 
         self._fwd = GenericDataFinder(class_suffix='Similar',
                                       module_suffix='similar',

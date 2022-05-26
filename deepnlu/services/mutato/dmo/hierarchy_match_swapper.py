@@ -36,6 +36,9 @@ class HierarchyMatchSwapper(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         self._find_types = find_types_cb
         self._create_swap = SwapTokenGenerator(ontologies).process
 

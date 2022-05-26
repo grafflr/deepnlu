@@ -50,6 +50,9 @@ class FindSynonyms(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+            
         load = GenericClassLoader().load
 
         self._finders_fwd = {x: load(package_name=x,

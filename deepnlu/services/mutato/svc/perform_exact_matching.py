@@ -42,6 +42,9 @@ class PerformExactMatching(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         self._d_lookup_data = d_lookup_data
 
         self._exact_match_swapper = ExactMatchSwapper(

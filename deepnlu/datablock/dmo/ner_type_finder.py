@@ -3,14 +3,7 @@
 """ Find a NER within either the Graffl or spaCy Taxonomy """
 
 
-import os
-import logging
-import importlib.util
-from pprint import pprint
-
-from baseblock import EnvIO
-from baseblock import FileIO
-from baseblock import Stopwatch
+from baseblock import Enforcer
 from baseblock import BaseObject
 
 from deepnlu.datablock.dmo import GenericClassLoader
@@ -24,7 +17,8 @@ class NerTypeFinder(BaseObject):
 
     def __init__(self,
                  ontologies: list):
-        """
+        """ Change History
+
         Created:
             27-Oct-2021
             craig@grafflr.ai
@@ -34,10 +28,13 @@ class NerTypeFinder(BaseObject):
             craig@grafflr.ai
             *   enforce ontologies as a list param in domain components
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        if type(ontologies) != list and not len(ontologies):
-            raise ValueError('Incorrect DataType')
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
 
         load = GenericClassLoader().load
 

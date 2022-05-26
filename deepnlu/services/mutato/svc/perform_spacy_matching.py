@@ -52,6 +52,9 @@ class PerformSpacyMatching(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         self._spacy_match_swapper = SpacyMatchSwapper(ontologies).process
 
     def _process(self,

@@ -34,10 +34,6 @@ class ParseTextOneShot(BaseObject):
         if self.isEnabledForDebug:
             Enforcer.is_list(ontologies)
 
-            self.logger.debug('\n'.join([
-                "Initialized Service",
-                f"\tOntologies: {ontologies}"]))
-
         self._handle_sentence = SentenceHandlerOneShot(ontologies).process
 
     def process(self,

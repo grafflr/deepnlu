@@ -3,6 +3,7 @@
 """ Generic Facade to interact with Requires relationships """
 
 
+from baseblock import Enforcer
 from baseblock import BaseObject
 
 from deepnlu.datablock.dmo import GenericDataFinder
@@ -43,6 +44,9 @@ class FindRequires(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         self._finders_fwd = GenericDataFinder(class_suffix='Requires',
                                               module_suffix='requires',
                                               ontologies=ontologies)

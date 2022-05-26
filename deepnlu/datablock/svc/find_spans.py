@@ -3,6 +3,7 @@
 """ Generic Facade to interact with span dictionaries on disk """
 
 
+from baseblock import Enforcer
 from baseblock import BaseObject
 
 from deepnlu.datablock.dmo import GenericClassLoader
@@ -36,6 +37,9 @@ class FindSpans(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+            
         load = GenericClassLoader().load
 
         self._d_merge_data = None

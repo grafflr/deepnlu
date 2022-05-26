@@ -3,6 +3,7 @@
 """ Mutato API """
 
 
+from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
@@ -44,6 +45,9 @@ class MutatoAPI(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
+        if self.isEnabledForDebug:
+            Enforcer.is_list(ontologies)
+
         ner_finder = FindNER(ontologies)
 
         type_finder = FindTypes(ontologies)

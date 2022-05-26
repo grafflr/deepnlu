@@ -43,6 +43,9 @@ class DeepNluAPI(BaseObject):
         Returns:
             list: a flat list
         """
+        if self.isEnabledForDebug:
+            Enforcer.is_list(results)
+
         return self._to_dataframe(results, include_position)
 
     def handle_directory(self,
@@ -59,6 +62,11 @@ class DeepNluAPI(BaseObject):
         Returns:
             list: the JSON results
         """
+        if self.isEnabledForDebug:
+            Enforcer.is_str(input_dir)
+            Enforcer.is_str(output_dir)
+            Enforcer.is_list(ontologies)
+
         def load_files() -> list:
             return InputPathReader().process(input_dir)
 
@@ -81,5 +89,6 @@ class DeepNluAPI(BaseObject):
         """
         if self.isEnabledForDebug:
             Enforcer.is_str(input_text)
+            Enforcer.is_list(ontologies)
 
         return ParseTextOneShot(ontologies).process(input_text)
