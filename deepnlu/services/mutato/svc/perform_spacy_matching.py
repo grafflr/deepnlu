@@ -6,7 +6,6 @@
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.services.mutato.dmo import SpacyMatchFinder
 from deepnlu.services.mutato.dmo import SpacyMatchSwapper
@@ -26,8 +25,9 @@ class PerformSpacyMatching(BaseObject):
     """
 
     def __init__(self,
-                 ontology_name: object = None):
-        """
+                 ontologies: list):
+        """ Change History
+
         Created:
             22-Oct-2021
             craig@grafflr.ai
@@ -42,9 +42,16 @@ class PerformSpacyMatching(BaseObject):
             craig@grafflr.ai
             *   pass 'ontology-name' as a param
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027468040
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
         self._spacy_match_swapper = SpacyMatchSwapper(ontologies).process
 
     def _process(self,

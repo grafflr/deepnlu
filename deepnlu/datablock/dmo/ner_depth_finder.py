@@ -3,14 +3,6 @@
 """ Find the Depth of a NER entity within a Taxonomy """
 
 
-import os
-import pprint
-import logging
-import importlib.util
-
-from baseblock import EnvIO
-from baseblock import FileIO
-from baseblock import Stopwatch
 from baseblock import BaseObject
 
 from deepnlu.datablock.dmo import GenericClassLoader

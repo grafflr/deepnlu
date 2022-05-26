@@ -3,13 +3,7 @@
 """ Generic Facade to interact with span dictionaries on disk """
 
 
-import os
-import logging
-import importlib.util
-
-from baseblock import EnvIO
 from baseblock import BaseObject
-from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.datablock.dmo import GenericClassLoader
 
@@ -18,8 +12,9 @@ class FindSpans(BaseObject):
     """ Generic Facade to interact with span dictionaries on disk """
 
     def __init__(self,
-                 ontology_name: object = None):
-        """
+                 ontologies: list):
+        """ Change History
+
         Created:
             20-Oct-2021
             craig@grafflr.ai
@@ -31,10 +26,16 @@ class FindSpans(BaseObject):
                 https://github.com/grafflr/graffl-core/issues/135
             *   a finder initialization is a contract
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027474785
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
-
         load = GenericClassLoader().load
 
         self._d_merge_data = None

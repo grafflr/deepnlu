@@ -4,7 +4,6 @@
 
 
 from baseblock import BaseObject
-from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.recipe.svc import ProcessInputFiles
 from deepnlu.recipe.svc import ParseTextOneShot
@@ -18,10 +17,16 @@ class DeepNluAPI(BaseObject):
     """ deepNLU Orchestrator """
 
     def __init__(self):
-        """
+        """ Change History
+
         Created:
             1-Oct-2021
             craig@grafflr.ai
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
         """
         BaseObject.__init__(self, __name__)
         self._to_dataframe = ResultsAsDataFrame().process
@@ -43,20 +48,17 @@ class DeepNluAPI(BaseObject):
     def handle_directory(self,
                          input_dir: str,
                          output_dir: str,
-                         ontologies: object = None) -> list:
+                         ontologies: list) -> list:
         """ DeepNLU on an input directory of files
 
         Args:
             input_dir (str): input directory of text files
             output_dir (str): output directory of JSON results
-            ontologies (object, optional): a list of ontologies or a single ontology. Defaults to None.
+            ontologies (list): one-or-more Ontology models to use in processing
 
         Returns:
             list: the JSON results
         """
-
-        ontologies = get_ontology_name(ontologies)
-
         def load_files() -> list:
             return InputPathReader().process(input_dir)
 
@@ -67,12 +69,12 @@ class DeepNluAPI(BaseObject):
 
     def handle_text(self,
                     input_text: str,
-                    ontologies: object = None) -> list or dict:
+                    ontologies: list) -> list or dict:
         """ DeepNLU on single line of input text
 
         Args:
             input_text (str): input text of any length
-            ontologies (object, optional): a list of ontologies or a single ontology. Defaults to None.
+            ontologies (list): one-or-more Ontology models to use in processing
 
         Returns:
             list: the deepNLU result
@@ -80,5 +82,4 @@ class DeepNluAPI(BaseObject):
         if self.isEnabledForDebug:
             Enforcer.is_str(input_text)
 
-        ontologies = get_ontology_name(ontologies)
         return ParseTextOneShot(ontologies).process(input_text)

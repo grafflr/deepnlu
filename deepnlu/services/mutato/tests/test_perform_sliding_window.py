@@ -3,8 +3,7 @@ import os
 from deepnlu.datablock.svc import FindLookup
 from deepnlu.services.mutato.dmo import ExactMatchFinder
 
-os.environ['GRAFFL_ONTOLOGIES'] = "nursing"
-lookup_data = FindLookup().data()
+lookup_data = FindLookup(['nursing']).data()
 
 
 def test_gram_size_1():

@@ -10,9 +10,7 @@ from baseblock import Stopwatch
 
 def test_ner():
 
-    os.environ['GRAFFL_ONTOLOGIES'] = "medical, nursing"
-
-    finder = FindSpans()
+    finder = FindSpans(['medical', 'nursing'])
     assert finder
 
     # Prove the 'keys' functionality across both dictionaries

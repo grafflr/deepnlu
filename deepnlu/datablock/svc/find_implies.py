@@ -3,10 +3,7 @@
 """ Generic Facade to interact with Implies relationships """
 
 
-from pprint import pprint
-
 from baseblock import BaseObject
-from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.datablock.dmo import GenericDataFinder
 
@@ -15,17 +12,24 @@ class FindImplies(BaseObject):
     """ Generic Facade to interact with Implies relationships """
 
     def __init__(self,
-                 ontology_name: object = None):
-        """
+                 ontologies: list):
+        """ Change History
+
         Created:
             2-Feb-2022
             craig@grafflr.ai
             *   copied from 'find-requires' in pursuit of
                 https://github.com/grafflr/graffl-core/issues/156
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
-
         self._finders_fwd = GenericDataFinder(class_suffix='Implies',
                                               module_suffix='implies',
                                               ontologies=ontologies)

@@ -6,7 +6,6 @@
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.datablock.svc import FindNER
 from deepnlu.datablock.svc import FindSpans
@@ -33,15 +32,24 @@ class PerformSpanMatching(BaseObject):
 
     def __init__(self,
                  ner_finder: FindNER,
-                 ontology_name: object = None):
-        """
+                 ontologies: list):
+        """ Change History
+
         Created:
             20-Oct-2021
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/77
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            ner_finder (FindNER): instantiation of NER finder
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
         span_finder = FindSpans(ontologies)
 
         self._span_match_finder = SpanMatchFinder(

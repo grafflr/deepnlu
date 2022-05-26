@@ -8,9 +8,7 @@ import os
 
 
 def test_palletes():
-    os.environ['GRAFFL_ONTOLOGIES'] = "skills"
-
-    finder = FindNER()
+    finder = FindNER(['skills'])
     assert finder
 
     print(finder.color('ROLE'))
@@ -24,9 +22,7 @@ def test_palletes():
 
 
 def test_skills_ner():
-    os.environ['GRAFFL_ONTOLOGIES'] = "skills"
-
-    finder = FindNER()
+    finder = FindNER(['skills'])
     assert finder
 
     assert finder.find_ner("psychiatrist") == "ROLE"
@@ -34,9 +30,7 @@ def test_skills_ner():
 
 def test_nursing_ner():
 
-    os.environ['GRAFFL_ONTOLOGIES'] = "nursing"
-
-    finder = FindNER()
+    finder = FindNER(['nursing'])
     assert finder
 
     print(finder.find_ner('personal_touch'))
@@ -66,9 +60,7 @@ def test_nursing_ner():
 
 
 def test_skills_ner():
-    os.environ['GRAFFL_ONTOLOGIES'] = "skills"
-
-    finder = FindNER()
+    finder = FindNER(['skills'])
     assert finder
 
     print(finder.is_ner('MENTOR'))

@@ -10,9 +10,7 @@ from baseblock import Stopwatch
 
 def test_via_env():
 
-    os.environ['GRAFFL_ONTOLOGIES'] = "nursing"
-
-    finder = FindLabels()
+    finder = FindLabels(['nursing'])
     assert finder
     assert finder.data()
 

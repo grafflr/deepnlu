@@ -5,7 +5,6 @@
 
 from baseblock import Stopwatch
 from baseblock import BaseObject
-from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.datablock.svc import FindNER
 from deepnlu.datablock.svc import FindTypes
@@ -23,7 +22,7 @@ class MutatoAPI(BaseObject):
     """ Mutato API """
 
     def __init__(self,
-                 ontology_name: object = None):
+                 ontologies: list):
         """ Change History
 
         Created:
@@ -35,13 +34,16 @@ class MutatoAPI(BaseObject):
             craig@grafflr.ai
             *   a finder initialization is a contract
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027474785
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
         Args:
-            ontology_name (object, optional): the OWL model to use. Defaults to None.
-                if not provided as a param, must exist in the environment
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
-
         ner_finder = FindNER(ontologies)
 
         type_finder = FindTypes(ontologies)

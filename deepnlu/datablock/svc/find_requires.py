@@ -3,10 +3,7 @@
 """ Generic Facade to interact with Requires relationships """
 
 
-from pprint import pprint
-
 from baseblock import BaseObject
-from deepnlu.datablock.dto import get_ontology_name
 
 from deepnlu.datablock.dmo import GenericDataFinder
 
@@ -15,8 +12,9 @@ class FindRequires(BaseObject):
     """ Generic Facade to interact with Requires relationships """
 
     def __init__(self,
-                 ontology_name: object = None):
-        """
+                 ontologies: list):
+        """ Change History
+
         Created:
             8-Nov-2021
             craig@grafflr.ai
@@ -35,10 +33,16 @@ class FindRequires(BaseObject):
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027468040
             *   a finder initialization is a contract
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027474785
+        Updated:
+            26-May-2022
+            craig@grafflr.ai
+            *   treat 'ontologies' param as a list
+                https://github.com/grafflr/deepnlu/issues/7
+
+        Args:
+            ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        ontologies = get_ontology_name(ontology_name)
-
         self._finders_fwd = GenericDataFinder(class_suffix='Requires',
                                               module_suffix='requires',
                                               ontologies=ontologies)
