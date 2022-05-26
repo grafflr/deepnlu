@@ -11,6 +11,5 @@ from .find_stopwords import FindStopWords
 from .find_implies import FindImplies
 from .find_classifications import FindClassifications
 from .find_similar import FindSimilar
-from .find_roles import FindRoles
 from .find_questions import FindQuestions
 from .find_pronouns import FindPronouns
