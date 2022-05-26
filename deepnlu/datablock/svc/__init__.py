@@ -17,7 +17,6 @@ from .find_classifications import FindClassifications
 from .find_similar import FindSimilar
 from .find_recommendations import FindRecommendations
 from .find_roles import FindRoles
-from .find_emojis import FindEmojis
 from .find_questions import FindQuestions
 from .find_speech_disorder import FindSpeechDisorder
 from .find_praxis_pathology import FindPraxisPathology
