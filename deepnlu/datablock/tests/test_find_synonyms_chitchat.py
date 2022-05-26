@@ -8,7 +8,7 @@ from deepnlu.datablock.svc import FindSynonyms
 
 def test_finder():
 
-    finder = FindSynonyms('chitchat')
+    finder = FindSynonyms(['chitchat'])
 
     assert finder.find_variants('hi')
 

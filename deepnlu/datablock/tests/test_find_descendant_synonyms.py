@@ -18,7 +18,7 @@ def test_recipe_1():
     api = FindData()
 
     result = api.find_descendant_synonyms(entity_name=entity,
-                                          ontology_name=ONTi14N)
+                                          ontologies=[ONTi14N])
     print(result)
 
     assert result
@@ -35,7 +35,7 @@ def test_recipe_2():
     api = FindData()
 
     result = api.find_descendant_synonyms(entity_name=entity,
-                                          ontology_name=ONTi14N)
+                                          ontologies=[ONTi14N])
     print(result)
 
     assert result
@@ -52,7 +52,7 @@ def test_recipe_3():
     api = FindData()
 
     result = api.find_descendant_synonyms(entity_name=entity,
-                                          ontology_name=ONTi14N)
+                                          ontologies=[ONTi14N])
     print(result)
 
     assert result

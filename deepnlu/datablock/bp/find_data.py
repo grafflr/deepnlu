@@ -104,102 +104,122 @@ class FindData(BaseObject):
 
     def find_ancestors(self,
                        entity_name: str,
-                       ontology_name: str) -> list or None:
+                       ontologies: list) -> list or None:
         """ Find 'Ancestor' Relationships
 
         Args:
             entity_name (str): the entity to start searching with
-            ontology_name (str): the Ontology model to use
+            ontologies (list): one-or-more Ontology models to use in processing
 
         Returns:
             list or None: a list of results (if any)
         """
-        finder = FindTypes(ontology_name).ancestors
+        if self.isEnabledForDebug:
+            Enforcer.is_str(entity_name)
+            Enforcer.is_list(ontologies)
+
+        finder = FindTypes(ontologies).ancestors
         return self._find_relationship(finder=finder,
                                        entity_name=entity_name,
-                                       ontology_name=ontology_name,
+                                       ontologies=ontologies,
                                        relationship_name="Ancestor")
 
     def find_descendants(self,
                          entity_name: str,
-                         ontology_name: str) -> list or None:
+                         ontologies: list) -> list or None:
         """ Find 'Desecendant' Relationships
 
         Args:
             entity_name (str): the entity to start searching with
-            ontology_name (str): the Ontology model to use
+            ontologies (list): one-or-more Ontology models to use in processing
 
         Returns:
             list or None: a list of results (if any)
         """
-        finder = FindTypes(ontology_name).children
+        if self.isEnabledForDebug:
+            Enforcer.is_str(entity_name)
+            Enforcer.is_list(ontologies)
+
+        finder = FindTypes(ontologies).children
         return self._find_relationship(finder=finder,
                                        entity_name=entity_name,
-                                       ontology_name=ontology_name,
+                                       ontologies=ontologies,
                                        relationship_name="Descendant")
 
     def find_similar(self,
                      entity_name: str,
-                     ontology_name: str) -> list or None:
+                     ontologies: list) -> list or None:
         """ Find 'Similarity' Relationships
 
         Args:
             entity_name (str): the entity to start searching with
-            ontology_name (str): the Ontology model to use
+            ontologies (list): one-or-more Ontology models to use in processing
 
         Returns:
             list or None: a list of results (if any)
         """
-        finder = FindSimilar(ontology_name).similar
+        if self.isEnabledForDebug:
+            Enforcer.is_str(entity_name)
+            Enforcer.is_list(ontologies)
+
+        finder = FindSimilar(ontologies).similar
         return self._find_relationship(finder=finder,
                                        entity_name=entity_name,
-                                       ontology_name=ontology_name,
+                                       ontologies=ontologies,
                                        relationship_name="Similar")
 
     def find_requires(self,
                       entity_name: str,
-                      ontology_name: str) -> list or None:
+                      ontologies: list) -> list or None:
         """ Find 'Requires' Relationships
 
         Args:
             entity_name (str): the entity to start searching with
-            ontology_name (str): the Ontology model to use
+            ontologies (list): one-or-more Ontology models to use in processing
 
         Returns:
             list or None: a list of results (if any)
         """
-        finder = FindRequires(ontology_name).requires
+        if self.isEnabledForDebug:
+            Enforcer.is_str(entity_name)
+            Enforcer.is_list(ontologies)
+
+        finder = FindRequires(ontologies).requires
         return self._find_relationship(finder=finder,
                                        entity_name=entity_name,
-                                       ontology_name=ontology_name,
+                                       ontologies=ontologies,
                                        relationship_name="Requires")
 
     def find_implies(self,
                      entity_name: str,
-                     ontology_name: str) -> list or None:
+                     ontologies: list) -> list or None:
         """ Find 'Implies' Relationships
 
         Args:
             entity_name (str): the entity to start searching with
-            ontology_name (str): the Ontology model to use
+            ontologies (list): one-or-more Ontology models to use in processing
 
         Returns:
             list or None: a list of results (if any)
         """
+        if self.isEnabledForDebug:
+            Enforcer.is_str(entity_name)
+            Enforcer.is_list(ontologies)
+
         results = []
 
-        finder = FindImplies(ontology_name)
+        finder = FindImplies(ontologies)
 
         [results.append(x) for x in self._find_relationship(
             finder=finder.implies,
             entity_name=entity_name,
-            ontology_name=ontology_name,
+            ontologies=ontologies,
             relationship_name="Implies")]
 
         [results.append(x) for x in self._find_relationship(
             finder=finder.implied_by,
             entity_name=entity_name,
-            ontology_name=ontology_name,
+            ontologies=ontologies,
             relationship_name="Implies")]
 
         return results
@@ -207,15 +227,11 @@ class FindData(BaseObject):
     def _find_relationship(self,
                            entity_name: str,
                            finder: Callable,
-                           ontology_name: str,
+                           ontologies: list,
                            relationship_name: str,
                            total_recursion: int = 3) -> list or None:
 
         results = []
-
-        if self.isEnabledForDebug:
-            Enforcer.is_str(entity_name)
-            Enforcer.is_str(ontology_name)
 
         def call_finder(a_value: str) -> list or None:
             result = finder(a_value)
@@ -224,7 +240,7 @@ class FindData(BaseObject):
 
             requires = []
 
-            type_finder = FindTypes(ontology_name)
+            type_finder = FindTypes(ontologies)
             for parent in type_finder.ancestors(a_value):
                 result = finder(parent)
                 if result:
@@ -250,7 +266,7 @@ class FindData(BaseObject):
                         "Subject": a_value,
                         "Predicate": relationship_name,
                         "Object": result,
-                        "Ontology": ontology_name,
+                        "Ontology": ','.join(ontologies),
                         "Depth": recursion_ctr,
                     })
 
@@ -263,17 +279,26 @@ class FindData(BaseObject):
 
     def find_descendant_synonyms(self,
                                  entity_name: str,
-                                 ontology_name: str) -> list:
+                                 ontologies: list) -> list:
+        """ Find Descendant Synonyms
+
+        Args:
+            entity_name (str): the entity to start searching with
+            ontologies (list): one-or-more Ontology models to use in processing
+
+        Returns:
+            list: the results
+        """
 
         def key() -> str:
-            return f"{ontology_name}-{entity_name}"
+            return f"{','.join(ontologies)}-{entity_name}"
 
         if key() in self.__cache:
             return self.__cache[key()]
 
         s = set()
-        type_finder = FindTypes(ontology_name)
-        synonym_finder = FindSynonyms(ontology_name)
+        type_finder = FindTypes(ontologies)
+        synonym_finder = FindSynonyms(ontologies)
 
         [s.add(x) for x in synonym_finder.find_variants(entity_name)]
         for descendant in type_finder.descendants(entity_name):
@@ -290,16 +315,3 @@ class FindData(BaseObject):
 
         self.__cache[key()] = s
         return s
-
-
-if __name__ == "__main__":
-    results = FindData().find(entity_name='greeting_response',
-                              ontology_name='chitchat',
-                              find_requires=True,
-                              find_implies=True,
-                              find_similar=True,
-                              find_ancestors=True,
-                              find_descendants=True,
-                              find_descendant_synonyms=False)
-    from pprint import pprint
-    pprint(results)

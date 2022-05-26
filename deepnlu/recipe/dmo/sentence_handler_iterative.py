@@ -108,7 +108,7 @@ class SentenceHandlerIterative(BaseObject):
 
         tokens = self._tokenize(input_text)
         for ontology in self._ontologies:
-            result = MutatoAPI(ontology).swap(tokens)
+            result = MutatoAPI([ontology]).swap(tokens)
 
             def summary() -> list:
                 def is_valid(d_token: dict) -> bool:

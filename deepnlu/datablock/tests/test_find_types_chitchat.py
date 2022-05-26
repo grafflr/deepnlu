@@ -11,7 +11,7 @@ from deepnlu.datablock.svc import FindSynonyms
 
 
 def test_descendants():
-    finder = FindTypes('chitchat')
+    finder = FindTypes(['chitchat'])
     assert finder
 
     assert finder.descendants('greeting')

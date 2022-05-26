@@ -10,7 +10,7 @@ from baseblock import Stopwatch
 
 def test_ancestors():
 
-    finder = FindTypes('chitchat')
+    finder = FindTypes(['chitchat'])
     assert finder
 
     # testing case sensitivity ...

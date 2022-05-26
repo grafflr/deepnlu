@@ -31,6 +31,7 @@ class SwapTokenGenerator(BaseObject):
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
             Enforcer.is_list(ontologies)
+        self._ontologies = ontologies
 
     def process(self,
                 normal: str,
@@ -45,8 +46,6 @@ class SwapTokenGenerator(BaseObject):
         Enforcer.is_str(ner)
         Enforcer.is_list(tokens)
         Enforcer.is_optional_str(normal)
-
-        ontologies = ', '.join(self._ontologies).strip()
 
         return {
             'id': tokens[0]['id'],

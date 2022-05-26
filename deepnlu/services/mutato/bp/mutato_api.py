@@ -59,21 +59,20 @@ class MutatoAPI(BaseObject):
             ner_finder=ner_finder,
             syn_finder=syn_finder,
             d_lookup_data=d_lookup_data,
-            ontology_name=ontologies).process
+            ontologies=ontologies).process
 
         self._perform_span_matching = PerformSpanMatching(
             ner_finder=ner_finder,
-            ontology_name=ontologies).process
+            ontologies=ontologies).process
 
         self._perform_hierarchal_matching = PerformHierarchyMatching(
-            ontology_name=ontologies,
+            ontologies=ontologies,
             find_types_cb=type_finder).process
 
         self._perform_spacy_matching = PerformSpacyMatching(
-            ontology_name=ontologies).process
+            ontologies=ontologies).process
 
         self._augment_hierarchy = AugmentTokenHierarchy(
-            ontology_name=ontologies,
             find_types_cb=type_finder).process
 
     def swap(self,

@@ -72,17 +72,17 @@ def test_skills_ner():
 
 def test_nursing_ner():
 
-    finder = FindNER('questions')
+    finder = FindNER(['questions'])
     assert finder
 
     print(finder.is_ner('labor_event'))
 
 
 def main():
-    # test_palletes()
-    # test_skills_ner()
-    # test_nursing_ner()
-    # test_skills_ner()
+    test_palletes()
+    test_skills_ner()
+    test_nursing_ner()
+    test_skills_ner()
     test_nursing_ner()
 
 

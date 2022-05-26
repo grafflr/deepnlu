@@ -8,8 +8,8 @@ def test_find_data() -> None:
     bp = FindData()
     assert bp
 
-    results = bp.find_implies(
-        entity_name='nursing_school', ontology_name='nursing')
+    results = bp.find_implies(entity_name='nursing_school',
+                              ontologies=['nursing'])
     assert results
 
 
