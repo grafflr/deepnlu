@@ -1,1 +1,0 @@
-from .dad_jokes_kb import dad_jokes
