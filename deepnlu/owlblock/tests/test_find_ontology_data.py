@@ -5,7 +5,8 @@ from baseblock import Enforcer
 from deepnlu.owlblock.bp import FindOntologyData
 
 
-absolute_path = os.path.normpath(os.path.join(os.getcwd(), 'resources'))
+absolute_path = os.path.normpath(
+    os.path.join(os.getcwd(), 'resources/data/owl'))
 
 bp = FindOntologyData(
     ontologies=['nursing'],
@@ -18,22 +19,31 @@ def test_find_comments():
 
 
 def test_find_labels():
-    Enforcer.is_list(bp.labels())
+    Enforcer.is_dict(bp.labels())
+    Enforcer.is_dict(bp.labels_rev())
+
+
+def test_find_types():
+    print(bp.types())
+    print(bp.types_rev())
 
 
 def test_find_effects():
     Enforcer.is_dict(bp.effects())
-
-
-def test_find_effects_rev():
     Enforcer.is_dict(bp.effects_rev())
 
 
+def test_lookup():
+    print(bp.lookup())
+
+
 def main():
-    test_find_comments()
-    test_find_labels()
-    test_find_effects()
-    test_find_effects_rev()
+    # test_find_comments()
+    # test_find_labels()
+    # test_find_effects()
+    # test_find_effects_rev()
+    # test_find_types()
+    test_lookup()
 
 
 if __name__ == "__main__":

@@ -155,25 +155,23 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def labels(self) -> dict:
+        return self._by_predicate('rdfs:label')
+
+    @lru_cache
+    def labels_rev(self) -> dict:
+        return self._by_predicate_rev('rdfs:label')
+
+    @lru_cache
+    def lookup(self) -> dict:
         results = []
         for ontology_name in self._d_ontologies:
-            results.append(self._d_ontologies[ontology_name].labels())
+            results.append(self._d_ontologies[ontology_name].lookup())
 
         if not results:
             return None
         elif len(results) == 1:
             return results[0]
         return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
-
-    @lru_cache
-    def labels_rev(self) -> dict:
-        # verified as k:list[str]
-        pass
-
-    @lru_cache
-    def lookup(self) -> dict:
-        # completed work
-        pass
 
     @lru_cache
     def ner_depth(self) -> dict:
@@ -219,16 +217,16 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def types(self) -> dict:
-        pass
+        return self._by_predicate('rdfs:subClassOf')
 
     @lru_cache
     def types_rev(self) -> dict:
-        pass
+        return self._by_predicate_rev('rdfs:subClassOf')
 
     @lru_cache
     def uses(self) -> dict:
-        pass
+        return self._by_predicate('uses')
 
     @lru_cache
     def uses_rev(self) -> dict:
-        pass
+        return self._by_predicate_rev('uses')
