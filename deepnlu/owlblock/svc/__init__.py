@@ -1,2 +1,3 @@
 from .generate_view_nerlabel import GenerateViewNerLabel
 from .generate_view_nerdepth import GenerateViewNerDepth
+from .generate_view_nertaxonomy import GenerateViewNerTaxonomy

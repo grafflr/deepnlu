@@ -14,6 +14,7 @@ from askowl.dto import QueryResultType
 
 from deepnlu.owlblock.svc import GenerateViewNerLabel
 from deepnlu.owlblock.svc import GenerateViewNerDepth
+from deepnlu.owlblock.svc import GenerateViewNerTaxonomy
 
 
 class FindOntologyData(BaseObject):
@@ -165,7 +166,7 @@ class FindOntologyData(BaseObject):
                     '$NER', ner_type)
 
                 results.append(ask_owl_api.adhoc(
-                    sparl_query=sparl_query, 
+                    sparl_query=sparl_query,
                     to_lowercase=True,
                     result_type=QueryResultType.DICT_OF_STR2LIST))
 
@@ -225,7 +226,7 @@ class FindOntologyData(BaseObject):
             results = []
             for ontology_name in self._d_ontologies:
                 ask_owl_api = self._d_ontologies[ontology_name]
-                
+
                 results.append(ask_owl_api.adhoc(
                     to_lowercase=False,
                     sparql_query=sparl_query,
@@ -294,13 +295,46 @@ class FindOntologyData(BaseObject):
             return results[0]
         return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
 
+    def _ner_taxonomy(self,
+                      reverse: bool = False) -> dict:
+
+        def get_results(sparl_query: str) -> dict:
+            results = []
+            for ontology_name in self._d_ontologies:
+                ask_owl_api = self._d_ontologies[ontology_name]
+
+                results.append(ask_owl_api.adhoc(
+                    to_lowercase=False,
+                    sparql_query=sparl_query,
+                    result_type=QueryResultType.DICT_OF_STR2LIST))
+
+            if not results:
+                return None
+            elif len(results) == 1:
+                return results[0]
+            return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
+
+        sparql_query = """
+            SELECT 
+                ?ner_1 ?ner_2
+            WHERE 
+            { 
+                ?a owl:backwardCompatibleWith ?ner_1 .
+                ?b owl:backwardCompatibleWith ?ner_2 .
+                ?a rdfs:subClassOf* ?b .
+            }
+        """
+
+        d_results = get_results(sparql_query)
+        return GenerateViewNerTaxonomy().process(d_results, reverse)
+
     @lru_cache
     def ner_taxonomy(self) -> dict:
-        raise NotImplementedError
+        return self._ner_taxonomy(reverse=False)
 
     @lru_cache
     def ner_taxonomy_rev(self) -> dict:
-        raise NotImplementedError
+        return self._ner_taxonomy(reverse=True)
 
     @lru_cache
     def spans(self) -> dict:

@@ -66,6 +66,11 @@ def test_ner_depth():
     Enforcer.is_dict(bp.ner_depth_rev())
 
 
+def test_ner_taxonomy():
+    Enforcer.is_dict(bp.ner_taxonomy())
+    Enforcer.is_dict(bp.ner_taxonomy_rev())
+
+
 def main():
     # test_find_comments()
     # test_find_labels()
@@ -78,7 +83,8 @@ def main():
     # test_trie()
     # test_graffl_ner()
     # test_spacy_ner()
-    test_ner_depth()
+    # test_ner_depth()
+    test_ner_taxonomy()
 
 
 if __name__ == "__main__":
