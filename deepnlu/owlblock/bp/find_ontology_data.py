@@ -12,7 +12,8 @@ from baseblock import BaseObject
 from askowl.bp import AskOwlAPI
 from askowl.dto import QueryResultType
 
-from deepnlu.owlblock.svc import GenerateViewGrafflNER
+from deepnlu.owlblock.svc import GenerateViewNerLabel
+from deepnlu.owlblock.svc import GenerateViewNerDepth
 
 
 class FindOntologyData(BaseObject):
@@ -148,9 +149,9 @@ class FindOntologyData(BaseObject):
     def implies_rev(self) -> dict:
         return self._by_predicate_rev('implies')
 
-    def _ner(self,
-             ner_type: str,
-             reverse: bool = False) -> dict:
+    def _ner_label(self,
+                   ner_type: str,
+                   reverse: bool = False) -> dict:
 
         def get_results(sparl_query: str) -> dict:
             results = []
@@ -164,7 +165,9 @@ class FindOntologyData(BaseObject):
                     '$NER', ner_type)
 
                 results.append(ask_owl_api.adhoc(
-                    sparl_query, QueryResultType.DICT_OF_STR2LIST))
+                    sparl_query=sparl_query, 
+                    to_lowercase=True,
+                    result_type=QueryResultType.DICT_OF_STR2LIST))
 
             if not results:
                 return None
@@ -199,13 +202,73 @@ class FindOntologyData(BaseObject):
         """
 
         d_results = get_results(sparql_query)
-        return GenerateViewGrafflNER().process(d_results, reverse)
+        return GenerateViewNerLabel().process(d_results, reverse)
 
     def graffl_ner(self) -> dict:
-        return self._ner('grafflNER')
+        return self._ner_label('grafflNER')
 
     def graffl_ner_rev(self) -> dict:
-        return self._ner('grafflNER', reverse=True)
+        return self._ner_label('grafflNER', reverse=True)
+
+    @lru_cache
+    def spacy_ner(self) -> dict:
+        return self._ner('spacyNER')
+
+    @lru_cache
+    def spacy_ner_rev(self) -> dict:
+        return self._ner('spacyNER', reverse=True)
+
+    def _ner_depth(self,
+                   reverse: bool = False) -> dict:
+
+        def get_results(sparl_query: str) -> dict:
+            results = []
+            for ontology_name in self._d_ontologies:
+                ask_owl_api = self._d_ontologies[ontology_name]
+                
+                results.append(ask_owl_api.adhoc(
+                    to_lowercase=False,
+                    sparql_query=sparl_query,
+                    result_type=QueryResultType.DICT_OF_STR2LIST))
+
+            if not results:
+                return None
+            elif len(results) == 1:
+                return results[0]
+            return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
+
+        sparql_query = """
+            select ?ner (count(?mid)-1 as ?depth) {
+            #-- Select root classes (classes that have no
+            #-- superclasses other than themselves).
+            {
+                select ?root {
+                ?root a owl:Class
+                filter not exists {
+                    ?root rdfs:subClassOf ?superroot 
+                    filter ( ?root != ?superroot )
+                }
+                }
+            }
+
+            ?class owl:backwardCompatibleWith ?ner .
+            ?class rdfs:subClassOf* ?mid .
+            ?mid rdfs:subClassOf* ?root .
+            }
+            group by ?ner
+            order by ?depth
+        """
+
+        d_results = get_results(sparql_query)
+        return GenerateViewNerDepth().process(d_results, reverse)
+
+    @lru_cache
+    def ner_depth(self) -> dict:
+        return self._ner_depth(reverse=False)
+
+    @lru_cache
+    def ner_depth_rev(self) -> dict:
+        return self._ner_depth(reverse=True)
 
     @lru_cache
     def infer_by_requires(self) -> dict:
@@ -232,27 +295,11 @@ class FindOntologyData(BaseObject):
         return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
 
     @lru_cache
-    def ner_depth(self) -> dict:
-        raise NotImplementedError
-
-    @lru_cache
-    def ner_depth_rev(self) -> dict:
-        raise NotImplementedError
-
-    @lru_cache
     def ner_taxonomy(self) -> dict:
         raise NotImplementedError
 
     @lru_cache
     def ner_taxonomy_rev(self) -> dict:
-        raise NotImplementedError
-
-    @lru_cache
-    def ner_spacy(self) -> dict:
-        raise NotImplementedError
-
-    @lru_cache
-    def ner_spacy_rev(self) -> dict:
         raise NotImplementedError
 
     @lru_cache

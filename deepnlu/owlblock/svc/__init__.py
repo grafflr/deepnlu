@@ -1,1 +1,2 @@
-from .generate_view_grafflner import GenerateViewGrafflNER
+from .generate_view_nerlabel import GenerateViewNerLabel
+from .generate_view_nerdepth import GenerateViewNerDepth

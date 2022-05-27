@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-""" View Generator: Graffl NER Types """
+""" View Generator: Associate NERs to Labels """
 
 
 from collections import defaultdict
@@ -8,8 +8,8 @@ from collections import defaultdict
 from baseblock import BaseObject
 
 
-class GenerateViewGrafflNER(BaseObject):
-    """ View Generator: Graffl NER Types """
+class GenerateViewNerLabel(BaseObject):
+    """ View Generator: Associate NERs to Labels """
 
     def __init__(self):
         """ Change History

@@ -56,6 +56,16 @@ def test_graffl_ner():
     Enforcer.is_dict(bp.graffl_ner_rev())
 
 
+def test_spacy_ner():
+    Enforcer.is_dict(bp.spacy_ner())
+    Enforcer.is_dict(bp.spacy_ner_rev())
+
+
+def test_ner_depth():
+    Enforcer.is_dict(bp.ner_depth())
+    Enforcer.is_dict(bp.ner_depth_rev())
+
+
 def main():
     # test_find_comments()
     # test_find_labels()
@@ -66,7 +76,9 @@ def main():
     # test_synonyms()
     # test_spans()
     # test_trie()
-    test_graffl_ner()
+    # test_graffl_ner()
+    # test_spacy_ner()
+    test_ner_depth()
 
 
 if __name__ == "__main__":
