@@ -73,11 +73,9 @@ class QueryNerDepth(BaseObject):
         return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
 
     def process(self,
-                ner_type: str,
                 reverse: bool = False) -> dict:
 
         d_results = self._get_results(
-            ner_type=ner_type,
             sparql_query=self.__SPARQL_QUERY)
 
         return self._generate_view(
