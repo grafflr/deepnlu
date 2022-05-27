@@ -3,17 +3,9 @@
 """ Merge Multiple Model results into a single and cohesive structure """
 
 
-from functools import lru_cache
-
-from baseblock import Enforcer
 from baseblock import BaseObject
 
-from askowl.bp import AskOwlAPI
 from askowl.dto import QueryResultType
-
-from deepnlu.owlblock.svc import GenerateViewNerLabel
-from deepnlu.owlblock.svc import GenerateViewNerDepth
-from deepnlu.owlblock.svc import GenerateViewNerTaxonomy
 
 
 class ModelResultMerge(BaseObject):

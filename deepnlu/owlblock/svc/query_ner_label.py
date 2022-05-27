@@ -3,8 +3,6 @@
 """ Generic Facade to Find Data in 1..* Ontology Models """
 
 
-from functools import lru_cache
-
 from baseblock import BaseObject
 
 from askowl.dto import QueryResultType
