@@ -34,7 +34,11 @@ def test_find_effects():
 
 
 def test_lookup():
-    print(bp.lookup())
+    Enforcer.is_dict(bp.lookup())
+
+def test_synonyms():
+    Enforcer.is_dict(bp.synonyms())
+    Enforcer.is_dict(bp.synonyms_rev())
 
 
 def main():
@@ -43,7 +47,8 @@ def main():
     # test_find_effects()
     # test_find_effects_rev()
     # test_find_types()
-    test_lookup()
+    # test_lookup()
+    test_synonyms()
 
 
 if __name__ == "__main__":
