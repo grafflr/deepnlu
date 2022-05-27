@@ -9,13 +9,15 @@ from baseblock import BaseObject
 
 from deepnlu.services.accipio import Segmenter
 from deepnlu.recipe.dmo import SentenceHandlerOneShot
+from deepnlu.owlblock.bp import FindOntologyData
 
 
 class ParseTextOneShot(BaseObject):
     """ Execute the deepNLU Recipe on Input Text of any Length or Type """
 
     def __init__(self,
-                 ontologies: list):
+                 ontologies: list,
+                 absolute_path: str):
         """ Change History
 
         Created:
@@ -26,13 +28,24 @@ class ParseTextOneShot(BaseObject):
             craig@grafflr.ai
             *   add conditional check on input-text
                 https://github.com/grafflr/graffl-core/issues/395#issuecomment-1136369575
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   integrate 'find-ontology-data' and absolute path
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
             ontologies (list): list of ontologies to use for parsing
+            absolute_path (str): absolute path to OWL models
         """
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
             Enforcer.is_list(ontologies)
+            Enforcer.is_str(absolute_path)
+
+        self._finder = FindOntologyData(
+            ontologies=ontologies,
+            absolute_path=absolute_path)
 
         self._handle_sentence = SentenceHandlerOneShot(ontologies).process
 

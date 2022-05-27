@@ -1,8 +1,12 @@
 # -*- coding: UTF-8 -*-
-import pprint
+
+
+import os
 from random import sample
 
+from baseblock import FileIO
 from baseblock import Enforcer
+
 from deepnlu.recipe.bp import DeepNluAPI
 
 import logging
@@ -13,6 +17,10 @@ def run(ontology_name, input_text):
 
     api = DeepNluAPI()
     assert api
+
+    absolute_path = os.path.normpath(
+        os.path.join(os.getcwd(), 'resources/data/owl'))
+    FileIO.exists_or_error(absolute_path)
 
     ontologies = ontology_name.split(',')
     ontologies = [x.strip() for x in ontologies]
@@ -26,7 +34,8 @@ def run(ontology_name, input_text):
         print(f"Random Input Text: {input_text}")
 
     svcresult = api.handle_text(input_text=input_text,
-                                ontologies=ontologies)
+                                ontologies=ontologies,
+                                absolute_path=absolute_path)
     assert svcresult
 
     tokens = [x['normal'] for x in svcresult[0][0]['tokens'] if 'swaps' in x]

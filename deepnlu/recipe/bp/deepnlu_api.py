@@ -3,14 +3,13 @@
 """ deepNLU Orchestrator """
 
 
+from baseblock import Enforcer
 from baseblock import BaseObject
 
 from deepnlu.recipe.svc import ProcessInputFiles
 from deepnlu.recipe.svc import ParseTextOneShot
 from deepnlu.recipe.svc import ResultsAsDataFrame
 from deepnlu.recipe.dmo import InputPathReader
-
-from baseblock.enforce_type import Enforcer
 
 
 class DeepNluAPI(BaseObject):
@@ -77,12 +76,14 @@ class DeepNluAPI(BaseObject):
 
     def handle_text(self,
                     input_text: str,
-                    ontologies: list) -> list or dict:
+                    ontologies: list,
+                    absolute_path: str) -> list or dict:
         """ DeepNLU on single line of input text
 
         Args:
             input_text (str): input text of any length
             ontologies (list): one-or-more Ontology models to use in processing
+            absolute_path (str): absolute path to OWL models
 
         Returns:
             list: the deepNLU result
@@ -91,4 +92,8 @@ class DeepNluAPI(BaseObject):
             Enforcer.is_str(input_text)
             Enforcer.is_list(ontologies)
 
-        return ParseTextOneShot(ontologies).process(input_text)
+        svc = ParseTextOneShot(
+            ontologies=ontologies,
+            absolute_path=absolute_path)
+
+        return svc.process(input_text)
