@@ -12,6 +12,8 @@ from baseblock import BaseObject
 from askowl.bp import AskOwlAPI
 from askowl.dto import QueryResultType
 
+from deepnlu.owlblock.svc import GenerateViewGrafflNER
+
 
 class FindOntologyData(BaseObject):
     """ Generic Facade to Find Data in 1..* Ontology Models """
@@ -146,13 +148,64 @@ class FindOntologyData(BaseObject):
     def implies_rev(self) -> dict:
         return self._by_predicate_rev('implies')
 
-    @lru_cache
-    def graffl_ner(self) -> dict:
-        raise NotImplementedError
+    def _ner(self,
+             ner_type: str,
+             reverse: bool = False) -> dict:
 
-    @lru_cache
+        def get_results(sparl_query: str) -> dict:
+            results = []
+            for ontology_name in self._d_ontologies:
+
+                ask_owl_api = self._d_ontologies[ontology_name]
+
+                sparl_query = sparl_query.replace(
+                    '$PREFIX', ask_owl_api.prefix())
+                sparl_query = sparl_query.replace(
+                    '$NER', ner_type)
+
+                results.append(ask_owl_api.adhoc(
+                    sparl_query, QueryResultType.DICT_OF_STR2LIST))
+
+            if not results:
+                return None
+            elif len(results) == 1:
+                return results[0]
+            return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
+
+        sparql_query = """
+            SELECT 
+                ?label ?NER 
+            WHERE 
+            { 
+                ?entity owl:backwardCompatibleWith ?NER
+                {
+                    ?child rdfs:subClassOf* ?entity
+                    { ?child rdfs:label ?label }
+                    UNION
+                    { ?child rdfs:seeAlso ?label }
+                }
+                OPTIONAL
+                {
+                    { ?entity rdfs:label ?label }
+                    UNION
+                    { ?entity rdfs:seeAlso ?label }        
+                }
+                
+                FILTER 
+                ( 
+                    datatype(?NER) = $PREFIX:$NER
+                )
+            }
+        """
+
+        d_results = get_results(sparql_query)
+        return GenerateViewGrafflNER().process(d_results, reverse)
+
+    def graffl_ner(self) -> dict:
+        return self._ner('grafflNER')
+
     def graffl_ner_rev(self) -> dict:
-        raise NotImplementedError
+        return self._ner('grafflNER', reverse=True)
 
     @lru_cache
     def infer_by_requires(self) -> dict:
