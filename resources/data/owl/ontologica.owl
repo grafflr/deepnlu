@@ -1,0 +1,710 @@
+@prefix : <http://graffl.ai/ontologica#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://graffl.ai/ontologica> .
+
+<http://graffl.ai/ontologica> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://graffl.ai/ontologica#affects
+
+:affects rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/ontologica#effects
+
+:effects rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/ontologica#implies
+
+:implies rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/ontologica#locatedIn
+
+:locatedIn rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/ontologica#meansOf
+
+:meansOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/ontologica#measures
+
+:measures rdf:type owl:AnnotationProperty ;
+          
+          rdfs:subPropertyOf :uses .
+
+
+
+###  http://graffl.ai/ontologica#nluComment
+
+:nluComment rdf:type owl:AnnotationProperty ;
+            
+            rdfs:subPropertyOf rdfs:comment .
+
+
+
+###  http://graffl.ai/ontologica#requires
+
+:requires rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/ontologica#similarTo
+
+:similarTo rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/ontologica#uses
+
+:uses rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/ontologica#worksIn
+
+:worksIn rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://graffl.ai/ontologica#Action_Confirmation
+
+:Action_Confirmation rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Action_Understood ;
+                     
+                     rdfs:comment "Let me find that information for you." ,
+                                  " I would be happy to do that" .
+
+
+
+###  http://graffl.ai/ontologica#Action_Not_Understood
+
+:Action_Not_Understood rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Question_Not_Understood ;
+                       
+                       owl:disjointWith :Action_Understood ;
+                       
+                       rdfs:comment "I'm not certain which action to take." ,
+                                    "I understand your question but not how to act on it." .
+
+
+
+###  http://graffl.ai/ontologica#Action_Understood
+
+:Action_Understood rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Question_Understood ;
+                   
+                   rdfs:comment "I understand what you want to do" .
+
+
+
+###  http://graffl.ai/ontologica#All
+
+:All rdf:type owl:Class ;
+     
+     rdfs:label "All" ;
+     
+     rdfs:subClassOf :Bucket .
+
+
+
+###  http://graffl.ai/ontologica#Ancestor_Of
+
+:Ancestor_Of rdf:type owl:Class ;
+             
+             rdfs:label "Ancestor Of" ;
+             
+             rdfs:subClassOf :Taxonomical_Classification ;
+             
+             rdfs:seeAlso "ancestor nodes" ,
+                          "ancestors of, ancestor of, ancestors for, the ancestors of" .
+
+
+
+###  http://graffl.ai/ontologica#Appraisal_Ontology
+
+:Appraisal_Ontology rdf:type owl:Class ;
+                    
+                    rdfs:label "Appraisal Ontology" ;
+                    
+                    rdfs:subClassOf :Ontology .
+
+
+
+###  http://graffl.ai/ontologica#Bucket
+
+:Bucket rdf:type owl:Class ;
+        
+        rdfs:label "Bucket" ;
+        
+        rdfs:subClassOf :Quantity .
+
+
+
+###  http://graffl.ai/ontologica#Cardinal
+
+:Cardinal rdf:type owl:Class ;
+          
+          rdfs:label "Cardinal" ;
+          
+          rdfs:subClassOf :Quantity .
+
+
+
+###  http://graffl.ai/ontologica#Category
+
+:Category rdf:type owl:Class ;
+          
+          rdfs:label "Category" ;
+          
+          rdfs:subClassOf :Text_Classification ;
+          
+          rdfs:seeAlso "Categories" .
+
+
+
+###  http://graffl.ai/ontologica#Child_Of
+
+:Child_Of rdf:type owl:Class ;
+          
+          rdfs:label "Child Of" ;
+          
+          rdfs:subClassOf :Descendant_Of ;
+          
+          rdfs:seeAlso "child, children" ,
+                       "child nodes" .
+
+
+
+###  http://graffl.ai/ontologica#Classification
+
+:Classification rdf:type owl:Class ;
+                
+                rdfs:label "Classification" .
+
+
+
+###  http://graffl.ai/ontologica#Comment
+
+:Comment rdf:type owl:Class ;
+         
+         rdfs:label "Comment" ;
+         
+         rdfs:subClassOf :Text_Classification ;
+         
+         rdfs:seeAlso "Comments" .
+
+
+
+###  http://graffl.ai/ontologica#Count
+
+:Count rdf:type owl:Class ;
+       
+       rdfs:label "Count" ;
+       
+       rdfs:subClassOf :Quantity ;
+       
+       rdfs:seeAlso "how many" ,
+                    "total number" ,
+                    "count total, count nodes, count elements" .
+
+
+
+###  http://graffl.ai/ontologica#Datasource
+
+:Datasource rdf:type owl:Class ;
+            
+            rdfs:label "DataSource" .
+
+
+
+###  http://graffl.ai/ontologica#Descendant_Of
+
+:Descendant_Of rdf:type owl:Class ;
+               
+               rdfs:label "Descendant Of" ;
+               
+               rdfs:subClassOf :Taxonomical_Classification ;
+               
+               rdfs:seeAlso "descendant nodes" ,
+                            "descendant, descendants, descendant of, descendants of" .
+
+
+
+###  http://graffl.ai/ontologica#First
+
+:First rdf:type owl:Class ;
+       
+       rdfs:label "First" ;
+       
+       rdfs:subClassOf :Ordinal .
+
+
+
+###  http://graffl.ai/ontologica#John_Kao
+
+:John_Kao rdf:type owl:Class ;
+          
+          rdfs:label "John Kao" ;
+          
+          rdfs:subClassOf :People .
+
+
+
+###  http://graffl.ai/ontologica#John_Kao_Model
+
+:John_Kao_Model rdf:type owl:Class ;
+                
+                rdfs:label "John Kao Model" ;
+                
+                rdfs:subClassOf :Model .
+
+
+
+###  http://graffl.ai/ontologica#List_Query
+
+:List_Query rdf:type owl:Class ;
+            
+            rdfs:label "List Query" ;
+            
+            rdfs:subClassOf :Query_Classification ;
+            
+            rdfs:seeAlso "list, list all of, list the, list the items for" ,
+                         "show me, show me all of the, show me the, show me the items" .
+
+
+
+###  http://graffl.ai/ontologica#List_Response
+
+:List_Response rdf:type owl:Class ;
+               
+               rdfs:label "List Response" ;
+               
+               rdfs:subClassOf :Response ;
+               
+               rdfs:seeAlso "I want to see" ,
+                            "List for me" ,
+                            "show me" ,
+                            "can you show me" .
+
+
+
+###  http://graffl.ai/ontologica#Model
+
+:Model rdf:type owl:Class ;
+       
+       rdfs:label "Model" ;
+       
+       rdfs:subClassOf :Datasource .
+
+
+
+###  http://graffl.ai/ontologica#Multi_Item_Response
+
+:Multi_Item_Response rdf:type owl:Class ;
+                     
+                     rdfs:label "Multi Item Response" ;
+                     
+                     rdfs:subClassOf :List_Response ;
+                     
+                     rdfs:comment "Here's what I have: items" .
+
+
+
+###  http://graffl.ai/ontologica#No_Ancestor_Of
+
+:No_Ancestor_Of rdf:type owl:Class ;
+                
+                rdfs:label "No Ancestor Of" ;
+                
+                rdfs:subClassOf :No_Quantity ;
+                
+                rdfs:seeAlso "no ancestor of, not an ancestor of, not ancestor of" ;
+                
+                rdfs:comment "There are no further ancestors" ;
+                
+                :requires :Ancestor_Of .
+
+
+
+###  http://graffl.ai/ontologica#No_Child_Of
+
+:No_Child_Of rdf:type owl:Class ;
+             
+             rdfs:subClassOf :No_Descendant_Of ;
+             
+             rdfs:comment "There are no further children" ;
+             
+             :requires :Child_Of .
+
+
+
+###  http://graffl.ai/ontologica#No_Descendant_Of
+
+:No_Descendant_Of rdf:type owl:Class ;
+                  
+                  rdfs:label "No Descendant Of" ;
+                  
+                  rdfs:subClassOf :No_Quantity ;
+                  
+                  rdfs:seeAlso "no descendants of, not the descendants of" ;
+                  
+                  rdfs:comment "There are no further descendants" ;
+                  
+                  :requires :Descendant_Of .
+
+
+
+###  http://graffl.ai/ontologica#No_Parent_Of
+
+:No_Parent_Of rdf:type owl:Class ;
+              
+              rdfs:label "No Parent Of" ;
+              
+              rdfs:subClassOf :No_Ancestor_Of ;
+              
+              rdfs:seeAlso "not a parent of, no parent of, no parents of, not the parents of" ;
+              
+              rdfs:comment "There are no further parents" ;
+              
+              :requires :Parent_Of .
+
+
+
+###  http://graffl.ai/ontologica#No_Quantity
+
+:No_Quantity rdf:type owl:Class ;
+             
+             rdfs:label "No Quantity" ;
+             
+             rdfs:subClassOf :Response .
+
+
+
+###  http://graffl.ai/ontologica#Nursing_Ontology
+
+:Nursing_Ontology rdf:type owl:Class ;
+                  
+                  rdfs:label "Nursing Ontology" ;
+                  
+                  rdfs:subClassOf :Ontology .
+
+
+
+###  http://graffl.ai/ontologica#One
+
+:One rdf:type owl:Class ;
+     
+     rdfs:label "One" ;
+     
+     rdfs:subClassOf :Cardinal .
+
+
+
+###  http://graffl.ai/ontologica#One_Item_Response
+
+:One_Item_Response rdf:type owl:Class ;
+                   
+                   rdfs:label "One Item Response" ;
+                   
+                   rdfs:subClassOf :List_Response ;
+                   
+                   rdfs:comment "The answer is item1" .
+
+
+
+###  http://graffl.ai/ontologica#Ontologica_Ontology
+
+:Ontologica_Ontology rdf:type owl:Class ;
+                     
+                     rdfs:label "Ontologica Ontology" ;
+                     
+                     rdfs:subClassOf :Ontology .
+
+
+
+###  http://graffl.ai/ontologica#Ontology
+
+:Ontology rdf:type owl:Class ;
+          
+          rdfs:label "Ontology" ;
+          
+          rdfs:subClassOf :Datasource .
+
+
+
+###  http://graffl.ai/ontologica#Ordinal
+
+:Ordinal rdf:type owl:Class ;
+         
+         rdfs:label "Ordinal" ;
+         
+         rdfs:subClassOf :Quantity .
+
+
+
+###  http://graffl.ai/ontologica#Parent_Of
+
+:Parent_Of rdf:type owl:Class ;
+           
+           rdfs:label "Parent Of" ;
+           
+           rdfs:subClassOf :Ancestor_Of ;
+           
+           rdfs:seeAlso "parent nodes" ,
+                        "parents, parents, parents for, parent of, the parent for" .
+
+
+
+###  http://graffl.ai/ontologica#Partial
+
+:Partial rdf:type owl:Class ;
+         
+         rdfs:label "Partial" ;
+         
+         rdfs:subClassOf :Bucket .
+
+
+
+###  http://graffl.ai/ontologica#People
+
+:People rdf:type owl:Class ;
+        
+        rdfs:label "People" .
+
+
+
+###  http://graffl.ai/ontologica#Quantity
+
+:Quantity rdf:type owl:Class ;
+          
+          rdfs:label "Quantity" .
+
+
+
+###  http://graffl.ai/ontologica#Query_Classification
+
+:Query_Classification rdf:type owl:Class ;
+                      
+                      rdfs:label "Query Classification" ;
+                      
+                      rdfs:subClassOf :Classification .
+
+
+
+###  http://graffl.ai/ontologica#Question
+
+:Question rdf:type owl:Class ;
+          
+          rdfs:label "Question" .
+
+
+
+###  http://graffl.ai/ontologica#Question_Not_Understood
+
+:Question_Not_Understood rdf:type owl:Class ;
+                         
+                         rdfs:label "Question Not Understood" ;
+                         
+                         rdfs:subClassOf :Response ;
+                         
+                         owl:disjointWith :Question_Understood ;
+                         
+                         rdfs:comment "Err, sorry.  No can do." ,
+                                      "I didn't catch  that - sorry!" ,
+                                      "I don't understood your question well enough." .
+
+
+
+###  http://graffl.ai/ontologica#Question_Understood
+
+:Question_Understood rdf:type owl:Class ;
+                     
+                     rdfs:label "Question Understood" ;
+                     
+                     rdfs:subClassOf :Response ;
+                     
+                     rdfs:comment "I understood your question" .
+
+
+
+###  http://graffl.ai/ontologica#Random_Query
+
+:Random_Query rdf:type owl:Class ;
+              
+              rdfs:label "Random Query" ;
+              
+              rdfs:subClassOf :Query_Classification ;
+              
+              rdfs:seeAlso "random" .
+
+
+
+###  http://graffl.ai/ontologica#Response
+
+:Response rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/ontologica#Second
+
+:Second rdf:type owl:Class ;
+        
+        rdfs:label "Second" ;
+        
+        rdfs:subClassOf :Ordinal .
+
+
+
+###  http://graffl.ai/ontologica#Similar
+
+:Similar rdf:type owl:Class ;
+         
+         rdfs:label "Similar" ;
+         
+         rdfs:seeAlso "close to, kind of like, kinda like, like this, similar to" .
+
+
+
+###  http://graffl.ai/ontologica#Skills_Ontology
+
+:Skills_Ontology rdf:type owl:Class ;
+                 
+                 rdfs:label "Skills Ontology" ;
+                 
+                 rdfs:subClassOf :Ontology .
+
+
+
+###  http://graffl.ai/ontologica#Speech_Disorder_Model
+
+:Speech_Disorder_Model rdf:type owl:Class ;
+                       
+                       rdfs:label "Speech Disorder Model" ;
+                       
+                       rdfs:subClassOf :Model ;
+                       
+                       rdfs:seeAlso "speech disorder" .
+
+
+
+###  http://graffl.ai/ontologica#Speech_Pathology_Model
+
+:Speech_Pathology_Model rdf:type owl:Class ;
+                        
+                        rdfs:label "Speech Pathology Model" ;
+                        
+                        rdfs:subClassOf :Model ;
+                        
+                        rdfs:seeAlso "pathology, speech pathology, slp" .
+
+
+
+###  http://graffl.ai/ontologica#Taxonomical_Classification
+
+:Taxonomical_Classification rdf:type owl:Class ;
+                            
+                            rdfs:label "Taxonomical Classification" ;
+                            
+                            rdfs:subClassOf :Classification .
+
+
+
+###  http://graffl.ai/ontologica#Text_Classification
+
+:Text_Classification rdf:type owl:Class ;
+                     
+                     rdfs:label "Text Classification" ;
+                     
+                     rdfs:subClassOf :Classification .
+
+
+
+###  http://graffl.ai/ontologica#Third
+
+:Third rdf:type owl:Class ;
+       
+       rdfs:label "Third" ;
+       
+       rdfs:subClassOf :Ordinal .
+
+
+
+###  http://graffl.ai/ontologica#Three
+
+:Three rdf:type owl:Class ;
+       
+       rdfs:label "Three" ;
+       
+       rdfs:subClassOf :Cardinal .
+
+
+
+###  http://graffl.ai/ontologica#Three_Item_Response
+
+:Three_Item_Response rdf:type owl:Class ;
+                     
+                     rdfs:label "Three Item Response" ;
+                     
+                     rdfs:subClassOf :List_Response ;
+                     
+                     rdfs:comment "The answer is item1, item2 and item3" .
+
+
+
+###  http://graffl.ai/ontologica#Two
+
+:Two rdf:type owl:Class ;
+     
+     rdfs:label "Two" ;
+     
+     rdfs:subClassOf :Cardinal .
+
+
+
+###  http://graffl.ai/ontologica#Two_Item_Response
+
+:Two_Item_Response rdf:type owl:Class ;
+                   
+                   rdfs:label "Two Item Response" ;
+                   
+                   rdfs:subClassOf :List_Response ;
+                   
+                   rdfs:comment "The answer is item1 and item2" .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

@@ -35,8 +35,8 @@ class GenericClassLoader(BaseObject):
 
         def file_path() -> str:
             file_path = os.path.normpath(os.path.join(
-                EnvIO.str_or_exception('GRAFFLR_HOME'),
-                'apps/blocks/datablock/datablock/os/owl',
+                os.getcwd(),
+                'deepnlu/datablock/os/owl',
                 package_name))
 
             FileIO.exists_or_error(file_path)

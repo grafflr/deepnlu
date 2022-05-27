@@ -1,0 +1,214 @@
+@prefix : <https://w3id.org/MON/cohabitationstatus.owl#> .
+@prefix j.0: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/MON/cohabitationstatus.owl> .
+
+<https://w3id.org/MON/cohabitationstatus.owl> rdf:type owl:Ontology ;
+                                              
+                                              j.0:coversRequirements "Does the patient live alone or with relatives/nourse or in an institution?"@en ,
+                                                                     "Which is the address of the place where a patient lives?"@en ,
+                                                                     "Which is the assessment for a certain co-habitation status of a certain patient?"@en ,
+                                                                     "Which is the name of the place where the patient lives?"@en ;
+                                              
+                                              owl:imports <https://w3id.org/MON/cga.owl> ,
+                                                          <https://w3id.org/MON/postalAddress.owl> ,
+                                                          <https://w3id.org/MON/spatial.owl> ,
+                                                          <https://w3id.org/MON/timeindexedsituation.owl> .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cga.owl#assessesSituation
+
+<https://w3id.org/MON/cga.owl#assessesSituation> rdf:type owl:ObjectProperty .
+
+
+
+###  https://w3id.org/MON/postalAddress.owl#hasPostalAddress
+
+<https://w3id.org/MON/postalAddress.owl#hasPostalAddress> rdf:type owl:ObjectProperty .
+
+
+
+###  https://w3id.org/MON/spatial.owl#hasPlace
+
+<https://w3id.org/MON/spatial.owl#hasPlace> rdf:type owl:ObjectProperty .
+
+
+
+###  https://w3id.org/MON/spatial.owl#hasResidence
+
+<https://w3id.org/MON/spatial.owl#hasResidence> rdf:type owl:ObjectProperty ;
+                                                
+                                                rdfs:range <https://w3id.org/MON/spatial.owl#Residence> .
+
+
+
+###  https://w3id.org/MON/timeindexedsituation.owl#forEntity
+
+<https://w3id.org/MON/timeindexedsituation.owl#forEntity> rdf:type owl:ObjectProperty .
+
+
+
+###  https://w3id.org/MON/timeindexedsituation.owl#forPatient
+
+<https://w3id.org/MON/timeindexedsituation.owl#forPatient> rdf:type owl:ObjectProperty .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cga.owl#score
+
+<https://w3id.org/MON/cga.owl#score> rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cga.owl#GeriatricAssessment
+
+<https://w3id.org/MON/cga.owl#GeriatricAssessment> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/cohabitationstatus.owl#Co-HabitationStatus
+
+:Co-HabitationStatus rdf:type owl:Class ;
+                     
+                     rdfs:label "Co-Habitation status"@en ;
+                     
+                     rdfs:subClassOf <https://w3id.org/MON/timeindexedsituation.owl#TimeIndexedSituation> ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <https://w3id.org/MON/timeindexedsituation.owl#forPatient> ;
+                                       owl:someValuesFrom <https://w3id.org/MON/healthrole.owl#Patient>
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <https://w3id.org/MON/timeindexedsituation.owl#forEntity> ;
+                                       owl:allValuesFrom <https://w3id.org/MON/person.owl#Person>
+                                     ] ,
+                                     [ rdf:type owl:Restriction ;
+                                       owl:onProperty <https://w3id.org/MON/spatial.owl#hasPlace> ;
+                                       owl:someValuesFrom <https://w3id.org/MON/spatial.owl#Residence>
+                                     ] ;
+                     
+                     rdfs:comment "A time indexed situation representing the co-habitation status for a patient at a certain time."@en .
+
+
+
+###  https://w3id.org/MON/cohabitationstatus.owl#Co-HabitationStatusAssessment
+
+:Co-HabitationStatusAssessment rdf:type owl:Class ;
+                               
+                               rdfs:label "Co-Habitation status assessment"@en ;
+                               
+                               rdfs:subClassOf <https://w3id.org/MON/cga.owl#GeriatricAssessment> ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty <https://w3id.org/MON/cga.owl#score> ;
+                                                 owl:someValuesFrom rdfs:Literal
+                                               ] ,
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty <https://w3id.org/MON/cga.owl#assessesSituation> ;
+                                                 owl:someValuesFrom :Co-HabitationStatus
+                                               ] ;
+                               
+                               rdfs:comment "An action with the aim of assessing the co-habitation status of a patient at a certain time."@en .
+
+
+
+###  https://w3id.org/MON/cohabitationstatus.owl#House
+
+:House rdf:type owl:Class ;
+       
+       rdfs:label "House"@en ;
+       
+       rdfs:subClassOf <https://w3id.org/MON/spatial.owl#Residence> ;
+       
+       rdfs:comment "A building serving as a residence for one or more persons."@en .
+
+
+
+###  https://w3id.org/MON/cohabitationstatus.owl#Institution
+
+:Institution rdf:type owl:Class ;
+             
+             rdfs:subClassOf <https://w3id.org/MON/spatial.owl#Residence> .
+
+
+
+###  https://w3id.org/MON/healthrole.owl#Patient
+
+<https://w3id.org/MON/healthrole.owl#Patient> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/person.owl#Person
+
+<https://w3id.org/MON/person.owl#Person> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/postalAddress.owl#PostalAddress
+
+<https://w3id.org/MON/postalAddress.owl#PostalAddress> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/spatial.owl#Residence
+
+<https://w3id.org/MON/spatial.owl#Residence> rdf:type owl:Class ;
+                                             
+                                             rdfs:label "Residence"@en ;
+                                             
+                                             rdfs:subClassOf <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty <https://w3id.org/MON/postalAddress.owl#hasPostalAddress> ;
+                                                               owl:someValuesFrom <https://w3id.org/MON/postalAddress.owl#PostalAddress>
+                                                             ] ,
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty <https://w3id.org/MON/generic.owl#name> ;
+                                                               owl:someValuesFrom rdfs:Literal
+                                                             ] ;
+                                             
+                                             rdfs:comment "The place in which a person lives or resides."@en .
+
+
+
+###  https://w3id.org/MON/spatial.owl#SpatialThing
+
+<https://w3id.org/MON/spatial.owl#SpatialThing> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/timeindexedsituation.owl#TimeIndexedSituation
+
+<https://w3id.org/MON/timeindexedsituation.owl#TimeIndexedSituation> rdf:type owl:Class .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

@@ -1,0 +1,205 @@
+@prefix : <https://w3id.org/MON/capabilityassessment.owl#> .
+@prefix j.0: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/MON/capabilityassessment.owl> .
+
+<https://w3id.org/MON/capabilityassessment.owl> rdf:type owl:Ontology ;
+                                                
+                                                j.0:hasIntent "To represent the results of ADL and IADL."@en ;
+                                                
+                                                j.0:coversRequirements "Which are the capabilities needed to assess the ADL?"@en ,
+                                                                       "Which is the ADL question used to assess the capability level of a certain patient?"@en ,
+                                                                       "Which is the description of a certain capability level?"@en ,
+                                                                       "Which is the score in ADL associated with a certain capability level?"@en ,
+                                                                       "Which is the score of a correct answer of a certain question?"@en ,
+                                                                       "Which is the total score of the IADL questionare of a certain patient at a certain time?"@en ,
+                                                                       "Which was the level of capability of the activities of daily living (such as, bathing, dressing, toileting, transferring, controlling urination and bowel movement, feeding) of a patient at a certain time?"@en ,
+                                                                       "Which was the level of capability of the instrumental activities of the daily living (such as, using a telephone, shopping, preparing food, housekeeping, laundering, getting means of transportation, having responsibility of own medications, managing finances) of a  patient at a certain time?"@en ,
+                                                                       "Which was the total score of the ADL questionnaire of a certain patient at a certain time?"@en ;
+                                                
+                                                owl:imports <https://w3id.org/MON/action.owl> ,
+                                                            <https://w3id.org/MON/cga.owl> ,
+                                                            <https://w3id.org/MON/clinicalact.owl> ,
+                                                            <https://w3id.org/MON/healthrole.owl> ,
+                                                            <https://w3id.org/MON/time.owl> .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/capabilityassessment.owl#derivedFrom
+
+:derivedFrom rdf:type owl:ObjectProperty .
+
+
+
+###  https://w3id.org/MON/capabilityassessment.owl#hasCapability
+
+:hasCapability rdf:type owl:ObjectProperty ;
+               
+               rdfs:range :Capability .
+
+
+
+###  https://w3id.org/MON/capabilityassessment.owl#hasCapabilityLevel
+
+:hasCapabilityLevel rdf:type owl:FunctionalProperty ,
+                             owl:ObjectProperty ;
+                    
+                    rdfs:range :CapabilityLevel .
+
+
+
+###  https://w3id.org/MON/capabilityassessment.owl#isAssessedBy
+
+:isAssessedBy rdf:type owl:ObjectProperty .
+
+
+
+###  https://w3id.org/MON/clinicalact.owl#hasMember
+
+<https://w3id.org/MON/clinicalact.owl#hasMember> rdf:type owl:ObjectProperty .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cga.owl#score
+
+<https://w3id.org/MON/cga.owl#score> rdf:type owl:DatatypeProperty .
+
+
+
+###  https://w3id.org/MON/generic.owl#description
+
+<https://w3id.org/MON/generic.owl#description> rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/MON/capabilityassessment.owl#Capability
+
+:Capability rdf:type owl:Class ;
+            
+            rdfs:label "Capability"@en ;
+            
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :isAssessedBy ;
+                              owl:allValuesFrom <https://w3id.org/MON/cga.owl#Question>
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <https://w3id.org/MON/generic.owl#description> ;
+                              owl:allValuesFrom rdfs:Literal
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <https://w3id.org/MON/generic.owl#name> ;
+                              owl:someValuesFrom rdfs:Literal
+                            ] ;
+            
+            rdfs:comment "The power or ability to do something"@en .
+
+
+
+###  https://w3id.org/MON/capabilityassessment.owl#CapabilityAssessment
+
+:CapabilityAssessment rdf:type owl:Class ;
+                      
+                      rdfs:label "Capability assessment"@en ;
+                      
+                      rdfs:subClassOf <https://w3id.org/MON/cga.owl#GeriatricAssessment> ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :hasCapabilityLevel ;
+                                        owl:someValuesFrom :CapabilityLevel
+                                      ] ;
+                      
+                      owl:disjointWith :IndexAssessment ;
+                      
+                      rdfs:comment "An action with the aim of assessing the level of some capability of a certain patient at a certain time by performing a certain test."@en .
+
+
+
+###  https://w3id.org/MON/capabilityassessment.owl#CapabilityLevel
+
+:CapabilityLevel rdf:type owl:Class ;
+                 
+                 rdfs:label "Capability level"@en ;
+                 
+                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://w3id.org/MON/generic.owl#name> ;
+                                   owl:someValuesFrom rdfs:Literal
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :hasCapability ;
+                                   owl:someValuesFrom :Capability
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://w3id.org/MON/generic.owl#description> ;
+                                   owl:someValuesFrom rdfs:Literal
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty :isAssessedBy ;
+                                   owl:allValuesFrom <https://w3id.org/MON/cga.owl#Question>
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://w3id.org/MON/cga.owl#score> ;
+                                   owl:someValuesFrom rdfs:Literal
+                                 ] ;
+                 
+                 rdfs:comment "The level of a certain capability intended as the quality of a performance in doing something."@en .
+
+
+
+###  https://w3id.org/MON/capabilityassessment.owl#IndexAssessment
+
+:IndexAssessment rdf:type owl:Class ;
+                 
+                 rdfs:label "Index assessment"@en ;
+                 
+                 rdfs:subClassOf <https://w3id.org/MON/cga.owl#GeriatricAssessment> ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty <https://w3id.org/MON/clinicalact.owl#hasMember> ;
+                                   owl:someValuesFrom :CapabilityAssessment
+                                 ] ;
+                 
+                 rdfs:comment "The action of assessing a geriatric index."@en .
+
+
+
+###  https://w3id.org/MON/cga.owl#GeriatricAssessment
+
+<https://w3id.org/MON/cga.owl#GeriatricAssessment> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/cga.owl#Question
+
+<https://w3id.org/MON/cga.owl#Question> rdf:type owl:Class .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

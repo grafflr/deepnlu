@@ -5,7 +5,7 @@ from deepnlu.services.mutato.bp import MutatoAPI
 
 def test_service():
 
-    bp = MutatoAPI('chitchat')
+    bp = MutatoAPI(['chitchat'])
     assert bp
 
     tokens = [

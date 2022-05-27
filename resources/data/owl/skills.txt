@@ -1,0 +1,55 @@
+##############################################################################
+##
+## FILE DOCUMENTATION AND REFERENCE 
+## https://github.com/grafflr/graffl-core/issues/161
+##
+## File Maintenance Command:
+## .\scripts\Run-Clean-Synonyms.ps1 -FileName local.txt
+##
+##############################################################################
+
+# A
+activist~activists
+advisor~advisors
+agenda~agendas
+academic~academia, academics
+author~authors
+advocate~adovacy, advocates, advocating
+
+# B
+board_chair~board chair, board_chair chair, chair man, chair men, chair of, chair of the, chair people, chair person, chair woman, chair women, chairing, chairman, chairman of the board, chairmen, chairpeople, chairperson, chairwoman, chairwoman of the board, chairwomen, past chair, present chair
+
+# C
+creative~creativity
+company~companies
+
+# D
+deliver~delivers
+delivery~delivered, delivering
+
+# E
+entrepreneur~entrepreneurs, entrepreneurship
+experience~experienced, experiences
+
+# F
+facilitate~facilitated, facilitates, facilitating, facilitator, facilitators
+forum~forum's, forums
+
+# I
+innovator~innovated, innovaters, innovates, innovating, innovation, innovations, innovatod, innovators
+inventor~invented, inventing, invention, inventions, inventors
+influencer~influenced, influencers, influencing, influencor, influencors
+
+# M
+musician~musicians
+
+# P
+practitioner~practitioned, practitioners, practitioning
+perspective~perspectives
+psychiatrist~psychiatrists
+
+# S
+startup~start up, start ups, startups
+
+# W
+writer~writers

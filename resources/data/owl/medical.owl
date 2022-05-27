@@ -1,0 +1,1009 @@
+@prefix : <http://graffl.ai/medical#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://graffl.ai/medical> .
+
+<http://graffl.ai/medical> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://graffl.ai/medical#affect
+
+:affect rdf:type owl:AnnotationProperty ;
+        
+        rdfs:label "affect" ;
+        
+        rdfs:comment """describes an impactful relationship
+
+A impacts B
+A affects B""" .
+
+
+
+###  http://graffl.ai/medical#effect
+
+:effect rdf:type owl:AnnotationProperty ;
+        
+        rdfs:label "effect" ;
+        
+        rdfs:comment """Use for causation
+
+Until further decomposition proves necessary, the causation may be indisputable, possible or probable""" .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://graffl.ai/medical#Adrenal_Gland
+
+:Adrenal_Gland rdf:type owl:Class ;
+               
+               rdfs:label "Adrenal Gland" ;
+               
+               rdfs:subClassOf :Gland .
+
+
+
+###  http://graffl.ai/medical#Age_Bucket
+
+:Age_Bucket rdf:type owl:Class ;
+            
+            rdfs:label "Age Bucket" .
+
+
+
+###  http://graffl.ai/medical#Agent
+
+:Agent rdf:type owl:Class ;
+       
+       rdfs:label "Agent" .
+
+
+
+###  http://graffl.ai/medical#Artery
+
+:Artery rdf:type owl:Class ;
+        
+        rdfs:label "Artery" ;
+        
+        rdfs:subClassOf :Organ ;
+        
+        rdfs:seeAlso "Arteries" .
+
+
+
+###  http://graffl.ai/medical#Baby
+
+:Baby rdf:type owl:Class ;
+      
+      rdfs:label "Baby" ;
+      
+      rdfs:subClassOf :Qualified_Age_Bucket ;
+      
+      rdfs:seeAlso "Infant" ,
+                   "Babies" .
+
+
+
+###  http://graffl.ai/medical#Birth
+
+:Birth rdf:type owl:Class ;
+       
+       rdfs:label "Birth" ;
+       
+       rdfs:subClassOf :Bodily_Event .
+
+
+
+###  http://graffl.ai/medical#Blood
+
+:Blood rdf:type owl:Class ;
+       
+       rdfs:label "Blood" ;
+       
+       rdfs:subClassOf :Fluid_Discharge .
+
+
+
+###  http://graffl.ai/medical#Blood_Transfusion
+
+:Blood_Transfusion rdf:type owl:Class ;
+                   
+                   rdfs:label "Blood Transfusion" ;
+                   
+                   rdfs:subClassOf :Transfusion .
+
+
+
+###  http://graffl.ai/medical#Bodily_Event
+
+:Bodily_Event rdf:type owl:Class ;
+              
+              rdfs:label "Bodily Event" ;
+              
+              rdfs:subClassOf :Health_Event .
+
+
+
+###  http://graffl.ai/medical#Brain
+
+:Brain rdf:type owl:Class ;
+       
+       rdfs:label "Brain" ;
+       
+       rdfs:subClassOf :Organ .
+
+
+
+###  http://graffl.ai/medical#Breast
+
+:Breast rdf:type owl:Class ;
+        
+        rdfs:label "Breast" ;
+        
+        rdfs:subClassOf :Organ ;
+        
+        :effect :Breast_Milk .
+
+
+
+###  http://graffl.ai/medical#Breast_Milk
+
+:Breast_Milk rdf:type owl:Class ;
+             
+             rdfs:label "Breast Milk" ;
+             
+             rdfs:subClassOf :Fluid_Discharge .
+
+
+
+###  http://graffl.ai/medical#Child
+
+:Child rdf:type owl:Class ;
+       
+       rdfs:label "Child" ;
+       
+       rdfs:subClassOf :Qualified_Age_Bucket ;
+       
+       rdfs:seeAlso "childhood" ,
+                    "children" .
+
+
+
+###  http://graffl.ai/medical#Condition
+
+:Condition rdf:type owl:Class ;
+           
+           rdfs:label "Condition" .
+
+
+
+###  http://graffl.ai/medical#Congenital_Cytomegalovirus
+
+:Congenital_Cytomegalovirus rdf:type owl:Class ;
+                            
+                            rdfs:label "Congenital Cytomegalovirus" ;
+                            
+                            rdfs:subClassOf :Cytomegalovirus ;
+                            
+                            rdfs:comment "When a baby is born with cytomegalovirus (CMV) infection, it is called congenital CMV. About one out of every 200 babies is born with congenital CMV infection.  About one in five babies with congenital CMV infection will have long-term health problems." .
+
+
+
+###  http://graffl.ai/medical#Cytomegalovirus
+
+:Cytomegalovirus rdf:type owl:Class ;
+                 
+                 rdfs:label "Cytomegalovirus" ;
+                 
+                 rdfs:subClassOf :Virus ;
+                 
+                 rdfs:seeAlso "CMV" ;
+                 
+                 rdfs:comment "Cytomegalovirus (pronounced sy-toe-MEG-a-low-vy-rus), or CMV, is a common virus that infects people of all ages. Over half of adults have been infected with CMV by age 40. Most people infected with CMV show no signs or symptoms. " .
+
+
+
+###  http://graffl.ai/medical#Discharge
+
+:Discharge rdf:type owl:Class ;
+           
+           rdfs:label "Discharge" ;
+           
+           rdfs:subClassOf :Bodily_Event .
+
+
+
+###  http://graffl.ai/medical#Ear
+
+:Ear rdf:type owl:Class ;
+     
+     rdfs:label "Ear" ;
+     
+     rdfs:subClassOf :Organ ;
+     
+     rdfs:seeAlso "ears" ;
+     
+     :effect :Hearing .
+
+
+
+###  http://graffl.ai/medical#Emotional_Condition
+
+:Emotional_Condition rdf:type owl:Class ;
+                     
+                     rdfs:label "Emotional Condition" ;
+                     
+                     rdfs:subClassOf :State_of_Being ;
+                     
+                     rdfs:seeAlso "Emotional State" .
+
+
+
+###  http://graffl.ai/medical#Esophagus
+
+:Esophagus rdf:type owl:Class ;
+           
+           rdfs:label "Esophagus" ;
+           
+           rdfs:subClassOf :Organ .
+
+
+
+###  http://graffl.ai/medical#Event
+
+:Event rdf:type owl:Class ;
+       
+       rdfs:label "Event" .
+
+
+
+###  http://graffl.ai/medical#Eye
+
+:Eye rdf:type owl:Class ;
+     
+     rdfs:label "Eye" ;
+     
+     rdfs:subClassOf :Organ ;
+     
+     rdfs:seeAlso "Eyes" ;
+     
+     :effect :Sight .
+
+
+
+###  http://graffl.ai/medical#Fluid_Discharge
+
+:Fluid_Discharge rdf:type owl:Class ;
+                 
+                 rdfs:label "Fluid Discharge" ;
+                 
+                 rdfs:subClassOf :Discharge ;
+                 
+                 rdfs:seeAlso "Body Fluid" .
+
+
+
+###  http://graffl.ai/medical#Gland
+
+:Gland rdf:type owl:Class ;
+       
+       rdfs:label "Gland" ;
+       
+       rdfs:subClassOf :Organ .
+
+
+
+###  http://graffl.ai/medical#Happy
+
+:Happy rdf:type owl:Class ;
+       
+       rdfs:label "Happy" ;
+       
+       rdfs:subClassOf :Mental_Condition .
+
+
+
+###  http://graffl.ai/medical#Health_Event
+
+:Health_Event rdf:type owl:Class ;
+              
+              rdfs:label "Health Event" ;
+              
+              rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/medical#Health_Gain
+
+:Health_Gain rdf:type owl:Class ;
+             
+             rdfs:label "Health Gain" ;
+             
+             rdfs:subClassOf :Health_Event ;
+             
+             owl:disjointWith :Health_Loss .
+
+
+
+###  http://graffl.ai/medical#Health_Loss
+
+:Health_Loss rdf:type owl:Class ;
+             
+             rdfs:label "Health Loss" ;
+             
+             rdfs:subClassOf :Health_Event .
+
+
+
+###  http://graffl.ai/medical#Health_Problem
+
+:Health_Problem rdf:type owl:Class ;
+                
+                rdfs:label "Health Problem" ;
+                
+                rdfs:subClassOf :Problem ;
+                
+                :affect :Health_Event .
+
+
+
+###  http://graffl.ai/medical#Healthy
+
+:Healthy rdf:type owl:Class ;
+         
+         rdfs:label "Healthy" ;
+         
+         rdfs:subClassOf :Physical_Condition .
+
+
+
+###  http://graffl.ai/medical#Healthy_Immunity
+
+:Healthy_Immunity rdf:type owl:Class ;
+                  
+                  rdfs:label "Healthy Immunity" ;
+                  
+                  rdfs:subClassOf :Immune_Condition ;
+                  
+                  rdfs:seeAlso "healthy person immune system" .
+
+
+
+###  http://graffl.ai/medical#Hearing
+
+:Hearing rdf:type owl:Class ;
+         
+         rdfs:label "Hearing" ;
+         
+         rdfs:subClassOf :State_of_Capability .
+
+
+
+###  http://graffl.ai/medical#Hearing_Loss
+
+:Hearing_Loss rdf:type owl:Class ;
+              
+              rdfs:label "Hearing Loss" ;
+              
+              rdfs:subClassOf :Health_Loss ;
+              
+              :affect :Hearing .
+
+
+
+###  http://graffl.ai/medical#Illness
+
+:Illness rdf:type owl:Class ;
+         
+         rdfs:label "Illness" ;
+         
+         rdfs:subClassOf :Health_Problem .
+
+
+
+###  http://graffl.ai/medical#Immune_Condition
+
+:Immune_Condition rdf:type owl:Class ;
+                  
+                  rdfs:label "Immune Condition" ;
+                  
+                  rdfs:subClassOf :State_of_Being .
+
+
+
+###  http://graffl.ai/medical#Immune_System
+
+:Immune_System rdf:type owl:Class ;
+               
+               rdfs:label "Immune System" ;
+               
+               rdfs:subClassOf :System .
+
+
+
+###  http://graffl.ai/medical#Infect
+
+:Infect rdf:type owl:Class ;
+        
+        rdfs:label "Infect" ;
+        
+        rdfs:subClassOf :Health_Event ;
+        
+        :effect :Infection .
+
+
+
+###  http://graffl.ai/medical#Infection
+
+:Infection rdf:type owl:Class ;
+           
+           rdfs:label "Infection" ;
+           
+           rdfs:subClassOf :Health_Problem ;
+           
+           :effect :Illness .
+
+
+
+###  http://graffl.ai/medical#Intestines
+
+:Intestines rdf:type owl:Class ;
+            
+            rdfs:label "Intestines" ;
+            
+            rdfs:subClassOf :Organ .
+
+
+
+###  http://graffl.ai/medical#Liver
+
+:Liver rdf:type owl:Class ;
+       
+       rdfs:label "Liver" ;
+       
+       rdfs:subClassOf :Organ ;
+       
+       rdfs:seeAlso "Livers" .
+
+
+
+###  http://graffl.ai/medical#Long_Term
+
+:Long_Term rdf:type owl:Class ;
+           
+           rdfs:label "Long Term" ;
+           
+           rdfs:subClassOf :Qualifiable_Time .
+
+
+
+###  http://graffl.ai/medical#Lung
+
+:Lung rdf:type owl:Class ;
+      
+      rdfs:label "Lung" ;
+      
+      rdfs:subClassOf :Organ ;
+      
+      rdfs:seeAlso "Lungs" .
+
+
+
+###  http://graffl.ai/medical#Mammary_Gland
+
+:Mammary_Gland rdf:type owl:Class ;
+               
+               rdfs:label "Mammary Gland" ;
+               
+               rdfs:subClassOf :Gland .
+
+
+
+###  http://graffl.ai/medical#Medical_Procedure
+
+:Medical_Procedure rdf:type owl:Class ;
+                   
+                   rdfs:label "Medical Procedure" .
+
+
+
+###  http://graffl.ai/medical#Medical_Test
+
+:Medical_Test rdf:type owl:Class ;
+              
+              rdfs:label "Medical Test" ;
+              
+              rdfs:subClassOf :Medical_Procedure .
+
+
+
+###  http://graffl.ai/medical#Mental_Condition
+
+:Mental_Condition rdf:type owl:Class ;
+                  
+                  rdfs:label "Mental Condition" ;
+                  
+                  rdfs:subClassOf :State_of_Being ;
+                  
+                  rdfs:seeAlso "Mental State" .
+
+
+
+###  http://graffl.ai/medical#Mild
+
+:Mild rdf:type owl:Class ;
+      
+      rdfs:label "Mild" ;
+      
+      rdfs:subClassOf :Qualifiable_State .
+
+
+
+###  http://graffl.ai/medical#Muscle
+
+:Muscle rdf:type owl:Class ;
+        
+        rdfs:label "Muscle" ;
+        
+        rdfs:subClassOf :Organ .
+
+
+
+###  http://graffl.ai/medical#Nose
+
+:Nose rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Organ ;
+      
+      :effect "Nose" ,
+              :Smell .
+
+
+
+###  http://graffl.ai/medical#Organ
+
+:Organ rdf:type owl:Class ;
+       
+       rdfs:label "Organ" ;
+       
+       rdfs:subClassOf :Part_of_Body .
+
+
+
+###  http://graffl.ai/medical#Organ_Transplant
+
+:Organ_Transplant rdf:type owl:Class ;
+                  
+                  rdfs:label "Organ Transplant" ;
+                  
+                  rdfs:subClassOf :Transplant .
+
+
+
+###  http://graffl.ai/medical#Parathyroid_Gland
+
+:Parathyroid_Gland rdf:type owl:Class ;
+                   
+                   rdfs:label "Parathyroid Gland" ;
+                   
+                   rdfs:subClassOf :Gland .
+
+
+
+###  http://graffl.ai/medical#Part_of_Body
+
+:Part_of_Body rdf:type owl:Class ;
+              
+              rdfs:label "Part of Body" .
+
+
+
+###  http://graffl.ai/medical#Person
+
+:Person rdf:type owl:Class ;
+        
+        rdfs:label "Person" ;
+        
+        rdfs:subClassOf :Agent .
+
+
+
+###  http://graffl.ai/medical#Physical_Condition
+
+:Physical_Condition rdf:type owl:Class ;
+                    
+                    rdfs:label "Physical Condition" ;
+                    
+                    rdfs:subClassOf :State_of_Being ;
+                    
+                    rdfs:seeAlso "Physical State" .
+
+
+
+###  http://graffl.ai/medical#Pituitary_Gland
+
+:Pituitary_Gland rdf:type owl:Class ;
+                 
+                 rdfs:label "Pituitary Gland" ;
+                 
+                 rdfs:subClassOf :Gland .
+
+
+
+###  http://graffl.ai/medical#Problem
+
+:Problem rdf:type owl:Class ;
+         
+         rdfs:label "Problem" .
+
+
+
+###  http://graffl.ai/medical#Qualifiable_State
+
+:Qualifiable_State rdf:type owl:Class ;
+                   
+                   rdfs:label "Qualifiable State" ;
+                   
+                   rdfs:subClassOf :State .
+
+
+
+###  http://graffl.ai/medical#Qualifiable_Time
+
+:Qualifiable_Time rdf:type owl:Class ;
+                  
+                  rdfs:label "Qualifiable Time" ;
+                  
+                  rdfs:subClassOf :Time .
+
+
+
+###  http://graffl.ai/medical#Qualified_Age_Bucket
+
+:Qualified_Age_Bucket rdf:type owl:Class ;
+                      
+                      rdfs:label "Qualified Age Bucket" ;
+                      
+                      rdfs:subClassOf :Age_Bucket .
+
+
+
+###  http://graffl.ai/medical#Quantifiable_State
+
+:Quantifiable_State rdf:type owl:Class ;
+                    
+                    rdfs:label "Quantifiable State" ;
+                    
+                    rdfs:subClassOf :State .
+
+
+
+###  http://graffl.ai/medical#Quantifiable_Time
+
+:Quantifiable_Time rdf:type owl:Class ;
+                   
+                   rdfs:label "Quantifiable Time" ;
+                   
+                   rdfs:subClassOf :Time .
+
+
+
+###  http://graffl.ai/medical#Quantified_Age_Bucket
+
+:Quantified_Age_Bucket rdf:type owl:Class ;
+                       
+                       rdfs:label "Quantified Age Bucket" ;
+                       
+                       rdfs:subClassOf :Age_Bucket .
+
+
+
+###  http://graffl.ai/medical#Saliva
+
+:Saliva rdf:type owl:Class ;
+        
+        rdfs:label "Saliva" ;
+        
+        rdfs:subClassOf :Fluid_Discharge .
+
+
+
+###  http://graffl.ai/medical#Semen
+
+:Semen rdf:type owl:Class ;
+       
+       rdfs:label "Semen" ;
+       
+       rdfs:subClassOf :Fluid_Discharge .
+
+
+
+###  http://graffl.ai/medical#Severe
+
+:Severe rdf:type owl:Class ;
+        
+        rdfs:label "Severe" ;
+        
+        rdfs:subClassOf :Qualifiable_State ;
+        
+        rdfs:seeAlso "Serious" .
+
+
+
+###  http://graffl.ai/medical#Short_Term
+
+:Short_Term rdf:type owl:Class ;
+            
+            rdfs:label "Short Term" ;
+            
+            rdfs:subClassOf :Qualifiable_Time .
+
+
+
+###  http://graffl.ai/medical#Sight
+
+:Sight rdf:type owl:Class ;
+       
+       rdfs:label "Sight" ;
+       
+       rdfs:subClassOf :State_of_Capability ;
+       
+       rdfs:seeAlso "Vision" .
+
+
+
+###  http://graffl.ai/medical#Skeletal_Muscle
+
+:Skeletal_Muscle rdf:type owl:Class ;
+                 
+                 rdfs:label "Skeletal Muscle" ;
+                 
+                 rdfs:subClassOf :Muscle .
+
+
+
+###  http://graffl.ai/medical#Smell
+
+:Smell rdf:type owl:Class ;
+       
+       rdfs:label "Smell" ;
+       
+       rdfs:subClassOf :State_of_Capability ;
+       
+       :effect :Taste .
+
+
+
+###  http://graffl.ai/medical#Spleen
+
+:Spleen rdf:type owl:Class ;
+        
+        rdfs:label "Spleen" ;
+        
+        rdfs:subClassOf :Organ .
+
+
+
+###  http://graffl.ai/medical#State
+
+:State rdf:type owl:Class ;
+       
+       rdfs:label "State" .
+
+
+
+###  http://graffl.ai/medical#State_of_Being
+
+:State_of_Being rdf:type owl:Class ;
+                
+                rdfs:label "State of Being" ;
+                
+                rdfs:subClassOf :Condition ,
+                                :State .
+
+
+
+###  http://graffl.ai/medical#State_of_Capability
+
+:State_of_Capability rdf:type owl:Class ;
+                     
+                     rdfs:label "State of Capability" ;
+                     
+                     rdfs:subClassOf :Condition .
+
+
+
+###  http://graffl.ai/medical#Stomach
+
+:Stomach rdf:type owl:Class ;
+         
+         rdfs:label "Stomach" ;
+         
+         rdfs:subClassOf :Organ .
+
+
+
+###  http://graffl.ai/medical#Symptom
+
+:Symptom rdf:type owl:Class ;
+         
+         rdfs:label "Symptom" ;
+         
+         rdfs:subClassOf :Health_Event ;
+         
+         rdfs:seeAlso "Symptoms" .
+
+
+
+###  http://graffl.ai/medical#System
+
+:System rdf:type owl:Class ;
+        
+        rdfs:label "System" .
+
+
+
+###  http://graffl.ai/medical#Taste
+
+:Taste rdf:type owl:Class ;
+       
+       rdfs:label "Taste" ;
+       
+       rdfs:subClassOf :State_of_Capability .
+
+
+
+###  http://graffl.ai/medical#Taste_Loss
+
+:Taste_Loss rdf:type owl:Class ;
+            
+            rdfs:label "Taste Loss" ;
+            
+            rdfs:subClassOf :Health_Loss ;
+            
+            :affect :Taste .
+
+
+
+###  http://graffl.ai/medical#Tears
+
+:Tears rdf:type owl:Class ;
+       
+       rdfs:label "Tears" ;
+       
+       rdfs:subClassOf :Fluid_Discharge .
+
+
+
+###  http://graffl.ai/medical#Time
+
+:Time rdf:type owl:Class ;
+      
+      rdfs:label "Time" .
+
+
+
+###  http://graffl.ai/medical#Toddler
+
+:Toddler rdf:type owl:Class ;
+         
+         rdfs:label "Toddler" ;
+         
+         rdfs:subClassOf :Child .
+
+
+
+###  http://graffl.ai/medical#Tongue
+
+:Tongue rdf:type owl:Class ;
+        
+        rdfs:label "Tongue" ;
+        
+        rdfs:subClassOf :Organ ;
+        
+        :effect :Taste .
+
+
+
+###  http://graffl.ai/medical#Touch
+
+:Touch rdf:type owl:Class ;
+       
+       rdfs:label "Touch" ;
+       
+       rdfs:subClassOf :State_of_Capability .
+
+
+
+###  http://graffl.ai/medical#Transfusion
+
+:Transfusion rdf:type owl:Class ;
+             
+             rdfs:label "Transfusion" ;
+             
+             rdfs:subClassOf :Medical_Procedure .
+
+
+
+###  http://graffl.ai/medical#Transplant
+
+:Transplant rdf:type owl:Class ;
+            
+            rdfs:label "Transplant" ;
+            
+            rdfs:subClassOf :Medical_Procedure .
+
+
+
+###  http://graffl.ai/medical#Urine
+
+:Urine rdf:type owl:Class ;
+       
+       rdfs:label "Urine" ;
+       
+       rdfs:subClassOf :Fluid_Discharge .
+
+
+
+###  http://graffl.ai/medical#Virus
+
+:Virus rdf:type owl:Class ;
+       
+       rdfs:label "Virus" .
+
+
+
+###  http://graffl.ai/medical#Vision_Loss
+
+:Vision_Loss rdf:type owl:Class ;
+             
+             rdfs:label "Vision Loss" ;
+             
+             rdfs:subClassOf :Health_Loss ;
+             
+             :affect :Sight .
+
+
+
+###  http://graffl.ai/medical#Weak_Immunity
+
+:Weak_Immunity rdf:type owl:Class ;
+               
+               rdfs:label "Weak Immunity" ;
+               
+               rdfs:subClassOf :Immune_Condition ;
+               
+               rdfs:seeAlso "weakened immune systems" .
+
+
+
+###  http://graffl.ai/medical#Young_Child
+
+:Young_Child rdf:type owl:Class ;
+             
+             rdfs:label "Young Child" ;
+             
+             rdfs:subClassOf :Child .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

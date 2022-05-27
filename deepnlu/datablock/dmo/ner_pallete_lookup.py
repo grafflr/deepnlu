@@ -55,8 +55,8 @@ class NerPalleteLookup(BaseObject):
     @staticmethod
     def _load_config() -> dict:
         path = os.path.normpath(os.path.join(
-            EnvIO.str_or_exception("GRAFFLR_HOME"),
-            "apps/blocks/datablock/resources/data/palletes.yaml"))
+            os.getcwd(),
+            'resources/palletes.yaml'))
 
         FileIO.exists_or_error(path)
 

@@ -40,14 +40,6 @@ palletes:
       - 5cb85c
       - 428bca
     url: https://www.color-hex.com/color-palette/5452
-  Bootstrap:
-    colors:
-      - ffb3ba
-      - ffdfba
-      - ffffba
-      - baffc9
-      - bae1ff
-    url: https://www.color-hex.com/color-palette/5361
   Google:
     colors:
       - '008744'

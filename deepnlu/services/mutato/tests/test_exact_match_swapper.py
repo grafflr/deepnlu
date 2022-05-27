@@ -92,8 +92,8 @@ def test_component():
 
     ont14n = 'chitchat'
 
-    ner_finder = FindNER(ont14n)
-    syn_finder = FindSynonyms(ont14n)
+    ner_finder = FindNER([ont14n])
+    syn_finder = FindSynonyms([ont14n])
 
     dmo = ExactMatchSwapper(ner_finder=ner_finder,
                             syn_finder=syn_finder,

@@ -1,0 +1,286 @@
+@prefix : <https://w3id.org/MON/ess.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix j.0: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/MON/ess.owl> .
+
+<https://w3id.org/MON/ess.owl> rdf:type owl:Ontology ;
+                               
+                               dc:title "Exton-Smith Scale Ontology"@en ;
+                               
+                               j.0:coversRequirements "How was the condition of patient at a certain time? Was it Bad, Poor, Fair or Good?"@en ,
+                                                      "How was the mental state of a patient at a certain time? Was it Stuporosous, Confused, Apathetic or Alert?"@en ;
+                               
+                               j.0:hasIntent "To represent the Exton-Smith Scale (ESS)."@en ;
+                               
+                               j.0:coversRequirements "Which is the range of ESS scores associated with the high/medium/low risk of sores?"@en ,
+                                                      "Which is the score associated with a patient activity level?"@en ,
+                                                      "Which is the score associated with a patient condition?"@en ,
+                                                      "Which is the score associated with a patient mental state?"@en ,
+                                                      "Which is the score associated with the patient incontinence level?"@en ,
+                                                      "Which is the score associated with the patient mobility?"@en ,
+                                                      "Which was the patient's activity level at a certain time? Did s/he stay in the bed all the day? Did s/he need of a chairfast? Did s/he walk with help? Or, was s/he ambulant?"@en ,
+                                                      "Which was the patient's incontinence level at a certain time? Was s/he double incontinent? Was s/he usually incontinent of urine? Was s/he occasionally incontinent? Or, wasn't s/he incontinent?"@en ,
+                                                      "Which was the patient's mobility in bed at a certain time? Was s/he immobile, very limited, slightly limited, or full?"@en ,
+                                                      "Which was the patient's score at the exton-smith scale (ESS) at a certain time?"@en ;
+                               
+                               owl:imports <https://w3id.org/MON/cga.owl> ,
+                                           <https://w3id.org/MON/generic.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasIntent
+
+j.0:hasIntent rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cga.owl#isAssessedBy
+
+<https://w3id.org/MON/cga.owl#isAssessedBy> rdf:type owl:ObjectProperty .
+
+
+
+###  https://w3id.org/MON/ess.owl#hasCondition
+
+:hasCondition rdf:type owl:FunctionalProperty ,
+                       owl:ObjectProperty ;
+              
+              rdfs:label "has condition"@en ;
+              
+              rdfs:comment "It associates an ESS assessment with the found condition."@en .
+
+
+
+###  https://w3id.org/MON/ess.owl#hasPressureSoresRisk
+
+:hasPressureSoresRisk rdf:type owl:ObjectProperty ;
+                      
+                      rdfs:label "has pressure sores risk"@en .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cga.owl#score
+
+<https://w3id.org/MON/cga.owl#score> rdf:type owl:DatatypeProperty .
+
+
+
+###  https://w3id.org/MON/cga.owl#scoreMax
+
+<https://w3id.org/MON/cga.owl#scoreMax> rdf:type owl:DatatypeProperty .
+
+
+
+###  https://w3id.org/MON/cga.owl#scoreMin
+
+<https://w3id.org/MON/cga.owl#scoreMin> rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cga.owl#ClinicalTest
+
+<https://w3id.org/MON/cga.owl#ClinicalTest> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/cga.owl#GeriatricAssessment
+
+<https://w3id.org/MON/cga.owl#GeriatricAssessment> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/cga.owl#Question
+
+<https://w3id.org/MON/cga.owl#Question> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/ess.owl#Activity
+
+:Activity rdf:type owl:Class ;
+          
+          rdfs:label "Activity"@en ;
+          
+          rdfs:subClassOf :PatientCondition ;
+          
+          rdfs:comment "The Activity (e.g. in bed all day, chairfast etc.) of a patient as intended in the Exton-Smith Scale."@en .
+
+
+
+###  https://w3id.org/MON/ess.owl#Exton-SmithScaleAssessment
+
+:Exton-SmithScaleAssessment rdf:type owl:Class ;
+                            
+                            rdfs:label "Exton-Smith Scale (ESS) Assessment"@en ;
+                            
+                            rdfs:subClassOf <https://w3id.org/MON/cga.owl#GeriatricAssessment> ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty <https://w3id.org/MON/cga.owl#score> ;
+                                              owl:someValuesFrom rdfs:Literal
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasCondition ;
+                                              owl:someValuesFrom :Incontinence
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasCondition ;
+                                              owl:someValuesFrom :MentalState
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasCondition ;
+                                              owl:someValuesFrom :MobilityInBed
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasPressureSoresRisk ;
+                                              owl:someValuesFrom :PressureSoresRisk
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasCondition ;
+                                              owl:someValuesFrom :Activity
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasCondition ;
+                                              owl:someValuesFrom :PatientGeneralCondition
+                                            ] ;
+                            
+                            rdfs:comment "An action aiming at assessing the Exton-Smith Scale for a patient."@en .
+
+
+
+###  https://w3id.org/MON/ess.owl#Incontinence
+
+:Incontinence rdf:type owl:Class ;
+              
+              rdfs:label "Incontinence"@en ;
+              
+              rdfs:subClassOf :PatientCondition ;
+              
+              rdfs:comment "The incontinence (e.g. doubly incontinent, usually of urine etc.) of a patient as intended in the Exton-Smith Scale."@en .
+
+
+
+###  https://w3id.org/MON/ess.owl#MentalState
+
+:MentalState rdf:type owl:Class ;
+             
+             rdfs:label "Mental state"@en ;
+             
+             rdfs:subClassOf :MobilityInBed ;
+             
+             rdfs:comment "The Mental State (e.g. confused, alert etc.) of a patient as intended in the Exton-Smith Scale."@en .
+
+
+
+###  https://w3id.org/MON/ess.owl#MobilityInBed
+
+:MobilityInBed rdf:type owl:Class ;
+               
+               rdfs:label "Mobility in bed"@en ;
+               
+               rdfs:subClassOf :PatientCondition ;
+               
+               rdfs:comment "The mobility in bed (e.g. immobile, very limited etc) of a patient as intended  in the Exton-Smith Scale."@en .
+
+
+
+###  https://w3id.org/MON/ess.owl#PatientCondition
+
+:PatientCondition rdf:type owl:Class ;
+                  
+                  rdfs:label "Patient condition"@en ;
+                  
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty <https://w3id.org/MON/generic.owl#name> ;
+                                    owl:someValuesFrom rdfs:Literal
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <https://w3id.org/MON/cga.owl#score> ;
+                                    owl:someValuesFrom rdfs:Literal
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <https://w3id.org/MON/cga.owl#isAssessedBy> ;
+                                    owl:allValuesFrom [ rdf:type owl:Class ;
+                                                        owl:unionOf ( <https://w3id.org/MON/cga.owl#ClinicalTest>
+                                                                      <https://w3id.org/MON/cga.owl#Question>
+                                                                    )
+                                                      ]
+                                  ] .
+
+
+
+###  https://w3id.org/MON/ess.owl#PatientGeneralCondition
+
+:PatientGeneralCondition rdf:type owl:Class ;
+                         
+                         rdfs:label "Patient general condition"@en ;
+                         
+                         rdfs:subClassOf :PatientCondition ;
+                         
+                         rdfs:comment "The general condition (e.g. bad, good, fair etc) of a patient as intended  in the Exton-Smith Scale."@en .
+
+
+
+###  https://w3id.org/MON/ess.owl#PressureSoresRisk
+
+:PressureSoresRisk rdf:type owl:Class ;
+                   
+                   rdfs:label "Pressure sores risk"@en ;
+                   
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty <https://w3id.org/MON/cga.owl#scoreMax> ;
+                                     owl:someValuesFrom rdfs:Literal
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <https://w3id.org/MON/cga.owl#scoreMin> ;
+                                     owl:someValuesFrom rdfs:Literal
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty <https://w3id.org/MON/generic.owl#name> ;
+                                     owl:someValuesFrom rdfs:Literal
+                                   ] ;
+                   
+                   rdfs:comment "A risk (e.g. high, medium etc.) of pressure sores."@en .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

@@ -1,0 +1,215 @@
+@prefix : <https://w3id.org/MON/cirs.owl#> .
+@prefix j.0: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/MON/cirs.owl> .
+
+<https://w3id.org/MON/cirs.owl> rdf:type owl:Ontology ;
+                                
+                                j.0:hasIntent "To represent the results of the Cumulutave Illness Rating Scale (CIRS)."@en ;
+                                
+                                j.0:coversRequirements "Which are the possible ratings in the CUMULATIVE ILLNESS RATING SCALE (C.I.R.S.)?"@en ,
+                                                       "Which is the description of a biological system?"@en ,
+                                                       "Which is the name of a rating in the CUMULATIVE ILLNESS RATING SCALE (C.I.R.S.)?"@en ,
+                                                       "Which was the illness rating according to CUMULATIVE ILLNESS RATING SCALE (C.I.R.S.) for a biological system at a certain time?"@en ,
+                                                       "Which was the patient's COMORBIDITY INDEX (CIRS-CI) at a certain time?"@en ,
+                                                       "Which was the patient's ILLNESS SEVERITY SCORE (CIRS-IS) at a certain time?"@en ;
+                                
+                                owl:imports <https://w3id.org/MON/cga.owl> .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cirs.owl#assessesBiologicalSystem
+
+:assessesBiologicalSystem rdf:type owl:FunctionalProperty ,
+                                   owl:ObjectProperty ;
+                          
+                          rdfs:label "assesses biological system"@en ;
+                          
+                          rdfs:comment "It is used to associate a Biological System Assessment with the assess Biological System."@en ;
+                          
+                          rdfs:range :BiologicalSystem ;
+                          
+                          rdfs:domain :BiologicalSystemAssessment .
+
+
+
+###  https://w3id.org/MON/cirs.owl#hasRating
+
+:hasRating rdf:type owl:FunctionalProperty ,
+                    owl:ObjectProperty ;
+           
+           rdfs:label "has rating"@en .
+
+
+
+###  https://w3id.org/MON/clinicalact.owl#hasMember
+
+<https://w3id.org/MON/clinicalact.owl#hasMember> rdf:type owl:ObjectProperty .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cga.owl#score
+
+<https://w3id.org/MON/cga.owl#score> rdf:type owl:DatatypeProperty .
+
+
+
+###  https://w3id.org/MON/cirs.owl#comorbidityIndex
+
+:comorbidityIndex rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:label "Comorbidity index (CIRS-CI)"@en ;
+                  
+                  rdfs:comment "The number of biological system with a score of 3 or greater (excluded the psychiatric one)."@en ;
+                  
+                  rdfs:range xsd:integer ;
+                  
+                  rdfs:domain :CIRSAssessment .
+
+
+
+###  https://w3id.org/MON/cirs.owl#illnessSeverityScore
+
+:illnessSeverityScore rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:label "Illness severity score (CIRS-IS)"@en ;
+                      
+                      rdfs:comment "The mean of all single biological system assessment (excluded the psychiatric one) of a CIRS evalutation."@en ;
+                      
+                      rdfs:range xsd:double ;
+                      
+                      rdfs:domain :CIRSAssessment .
+
+
+
+###  https://w3id.org/MON/generic.owl#description
+
+<https://w3id.org/MON/generic.owl#description> rdf:type owl:DatatypeProperty .
+
+
+
+###  https://w3id.org/MON/generic.owl#name
+
+<https://w3id.org/MON/generic.owl#name> rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/MON/cga.owl#GeriatricAssessment
+
+<https://w3id.org/MON/cga.owl#GeriatricAssessment> rdf:type owl:Class .
+
+
+
+###  https://w3id.org/MON/cirs.owl#BiologicalSystem
+
+:BiologicalSystem rdf:type owl:Class ;
+                  
+                  rdfs:label "Biological system"@en ;
+                  
+                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                    owl:onProperty <https://w3id.org/MON/generic.owl#description> ;
+                                    owl:someValuesFrom rdfs:Literal
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty <https://w3id.org/MON/generic.owl#name> ;
+                                    owl:someValuesFrom rdfs:Literal
+                                  ] ;
+                  
+                  rdfs:comment "A complex network of biologically relevant entities (e.g. respiratory system, vascular system)."@en .
+
+
+
+###  https://w3id.org/MON/cirs.owl#BiologicalSystemAssessment
+
+:BiologicalSystemAssessment rdf:type owl:Class ;
+                            
+                            rdfs:label "Biological system assessment"@en ;
+                            
+                            rdfs:subClassOf <https://w3id.org/MON/cga.owl#GeriatricAssessment> ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :hasRating ;
+                                              owl:someValuesFrom :CIRSRating
+                                            ] ,
+                                            [ rdf:type owl:Restriction ;
+                                              owl:onProperty :assessesBiologicalSystem ;
+                                              owl:someValuesFrom :BiologicalSystem
+                                            ] ;
+                            
+                            rdfs:comment "The action of assessing the illness rating of the biological system of a patient."@en .
+
+
+
+###  https://w3id.org/MON/cirs.owl#CIRSAssessment
+
+:CIRSAssessment rdf:type owl:Class ;
+                
+                rdfs:label "CIRS Assessment"@en ;
+                
+                rdfs:subClassOf <https://w3id.org/MON/cga.owl#GeriatricAssessment> ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :illnessSeverityScore ;
+                                  owl:someValuesFrom xsd:double
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty <https://w3id.org/MON/clinicalact.owl#hasMember> ;
+                                  owl:someValuesFrom :BiologicalSystemAssessment
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :comorbidityIndex ;
+                                  owl:someValuesFrom xsd:integer
+                                ] ;
+                
+                rdfs:comment "The action of assessing the CIRS for a patient."@en .
+
+
+
+###  https://w3id.org/MON/cirs.owl#CIRSRating
+
+:CIRSRating rdf:type owl:Class ;
+            
+            rdfs:label "CIRS rating"@en ;
+            
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty <https://w3id.org/MON/generic.owl#name> ;
+                              owl:someValuesFrom rdfs:Literal
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty <https://w3id.org/MON/cga.owl#score> ;
+                              owl:someValuesFrom rdfs:Literal
+                            ] ;
+            
+            rdfs:comment "The ratings of the Cumulative Illness Rating Scale (CIRS)"@en .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

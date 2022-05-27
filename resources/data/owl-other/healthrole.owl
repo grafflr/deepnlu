@@ -1,0 +1,201 @@
+@prefix : <https://w3id.org/MON/healthrole.owl#> .
+@prefix j.0: <https://w3id.org/MON/healthrole.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/MON/healthrole.owl> .
+
+<https://w3id.org/MON/healthrole.owl> rdf:type owl:Ontology ;
+                                      
+                                      owl:imports <https://w3id.org/MON/person.owl> .
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/healthrole.owl#hasHealthRole
+
+:hasHealthRole rdf:type owl:ObjectProperty ;
+               
+               rdfs:label "has health role"@en ;
+               
+               rdfs:comment "It relates a person with its role in a health context."@en ;
+               
+               rdfs:range :HealthRole ;
+               
+               rdfs:domain <https://w3id.org/MON/person.owl#Person> .
+
+
+
+###  https://w3id.org/MON/healthrole.owl#hasPatient
+
+:hasPatient rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "has patient"@en ;
+            
+            rdfs:comment "The patient who participates to the Action."@en ;
+            
+            rdfs:subPropertyOf <https://w3id.org/MON/action.owl#hasParticipant> ;
+            
+            rdfs:range :Patient .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/MON/action.owl#Action
+
+<https://w3id.org/MON/action.owl#Action> owl:disjointWith <https://w3id.org/MON/action.owl#Agent> ,
+                                                          <https://w3id.org/MON/action.owl#Task> ,
+                                                          :HealthRole ,
+                                                          <https://w3id.org/MON/person.owl#Sex> ,
+                                                          <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                          <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/action.owl#Agent
+
+<https://w3id.org/MON/action.owl#Agent> owl:disjointWith <https://w3id.org/MON/action.owl#Task> ,
+                                                         :HealthRole ,
+                                                         <https://w3id.org/MON/person.owl#Sex> ,
+                                                         <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                         <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/action.owl#Task
+
+<https://w3id.org/MON/action.owl#Task> owl:disjointWith :HealthRole ,
+                                                        <https://w3id.org/MON/person.owl#Sex> ,
+                                                        <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                        <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/healthrole.owl#HealthRole
+
+:HealthRole rdf:type owl:Class ;
+            
+            rdfs:label "Health Role"@en ;
+            
+            owl:disjointWith <https://w3id.org/MON/person.owl#Sex> ,
+                             <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                             <https://w3id.org/MON/time.owl#TemporalEntity> ;
+            
+            rdfs:comment "The roles of the persons involved in the assistive context."@en .
+
+
+
+###  https://w3id.org/MON/healthrole.owl#Nurse
+
+:Nurse rdf:type owl:Class ;
+       
+       rdfs:label "Nurse"@en ;
+       
+       rdfs:subClassOf <https://w3id.org/MON/person.owl#Person> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :hasHealthRole ;
+                         owl:hasValue :NurseRole
+                       ] ;
+       
+       rdfs:comment "A person trained to care for the sick or infirm, especially in a hospital."@en .
+
+
+
+###  https://w3id.org/MON/healthrole.owl#Patient
+
+:Patient rdf:type owl:Class ;
+         
+         rdfs:label "Patient"@en ;
+         
+         rdfs:subClassOf <https://w3id.org/MON/person.owl#Person> ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :hasHealthRole ;
+                           owl:hasValue :PatientRole
+                         ] ;
+         
+         rdfs:comment "A person who participates in a healthcare act while playing the patient role."@en .
+
+
+
+###  https://w3id.org/MON/healthrole.owl#Physician
+
+:Physician rdf:type owl:Class ;
+           
+           rdfs:label "Physician"@en ;
+           
+           rdfs:subClassOf <https://w3id.org/MON/person.owl#Person> ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :hasHealthRole ;
+                             owl:hasValue :PhysicianRole
+                           ] ;
+           
+           rdfs:comment "A doctor; a person who has been educated, trained, and licensed to practice the art and science of medicine."@en .
+
+
+
+###  https://w3id.org/MON/person.owl#Sex
+
+<https://w3id.org/MON/person.owl#Sex> owl:disjointWith <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                       <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/spatial.owl#SpatialThing
+
+<https://w3id.org/MON/spatial.owl#SpatialThing> owl:disjointWith <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/time.owl#TemporalEntity
+
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  https://w3id.org/MON/healthrole.owl#NurseRole
+
+:NurseRole rdf:type owl:NamedIndividual ,
+                    :HealthRole .
+
+
+
+###  https://w3id.org/MON/healthrole.owl#PatientRole
+
+:PatientRole rdf:type owl:NamedIndividual ,
+                      :HealthRole .
+
+
+
+###  https://w3id.org/MON/healthrole.owl#PhysicianRole
+
+:PhysicianRole rdf:type owl:NamedIndividual ,
+                        :HealthRole .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

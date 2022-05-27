@@ -1,0 +1,4687 @@
+@prefix : <http://graffl.ai/defi#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://graffl.ai/defi> .
+
+<http://graffl.ai/defi> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://graffl.ai/defi#affects
+
+:affects rdf:type owl:AnnotationProperty ;
+         
+         rdfs:comment """The most popular application of X is Y
+X affects Y""" .
+
+
+
+###  http://graffl.ai/defi#effects
+
+:effects rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/defi#partOf
+
+:partOf rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://graffl.ai/defi#Acceptable
+
+:Acceptable rdf:type owl:Class ;
+            
+            rdfs:label "Acceptable" ;
+            
+            rdfs:subClassOf :Attribute ;
+            
+            rdfs:seeAlso "Acceptability" .
+
+
+
+###  http://graffl.ai/defi#Access
+
+:Access rdf:type owl:Class ;
+        
+        rdfs:label "Access" ;
+        
+        rdfs:subClassOf :Action ;
+        
+        rdfs:seeAlso "accessibility" .
+
+
+
+###  http://graffl.ai/defi#Account
+
+:Account rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Artefact ;
+         
+         rdfs:seeAlso "accounts" .
+
+
+
+###  http://graffl.ai/defi#Action
+
+:Action rdf:type owl:Class ;
+        
+        rdfs:label "Action" ;
+        
+        rdfs:seeAlso "task, tasks, tasked" .
+
+
+
+###  http://graffl.ai/defi#Actor
+
+:Actor rdf:type owl:Class ;
+       
+       rdfs:label "Actor" ;
+       
+       rdfs:seeAlso "Actors" .
+
+
+
+###  http://graffl.ai/defi#Adaptable
+
+:Adaptable rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Advantage
+
+:Advantage rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Attribute ;
+           
+           owl:disjointWith :Disadvantage ;
+           
+           rdfs:seeAlso "advantageous" ,
+                        "upside, upsides, up side, up sides" .
+
+
+
+###  http://graffl.ai/defi#Agency
+
+:Agency rdf:type owl:Class ;
+        
+        rdfs:label "Agency" .
+
+
+
+###  http://graffl.ai/defi#Algorithmic_Stablecoin
+
+:Algorithmic_Stablecoin rdf:type owl:Class ;
+                        
+                        rdfs:label "Algorithmic Stablecoin" ;
+                        
+                        rdfs:subClassOf :Stablecoin .
+
+
+
+###  http://graffl.ai/defi#Anonymous_Founding_Team
+
+:Anonymous_Founding_Team rdf:type owl:Class ;
+                         
+                         rdfs:label "Anonymous Founding Team" ;
+                         
+                         rdfs:subClassOf :Founding_Team .
+
+
+
+###  http://graffl.ai/defi#Application
+
+:Application rdf:type owl:Class ;
+             
+             rdfs:label "Application" .
+
+
+
+###  http://graffl.ai/defi#Arbitrage
+
+:Arbitrage rdf:type owl:Class ;
+           
+           rdfs:label "Arbitrage" ;
+           
+           rdfs:subClassOf :Financial_Primitive .
+
+
+
+###  http://graffl.ai/defi#Artefact
+
+:Artefact rdf:type owl:Class ;
+          
+          rdfs:label "Artefact" ;
+          
+          rdfs:seeAlso "Artifact" .
+
+
+
+###  http://graffl.ai/defi#Asic_Hardware
+
+:Asic_Hardware rdf:type owl:Class ;
+               
+               rdfs:label "ASIC Hardware" ;
+               
+               rdfs:subClassOf :Hardware ;
+               
+               rdfs:comment """In order to discourage centralisation due to the use of specialised hardware (e.g. ASICs), as has occurred in the Bitcoin network, Ethereum chose a memory-hard computational problem. If the problem requires memory as well as CPU, the ideal hardware is in fact the general computer. This makes Ethereum’s Proof of Work ASIC-resistant, allowing a more decentralized distribution of security than blockchains whose mining is dominated by specialized hardware, like Bitcoin.
+
+https://ethdocs.org/en/latest/introduction/what-is-ethereum.html""" .
+
+
+
+###  http://graffl.ai/defi#Asset
+
+:Asset rdf:type owl:Class ;
+       
+       rdfs:label "Asset" ;
+       
+       rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Asset_Fund
+
+:Asset_Fund rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Fund .
+
+
+
+###  http://graffl.ai/defi#Asset_Transfer
+
+:Asset_Transfer rdf:type owl:Class ;
+                
+                rdfs:label "Asset Transfer" ;
+                
+                rdfs:subClassOf :Transfer .
+
+
+
+###  http://graffl.ai/defi#Asymmetric_Key_Cryptography
+
+:Asymmetric_Key_Cryptography rdf:type owl:Class ;
+                             
+                             rdfs:label "Asymmetric Key Cryptography" ;
+                             
+                             rdfs:subClassOf :Cryptography ;
+                             
+                             rdfs:comment """No one can post a false transaction without ownership of the corresponding account due to the asymmetric key cryptography protecting the accounts. You have one “public” key representing an address to receive tokens and a “private” key used to unlock and spend tokens over which you have custody. 
+
+This same type of cryptography is used to protect your credit card information and data when using the Internet. A single account cannot “double spend” its tokens because the ledger keeps an audit of the balance at any given time and the faulty transaction would not clear.
+
+The ability to prevent a double spend without a central authority illustrates the primary advantage of using a blockchain to maintain the underlying ledger.""" .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (pp. 20-21). Wiley. Kindle Edition. " ;
+  owl:annotatedTarget """No one can post a false transaction without ownership of the corresponding account due to the asymmetric key cryptography protecting the accounts. You have one “public” key representing an address to receive tokens and a “private” key used to unlock and spend tokens over which you have custody. 
+
+This same type of cryptography is used to protect your credit card information and data when using the Internet. A single account cannot “double spend” its tokens because the ledger keeps an audit of the balance at any given time and the faulty transaction would not clear.
+
+The ability to prevent a double spend without a central authority illustrates the primary advantage of using a blockchain to maintain the underlying ledger.""" ;
+  owl:annotatedSource :Asymmetric_Key_Cryptography ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Attacker_Node
+
+:Attacker_Node rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Node ;
+               
+               :effects :Malicious_Action .
+
+
+
+###  http://graffl.ai/defi#Attribute
+
+:Attribute rdf:type owl:Class ;
+           
+           rdfs:label "Attribute" ;
+           
+           rdfs:seeAlso "Characteristic" .
+
+
+
+###  http://graffl.ai/defi#Auction
+
+:Auction rdf:type owl:Class ;
+         
+         rdfs:seeAlso "Auctions" .
+
+
+
+###  http://graffl.ai/defi#Autonomous_Monitoring
+
+:Autonomous_Monitoring rdf:type owl:Class ;
+                       
+                       rdfs:label "Autonomous Monitoring" ;
+                       
+                       rdfs:subClassOf :Monitor .
+
+
+
+###  http://graffl.ai/defi#Autonomous_Organization
+
+:Autonomous_Organization rdf:type owl:Class ;
+                         
+                         rdfs:label "Autonomous Organization" ;
+                         
+                         rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/defi#Balance
+
+:Balance rdf:type owl:Class ;
+         
+         rdfs:subClassOf :State .
+
+
+
+###  http://graffl.ai/defi#Bank
+
+:Bank rdf:type owl:Class ;
+      
+      rdfs:label "Bank" ;
+      
+      rdfs:subClassOf :Financial_Institution .
+
+
+
+###  http://graffl.ai/defi#Banking_Platform
+
+:Banking_Platform rdf:type owl:Class ;
+                  
+                  rdfs:label "Banking Platform" ;
+                  
+                  rdfs:subClassOf :Platform .
+
+
+
+###  http://graffl.ai/defi#Banking_System
+
+:Banking_System rdf:type owl:Class ;
+                
+                rdfs:label "Banking System" ;
+                
+                rdfs:subClassOf :System .
+
+
+
+###  http://graffl.ai/defi#Barter
+
+:Barter rdf:type owl:Class ;
+        
+        rdfs:label "Barter" ;
+        
+        rdfs:subClassOf :Exchange ;
+        
+        rdfs:seeAlso "peer to peer" ,
+                     "Barters, Bartered, Bartering" .
+
+
+
+###  http://graffl.ai/defi#Base_Rate
+
+:Base_Rate rdf:type owl:Class ;
+           
+           rdfs:label "Base Rate" ;
+           
+           rdfs:subClassOf :Rate .
+
+
+
+###  http://graffl.ai/defi#Basis
+
+:Basis rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#Basis_Cash
+
+:Basis_Cash rdf:type owl:Class ;
+            
+            rdfs:label "Basis Cash" ;
+            
+            rdfs:subClassOf :Algorithmic_Stablecoin ;
+            
+            rdfs:comment "Decentralized Stablecoin with an Algorithmic Central Bank" ;
+            
+            rdfs:isDefinedBy "https://basis.cash/" .
+
+
+
+###  http://graffl.ai/defi#Bitcoin
+
+:Bitcoin rdf:type owl:Class ;
+         
+         rdfs:label "Bitcoin" ;
+         
+         rdfs:subClassOf :Blockchain ,
+                         :Cryptocurrency ;
+         
+         rdfs:seeAlso "BTC" .
+
+
+
+###  http://graffl.ai/defi#Bitcoin_Foundation
+
+:Bitcoin_Foundation rdf:type owl:Class ;
+                    
+                    rdfs:label "Bitcoin Foundation" ;
+                    
+                    rdfs:subClassOf :Foundation .
+
+
+
+###  http://graffl.ai/defi#Bitcoin_Transaction
+
+:Bitcoin_Transaction rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Predefined_Transaction .
+
+
+
+###  http://graffl.ai/defi#Block_Creation
+
+:Block_Creation rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Creation .
+
+
+
+###  http://graffl.ai/defi#Block_Mine
+
+:Block_Mine rdf:type owl:Class ;
+            
+            rdfs:label "Block Mine" ;
+            
+            rdfs:subClassOf :Mine ;
+            
+            rdfs:seeAlso "mined its first block" .
+
+
+
+###  http://graffl.ai/defi#Blockchain
+
+:Blockchain rdf:type owl:Class ;
+            
+            rdfs:label "Blockchain" ;
+            
+            rdfs:subClassOf :Software_Protocol ;
+            
+            rdfs:comment "Fundamentally, blockchains are software protocols that allow multiple parties to operate under shared assumptions and data without trusting each other. These data can be anything, such as location and destination information of items in a supply chain or account balances of a token. Updates are packaged into “blocks” and are “chained” together cryptographically to allow an audit of the prior history – hence the name." ;
+            
+            rdfs:seeAlso "block chain, blockchains, block chains" ,
+                         "blockchain technology" ,
+                         "in a block, in the block" ;
+            
+            :affects :Cryptocurrency .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "Fundamentally, blockchains are software protocols that allow multiple parties to operate under shared assumptions and data without trusting each other. These data can be anything, such as location and destination information of items in a supply chain or account balances of a token. Updates are packaged into “blocks” and are “chained” together cryptographically to allow an audit of the prior history – hence the name." ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 18). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :Blockchain ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Blockchain_Consensus
+
+:Blockchain_Consensus rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :Distributed_System_Consensus .
+
+
+
+###  http://graffl.ai/defi#Blockchain_Contract
+
+:Blockchain_Contract rdf:type owl:Class ;
+                     
+                     rdfs:label "Blockchain Contract" ;
+                     
+                     rdfs:subClassOf :Smart_Contract ;
+                     
+                     rdfs:seeAlso "Blockchain Based Contract" .
+
+
+
+###  http://graffl.ai/defi#Blockchain_Council
+
+:Blockchain_Council rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Council .
+
+
+
+###  http://graffl.ai/defi#Bonding_Curve
+
+:Bonding_Curve rdf:type owl:Class ;
+               
+               rdfs:label "Bonding Curve" ;
+               
+               rdfs:subClassOf :Measurement ;
+               
+               rdfs:seeAlso "Bonding Curves" .
+
+
+
+###  http://graffl.ai/defi#Bonus
+
+:Bonus rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Reward ;
+       
+       rdfs:seeAlso "receive a bonus, receives a bonus" .
+
+
+
+###  http://graffl.ai/defi#Bullion
+
+:Bullion rdf:type owl:Class ;
+         
+         rdfs:label "Bullion" ;
+         
+         rdfs:subClassOf :Precious_Metal .
+
+
+
+###  http://graffl.ai/defi#Canadian_Dollar
+
+:Canadian_Dollar rdf:type owl:Class ;
+                 
+                 rdfs:label "Canadian Dollar" ;
+                 
+                 rdfs:subClassOf :Dollar ;
+                 
+                 rdfs:seeAlso "CAD" .
+
+
+
+###  http://graffl.ai/defi#Capability
+
+:Capability rdf:type owl:Class ;
+            
+            rdfs:label "Capability" ;
+            
+            rdfs:subClassOf :Attribute ;
+            
+            rdfs:seeAlso "Ability" .
+
+
+
+###  http://graffl.ai/defi#Cash_Economy
+
+:Cash_Economy rdf:type owl:Class ;
+              
+              rdfs:label "Cash Economy" ;
+              
+              rdfs:subClassOf :Economy .
+
+
+
+###  http://graffl.ai/defi#Censorship
+
+:Censorship rdf:type owl:Class ;
+            
+            rdfs:label "Censorship" ;
+            
+            rdfs:subClassOf :Action .
+
+
+
+###  http://graffl.ai/defi#Censorship_Resistant
+
+:Censorship_Resistant rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :Attribute ;
+                      
+                      rdfs:seeAlso "uncensorable" .
+
+
+
+###  http://graffl.ai/defi#Central_Bank
+
+:Central_Bank rdf:type owl:Class ;
+              
+              rdfs:label "Central Bank" ;
+              
+              rdfs:subClassOf :Bank ;
+              
+              :partOf :Centralized_Control .
+
+
+
+###  http://graffl.ai/defi#Centralized_Control
+
+:Centralized_Control rdf:type owl:Class ;
+                     
+                     rdfs:label "Centralized Finance" ;
+                     
+                     rdfs:subClassOf :Financial_System ;
+                     
+                     rdfs:seeAlso "Traditional Finance, TradFi" ,
+                                  "Centralized Financial System" ,
+                                  "Centralized Control" .
+
+
+
+###  http://graffl.ai/defi#Centralized_Currency
+
+:Centralized_Currency rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :Currency ;
+                      
+                      owl:disjointWith :Decentralized_Currency .
+
+
+
+###  http://graffl.ai/defi#Centralized_Exchange
+
+:Centralized_Exchange rdf:type owl:Class ;
+                      
+                      rdfs:label "Centralized Exchange" ;
+                      
+                      rdfs:subClassOf :Exchange_Platform ;
+                      
+                      owl:disjointWith :Decentralized_Exchange ;
+                      
+                      rdfs:seeAlso "Centralized Finance" ;
+                      
+                      :partOf :Centralized_Control .
+
+
+
+###  http://graffl.ai/defi#Centralized_System
+
+:Centralized_System rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :System ;
+                    
+                    owl:disjointWith :Distributed_System .
+
+
+
+###  http://graffl.ai/defi#CoinDesk
+
+:CoinDesk rdf:type owl:Class ;
+          
+          rdfs:label "CoinDesk" ;
+          
+          rdfs:subClassOf :Company .
+
+
+
+###  http://graffl.ai/defi#Coinbase
+
+:Coinbase rdf:type owl:Class ;
+          
+          rdfs:label "Coinbase" ;
+          
+          rdfs:subClassOf :Centralized_Exchange ,
+                          :Company ,
+                          :Trading_Platform .
+
+
+
+###  http://graffl.ai/defi#Coinshares
+
+:Coinshares rdf:type owl:Class ;
+            
+            rdfs:label "CoinShares" ;
+            
+            rdfs:subClassOf :Company ,
+                            :Digital_Asset_Fund .
+
+
+
+###  http://graffl.ai/defi#Collateral
+
+:Collateral rdf:type owl:Class ;
+            
+            rdfs:label "Collateral" ;
+            
+            rdfs:seeAlso "collateral backing" .
+
+
+
+###  http://graffl.ai/defi#Collateral_Liquidation
+
+:Collateral_Liquidation rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Liquidation ;
+                        
+                        rdfs:seeAlso "collateral can be liquidated" ,
+                                     "liquidate collateral, collateral liquidation" .
+
+
+
+###  http://graffl.ai/defi#Collateral_Requirement
+
+:Collateral_Requirement rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Requirement ;
+                        
+                        rdfs:seeAlso "Collateralization Rule, Collateralization Rules" ,
+                                     "Collaterialization Threshold" .
+
+
+
+###  http://graffl.ai/defi#Collateralization_Ratio
+
+:Collateralization_Ratio rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :Ratio .
+
+
+
+###  http://graffl.ai/defi#Collateralized_Loan
+
+:Collateralized_Loan rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Loan ;
+                     
+                     owl:disjointWith :Uncollaterialized_Loan .
+
+
+
+###  http://graffl.ai/defi#Collective_Trust_Model
+
+:Collective_Trust_Model rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Trust_Model .
+
+
+
+###  http://graffl.ai/defi#Company
+
+:Company rdf:type owl:Class ;
+         
+         rdfs:label "Company" ;
+         
+         rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/defi#Complete_Redundancy
+
+:Complete_Redundancy rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Redundancy ;
+                     
+                     owl:disjointWith :Partial_Redundancy .
+
+
+
+###  http://graffl.ai/defi#Complete_Slashing
+
+:Complete_Slashing rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Slashing_Condition .
+
+
+
+###  http://graffl.ai/defi#Computational_Node
+
+:Computational_Node rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Node .
+
+
+
+###  http://graffl.ai/defi#Computing_Cost
+
+:Computing_Cost rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Cost .
+
+
+
+###  http://graffl.ai/defi#Computing_Power
+
+:Computing_Power rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Power .
+
+
+
+###  http://graffl.ai/defi#Consensus
+
+:Consensus rdf:type owl:Class ;
+           
+           rdfs:label "Consensus" ;
+           
+           rdfs:subClassOf :Action .
+
+
+
+###  http://graffl.ai/defi#Consensus_Mechanism
+
+:Consensus_Mechanism rdf:type owl:Class ;
+                     
+                     rdfs:label "Consensus Mechanism" ;
+                     
+                     rdfs:subClassOf :Mechanism ;
+                     
+                     rdfs:seeAlso "Candidate Consensus Mechanism" ,
+                                  "Consensus Protocol" .
+
+
+
+###  http://graffl.ai/defi#Consensus_Problem
+
+:Consensus_Problem rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Problem ;
+                   
+                   rdfs:comment "The ability to trust the result of a transaction or block, without trusting the parties involved in the transaction, or the party that verified it." .
+
+
+
+###  http://graffl.ai/defi#Contract
+
+:Contract rdf:type owl:Class ;
+          
+          rdfs:label "Contract" ;
+          
+          rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Contract_Account
+
+:Contract_Account rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Ethereum_Account .
+
+
+
+###  http://graffl.ai/defi#Contract_Risk
+
+:Contract_Risk rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Risk .
+
+
+
+###  http://graffl.ai/defi#Cost
+
+:Cost rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Council
+
+:Council rdf:type owl:Class ;
+         
+         rdfs:label "Council" ;
+         
+         rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/defi#Counterparty_Risk
+
+:Counterparty_Risk rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Risk .
+
+
+
+###  http://graffl.ai/defi#Creation
+
+:Creation rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Action .
+
+
+
+###  http://graffl.ai/defi#Cryptoasset
+
+:Cryptoasset rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Digital_Asset ;
+             
+             rdfs:seeAlso "Crypto Asset" .
+
+
+
+###  http://graffl.ai/defi#Cryptocollateral
+
+:Cryptocollateral rdf:type owl:Class ;
+                  
+                  rdfs:label "Cryptocollateral" ;
+                  
+                  rdfs:subClassOf :Collateral ;
+                  
+                  rdfs:seeAlso "cryptocollateralization" ,
+                               "cryptocollateraliz!" .
+
+
+
+###  http://graffl.ai/defi#Cryptocollateralized_Stablecoin
+
+:Cryptocollateralized_Stablecoin rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Cryptocollateralized Stablecoin" ;
+                                 
+                                 rdfs:subClassOf :Stablecoin .
+
+
+
+###  http://graffl.ai/defi#Cryptocurrency
+
+:Cryptocurrency rdf:type owl:Class ;
+                
+                rdfs:label "Cryptocurrency" ;
+                
+                rdfs:subClassOf :Decentralized_Currency ,
+                                :Digital_Currency ;
+                
+                rdfs:seeAlso "Crypto" ,
+                             "crypto currency" .
+
+
+
+###  http://graffl.ai/defi#Cryptocurrency_Wallet
+
+:Cryptocurrency_Wallet rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Wallet ;
+                       
+                       rdfs:comment "the role of a wallet is to identify which addresses the user has keys to" .
+
+
+
+###  http://graffl.ai/defi#Cryptographic_Hashing_Problem
+
+:Cryptographic_Hashing_Problem rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf :Hashing_Problem ,
+                                               [ rdf:type owl:Class ;
+                                                 owl:intersectionOf ( :Cryptography
+                                                                      :Hashing
+                                                                      :Problem
+                                                                    )
+                                               ] .
+
+
+
+###  http://graffl.ai/defi#Cryptographic_Proof
+
+:Cryptographic_Proof rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Proof .
+
+
+
+###  http://graffl.ai/defi#Cryptographic_Scarcity
+
+:Cryptographic_Scarcity rdf:type owl:Class ;
+                        
+                        rdfs:label "Cryptographic Scarcity" ;
+                        
+                        rdfs:subClassOf :Scarcity .
+
+
+
+###  http://graffl.ai/defi#Cryptography
+
+:Cryptography rdf:type owl:Class ;
+              
+              rdfs:label "Cryptography" ;
+              
+              rdfs:subClassOf :Security .
+
+
+
+###  http://graffl.ai/defi#Currency
+
+:Currency rdf:type owl:Class ;
+          
+          rdfs:label "Currency" ;
+          
+          rdfs:subClassOf :Exchange_Medium ,
+                          :Store_of_Wealth ;
+          
+          rdfs:seeAlso "money" ,
+                       "monies" ,
+                       "currencies" .
+
+
+
+###  http://graffl.ai/defi#Currency_Transfer
+
+:Currency_Transfer rdf:type owl:Class ;
+                   
+                   rdfs:label "Currency Transfer" ;
+                   
+                   rdfs:subClassOf :Asset_Transfer ;
+                   
+                   rdfs:seeAlso "Transfer of Money, Transfer of Currency" .
+
+
+
+###  http://graffl.ai/defi#Dai_Savings_Rate
+
+:Dai_Savings_Rate rdf:type owl:Class ;
+                  
+                  rdfs:label "DAI Savings Rate" ;
+                  
+                  rdfs:subClassOf :Mechanism ;
+                  
+                  rdfs:seeAlso "DSR" .
+
+
+
+###  http://graffl.ai/defi#Dark_Pool_Stock_Trading
+
+:Dark_Pool_Stock_Trading rdf:type owl:Class ;
+                         
+                         rdfs:label "Dark Pool Stock Trading" ;
+                         
+                         rdfs:subClassOf :Stock_Trade ;
+                         
+                         rdfs:comment """An even earlier example was the rise of dark pool stock trading. In 1979, the U.S. Securities and Exchange Commission (SEC) instituted Rule 19c3, which allowed stocks listed on one exchange, such as the New York Stock Exchange (NYSE), to be traded off-exchange. Many large institutions moved their trading large blocks to these dark pools, where they traded peer to peer with far lower costs than traditional exchange-based trading.
+""" .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget """An even earlier example was the rise of dark pool stock trading. In 1979, the U.S. Securities and Exchange Commission (SEC) instituted Rule 19c3, which allowed stocks listed on one exchange, such as the New York Stock Exchange (NYSE), to be traded off-exchange. Many large institutions moved their trading large blocks to these dark pools, where they traded peer to peer with far lower costs than traditional exchange-based trading.
+""" ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 11). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :Dark_Pool_Stock_Trading ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Data_Source
+
+:Data_Source rdf:type owl:Class ;
+             
+             rdfs:label "Data Source" ;
+             
+             rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Debt
+
+:Debt rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Financial_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Debt_Ceiling
+
+:Debt_Ceiling rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Mechanism .
+
+
+
+###  http://graffl.ai/defi#Decentralized_Application
+
+:Decentralized_Application rdf:type owl:Class ;
+                           
+                           rdfs:label "Decentralized Application" ;
+                           
+                           rdfs:subClassOf :Application ;
+                           
+                           rdfs:seeAlso "dApp" ;
+                           
+                           rdfs:comment "Ethereum and other smart contract platforms specifically gave rise to the decentralized application, or dApp. The backend components of these applications are built with interoperable, transparent smart contracts that continue to exist if the chain they live on exists. dApps allow peers to interact directly and remove the need for a company to act as a central clearing house for app interactions. It quickly became apparent that the first killer dApps would be financial ones." .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 16). Wiley. Kindle Edition. " ;
+  owl:annotatedTarget "Ethereum and other smart contract platforms specifically gave rise to the decentralized application, or dApp. The backend components of these applications are built with interoperable, transparent smart contracts that continue to exist if the chain they live on exists. dApps allow peers to interact directly and remove the need for a company to act as a central clearing house for app interactions. It quickly became apparent that the first killer dApps would be financial ones." ;
+  owl:annotatedSource :Decentralized_Application ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Decentralized_Autonomous_Organization
+
+:Decentralized_Autonomous_Organization rdf:type owl:Class ;
+                                       
+                                       rdfs:label "Decentralized Autonomous Organization" ;
+                                       
+                                       rdfs:subClassOf :Autonomous_Organization ,
+                                                       :Decentralized_Organization ;
+                                       
+                                       rdfs:comment "A separate but related concept is a decentralized autonomous organization (DAO), which has its rules of operation encoded in smart contracts that determine who can execute what behavior or upgrade. It is common for a DAO to have some kind of governance token, which gives an owner some percentage of the vote on future outcomes. We will explore governance in much more detail later." ;
+                                       
+                                       rdfs:seeAlso "DAO" .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "A separate but related concept is a decentralized autonomous organization (DAO), which has its rules of operation encoded in smart contracts that determine who can execute what behavior or upgrade. It is common for a DAO to have some kind of governance token, which gives an owner some percentage of the vote on future outcomes. We will explore governance in much more detail later." ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (pp. 27-28). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :Decentralized_Autonomous_Organization ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Decentralized_Consensus
+
+:Decentralized_Consensus rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :Consensus_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Decentralized_Currency
+
+:Decentralized_Currency rdf:type owl:Class ;
+                        
+                        rdfs:label "Decentralized Currency" ;
+                        
+                        rdfs:subClassOf :Currency .
+
+
+
+###  http://graffl.ai/defi#Decentralized_Exchange
+
+:Decentralized_Exchange rdf:type owl:Class ;
+                        
+                        rdfs:label "Decentralized Exchange" ;
+                        
+                        rdfs:subClassOf :Exchange_Platform ;
+                        
+                        rdfs:seeAlso "DEX" .
+
+
+
+###  http://graffl.ai/defi#Decentralized_Organization
+
+:Decentralized_Organization rdf:type owl:Class ;
+                            
+                            rdfs:label "Decentralized Organization" ;
+                            
+                            rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/defi#Decrease
+
+:Decrease rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Action ;
+          
+          owl:disjointWith :Increase .
+
+
+
+###  http://graffl.ai/defi#Defi_Protocol
+
+:Defi_Protocol rdf:type owl:Class ;
+               
+               rdfs:label "DeFi Protocol" ;
+               
+               rdfs:subClassOf :Protocol .
+
+
+
+###  http://graffl.ai/defi#Defi_Version_1
+
+:Defi_Version_1 rdf:type owl:Class ;
+                
+                rdfs:label "DeFi Version 1" ;
+                
+                rdfs:subClassOf <http://www.semanticweb.org/craig/ontologies/2021/11/untitled-ontology-278#Defi> ;
+                
+                rdfs:seeAlso "DeFi v1" .
+
+
+
+###  http://graffl.ai/defi#Defi_Version_2
+
+:Defi_Version_2 rdf:type owl:Class ;
+                
+                rdfs:label "DeFi Version 2" ;
+                
+                rdfs:subClassOf <http://www.semanticweb.org/craig/ontologies/2021/11/untitled-ontology-278#Defi> ;
+                
+                rdfs:seeAlso "DeFi v2" .
+
+
+
+###  http://graffl.ai/defi#Defi_Version_3
+
+:Defi_Version_3 rdf:type owl:Class ;
+                
+                rdfs:label "DeFi Version 3" ;
+                
+                rdfs:subClassOf <http://www.semanticweb.org/craig/ontologies/2021/11/untitled-ontology-278#Defi> ;
+                
+                rdfs:seeAlso "DeFi v3" .
+
+
+
+###  http://graffl.ai/defi#Delegated_Byzantine_Fault_Tolerance
+
+:Delegated_Byzantine_Fault_Tolerance rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf :Consensus_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Delegated_Proof_of_Stake
+
+:Delegated_Proof_of_Stake rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :Proof_of_Stake .
+
+
+
+###  http://graffl.ai/defi#Denial_Of_Service
+
+:Denial_Of_Service rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Malicious_Action ;
+                   
+                   rdfs:seeAlso "DDoS, DDoS attack" .
+
+
+
+###  http://graffl.ai/defi#Deploy
+
+:Deploy rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Action ;
+        
+        rdfs:seeAlso "Deploys, Deployed, Deployment, Deployments" .
+
+
+
+###  http://graffl.ai/defi#Deposit
+
+:Deposit rdf:type owl:Class ;
+         
+         rdfs:label "Deposit" ;
+         
+         rdfs:subClassOf :Action .
+
+
+
+###  http://graffl.ai/defi#Desktop
+
+:Desktop rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Computational_Node .
+
+
+
+###  http://graffl.ai/defi#Difference
+
+:Difference rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Attribute ;
+            
+            owl:disjointWith :Identical .
+
+
+
+###  http://graffl.ai/defi#Digital_Asset
+
+:Digital_Asset rdf:type owl:Class ;
+               
+               rdfs:label "Digital Asset" ;
+               
+               rdfs:subClassOf :Asset .
+
+
+
+###  http://graffl.ai/defi#Digital_Asset_Fund
+
+:Digital_Asset_Fund rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Asset_Fund .
+
+
+
+###  http://graffl.ai/defi#Digital_Currency
+
+:Digital_Currency rdf:type owl:Class ;
+                  
+                  rdfs:label "Digital Currency" ;
+                  
+                  rdfs:subClassOf :Currency ;
+                  
+                  owl:disjointWith :Physical_Currency ;
+                  
+                  rdfs:seeAlso "cashless" ,
+                               "virtual currency" ,
+                               "electronic cash" .
+
+
+
+###  http://graffl.ai/defi#Digital_Currency_Group
+
+:Digital_Currency_Group rdf:type owl:Class ;
+                        
+                        rdfs:label "Digital Currency Group" ;
+                        
+                        rdfs:subClassOf :Company .
+
+
+
+###  http://graffl.ai/defi#Digital_Signature
+
+:Digital_Signature rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Signature .
+
+
+
+###  http://graffl.ai/defi#Digital_Yuan
+
+:Digital_Yuan rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Centralized_Currency ,
+                              :Digital_Currency ,
+                              :Sovereign_Currency ;
+              
+              rdfs:seeAlso "Digital Currency Electronic Payment, DCEP" ,
+                           "digital reminbi" .
+
+
+
+###  http://graffl.ai/defi#Direct_Incentive
+
+:Direct_Incentive rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Incentive_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Direct_Reward
+
+:Direct_Reward rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Positive_Incentive ,
+                               :Reward .
+
+
+
+###  http://graffl.ai/defi#Disadvantage
+
+:Disadvantage rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Attribute ;
+              
+              rdfs:seeAlso "disadvantageous" ,
+                           "downside, downsides, down side, down sides" ,
+                           "drawback, drawbacks" ,
+                           "cons" .
+
+
+
+###  http://graffl.ai/defi#Dispute
+
+:Dispute rdf:type owl:Class ;
+         
+         rdfs:subClassOf :State ;
+         
+         rdfs:seeAlso "disputes, disputing, disputed, disputer, disputers" .
+
+
+
+###  http://graffl.ai/defi#Distributed_Consensus
+
+:Distributed_Consensus rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Consensus .
+
+
+
+###  http://graffl.ai/defi#Distributed_Immutable_Ledger
+
+:Distributed_Immutable_Ledger rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf :Distributed_Ledger ,
+                                              :Immutable_Ledger ;
+                              
+                              owl:disjointWith :Distributed_Mutable_Ledger .
+
+
+
+###  http://graffl.ai/defi#Distributed_Ledger
+
+:Distributed_Ledger rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Ledger ;
+                    
+                    rdfs:seeAlso "distributed database" .
+
+
+
+###  http://graffl.ai/defi#Distributed_Mutable_Ledger
+
+:Distributed_Mutable_Ledger rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf :Distributed_Ledger ,
+                                            :Mutable_Ledger .
+
+
+
+###  http://graffl.ai/defi#Distributed_Node
+
+:Distributed_Node rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Computational_Node .
+
+
+
+###  http://graffl.ai/defi#Distributed_System
+
+:Distributed_System rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :System ;
+                    
+                    rdfs:comment "A number of independent computers linked by a network." .
+
+
+
+###  http://graffl.ai/defi#Distributed_System_Consensus
+
+:Distributed_System_Consensus rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf :Distributed_Consensus ,
+                                              :System_Consensus .
+
+
+
+###  http://graffl.ai/defi#Distributed_Timestamp_Server
+
+:Distributed_Timestamp_Server rdf:type owl:Class ;
+                              
+                              rdfs:subClassOf :Distributed_Node ,
+                                              :Timestamp_Server .
+
+
+
+###  http://graffl.ai/defi#Document
+
+:Document rdf:type owl:Class ;
+          
+          rdfs:label "Document" ;
+          
+          rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Dollar
+
+:Dollar rdf:type owl:Class ;
+        
+        rdfs:label "Dollar" ;
+        
+        rdfs:subClassOf :Centralized_Currency ,
+                        :Paper_Currency ,
+                        :Sovereign_Currency .
+
+
+
+###  http://graffl.ai/defi#Double_Spend
+
+:Double_Spend rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Malicious_Transaction ;
+              
+              rdfs:seeAlso "double spending" ,
+                           "double spending problem" .
+
+
+
+###  http://graffl.ai/defi#Durabilty
+
+:Durabilty rdf:type owl:Class ;
+           
+           rdfs:label "Durable" ;
+           
+           rdfs:subClassOf :Attribute ;
+           
+           rdfs:seeAlso "Durabilty" .
+
+
+
+###  http://graffl.ai/defi#Duration_Risk
+
+:Duration_Risk rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Risk .
+
+
+
+###  http://graffl.ai/defi#ERC-721
+
+:ERC-721 rdf:type owl:Class ;
+         
+         rdfs:label "ERC-721" ;
+         
+         rdfs:subClassOf :Token_Standard ;
+         
+         rdfs:comment "The non-fungible token standard, which are unique and often used for collectibles or assets such as peer-to-peer loans." ;
+         
+         rdfs:seeAlso "ERC 721" .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "The non-fungible token standard, which are unique and often used for collectibles or assets such as peer-to-peer loans." ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 23). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :ERC-721 ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#ERC_20
+
+:ERC_20 rdf:type owl:Class ;
+        
+        rdfs:label "ERC-20" ;
+        
+        rdfs:subClassOf :Token_Standard ;
+        
+        rdfs:comment """ERC-20 is the standard for fungible tokens and defines an interface for tokens whose units are identical in utility and functionality.
+
+It includes behavior such as transferring units and approving operators for using a certain portion of a user's balance.""" ;
+        
+        rdfs:seeAlso "ERC 20" ,
+                     "ERC-20 token standard" .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget """ERC-20 is the standard for fungible tokens and defines an interface for tokens whose units are identical in utility and functionality.
+
+It includes behavior such as transferring units and approving operators for using a certain portion of a user's balance.""" ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 23). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :ERC_20 ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#ESD_Governance
+
+:ESD_Governance rdf:type owl:Class ;
+                
+                rdfs:label "ESD Governance" ;
+                
+                rdfs:subClassOf :Governance .
+
+
+
+###  http://graffl.ai/defi#Early_Investor
+
+:Early_Investor rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Investor .
+
+
+
+###  http://graffl.ai/defi#Economy
+
+:Economy rdf:type owl:Class ;
+         
+         rdfs:label "Economy" .
+
+
+
+###  http://graffl.ai/defi#Efficiency
+
+:Efficiency rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Attribute ;
+            
+            rdfs:seeAlso "Efficiency" .
+
+
+
+###  http://graffl.ai/defi#Electronic_Coin
+
+:Electronic_Coin rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Digital_Currency ;
+                 
+                 rdfs:comment "a chain of digital signatures" .
+
+
+
+###  http://graffl.ai/defi#Electronic_Payment
+
+:Electronic_Payment rdf:type owl:Class ;
+                    
+                    owl:equivalentClass :Online_Payment ;
+                    
+                    rdfs:subClassOf :Payment .
+
+
+
+###  http://graffl.ai/defi#Electronic_Payment_System
+
+:Electronic_Payment_System rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :Payment_System ;
+                           
+                           :effects :Electronic_Payment .
+
+
+
+###  http://graffl.ai/defi#Empty_Set_Dollar
+
+:Empty_Set_Dollar rdf:type owl:Class ;
+                  
+                  rdfs:label "Empty Set Dollar" ;
+                  
+                  rdfs:subClassOf :Algorithmic_Stablecoin ;
+                  
+                  rdfs:isDefinedBy "https://www.emptyset.finance/" ;
+                  
+                  rdfs:comment "Empty Set Dollar (ESD) is an algorithmic stablecoin built to be the reserve currency of Decentralized Finance." .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "https://www.emptyset.finance/" ;
+  owl:annotatedTarget "Empty Set Dollar (ESD) is an algorithmic stablecoin built to be the reserve currency of Decentralized Finance." ;
+  owl:annotatedSource :Empty_Set_Dollar ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Energy_Cost
+
+:Energy_Cost rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Cost .
+
+
+
+###  http://graffl.ai/defi#Equality
+
+:Equality rdf:type owl:Class ;
+          
+          rdfs:label "Equality" ;
+          
+          rdfs:subClassOf :Attribute ;
+          
+          owl:disjointWith :Inequality .
+
+
+
+###  http://graffl.ai/defi#Equality_of_Opportunity
+
+:Equality_of_Opportunity rdf:type owl:Class ;
+                         
+                         rdfs:label "Equality of Opportunity" ;
+                         
+                         rdfs:subClassOf :Equality ;
+                         
+                         rdfs:seeAlso "Equal Opportunity" .
+
+
+
+###  http://graffl.ai/defi#Escrow_Mechanism
+
+:Escrow_Mechanism rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Mechanism ;
+                  
+                  rdfs:seeAlso "escrow, escrows, escrowed, escrower, escrowers, escrowing" .
+
+
+
+###  http://graffl.ai/defi#Ethereum
+
+:Ethereum rdf:type owl:Class ;
+          
+          rdfs:label "Ethereum" ;
+          
+          rdfs:subClassOf :Cryptocurrency ,
+                          :Programmable_Blockchain ;
+          
+          rdfs:seeAlso "Ethererum" ,
+                       "ETH" ,
+                       "Ether" ,
+                       "world computer" ;
+          
+          :effects :Smart_Contract .
+
+
+
+###  http://graffl.ai/defi#Ethereum_Account
+
+:Ethereum_Account rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Account .
+
+
+
+###  http://graffl.ai/defi#Ethereum_Virtual_Machine
+
+:Ethereum_Virtual_Machine rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :Virtual_Machine ;
+                          
+                          rdfs:seeAlso "EVM" .
+
+
+
+###  http://graffl.ai/defi#Euro
+
+:Euro rdf:type owl:Class ;
+      
+      rdfs:label "Euro" ;
+      
+      rdfs:subClassOf :Centralized_Currency ,
+                      :Paper_Currency ,
+                      :Sovereign_Currency .
+
+
+
+###  http://graffl.ai/defi#Excessive_Volatility
+
+:Excessive_Volatility rdf:type owl:Class ;
+                      
+                      rdfs:label "Excessive Volatility" ;
+                      
+                      rdfs:subClassOf :Volatile .
+
+
+
+###  http://graffl.ai/defi#Exchange
+
+:Exchange rdf:type owl:Class ;
+          
+          rdfs:label "Exchange" ;
+          
+          rdfs:subClassOf :Action .
+
+
+
+###  http://graffl.ai/defi#Exchange_Medium
+
+:Exchange_Medium rdf:type owl:Class ;
+                 
+                 rdfs:label "Exchange Medium" ;
+                 
+                 rdfs:subClassOf :Medium ;
+                 
+                 rdfs:seeAlso "Medium of Exchange" .
+
+
+
+###  http://graffl.ai/defi#Exchange_Platform
+
+:Exchange_Platform rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Platform ;
+                   
+                   :effects :Exchange .
+
+
+
+###  http://graffl.ai/defi#Exchange_Rate
+
+:Exchange_Rate rdf:type owl:Class ;
+               
+               rdfs:label "Exchange Rate" ;
+               
+               rdfs:subClassOf :Rate .
+
+
+
+###  http://graffl.ai/defi#Expansion
+
+:Expansion rdf:type owl:Class ;
+           
+           rdfs:label "Expansion" ;
+           
+           rdfs:seeAlso "Expansions" .
+
+
+
+###  http://graffl.ai/defi#Explainability
+
+:Explainability rdf:type owl:Class ;
+                
+                rdfs:label "Explainability" ;
+                
+                rdfs:subClassOf :Attribute ;
+                
+                rdfs:seeAlso "Explainble" .
+
+
+
+###  http://graffl.ai/defi#External_Actor
+
+:External_Actor rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Actor .
+
+
+
+###  http://graffl.ai/defi#Externally_Owned_Account
+
+:Externally_Owned_Account rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :Ethereum_Account ;
+                          
+                          rdfs:seeAlso "EOA" .
+
+
+
+###  http://graffl.ai/defi#Factor
+
+:Factor rdf:type owl:Class ;
+        
+        rdfs:seeAlso "Factors, Factored" .
+
+
+
+###  http://graffl.ai/defi#Fault_Tolerant
+
+:Fault_Tolerant rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Tolerant ;
+                
+                rdfs:seeAlso "Fault Tolerance" .
+
+
+
+###  http://graffl.ai/defi#Fee
+
+:Fee rdf:type owl:Class ;
+     
+     rdfs:label "Fee" ;
+     
+     rdfs:subClassOf :Funding_Mechanism ,
+                     :Policy ;
+     
+     rdfs:seeAlso "Cost, Costing, Costed" .
+
+
+
+###  http://graffl.ai/defi#Fei
+
+:Fei rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Stablecoin_Protocol ;
+     
+     rdfs:comment "Fei is a decentralized, scalable, and DeFi-native stablecoin protocol" .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "Fei is a decentralized, scalable, and DeFi-native stablecoin protocol" ;
+  rdfs:isDefinedBy "https://fei.money/" ;
+  owl:annotatedSource :Fei ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Fiat_Collaterialized
+
+:Fiat_Collaterialized rdf:type owl:Class ;
+                      
+                      rdfs:label "Fiat Collaterialized" ;
+                      
+                      rdfs:subClassOf :Stablecoin ;
+                      
+                      rdfs:comment "By far the largest class of stablecoins are fiat collateralized. These are backed by an off-chain reserve of the target asset. Usually they are custodied by an external entity or group of entities that undergo routine audits to verify the collateral's existence." .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "By far the largest class of stablecoins are fiat collateralized. These are backed by an off-chain reserve of the target asset. Usually they are custodied by an external entity or group of entities that undergo routine audits to verify the collateral's existence." ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 25). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :Fiat_Collaterialized ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Fiat_Currency
+
+:Fiat_Currency rdf:type owl:Class ;
+               
+               rdfs:label "Fiat Currency" ;
+               
+               rdfs:subClassOf :Currency .
+
+
+
+###  http://graffl.ai/defi#Finance
+
+:Finance rdf:type owl:Class ;
+         
+         rdfs:label "Finance" .
+
+
+
+###  http://graffl.ai/defi#Financial_Censorship
+
+:Financial_Censorship rdf:type owl:Class ;
+                      
+                      rdfs:label "Financial Censorship" ;
+                      
+                      rdfs:subClassOf :Censorship .
+
+
+
+###  http://graffl.ai/defi#Financial_Infrastructure
+
+:Financial_Infrastructure rdf:type owl:Class ;
+                          
+                          rdfs:label "Financial Infrastructure" ;
+                          
+                          rdfs:subClassOf :Infrastructure .
+
+
+
+###  http://graffl.ai/defi#Financial_Institution
+
+:Financial_Institution rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/defi#Financial_Mechanism
+
+:Financial_Mechanism rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Mechanism .
+
+
+
+###  http://graffl.ai/defi#Financial_Primitive
+
+:Financial_Primitive rdf:type owl:Class ;
+                     
+                     rdfs:label "Financial Primitive" ;
+                     
+                     rdfs:subClassOf :Primitive .
+
+
+
+###  http://graffl.ai/defi#Financial_System
+
+:Financial_System rdf:type owl:Class ;
+                  
+                  rdfs:label "Financial System" ;
+                  
+                  rdfs:subClassOf :System ;
+                  
+                  rdfs:seeAlso "Monetary System" .
+
+
+
+###  http://graffl.ai/defi#Fixed_Exchange_Rate
+
+:Fixed_Exchange_Rate rdf:type owl:Class ;
+                     
+                     rdfs:label "Fixed Exchange Rate" ;
+                     
+                     rdfs:subClassOf :Exchange_Rate .
+
+
+
+###  http://graffl.ai/defi#Fixed_Interest_Rate
+
+:Fixed_Interest_Rate rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Interest_Rate .
+
+
+
+###  http://graffl.ai/defi#Flash_Loan
+
+:Flash_Loan rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Loan .
+
+
+
+###  http://graffl.ai/defi#Flexible
+
+:Flexible rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Float_Protocol
+
+:Float_Protocol rdf:type owl:Class ;
+                
+                rdfs:label "FLOAT Protocol" ;
+                
+                rdfs:subClassOf :Stablecoin_Protocol .
+
+
+
+###  http://graffl.ai/defi#Foreclosure_Risk
+
+:Foreclosure_Risk rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Risk .
+
+
+
+###  http://graffl.ai/defi#Foundation
+
+:Foundation rdf:type owl:Class ;
+            
+            rdfs:label "Foundation" ;
+            
+            rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/defi#Founding_Team
+
+:Founding_Team rdf:type owl:Class ;
+               
+               rdfs:label "Founding Team" ;
+               
+               rdfs:subClassOf :Team .
+
+
+
+###  http://graffl.ai/defi#Fractional_Algorithm_Stablecoin
+
+:Fractional_Algorithm_Stablecoin rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Fractional Algorithm Stablecoin" ;
+                                 
+                                 rdfs:subClassOf :Algorithmic_Stablecoin ,
+                                                 :Fractional_Stablecoin ;
+                                 
+                                 rdfs:comment "The Frax Protocol introduced the world to the concept of a cryptocurrency being partially backed by collateral and partially stabilized algorithmically." .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "https://frax.finance/" ;
+  owl:annotatedTarget "The Frax Protocol introduced the world to the concept of a cryptocurrency being partially backed by collateral and partially stabilized algorithmically." ;
+  owl:annotatedSource :Fractional_Algorithm_Stablecoin ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Fractional_Stablecoin
+
+:Fractional_Stablecoin rdf:type owl:Class ;
+                       
+                       rdfs:label "Fractional Stablecoin" ;
+                       
+                       rdfs:subClassOf :Stablecoin .
+
+
+
+###  http://graffl.ai/defi#Function
+
+:Function rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Measurement .
+
+
+
+###  http://graffl.ai/defi#Fund
+
+:Fund rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/defi#Funding_Mechanism
+
+:Funding_Mechanism rdf:type owl:Class ;
+                   
+                   rdfs:label "Funding Mechanism" ;
+                   
+                   rdfs:subClassOf :Mechanism .
+
+
+
+###  http://graffl.ai/defi#Fungible_Cryptoasset
+
+:Fungible_Cryptoasset rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :Cryptoasset .
+
+
+
+###  http://graffl.ai/defi#Fungible_Token
+
+:Fungible_Token rdf:type owl:Class ;
+                
+                rdfs:label "Fungible Token" ;
+                
+                rdfs:subClassOf :Token .
+
+
+
+###  http://graffl.ai/defi#Gas_Fee
+
+:Gas_Fee rdf:type owl:Class ;
+         
+         rdfs:label "Gas Fee" ;
+         
+         rdfs:subClassOf :Fee ;
+         
+         rdfs:comment "Ethereum charges a gas fee for every transaction – similar to how driving a car takes a certain amount of gas, which costs money. Imagine Ethereum as one giant computer with many applications (i.e., smart contracts). If people want to use the computer, they must pay for each unit of computation. A simple computation such as sending ether (ETH) requires minimal work to update a few account balances and thus has a relatively small gas fee. A complex computation involving minting tokens and checking various conditions across many contracts requires more gas and thus will have a higher fee." ;
+         
+         :partOf :Ethereum .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "Ethereum charges a gas fee for every transaction – similar to how driving a car takes a certain amount of gas, which costs money. Imagine Ethereum as one giant computer with many applications (i.e., smart contracts). If people want to use the computer, they must pay for each unit of computation. A simple computation such as sending ether (ETH) requires minimal work to update a few account balances and thus has a relatively small gas fee. A complex computation involving minting tokens and checking various conditions across many contracts requires more gas and thus will have a higher fee." ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (pp. 21-22). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :Gas_Fee ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Global_Access
+
+:Global_Access rdf:type owl:Class ;
+               
+               rdfs:label "Global Access" ;
+               
+               rdfs:subClassOf :Access .
+
+
+
+###  http://graffl.ai/defi#Gold
+
+:Gold rdf:type owl:Class ;
+      
+      rdfs:label "Gold" ;
+      
+      rdfs:subClassOf :Bullion ,
+                      :Value_Standard .
+
+
+
+###  http://graffl.ai/defi#Gold_Standard
+
+:Gold_Standard rdf:type owl:Class ;
+               
+               rdfs:label "Gold Standard" ;
+               
+               rdfs:subClassOf :Financial_System ,
+                               :Value_Standard .
+
+
+
+###  http://graffl.ai/defi#Governance
+
+:Governance rdf:type owl:Class ;
+            
+            rdfs:label "Governance" ;
+            
+            rdfs:subClassOf :Action ;
+            
+            rdfs:seeAlso "Control" ,
+                         "governance platform" .
+
+
+
+###  http://graffl.ai/defi#Government_Agency
+
+:Government_Agency rdf:type owl:Class ;
+                   
+                   rdfs:label "Government Agency" ;
+                   
+                   rdfs:subClassOf :Public_Agency .
+
+
+
+###  http://graffl.ai/defi#Hardware
+
+:Hardware rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Infrastructure .
+
+
+
+###  http://graffl.ai/defi#Hash
+
+:Hash rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Hashing
+
+:Hashing rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Action ;
+         
+         :effects :Hash .
+
+
+
+###  http://graffl.ai/defi#Hashing_Problem
+
+:Hashing_Problem rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Problem .
+
+
+
+###  http://graffl.ai/defi#Horizon
+
+:Horizon rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#Identical
+
+:Identical rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Immutability
+
+:Immutability rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Attribute ;
+              
+              owl:disjointWith :Mutability ;
+              
+              :partOf :Immutable_Ledger .
+
+
+
+###  http://graffl.ai/defi#Immutable
+
+:Immutable rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Attribute ;
+           
+           owl:disjointWith :Mutable ;
+           
+           rdfs:seeAlso "unchangeable" .
+
+
+
+###  http://graffl.ai/defi#Immutable_Ledger
+
+:Immutable_Ledger rdf:type owl:Class ;
+                  
+                  rdfs:label "Immutable Ledger" ;
+                  
+                  rdfs:subClassOf :Ledger ;
+                  
+                  owl:disjointWith :Mutable_Ledger .
+
+
+
+###  http://graffl.ai/defi#Impermanent_Loss
+
+:Impermanent_Loss rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Loss ;
+                  
+                  owl:disjointWith :Permanent_Loss .
+
+
+
+###  http://graffl.ai/defi#Incentive_Fee
+
+:Incentive_Fee rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Fee ,
+                               :Incentive_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Incentive_Mechanism
+
+:Incentive_Mechanism rdf:type owl:Class ;
+                     
+                     rdfs:label "Incentive Mechanism" ;
+                     
+                     rdfs:subClassOf :Mechanism ;
+                     
+                     rdfs:seeAlso "incentivization mechanism" ,
+                                  "reward actor" ,
+                                  "incented action" ,
+                                  "incentive, incentives, incentivize, incentivized" ;
+                     
+                     :affects :Token_Utilization .
+
+
+
+###  http://graffl.ai/defi#Increase
+
+:Increase rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Action ;
+          
+          rdfs:seeAlso "Increasing, Increases, Increased" .
+
+
+
+###  http://graffl.ai/defi#Inefficient
+
+:Inefficient rdf:type owl:Class ;
+             
+             rdfs:label "Inefficient" ;
+             
+             rdfs:subClassOf :Attribute ;
+             
+             rdfs:seeAlso "Inefficiency" .
+
+
+
+###  http://graffl.ai/defi#Inequality
+
+:Inequality rdf:type owl:Class ;
+            
+            rdfs:label "Inequality" ;
+            
+            rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Inequality_of_Opportunity
+
+:Inequality_of_Opportunity rdf:type owl:Class ;
+                           
+                           rdfs:label "Inequality of Opportunity" ;
+                           
+                           rdfs:subClassOf :Inequality ;
+                           
+                           rdfs:seeAlso "Unequal Opportunity" .
+
+
+
+###  http://graffl.ai/defi#Inflation
+
+:Inflation rdf:type owl:Class ;
+           
+           rdfs:label "Inflation" ;
+           
+           rdfs:subClassOf :Action .
+
+
+
+###  http://graffl.ai/defi#Inflation_Hedge
+
+:Inflation_Hedge rdf:type owl:Class ;
+                 
+                 rdfs:label "Inflation Hedge" ;
+                 
+                 rdfs:subClassOf :Position .
+
+
+
+###  http://graffl.ai/defi#Infrastructure
+
+:Infrastructure rdf:type owl:Class ;
+                
+                rdfs:label "Infrastructure" .
+
+
+
+###  http://graffl.ai/defi#Input_Utxo
+
+:Input_Utxo rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Unspent_Transaction_Output ;
+            
+            rdfs:seeAlso "Input UXTO" .
+
+
+
+###  http://graffl.ai/defi#Insurance
+
+:Insurance rdf:type owl:Class ;
+           
+           rdfs:label "Insurance" .
+
+
+
+###  http://graffl.ai/defi#Insured_Deposit
+
+:Insured_Deposit rdf:type owl:Class ;
+                 
+                 rdfs:label "Insured Deposit" ;
+                 
+                 rdfs:subClassOf :Deposit ,
+                                 :Insurance .
+
+
+
+###  http://graffl.ai/defi#Intangible_Value
+
+:Intangible_Value rdf:type owl:Class ;
+                  
+                  rdfs:label "Intangible Value" ;
+                  
+                  rdfs:subClassOf :Value ;
+                  
+                  owl:disjointWith :Tangible_Value .
+
+
+
+###  http://graffl.ai/defi#Interest_Rate
+
+:Interest_Rate rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Rate .
+
+
+
+###  http://graffl.ai/defi#Internet
+
+:Internet rdf:type owl:Class ;
+          
+          rdfs:label "Internet" .
+
+
+
+###  http://graffl.ai/defi#Internet_of_Bodies
+
+:Internet_of_Bodies rdf:type owl:Class ;
+                    
+                    rdfs:label "Internet of Bodies" ;
+                    
+                    rdfs:subClassOf :Internet ;
+                    
+                    rdfs:seeAlso "IoB" .
+
+
+
+###  http://graffl.ai/defi#Internet_of_Money
+
+:Internet_of_Money rdf:type owl:Class ;
+                   
+                   rdfs:label "Internet of Money" ;
+                   
+                   rdfs:subClassOf :Internet ;
+                   
+                   rdfs:seeAlso "IoM" .
+
+
+
+###  http://graffl.ai/defi#Internet_of_Things
+
+:Internet_of_Things rdf:type owl:Class ;
+                    
+                    rdfs:label "Internet of Things" ;
+                    
+                    rdfs:subClassOf :Internet ;
+                    
+                    rdfs:seeAlso "IoT" .
+
+
+
+###  http://graffl.ai/defi#Interoperability
+
+:Interoperability rdf:type owl:Class ;
+                  
+                  rdfs:label "Interoperability" ;
+                  
+                  rdfs:subClassOf :Capability ;
+                  
+                  owl:disjointWith :Lack_of_Interoperability .
+
+
+
+###  http://graffl.ai/defi#Invalid_Transaction
+
+:Invalid_Transaction rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Transaction .
+
+
+
+###  http://graffl.ai/defi#Investor
+
+:Investor rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Actor .
+
+
+
+###  http://graffl.ai/defi#Irreversible_Transaction
+
+:Irreversible_Transaction rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :Transaction ;
+                          
+                          owl:disjointWith :Reversible_Transaction ;
+                          
+                          rdfs:seeAlso "Ireversible transaction" ,
+                                       "computationally impractical to reverse, impractical to reverse" ,
+                                       "non reversible transaction, nonreversible transaction" .
+
+
+
+###  http://graffl.ai/defi#Jewelry
+
+:Jewelry rdf:type owl:Class ;
+         
+         rdfs:label "Jewelry" ;
+         
+         rdfs:subClassOf :Precious_Metal .
+
+
+
+###  http://graffl.ai/defi#Keeper
+
+:Keeper rdf:type owl:Class ;
+        
+        rdfs:subClassOf :External_Actor .
+
+
+
+###  http://graffl.ai/defi#Keeper_Auction
+
+:Keeper_Auction rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Public_Auction .
+
+
+
+###  http://graffl.ai/defi#Keeper_Reward
+
+:Keeper_Reward rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Reward .
+
+
+
+###  http://graffl.ai/defi#Lack_of_Access
+
+:Lack_of_Access rdf:type owl:Class ;
+                
+                rdfs:label "Lack of Access" ;
+                
+                rdfs:subClassOf :Limited_Access .
+
+
+
+###  http://graffl.ai/defi#Lack_of_Interoperability
+
+:Lack_of_Interoperability rdf:type owl:Class ;
+                          
+                          rdfs:label "Lack of Interoperability" ;
+                          
+                          rdfs:subClassOf :Capability .
+
+
+
+###  http://graffl.ai/defi#Laptop
+
+:Laptop rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Computational_Node .
+
+
+
+###  http://graffl.ai/defi#Latency
+
+:Latency rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Ledger
+
+:Ledger rdf:type owl:Class ;
+        
+        rdfs:label "Ledger" ;
+        
+        rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Leverage
+
+:Leverage rdf:type owl:Class ;
+          
+          rdfs:label "Leverage" ;
+          
+          rdfs:subClassOf :Financial_Primitive .
+
+
+
+###  http://graffl.ai/defi#Limited_Access
+
+:Limited_Access rdf:type owl:Class ;
+                
+                rdfs:label "Limited Access" ;
+                
+                rdfs:subClassOf :Access ;
+                
+                owl:disjointWith :Universal_Access .
+
+
+
+###  http://graffl.ai/defi#Limited_Supply
+
+:Limited_Supply rdf:type owl:Class ;
+                
+                rdfs:label "Limited Supply" ;
+                
+                rdfs:subClassOf :Supply ;
+                
+                owl:disjointWith :Unlimited_Supply .
+
+
+
+###  http://graffl.ai/defi#Linear_Bonding_Curve
+
+:Linear_Bonding_Curve rdf:type owl:Class ;
+                      
+                      rdfs:label "Linear Bonding Curve" ;
+                      
+                      rdfs:subClassOf :Bonding_Curve .
+
+
+
+###  http://graffl.ai/defi#Linear_Function
+
+:Linear_Function rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Function ;
+                 
+                 rdfs:seeAlso "Simple Linear Function" .
+
+
+
+###  http://graffl.ai/defi#Liquidation
+
+:Liquidation rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Slashing_Condition .
+
+
+
+###  http://graffl.ai/defi#Liquidator
+
+:Liquidator rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Actor ;
+            
+            rdfs:seeAlso "Liquidators" .
+
+
+
+###  http://graffl.ai/defi#Liquidity
+
+:Liquidity rdf:type owl:Class ;
+           
+           rdfs:label "Liquidity" ;
+           
+           rdfs:subClassOf :Financial_Primitive ;
+           
+           rdfs:comment "Almost everything comes down to liquidity, but we consistently underestimate its importance. Higher liquidity results in tighter spreads and greater market efficiency. Lower liquidity exaggerates market movements and amplifies sell-offs. It creates a flywheel on the way up but a cliff on the way down." .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "Almost everything comes down to liquidity, but we consistently underestimate its importance. Higher liquidity results in tighter spreads and greater market efficiency. Lower liquidity exaggerates market movements and amplifies sell-offs. It creates a flywheel on the way up but a cliff on the way down." ;
+  rdfs:isDefinedBy "https://medium.com/zeroknowledge/the-evolution-of-defi-across-four-financial-primitives-1be5caec3f26" ;
+  owl:annotatedSource :Liquidity ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Loan
+
+:Loan rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Financial_Mechanism ;
+      
+      rdfs:seeAlso "Loans" ,
+                   "Lending" .
+
+
+
+###  http://graffl.ai/defi#Logistic_Bonding_Curve
+
+:Logistic_Bonding_Curve rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Bonding_Curve .
+
+
+
+###  http://graffl.ai/defi#Long_Term
+
+:Long_Term rdf:type owl:Class ;
+           
+           rdfs:label "Long Term" ;
+           
+           rdfs:subClassOf :Horizon ;
+           
+           rdfs:seeAlso "Long Term Horizon" .
+
+
+
+###  http://graffl.ai/defi#Loss
+
+:Loss rdf:type owl:Class ;
+      
+      rdfs:subClassOf :State .
+
+
+
+###  http://graffl.ai/defi#Mainstream
+
+:Mainstream rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Attribute ;
+            
+            owl:disjointWith :Niche .
+
+
+
+###  http://graffl.ai/defi#Malicious_Action
+
+:Malicious_Action rdf:type owl:Class ;
+                  
+                  rdfs:label "Malicious Action" ;
+                  
+                  rdfs:subClassOf :Action ;
+                  
+                  rdfs:seeAlso "defraud, defrauds, defrauded, defrauding, defrauder, defrauders" ,
+                               "malicious computational task, malicious task" ,
+                               "malicious behavior" ,
+                               "fraud, fraudulent, frauds, frauded" ;
+                  
+                  :effects :Slashing_Condition .
+
+
+
+###  http://graffl.ai/defi#Malicious_Transaction
+
+:Malicious_Transaction rdf:type owl:Class ;
+                       
+                       rdfs:label "Malicious Transaction" ;
+                       
+                       rdfs:subClassOf :Malicious_Action ,
+                                       :Transaction .
+
+
+
+###  http://graffl.ai/defi#Market_Exchange
+
+:Market_Exchange rdf:type owl:Class ;
+                 
+                 rdfs:label "Market Exchange" ;
+                 
+                 rdfs:subClassOf :Exchange .
+
+
+
+###  http://graffl.ai/defi#Measurement
+
+:Measurement rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#Mechanism
+
+:Mechanism rdf:type owl:Class ;
+           
+           rdfs:label "Mechanism" ;
+           
+           rdfs:seeAlso "mechanisms" .
+
+
+
+###  http://graffl.ai/defi#Mediate
+
+:Mediate rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Action ;
+         
+         rdfs:seeAlso "mediates, mediating, mediated" .
+
+
+
+###  http://graffl.ai/defi#Medium
+
+:Medium rdf:type owl:Class ;
+        
+        rdfs:label "Medium" .
+
+
+
+###  http://graffl.ai/defi#Metal
+
+:Metal rdf:type owl:Class ;
+       
+       rdfs:label "Metal" ;
+       
+       rdfs:subClassOf :Exchange_Medium ;
+       
+       rdfs:seeAlso "Ingot, Ingots" .
+
+
+
+###  http://graffl.ai/defi#Mine
+
+:Mine rdf:type owl:Class ;
+      
+      rdfs:label "Mine" ;
+      
+      rdfs:subClassOf :Action ;
+      
+      rdfs:seeAlso "Mined" .
+
+
+
+###  http://graffl.ai/defi#Miner
+
+:Miner rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Actor ;
+       
+       rdfs:seeAlso "minor, minors" ,
+                    "Miners" .
+
+
+
+###  http://graffl.ai/defi#Miner_Fee
+
+:Miner_Fee rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Fee ;
+           
+           rdfs:seeAlso "Miners Fee" .
+
+
+
+###  http://graffl.ai/defi#Model
+
+:Model rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#Monitor
+
+:Monitor rdf:type owl:Class ;
+         
+         rdfs:label "Monitor" ;
+         
+         rdfs:subClassOf :Action ;
+         
+         rdfs:seeAlso "Monitors, Monitoring, Monitored" .
+
+
+
+###  http://graffl.ai/defi#Monotonical_Decrease
+
+:Monotonical_Decrease rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :Decrease ;
+                      
+                      owl:disjointWith :Monotonical_Increase .
+
+
+
+###  http://graffl.ai/defi#Monotonical_Increase
+
+:Monotonical_Increase rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :Increase ;
+                      
+                      rdfs:seeAlso "Monotonically Increasing" .
+
+
+
+###  http://graffl.ai/defi#Mutability
+
+:Mutability rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Attribute ;
+            
+            :partOf :Mutable_Ledger .
+
+
+
+###  http://graffl.ai/defi#Mutable
+
+:Mutable rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Attribute ;
+         
+         rdfs:seeAlso "can change, has changed, will change" ,
+                      "changeable" .
+
+
+
+###  http://graffl.ai/defi#Mutable_Ledger
+
+:Mutable_Ledger rdf:type owl:Class ;
+                
+                rdfs:label "Mutable Ledger" ;
+                
+                rdfs:subClassOf :Ledger .
+
+
+
+###  http://graffl.ai/defi#NFT
+
+:NFT rdf:type owl:Class ;
+     
+     rdfs:label "NFT" ;
+     
+     rdfs:subClassOf :Token ;
+     
+     rdfs:seeAlso "Non Fungible Token" .
+
+
+
+###  http://graffl.ai/defi#Negative_Incentive
+
+:Negative_Incentive rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Incentive_Mechanism ;
+                    
+                    owl:disjointWith :Positive_Incentive .
+
+
+
+###  http://graffl.ai/defi#Negative_Staked_Incentive
+
+:Negative_Staked_Incentive rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :Negative_Incentive ,
+                                           :Staked_Incentive ;
+                           
+                           owl:disjointWith :Positive_Staked_Incentive .
+
+
+
+###  http://graffl.ai/defi#Network
+
+:Network rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#Network_Protocol
+
+:Network_Protocol rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Protocol .
+
+
+
+###  http://graffl.ai/defi#Niche
+
+:Niche rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Node
+
+:Node rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#Non_Fungible_Cryptoasset
+
+:Non_Fungible_Cryptoasset rdf:type owl:Class ;
+                          
+                          rdfs:subClassOf :Cryptoasset .
+
+
+
+###  http://graffl.ai/defi#Non_Physical_Transfer
+
+:Non_Physical_Transfer rdf:type owl:Class ;
+                       
+                       rdfs:label "Non Physical Transfer" ;
+                       
+                       rdfs:subClassOf :Transfer ;
+                       
+                       owl:disjointWith :Physical_Transfer .
+
+
+
+###  http://graffl.ai/defi#Nonce
+
+:Nonce rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Number ;
+       
+       rdfs:comment """Typically, a nonce is a value that varies with time to verify that specific values are not reused. A nonce can be a timestamp, a visit counter on a webpage or a special marker intended to limit or prevent the unauthorized replay or reproduction of a file.
+
+https://www.techtarget.com/searchsecurity/definition/nonce""" ;
+       
+       rdfs:seeAlso "number used once, number once, cryptographic nonce" .
+
+
+
+###  http://graffl.ai/defi#Number
+
+:Number rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#On_Chain_Governance
+
+:On_Chain_Governance rdf:type owl:Class ;
+                     
+                     rdfs:label "On Chain Governance" ;
+                     
+                     rdfs:subClassOf :Governance ;
+                     
+                     rdfs:seeAlso "on-chain governance" .
+
+
+
+###  http://graffl.ai/defi#Online_Payment
+
+:Online_Payment rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Payment .
+
+
+
+###  http://graffl.ai/defi#Opaque
+
+:Opaque rdf:type owl:Class ;
+        
+        rdfs:label "Opaque" ;
+        
+        rdfs:subClassOf :Explainability ;
+        
+        owl:disjointWith :Transparency ;
+        
+        rdfs:seeAlso "opacity" .
+
+
+
+###  http://graffl.ai/defi#Opportunity
+
+:Opportunity rdf:type owl:Class ;
+             
+             rdfs:label "Opportunity" ;
+             
+             rdfs:seeAlso "Opportunities, Opportunisitic" .
+
+
+
+###  http://graffl.ai/defi#Oracle
+
+:Oracle rdf:type owl:Class ;
+        
+        rdfs:label "Oracle" ;
+        
+        rdfs:subClassOf :Data_Source ;
+        
+        rdfs:comment "An oracle is any data source for reporting information external to the blockchain." .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 24). Wiley. Kindle Edition. " ;
+  owl:annotatedTarget "An oracle is any data source for reporting information external to the blockchain." ;
+  owl:annotatedSource :Oracle ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Organization
+
+:Organization rdf:type owl:Class ;
+              
+              rdfs:label "Organization" .
+
+
+
+###  http://graffl.ai/defi#Output
+
+:Output rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#Output_Utxo
+
+:Output_Utxo rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Unspent_Transaction_Output ;
+             
+             rdfs:seeAlso "Output UXTO" .
+
+
+
+###  http://graffl.ai/defi#Overcollaterized_Debt
+
+:Overcollaterized_Debt rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Debt .
+
+
+
+###  http://graffl.ai/defi#Paper_Currency
+
+:Paper_Currency rdf:type owl:Class ;
+                
+                rdfs:label "Paper Currency" ;
+                
+                rdfs:subClassOf :Physical_Currency ;
+                
+                rdfs:seeAlso "Bank Note, Bank Notes" ,
+                             "cash" ,
+                             "paper money" ,
+                             "benjamins" ,
+                             "Greenback, Greenbacks, Green backs" .
+
+
+
+###  http://graffl.ai/defi#Partial_Redundancy
+
+:Partial_Redundancy rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Redundancy .
+
+
+
+###  http://graffl.ai/defi#Partial_Slashing
+
+:Partial_Slashing rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Slashing_Condition .
+
+
+
+###  http://graffl.ai/defi#Payment
+
+:Payment rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Action ;
+         
+         rdfs:seeAlso "payments" .
+
+
+
+###  http://graffl.ai/defi#Payment_System
+
+:Payment_System rdf:type owl:Class ;
+                
+                rdfs:label "Payment System" ;
+                
+                rdfs:subClassOf :Platform ,
+                                :System ;
+                
+                :effects :Payment .
+
+
+
+###  http://graffl.ai/defi#Paypal
+
+:Paypal rdf:type owl:Class ;
+        
+        rdfs:label "PayPal" ;
+        
+        rdfs:subClassOf :Electronic_Payment_System .
+
+
+
+###  http://graffl.ai/defi#Peer_Node
+
+:Peer_Node rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Computational_Node ,
+                           :Peer_Node .
+
+
+
+###  http://graffl.ai/defi#Peer_to_Peer_Distributed_Timestamp_Server
+
+:Peer_to_Peer_Distributed_Timestamp_Server rdf:type owl:Class ;
+                                           
+                                           rdfs:subClassOf :Distributed_Timestamp_Server ,
+                                                           :Peer_to_Peer_Timestamp_Server .
+
+
+
+###  http://graffl.ai/defi#Peer_to_Peer_Network
+
+:Peer_to_Peer_Network rdf:type owl:Class ;
+                      
+                      owl:equivalentClass :Peer_to_Peer_Network_Protocol ;
+                      
+                      rdfs:subClassOf :Network ;
+                      
+                      rdfs:seeAlso "peer2peer network, p2p network, p2p, peer to peer, peer 2 peer" .
+
+
+
+###  http://graffl.ai/defi#Peer_to_Peer_Network_Protocol
+
+:Peer_to_Peer_Network_Protocol rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf :Network_Protocol ;
+                               
+                               rdfs:seeAlso "p2p protocol, p2p network protocol, peer to peer protocol" .
+
+
+
+###  http://graffl.ai/defi#Peer_to_Peer_Node
+
+:Peer_to_Peer_Node rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Distributed_Node ;
+                   
+                   rdfs:seeAlso "p2p node" .
+
+
+
+###  http://graffl.ai/defi#Peer_to_Peer_Timestamp_Server
+
+:Peer_to_Peer_Timestamp_Server rdf:type owl:Class ;
+                               
+                               rdfs:subClassOf :Peer_to_Peer_Node ,
+                                               :Timestamp_Server .
+
+
+
+###  http://graffl.ai/defi#Permanent_Loss
+
+:Permanent_Loss rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Loss .
+
+
+
+###  http://graffl.ai/defi#Physical_Currency
+
+:Physical_Currency rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Currency .
+
+
+
+###  http://graffl.ai/defi#Physical_Transfer
+
+:Physical_Transfer rdf:type owl:Class ;
+                   
+                   rdfs:label "Physical Transfer" ;
+                   
+                   rdfs:subClassOf :Transfer .
+
+
+
+###  http://graffl.ai/defi#Platform
+
+:Platform rdf:type owl:Class ;
+          
+          rdfs:label "Platform" ;
+          
+          rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/defi#Policy
+
+:Policy rdf:type owl:Class ;
+        
+        rdfs:label "Policy" ;
+        
+        rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Portable
+
+:Portable rdf:type owl:Class ;
+          
+          rdfs:label "Portable" ;
+          
+          rdfs:subClassOf :Attribute ;
+          
+          rdfs:seeAlso "Portability" .
+
+
+
+###  http://graffl.ai/defi#Position
+
+:Position rdf:type owl:Class ;
+          
+          rdfs:label "Position" ;
+          
+          rdfs:subClassOf :State .
+
+
+
+###  http://graffl.ai/defi#Positive_Incentive
+
+:Positive_Incentive rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Incentive_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Positive_Staked_Incentive
+
+:Positive_Staked_Incentive rdf:type owl:Class ;
+                           
+                           rdfs:subClassOf :Positive_Incentive ,
+                                           :Staked_Incentive .
+
+
+
+###  http://graffl.ai/defi#Power
+
+:Power rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Precious_Metal
+
+:Precious_Metal rdf:type owl:Class ;
+                
+                rdfs:label "Precious Metal" ;
+                
+                rdfs:subClassOf :Metal ,
+                                :Store_of_Wealth .
+
+
+
+###  http://graffl.ai/defi#Predefined_Transaction
+
+:Predefined_Transaction rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Transaction .
+
+
+
+###  http://graffl.ai/defi#Predictable
+
+:Predictable rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Primitive
+
+:Primitive rdf:type owl:Class ;
+           
+           rdfs:label "Primitive" .
+
+
+
+###  http://graffl.ai/defi#Privacy
+
+:Privacy rdf:type owl:Class ;
+         
+         rdfs:label "Privacy" .
+
+
+
+###  http://graffl.ai/defi#Private_Agency
+
+:Private_Agency rdf:type owl:Class ;
+                
+                rdfs:label "Private Agency" ;
+                
+                rdfs:subClassOf :Agency .
+
+
+
+###  http://graffl.ai/defi#Pro_Rata_Basis
+
+:Pro_Rata_Basis rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Basis .
+
+
+
+###  http://graffl.ai/defi#Problem
+
+:Problem rdf:type owl:Class ;
+         
+         rdfs:subClassOf :State .
+
+
+
+###  http://graffl.ai/defi#Programmable_Blockchain
+
+:Programmable_Blockchain rdf:type owl:Class ;
+                         
+                         rdfs:subClassOf :Blockchain .
+
+
+
+###  http://graffl.ai/defi#Proof
+
+:Proof rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#Proof_of_Activity
+
+:Proof_of_Activity rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Consensus_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Proof_of_Authority
+
+:Proof_of_Authority rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Consensus_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Proof_of_Capacity
+
+:Proof_of_Capacity rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Consensus_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Proof_of_Elapsed_Time
+
+:Proof_of_Elapsed_Time rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Consensus_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Proof_of_Identity
+
+:Proof_of_Identity rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Consensus_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Proof_of_Stake
+
+:Proof_of_Stake rdf:type owl:Class ;
+                
+                rdfs:label "Proof of Stake" ;
+                
+                rdfs:subClassOf :Consensus_Mechanism ;
+                
+                rdfs:comment "Validators in PoS commit some capital (the stake) to attest that the block is valid and make themselves available by staking their cryptocurrency. Then, they may be selected to propose a block, which needs to be attested by many of the other validators. Validators profit by both proposing a block and attesting to the validity of others’ proposed blocks. PoS is much less computationally intensive and requires vastly less energy." .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "Validators in PoS commit some capital (the stake) to attest that the block is valid and make themselves available by staking their cryptocurrency. Then, they may be selected to propose a block, which needs to be attested by many of the other validators. Validators profit by both proposing a block and attesting to the validity of others’ proposed blocks. PoS is much less computationally intensive and requires vastly less energy." ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (pp. 19-20). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :Proof_of_Stake ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Proof_of_Work
+
+:Proof_of_Work rdf:type owl:Class ;
+               
+               rdfs:label "Proof of Work" ;
+               
+               rdfs:subClassOf :Consensus_Mechanism ;
+               
+               rdfs:comment """The blockchains we focus on currently use the proof of work (PoW) consensus protocol, which relies on a computationally and energy intensive lottery to determine which block to add. The participants agree that the longest chain of blocks is the truth. 
+
+If attackers want to make a longer chain that contains malicious transactions, they must outpace all the computational work of the entire rest of the network. In theory, they would need most of the network power (“hash rate”) to accomplish this – hence, the famous 51 percent attack being the boundary of PoW security. 
+
+Luckily, it is extraordinarily difficult for any actor, even an entire country, to amass this much network power on the most widely used blockchains, such as Bitcoin or Ethereum. Even if most of the network power can be temporarily acquired, the amount of block history that can be overwritten is constrained by how long this majority can be maintained.""" ;
+               
+               :effects :Blockchain .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget """The blockchains we focus on currently use the proof of work (PoW) consensus protocol, which relies on a computationally and energy intensive lottery to determine which block to add. The participants agree that the longest chain of blocks is the truth. 
+
+If attackers want to make a longer chain that contains malicious transactions, they must outpace all the computational work of the entire rest of the network. In theory, they would need most of the network power (“hash rate”) to accomplish this – hence, the famous 51 percent attack being the boundary of PoW security. 
+
+Luckily, it is extraordinarily difficult for any actor, even an entire country, to amass this much network power on the most widely used blockchains, such as Bitcoin or Ethereum. Even if most of the network power can be temporarily acquired, the amount of block history that can be overwritten is constrained by how long this majority can be maintained.""" ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 19). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :Proof_of_Work ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Proto_Coinage
+
+:Proto_Coinage rdf:type owl:Class ;
+               
+               rdfs:label "Proto Coinage" ;
+               
+               rdfs:subClassOf :Physical_Currency ;
+               
+               rdfs:comment "Proto-coinage presents enormous challenges to potential collectors. It falls into the category of antiquities or “archaeological artifacts” rather than numismatic collectibles. Few coin dealers are willing to handle such material, due to problems of authentication, provenance and documentation" .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "Proto-coinage presents enormous challenges to potential collectors. It falls into the category of antiquities or “archaeological artifacts” rather than numismatic collectibles. Few coin dealers are willing to handle such material, due to problems of authentication, provenance and documentation" ;
+  rdfs:isDefinedBy "https://coinweek.com/ancient-coins/origin-specie-gold-silver-became-money/" ;
+  owl:annotatedSource :Proto_Coinage ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Protocol
+
+:Protocol rdf:type owl:Class ;
+          
+          rdfs:label "Protocol" ;
+          
+          rdfs:seeAlso "protocols" .
+
+
+
+###  http://graffl.ai/defi#Protocol_Controlled_Value
+
+:Protocol_Controlled_Value rdf:type owl:Class ;
+                           
+                           rdfs:label "Protocol Controlled Value" ;
+                           
+                           rdfs:subClassOf :Value ;
+                           
+                           rdfs:seeAlso "PCV" ;
+                           
+                           rdfs:comment "Many of the latest iterations of stablecoins (FEI, OHM, FLOAT, FRAX) leverage protocol controlled value (PCV). This is a concept in which the collateral backing a stablecoin is not redeemable by users but rather is owned by the protocol (which decides whether/how to invest it, can use it to restore the peg, etc.)" .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "https://medium.com/zeroknowledge/the-evolution-of-defi-across-four-financial-primitives-1be5caec3f26" ;
+  owl:annotatedTarget "Many of the latest iterations of stablecoins (FEI, OHM, FLOAT, FRAX) leverage protocol controlled value (PCV). This is a concept in which the collateral backing a stablecoin is not redeemable by users but rather is owned by the protocol (which decides whether/how to invest it, can use it to restore the peg, etc.)" ;
+  owl:annotatedSource :Protocol_Controlled_Value ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Protocol_Governance
+
+:Protocol_Governance rdf:type owl:Class ;
+                     
+                     rdfs:label "Protocol Governance" ;
+                     
+                     rdfs:subClassOf :Governance .
+
+
+
+###  http://graffl.ai/defi#Public_Agency
+
+:Public_Agency rdf:type owl:Class ;
+               
+               rdfs:label "Public Agency" ;
+               
+               rdfs:subClassOf :Agency .
+
+
+
+###  http://graffl.ai/defi#Public_Auction
+
+:Public_Auction rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Auction .
+
+
+
+###  http://graffl.ai/defi#Random_Number
+
+:Random_Number rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Number .
+
+
+
+###  http://graffl.ai/defi#Rate
+
+:Rate rdf:type owl:Class ;
+      
+      rdfs:label "Rate" ;
+      
+      rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Ratio
+
+:Ratio rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Measurement .
+
+
+
+###  http://graffl.ai/defi#Redundancy
+
+:Redundancy rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Redundant .
+
+
+
+###  http://graffl.ai/defi#Redundant
+
+:Redundant rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Refinance
+
+:Refinance rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Action ;
+           
+           rdfs:seeAlso "Refinance Loan" .
+
+
+
+###  http://graffl.ai/defi#Reliable
+
+:Reliable rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Attribute ;
+          
+          rdfs:seeAlso "reliability" .
+
+
+
+###  http://graffl.ai/defi#Requirement
+
+:Requirement rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Research_Company
+
+:Research_Company rdf:type owl:Class ;
+                  
+                  rdfs:label "Research Company" ;
+                  
+                  rdfs:subClassOf :Company .
+
+
+
+###  http://graffl.ai/defi#Reserve_Currency
+
+:Reserve_Currency rdf:type owl:Class ;
+                  
+                  rdfs:label "Reserve Currency" ;
+                  
+                  rdfs:subClassOf :Currency .
+
+
+
+###  http://graffl.ai/defi#Reversible_Transaction
+
+:Reversible_Transaction rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Transaction .
+
+
+
+###  http://graffl.ai/defi#Reward
+
+:Reward rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/defi#Ring_Money
+
+:Ring_Money rdf:type owl:Class ;
+            
+            rdfs:label "Ring Money" ;
+            
+            rdfs:subClassOf :Proto_Coinage .
+
+
+
+###  http://graffl.ai/defi#Risk
+
+:Risk rdf:type owl:Class ;
+      
+      rdfs:label "Risk" ;
+      
+      rdfs:subClassOf :Financial_Primitive .
+
+
+
+###  http://graffl.ai/defi#Risk_Factor
+
+:Risk_Factor rdf:type owl:Class ;
+             
+             rdfs:label "Risk Factor" ;
+             
+             rdfs:subClassOf :Factor .
+
+
+
+###  http://graffl.ai/defi#Robust
+
+:Robust rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Attribute ;
+        
+        rdfs:seeAlso "Robustness" .
+
+
+
+###  http://graffl.ai/defi#SEC
+
+:SEC rdf:type owl:Class ;
+     
+     rdfs:label "SEC" ;
+     
+     rdfs:subClassOf :Government_Agency ;
+     
+     rdfs:seeAlso "U.S. Securities and Exchange Commission" .
+
+
+
+###  http://graffl.ai/defi#Scalability
+
+:Scalability rdf:type owl:Class ;
+             
+             rdfs:label "Scalability" ;
+             
+             rdfs:subClassOf :Attribute ;
+             
+             rdfs:seeAlso "Scalable" .
+
+
+
+###  http://graffl.ai/defi#Scarcity
+
+:Scarcity rdf:type owl:Class ;
+          
+          rdfs:label "Scarcity" ;
+          
+          rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Security
+
+:Security rdf:type owl:Class ;
+          
+          rdfs:label "Security" ;
+          
+          rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Semi_Random_Number
+
+:Semi_Random_Number rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Number .
+
+
+
+###  http://graffl.ai/defi#Server
+
+:Server rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Computational_Node .
+
+
+
+###  http://graffl.ai/defi#Server_Rack
+
+:Server_Rack rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Server .
+
+
+
+###  http://graffl.ai/defi#Short_Term
+
+:Short_Term rdf:type owl:Class ;
+            
+            rdfs:label "Short Term" ;
+            
+            rdfs:subClassOf :Horizon ;
+            
+            rdfs:seeAlso "Short Term Horizon" .
+
+
+
+###  http://graffl.ai/defi#Sigmoid_Bonding_Curve
+
+:Sigmoid_Bonding_Curve rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Bonding_Curve .
+
+
+
+###  http://graffl.ai/defi#Signature
+
+:Signature rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Artefact ;
+           
+           rdfs:seeAlso "autograph, autographs" ,
+                        "signatures" .
+
+
+
+###  http://graffl.ai/defi#Silver
+
+:Silver rdf:type owl:Class ;
+        
+        rdfs:label "Silver" ;
+        
+        rdfs:subClassOf :Bullion .
+
+
+
+###  http://graffl.ai/defi#Slashing_Condition
+
+:Slashing_Condition rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Mechanism ;
+                    
+                    rdfs:seeAlso "Slashing Mechanism" .
+
+
+
+###  http://graffl.ai/defi#Smart_Contract
+
+:Smart_Contract rdf:type owl:Class ;
+                
+                rdfs:label "Smart Contract" ;
+                
+                rdfs:subClassOf :Contract ;
+                
+                rdfs:comment """A smart contract is code that can create and transform arbitrary data or tokens on top of the blockchain to which it belongs. 
+
+Powerfully, it allows the user to trustlessly encode rules for any type of transaction and even create scarce assets with specialized functionality. Many of the clauses of traditional business agreements could be shifted to a smart contract, which not only would enumerate but also algorithmically enforce those clauses. 
+
+Smart contracts go beyond finance to include gaming, data stewardship, and supply chain.""" .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 21). Wiley. Kindle Edition. " ;
+  owl:annotatedTarget """A smart contract is code that can create and transform arbitrary data or tokens on top of the blockchain to which it belongs. 
+
+Powerfully, it allows the user to trustlessly encode rules for any type of transaction and even create scarce assets with specialized functionality. Many of the clauses of traditional business agreements could be shifted to a smart contract, which not only would enumerate but also algorithmically enforce those clauses. 
+
+Smart contracts go beyond finance to include gaming, data stewardship, and supply chain.""" ;
+  owl:annotatedSource :Smart_Contract ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Smart_Contract_Risk
+
+:Smart_Contract_Risk rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Contract_Risk .
+
+
+
+###  http://graffl.ai/defi#Software_Protocol
+
+:Software_Protocol rdf:type owl:Class ;
+                   
+                   rdfs:label "Software Protocol" ;
+                   
+                   rdfs:subClassOf :Protocol .
+
+
+
+###  http://graffl.ai/defi#Solution
+
+:Solution rdf:type owl:Class ;
+          
+          rdfs:subClassOf :State ;
+          
+          rdfs:seeAlso "solving a problem, solving the problem, solving problems" ,
+                       "Problem Solving" .
+
+
+
+###  http://graffl.ai/defi#Sovereign_Currency
+
+:Sovereign_Currency rdf:type owl:Class ;
+                    
+                    rdfs:label "Sovereign Currency" ;
+                    
+                    rdfs:subClassOf :Currency ;
+                    
+                    rdfs:seeAlso "legal tender" .
+
+
+
+###  http://graffl.ai/defi#Sovereignity
+
+:Sovereignity rdf:type owl:Class ;
+              
+              rdfs:label "Sovereignity" ;
+              
+              rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Specie_Currency
+
+:Specie_Currency rdf:type owl:Class ;
+                 
+                 rdfs:label "Specie Currency" ;
+                 
+                 rdfs:subClassOf :Physical_Currency ;
+                 
+                 rdfs:comment "The Latin term specie[6] (meaning “kind, or type”) is used to describe precious metals used as money" ;
+                 
+                 rdfs:seeAlso "Coin Money, coined money, money in coin" ,
+                              "in speciē" ,
+                              "in kind currency" ;
+                 
+                 rdfs:comment "the word “specie” refers not only to money or “in kind,” but more specifically to a denomination of currency, most often to coin." .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "https://www.columbiaforestproducts.com/2015/03/23/specie-or-species-is-it-wood-or-currency/" ;
+  owl:annotatedTarget "the word “specie” refers not only to money or “in kind,” but more specifically to a denomination of currency, most often to coin." ;
+  owl:annotatedSource :Specie_Currency ;
+  owl:annotatedProperty rdfs:comment
+] .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "https://coinweek.com/ancient-coins/origin-specie-gold-silver-became-money/" ;
+  owl:annotatedTarget "The Latin term specie[6] (meaning “kind, or type”) is used to describe precious metals used as money" ;
+  owl:annotatedSource :Specie_Currency ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Spend
+
+:Spend rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Action ;
+       
+       rdfs:seeAlso "spent, spends, spending" .
+
+
+
+###  http://graffl.ai/defi#Stability_Fee
+
+:Stability_Fee rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Mechanism .
+
+
+
+###  http://graffl.ai/defi#Stable
+
+:Stable rdf:type owl:Class ;
+        
+        rdfs:label "Stable" ;
+        
+        rdfs:subClassOf :Attribute ;
+        
+        rdfs:seeAlso "Stability" .
+
+
+
+###  http://graffl.ai/defi#Stablecoin
+
+:Stablecoin rdf:type owl:Class ;
+            
+            rdfs:label "Stablecoin" ;
+            
+            rdfs:subClassOf :Artefact ;
+            
+            rdfs:seeAlso "Stablecoins" ;
+            
+            rdfs:comment "Stablecoins are an important component of DeFi infrastructure because they allow users to benefit from the functionality of the applications without risking unnecessary price volatility." .
+[ rdf:type owl:Axiom ;
+  owl:annotatedTarget "Stablecoins are an important component of DeFi infrastructure because they allow users to benefit from the functionality of the applications without risking unnecessary price volatility." ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 27). Wiley. Kindle Edition. " ;
+  owl:annotatedSource :Stablecoin ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Stablecoin_Protocol
+
+:Stablecoin_Protocol rdf:type owl:Class ;
+                     
+                     rdfs:label "Stablecoin Protocol" ;
+                     
+                     rdfs:subClassOf :Defi_Protocol .
+
+
+
+###  http://graffl.ai/defi#Stake
+
+:Stake rdf:type owl:Class ;
+       
+       rdfs:subClassOf :State ;
+       
+       rdfs:comment "Some form of share in the network" .
+
+
+
+###  http://graffl.ai/defi#Staked_Incentive
+
+:Staked_Incentive rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Incentive_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Staking_Balance
+
+:Staking_Balance rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Balance .
+
+
+
+###  http://graffl.ai/defi#Staking_Requirement
+
+:Staking_Requirement rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Requirement .
+
+
+
+###  http://graffl.ai/defi#Staking_Reward
+
+:Staking_Reward rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Reward .
+
+
+
+###  http://graffl.ai/defi#Standard
+
+:Standard rdf:type owl:Class ;
+          
+          rdfs:label "Standard" ;
+          
+          rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#State
+
+:State rdf:type owl:Class ;
+       
+       rdfs:label "State" .
+
+
+
+###  http://graffl.ai/defi#Stock_Trade
+
+:Stock_Trade rdf:type owl:Class ;
+             
+             rdfs:label "Stock Trade" ;
+             
+             rdfs:subClassOf :Trade .
+
+
+
+###  http://graffl.ai/defi#Storage
+
+:Storage rdf:type owl:Class ;
+         
+         rdfs:label "Storage" .
+
+
+
+###  http://graffl.ai/defi#Store_of_Wealth
+
+:Store_of_Wealth rdf:type owl:Class ;
+                 
+                 rdfs:label "Store of Wealth" ;
+                 
+                 rdfs:subClassOf :Storage .
+
+
+
+###  http://graffl.ai/defi#Super_Linear_Bonding_Curve
+
+:Super_Linear_Bonding_Curve rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf :Bonding_Curve .
+
+
+
+###  http://graffl.ai/defi#Super_Linear_Function
+
+:Super_Linear_Function rdf:type owl:Class ;
+                       
+                       rdfs:subClassOf :Function ;
+                       
+                       rdfs:seeAlso "SuperLinear Function" .
+
+
+
+###  http://graffl.ai/defi#Supply
+
+:Supply rdf:type owl:Class ;
+        
+        rdfs:label "Supply" .
+
+
+
+###  http://graffl.ai/defi#Supply_Expansion
+
+:Supply_Expansion rdf:type owl:Class ;
+                  
+                  rdfs:label "Supply Expansion" ;
+                  
+                  rdfs:subClassOf :Expansion .
+
+
+
+###  http://graffl.ai/defi#Synthetic_Token
+
+:Synthetic_Token rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Token .
+
+
+
+###  http://graffl.ai/defi#System
+
+:System rdf:type owl:Class ;
+        
+        rdfs:label "System" ;
+        
+        rdfs:seeAlso "Control" .
+
+
+
+###  http://graffl.ai/defi#System_Consensus
+
+:System_Consensus rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Consensus .
+
+
+
+###  http://graffl.ai/defi#Tangible_Value
+
+:Tangible_Value rdf:type owl:Class ;
+                
+                rdfs:label "Tangible Value" ;
+                
+                rdfs:subClassOf :Value .
+
+
+
+###  http://graffl.ai/defi#Team
+
+:Team rdf:type owl:Class ;
+      
+      rdfs:label "Team" ;
+      
+      rdfs:seeAlso "Teams" .
+
+
+
+###  http://graffl.ai/defi#Third_Party
+
+:Third_Party rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Actor .
+
+
+
+###  http://graffl.ai/defi#Timestamp
+
+:Timestamp rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Artefact ;
+           
+           rdfs:seeAlso "timestamps, time stamp, time stamps" .
+
+
+
+###  http://graffl.ai/defi#Timestamp_Server
+
+:Timestamp_Server rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Server ;
+                  
+                  :effects :Timestamp .
+
+
+
+###  http://graffl.ai/defi#Token
+
+:Token rdf:type owl:Class ;
+       
+       rdfs:label """Token
+""" .
+
+
+
+###  http://graffl.ai/defi#Token_Balance
+
+:Token_Balance rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Balance .
+
+
+
+###  http://graffl.ai/defi#Token_Minting
+
+:Token_Minting rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Action ,
+                               :Incentive_Mechanism .
+
+
+
+###  http://graffl.ai/defi#Token_Standard
+
+:Token_Standard rdf:type owl:Class ;
+                
+                rdfs:label "Token Standard" ;
+                
+                rdfs:subClassOf :Standard .
+
+
+
+###  http://graffl.ai/defi#Token_Swap
+
+:Token_Swap rdf:type owl:Class ;
+            
+            rdfs:label "Token Swap" ;
+            
+            rdfs:subClassOf :Exchange .
+
+
+
+###  http://graffl.ai/defi#Token_Utilization
+
+:Token_Utilization rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Action .
+
+
+
+###  http://graffl.ai/defi#Tolerant
+
+:Tolerant rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Trade
+
+:Trade rdf:type owl:Class ;
+       
+       rdfs:label "Trade" ;
+       
+       rdfs:subClassOf :Action ;
+       
+       rdfs:seeAlso "Trades, Trading" .
+
+
+
+###  http://graffl.ai/defi#Trading_Platform
+
+:Trading_Platform rdf:type owl:Class ;
+                  
+                  rdfs:label "Trading Platform" ;
+                  
+                  rdfs:subClassOf :Platform .
+
+
+
+###  http://graffl.ai/defi#Transaction
+
+:Transaction rdf:type owl:Class ;
+             
+             rdfs:label "Transaction" ;
+             
+             rdfs:subClassOf :Action ;
+             
+             rdfs:comment "An individual user interaction with the ledger" .
+
+
+
+###  http://graffl.ai/defi#Transaction_Fee
+
+:Transaction_Fee rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Fee .
+
+
+
+###  http://graffl.ai/defi#Transaction_Number
+
+:Transaction_Number rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Number .
+
+
+
+###  http://graffl.ai/defi#Transaction_Output
+
+:Transaction_Output rdf:type owl:Class ;
+                    
+                    rdfs:subClassOf :Output .
+
+
+
+###  http://graffl.ai/defi#Transfer
+
+:Transfer rdf:type owl:Class ;
+          
+          rdfs:label "Transfer" ;
+          
+          rdfs:subClassOf :Action .
+
+
+
+###  http://graffl.ai/defi#Transparency
+
+:Transparency rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Explainability ;
+              
+              rdfs:seeAlso "Transparency" .
+
+
+
+###  http://graffl.ai/defi#Treasury_Governance
+
+:Treasury_Governance rdf:type owl:Class ;
+                     
+                     rdfs:label "Treasury Governance" ;
+                     
+                     rdfs:subClassOf :Governance .
+
+
+
+###  http://graffl.ai/defi#Trust
+
+:Trust rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Trust_Model
+
+:Trust_Model rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Model .
+
+
+
+###  http://graffl.ai/defi#Trusted_Actor
+
+:Trusted_Actor rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Actor ;
+               
+               owl:disjointWith :Untrusted_Actor ;
+               
+               rdfs:seeAlso "Trusted Party" .
+
+
+
+###  http://graffl.ai/defi#Trusted_Node
+
+:Trusted_Node rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Node .
+
+
+
+###  http://graffl.ai/defi#Trusted_Third_Party
+
+:Trusted_Third_Party rdf:type owl:Class ;
+                     
+                     rdfs:subClassOf :Third_Party ,
+                                     :Trusted_Actor .
+
+
+
+###  http://graffl.ai/defi#Trustworthy
+
+:Trustworthy rdf:type owl:Class ;
+             
+             rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#US_Dollar
+
+:US_Dollar rdf:type owl:Class ;
+           
+           rdfs:label "US Dollar" ;
+           
+           rdfs:subClassOf :Dollar ;
+           
+           rdfs:seeAlso "USD" .
+
+
+
+###  http://graffl.ai/defi#Uncollateralized_Stablecoin
+
+:Uncollateralized_Stablecoin rdf:type owl:Class ;
+                             
+                             rdfs:label "Uncollateralized Stablecoin" ;
+                             
+                             rdfs:subClassOf :Stablecoin .
+
+
+
+###  http://graffl.ai/defi#Uncollaterialized_Loan
+
+:Uncollaterialized_Loan rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Loan .
+
+
+
+###  http://graffl.ai/defi#Uniform
+
+:Uniform rdf:type owl:Class ;
+         
+         rdfs:label "Uniform" ;
+         
+         rdfs:subClassOf :Attribute ;
+         
+         rdfs:seeAlso "Uniformity" .
+
+
+
+###  http://graffl.ai/defi#Universal_Access
+
+:Universal_Access rdf:type owl:Class ;
+                  
+                  rdfs:label "Unlimited Access" ;
+                  
+                  rdfs:subClassOf :Access ;
+                  
+                  rdfs:seeAlso "Universal Access" .
+
+
+
+###  http://graffl.ai/defi#Unlimited_Supply
+
+:Unlimited_Supply rdf:type owl:Class ;
+                  
+                  rdfs:label "Unlimited Supply" ;
+                  
+                  rdfs:subClassOf :Supply .
+
+
+
+###  http://graffl.ai/defi#Unspent_Transaction_Output
+
+:Unspent_Transaction_Output rdf:type owl:Class ;
+                            
+                            rdfs:subClassOf :Transaction_Output ;
+                            
+                            rdfs:seeAlso "UTXO" ;
+                            
+                            rdfs:comment """Bitcoin, and many protocols based on it, store data about transactions and user balances in the form of unspent transaction outputs, which are a list of “unspent” Bitcoin amounts that have been sent to a user, but have not yet been sent from him/her. The sum of these outputs is the user’s total balance. On the blockchain, they appear to be a collection of Bitcoin amounts on different addresses, and the role of a wallet is to identify which addresses the user has keys to. Individual Bitcoin are easy to track because they are signed from one person to another. A transaction is valid if one can prove ownership over the actual Bitcoin s/he is trying to send.
+
+https://smithandcrown.com/glossary/unspent-transaction-outputs-utxo/""" .
+
+
+
+###  http://graffl.ai/defi#Untrusted_Actor
+
+:Untrusted_Actor rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Actor .
+
+
+
+###  http://graffl.ai/defi#User_Issued_Asset
+
+:User_Issued_Asset rdf:type owl:Class ;
+                   
+                   rdfs:label "User Issued Asset" ;
+                   
+                   rdfs:subClassOf :Asset .
+
+
+
+###  http://graffl.ai/defi#User_Sovereignity
+
+:User_Sovereignity rdf:type owl:Class ;
+                   
+                   rdfs:label "User Sovereignity" ;
+                   
+                   rdfs:subClassOf :Sovereignity ;
+                   
+                   rdfs:comment "no entity other than the user can determine how to use funds" .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 13). Wiley. Kindle Edition. " ;
+  owl:annotatedTarget "no entity other than the user can determine how to use funds" ;
+  owl:annotatedSource :User_Sovereignity ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+###  http://graffl.ai/defi#Valid_Transaction
+
+:Valid_Transaction rdf:type owl:Class ;
+                   
+                   rdfs:subClassOf :Transaction ;
+                   
+                   rdfs:comment "A transaction is valid if one can prove ownership over the actual Bitcoin s/he is trying to send." .
+
+
+
+###  http://graffl.ai/defi#Value
+
+:Value rdf:type owl:Class ;
+       
+       rdfs:label "Value" ;
+       
+       rdfs:subClassOf :Action .
+
+
+
+###  http://graffl.ai/defi#Value_Standard
+
+:Value_Standard rdf:type owl:Class ;
+                
+                rdfs:label "Value Standard" ;
+                
+                rdfs:subClassOf :Standard ;
+                
+                rdfs:seeAlso "Standard of Value" .
+
+
+
+###  http://graffl.ai/defi#Value_Transfer
+
+:Value_Transfer rdf:type owl:Class ;
+                
+                rdfs:label "Value Transfer" ;
+                
+                rdfs:subClassOf :Transfer .
+
+
+
+###  http://graffl.ai/defi#Variable_Interest_Rate
+
+:Variable_Interest_Rate rdf:type owl:Class ;
+                        
+                        rdfs:subClassOf :Interest_Rate .
+
+
+
+###  http://graffl.ai/defi#Vault
+
+:Vault rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Vault_Holder
+
+:Vault_Holder rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Actor .
+
+
+
+###  http://graffl.ai/defi#Verify
+
+:Verify rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Action ;
+        
+        rdfs:seeAlso """Verifies, Verfied, Verifying, Verifier, Verifiers
+""" .
+
+
+
+###  http://graffl.ai/defi#Virtual_Machine
+
+:Virtual_Machine rdf:type owl:Class ;
+                 
+                 rdfs:subClassOf :Node ;
+                 
+                 rdfs:seeAlso """Virtual Node
+""" .
+
+
+
+###  http://graffl.ai/defi#Virtual_Transfer
+
+:Virtual_Transfer rdf:type owl:Class ;
+                  
+                  rdfs:label "Virtual Transfer" ;
+                  
+                  rdfs:subClassOf :Non_Physical_Transfer .
+
+
+
+###  http://graffl.ai/defi#Volatile
+
+:Volatile rdf:type owl:Class ;
+          
+          rdfs:label "Volatile" ;
+          
+          rdfs:subClassOf :State ;
+          
+          rdfs:seeAlso "Volatility" .
+
+
+
+###  http://graffl.ai/defi#Voting_Token
+
+:Voting_Token rdf:type owl:Class ;
+              
+              rdfs:subClassOf :Token .
+
+
+
+###  http://graffl.ai/defi#Vulnerable
+
+:Vulnerable rdf:type owl:Class ;
+            
+            rdfs:subClassOf :Attribute ;
+            
+            rdfs:seeAlso "vulnerability" .
+
+
+
+###  http://graffl.ai/defi#Wallet
+
+:Wallet rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Artefact .
+
+
+
+###  http://graffl.ai/defi#Yuan
+
+:Yuan rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Centralized_Currency ,
+                      :Paper_Currency ,
+                      :Sovereign_Currency ;
+      
+      rdfs:seeAlso "reminbi" .
+
+
+
+###  http://graffl.ai/defi#Zelle
+
+:Zelle rdf:type owl:Class ;
+       
+       rdfs:label "Zelle" ;
+       
+       rdfs:subClassOf :Electronic_Payment_System .
+
+
+
+###  http://graffl.ai/defi#Zero_Downtime
+
+:Zero_Downtime rdf:type owl:Class ;
+               
+               rdfs:subClassOf :Attribute .
+
+
+
+###  http://graffl.ai/defi#Zero_Knowledge_Proof
+
+:Zero_Knowledge_Proof rdf:type owl:Class ;
+                      
+                      rdfs:subClassOf :Proof .
+
+
+
+###  http://www.semanticweb.org/craig/ontologies/2021/11/untitled-ontology-278#Defi
+
+<http://www.semanticweb.org/craig/ontologies/2021/11/untitled-ontology-278#Defi> rdf:type owl:Class ;
+                                                                                 
+                                                                                 rdfs:label "DeFi" ;
+                                                                                 
+                                                                                 rdfs:subClassOf :Financial_System ;
+                                                                                 
+                                                                                 rdfs:seeAlso "DeFi-native" ;
+                                                                                 
+                                                                                 rdfs:comment "DeFi is fundamentally a competitive marketplace of financial dApps that function as various financial “primitives” such as exchange, lend, and tokenize. They benefit from the network effects of combining and recombining DeFi products and attracting increasingly more market share from the traditional financial ecosystem." ;
+                                                                                 
+                                                                                 rdfs:seeAlso "Decentralized Finance" .
+[ rdf:type owl:Axiom ;
+  rdfs:isDefinedBy "Harvey, Campbell R.; Ramachandran, Ashwin; Santoro, Joey. DeFi and the Future of Finance (p. 17). Wiley. Kindle Edition. " ;
+  owl:annotatedTarget "DeFi is fundamentally a competitive marketplace of financial dApps that function as various financial “primitives” such as exchange, lend, and tokenize. They benefit from the network effects of combining and recombining DeFi products and attracting increasingly more market share from the traditional financial ecosystem." ;
+  owl:annotatedSource <http://www.semanticweb.org/craig/ontologies/2021/11/untitled-ontology-278#Defi> ;
+  owl:annotatedProperty rdfs:comment
+] .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

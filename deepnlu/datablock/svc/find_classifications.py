@@ -38,8 +38,10 @@ class FindClassifications(BaseObject):
         self._ontology_name = ontology_name
 
         subdir = os.path.normpath(
-            os.path.join('apps/blocks/datablock/datablock/os/manifest',
-                         ontology_name))
+            os.path.join(
+                os.getcwd(),
+                'deepnlu/datablock/os/manifest',
+                ontology_name))
 
         loader = GenericFunctionLoader(subdir).load
 

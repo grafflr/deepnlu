@@ -1,0 +1,440 @@
+@prefix : <https://w3id.org/MON/tagging.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix j.0: <http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/MON/tagging.owl> .
+
+<https://w3id.org/MON/tagging.owl> rdf:type owl:Ontology ;
+                                   
+                                   dc:title "Tagging Ontology"@en ;
+                                   
+                                   dc:description """The aim of the tagging ontology is to represent a tagging action, i.e the action performed by an agent that attaches a label or something with a well-defined semantics (eg. a concept or a frame etc.) to some entity.
+
+<b>Example of Usage</b>
+
+We provide an example of usage of the Tagging ontology for specifying the following scenario.
+
+<b>Scenario</b> annotating a picture about the birthday of his patient John. 
+This picture was takes at John's 51st birthday on January 20 1971. 
+
+
+
+<pre>
+@prefix time: &#60;https://w3id.org/MON/time.owl#&#62;
+@prefix event: &#60;https://w3id.org/MON/event.owl#&#62;
+@prefix spatial: &#60;https://w3id.org/MON/spatial.owl#&#62;
+@prefix media: &#60;https://w3id.org/MON/multimediacontent.owl#&#62;
+
+:January_20_1971 a time:TemporalEntity .
+
+:John_51st_birthday a event:Event ;
+  spatial:hasPlace :Piper_Club ;
+  time:atTime :January_20_1971 .
+
+:John_picture a media:Image .
+
+:Piper_Club a spatial:SpatialThing .
+
+:tag_John_51st_birthday a tagging:Tag .
+
+:tagging_John_51st_birthday a tagging:Tagging ;
+  tagging:forEntity :John_51st_birthday, :John_picture;
+  tagging:usingTag :tag_John_51st_birthday .  
+</pre>"""@en ;
+                                   
+                                   j.0:hasIntent "To represent a tagging action, i.e. the action performed by an agent that attaches a label or something with a well-defined semantics (eg. a concept or a frame etc.) to some entity."@en ;
+                                   
+                                   j.0:coversRequirements "Which is the entity associated to a certain tag?"@en ,
+                                                          "Which is the tag associated with a certain photo or events?"@en ,
+                                                          "Who has given a tag to a certain entity?"@en ;
+                                   
+                                   dc:description <https://raw.githubusercontent.com/luigi-asprino/MON/main/src/Tagging.png> ;
+                                   
+                                   owl:imports <https://w3id.org/MON/action.owl> ,
+                                               <https://w3id.org/MON/event.owl> ,
+                                               <https://w3id.org/MON/multimediacontent.owl> ,
+                                               <https://w3id.org/MON/person.owl> ,
+                                               <https://w3id.org/MON/time.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://www.ontologydesignpatterns.org/schemas/cpannotationschema.owl#hasIntent
+
+j.0:hasIntent rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/tagging.owl#appearsIn
+
+:appearsIn rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "appears in"@en ;
+           
+           rdfs:comment "It is used to connect the Person with the Media s/he appears in."@en ;
+           
+           rdfs:range <https://w3id.org/MON/multimediacontent.owl#Media> ;
+           
+           rdfs:domain <https://w3id.org/MON/person.owl#Person> ;
+           
+           owl:propertyChainAxiom ( [ owl:inverseOf :taggedPerson
+                                    ]
+                                    :forEntity
+                                  ) .
+
+
+
+###  https://w3id.org/MON/tagging.owl#forEntity
+
+:forEntity rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "for entity"@en ;
+           
+           rdfs:comment "It associates the Tagging action with the tagged Entity."@en ;
+           
+           rdfs:domain :Tagging ;
+           
+           owl:propertyChainAxiom ( :forEntity
+                                    [ owl:inverseOf <https://w3id.org/MON/event.owl#hasEvent>
+                                    ]
+                                  ) .
+
+
+
+###  https://w3id.org/MON/tagging.owl#hasTaggedPortion
+
+:hasTaggedPortion rdf:type owl:FunctionalProperty ,
+                           owl:ObjectProperty ;
+                  
+                  rdfs:label "has tagged portion"@en ;
+                  
+                  rdfs:domain :ImageTagging ;
+                  
+                  rdfs:range :TaggedPortion .
+
+
+
+###  https://w3id.org/MON/tagging.owl#taggedPerson
+
+:taggedPerson rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "tagged person"@en ;
+              
+              rdfs:range <https://w3id.org/MON/person.owl#Person> ;
+              
+              rdfs:subPropertyOf :usingTag .
+
+
+
+###  https://w3id.org/MON/tagging.owl#thumbnail
+
+:thumbnail rdf:type owl:ObjectProperty ;
+           
+           rdfs:label "thumbnail"@en ;
+           
+           rdfs:comment "A small picture of a Person"@en ;
+           
+           rdfs:range <https://w3id.org/MON/multimediacontent.owl#Image> ;
+           
+           rdfs:subPropertyOf :appearsIn .
+
+
+
+###  https://w3id.org/MON/tagging.owl#usingTag
+
+:usingTag rdf:type owl:ObjectProperty ;
+          
+          rdfs:label "using tag"@en ;
+          
+          rdfs:comment "It associates the Tagging action with the Tag."@en ;
+          
+          rdfs:range :Tag ;
+          
+          rdfs:domain :Tagging .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/tagging.owl#height
+
+:height rdf:type owl:DatatypeProperty ,
+                 owl:FunctionalProperty ;
+        
+        rdfs:label "height"@en ;
+        
+        rdfs:comment "The height (in pixels) of the tagged portion rectangle."@en ;
+        
+        rdfs:range xsd:integer ;
+        
+        rdfs:domain :TaggedPortion .
+
+
+
+###  https://w3id.org/MON/tagging.owl#label
+
+:label rdf:type owl:DatatypeProperty ,
+                owl:FunctionalProperty ;
+       
+       rdfs:label "label"@en ;
+       
+       rdfs:comment "It encodes the label of a Tag."@en ;
+       
+       rdfs:range rdfs:Literal ;
+       
+       rdfs:domain :Tag .
+
+
+
+###  https://w3id.org/MON/tagging.owl#left
+
+:left rdf:type owl:DatatypeProperty ,
+               owl:FunctionalProperty ;
+      
+      rdfs:label "left"@en ;
+      
+      rdfs:comment "The distance (in pixels) between the top left hand side corner of the tagged portion and the left hand side of the picture."@en ;
+      
+      rdfs:range xsd:integer ;
+      
+      rdfs:domain :TaggedPortion .
+
+
+
+###  https://w3id.org/MON/tagging.owl#top
+
+:top rdf:type owl:DatatypeProperty ,
+              owl:FunctionalProperty ;
+     
+     rdfs:label "top"@en ;
+     
+     rdfs:comment "The distance (in pixels) between the top left hand side corner of the tagged portion and the top side of the picture."@en ;
+     
+     rdfs:range xsd:integer ;
+     
+     rdfs:domain :TaggedPortion .
+
+
+
+###  https://w3id.org/MON/tagging.owl#width
+
+:width rdf:type owl:DatatypeProperty ,
+                owl:FunctionalProperty ;
+       
+       rdfs:label "width"@en ;
+       
+       rdfs:comment "The width (in pixels) of the tagged portion rectangle."@en ;
+       
+       rdfs:range xsd:integer ;
+       
+       rdfs:domain :TaggedPortion .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/MON/action.owl#Action
+
+<https://w3id.org/MON/action.owl#Action> owl:disjointWith <https://w3id.org/MON/action.owl#Agent> ,
+                                                          <https://w3id.org/MON/action.owl#Task> ,
+                                                          <https://w3id.org/MON/multimediacontent.owl#Media> ,
+                                                          <https://w3id.org/MON/person.owl#Sex> ,
+                                                          <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                          :TaggedPortion ,
+                                                          <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/action.owl#Agent
+
+<https://w3id.org/MON/action.owl#Agent> owl:disjointWith <https://w3id.org/MON/action.owl#Task> ,
+                                                         <https://w3id.org/MON/event.owl#Event> ,
+                                                         <https://w3id.org/MON/multimediacontent.owl#Media> ,
+                                                         <https://w3id.org/MON/person.owl#Sex> ,
+                                                         <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                         :TaggedPortion ,
+                                                         <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/action.owl#Task
+
+<https://w3id.org/MON/action.owl#Task> owl:disjointWith <https://w3id.org/MON/event.owl#Event> ,
+                                                        <https://w3id.org/MON/multimediacontent.owl#Media> ,
+                                                        <https://w3id.org/MON/person.owl#Sex> ,
+                                                        <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                        :TaggedPortion ,
+                                                        <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/event.owl#Event
+
+<https://w3id.org/MON/event.owl#Event> owl:disjointWith <https://w3id.org/MON/multimediacontent.owl#Media> ,
+                                                        <https://w3id.org/MON/person.owl#Sex> ,
+                                                        <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                        :TaggedPortion ,
+                                                        <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/multimediacontent.owl#Media
+
+<https://w3id.org/MON/multimediacontent.owl#Media> owl:disjointWith <https://w3id.org/MON/person.owl#Sex> ,
+                                                                    <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                                    :TaggedPortion ,
+                                                                    <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/person.owl#Sex
+
+<https://w3id.org/MON/person.owl#Sex> owl:disjointWith <https://w3id.org/MON/spatial.owl#SpatialThing> ,
+                                                       :TaggedPortion ,
+                                                       <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/spatial.owl#SpatialThing
+
+<https://w3id.org/MON/spatial.owl#SpatialThing> owl:disjointWith :TaggedPortion ,
+                                                                 <https://w3id.org/MON/time.owl#TemporalEntity> .
+
+
+
+###  https://w3id.org/MON/tagging.owl#ImageTagging
+
+:ImageTagging rdf:type owl:Class ;
+              
+              rdfs:label "Image tagging"@en ;
+              
+              rdfs:subClassOf :Tagging ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :forEntity ;
+                                owl:allValuesFrom <https://w3id.org/MON/multimediacontent.owl#Image>
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :hasTaggedPortion ;
+                                owl:someValuesFrom :TaggedPortion
+                              ] ;
+              
+              rdfs:comment "The action of Tagging a certain Image"@en .
+
+
+
+###  https://w3id.org/MON/tagging.owl#Tag
+
+:Tag rdf:type owl:Class ;
+     
+     rdfs:label "Tag"@en ;
+     
+     rdfs:subClassOf [ rdf:type owl:Restriction ;
+                       owl:onProperty :label ;
+                       owl:allValuesFrom rdfs:Literal
+                     ] ;
+     
+     rdfs:comment "A label, an individual with a well defined semantics (e.g. a Frame) or a named graph attached to someone or to something for the purpose of identification or to give other information."@en .
+
+
+
+###  https://w3id.org/MON/tagging.owl#TaggedPortion
+
+:TaggedPortion rdf:type owl:Class ;
+               
+               rdfs:label "Tagged Portion"@en ;
+               
+               rdfs:subClassOf [ rdf:type owl:Class ;
+                                 owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :height ;
+                                                        owl:someValuesFrom xsd:integer
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :left ;
+                                                        owl:someValuesFrom xsd:integer
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :top ;
+                                                        owl:someValuesFrom xsd:integer
+                                                      ]
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :width ;
+                                                        owl:someValuesFrom xsd:integer
+                                                      ]
+                                                    )
+                               ] ;
+               
+               owl:disjointWith <https://w3id.org/MON/time.owl#TemporalEntity> ;
+               
+               rdfs:comment "The portion of a certain Image tagged with a certain Tag."@en .
+
+
+
+###  https://w3id.org/MON/tagging.owl#Tagging
+
+:Tagging rdf:type owl:Class ;
+         
+         rdfs:label "Tagging"@en ;
+         
+         rdfs:subClassOf <https://w3id.org/MON/action.owl#Action> ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :forEntity ;
+                           owl:someValuesFrom [ rdf:type owl:Class ;
+                                                owl:unionOf ( <https://w3id.org/MON/action.owl#Task>
+                                                              <https://w3id.org/MON/event.owl#Event>
+                                                              <https://w3id.org/MON/multimediacontent.owl#Media>
+                                                            )
+                                              ]
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :usingTag ;
+                           owl:someValuesFrom :Tag
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty <https://w3id.org/MON/time.owl#atTime> ;
+                           owl:someValuesFrom <https://w3id.org/MON/time.owl#TemporalEntity>
+                         ] ;
+         
+         rdfs:comment "This class represents the tagging relation. It includes, a tag, a (tagged) Thing, an agent (i.e. the tagger). The tag can come from a folksonomy, a thesaurus or any other sources with a well-defined sematic."@en .
+
+
+
+###  https://w3id.org/MON/time.owl#TemporalEntity
+
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

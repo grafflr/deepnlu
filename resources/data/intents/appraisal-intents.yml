@@ -1,0 +1,30 @@
+---
+RANDOM_CATEGORIES#1:
+  - include_all_of:
+      - category
+      - random_query
+RANDOM_CATEGORIES#2:
+  - include_all_of:
+      - category
+      - generate
+RANDOM_CATEGORIES#3:
+  - include_all_of:
+      - category
+  - score: -25
+
+RANDOM_COMMENTS#1:
+  - include_all_of:
+      - comment
+      - random_query
+RANDOM_COMMENTS#2:
+  - include_all_of:
+      - comment
+      - generate
+RANDOM_COMMENTS#3:
+  - include_all_of:
+      - comment
+  - score: -25
+
+SIMILARITY#1:
+  - include_all_of:
+    - similar

@@ -1,0 +1,227 @@
+@prefix : <http://graffl.ai/kao#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://graffl.ai/kao> .
+
+<http://graffl.ai/kao> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://graffl.ai/kao#implies
+
+:implies rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/kao#locatedIn
+
+:locatedIn rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/kao#meansOf
+
+:meansOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/kao#measures
+
+:measures rdf:type owl:AnnotationProperty ;
+          
+          rdfs:subPropertyOf :uses .
+
+
+
+###  http://graffl.ai/kao#partOf
+
+:partOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/kao#requires
+
+:requires rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/kao#similarTo
+
+:similarTo rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/kao#uses
+
+:uses rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/kao#worksIn
+
+:worksIn rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://graffl.ai/kao#Determination
+
+:Determination rdf:type owl:Class ;
+               
+               rdfs:label "Determination" ;
+               
+               rdfs:seeAlso "never give up" ,
+                            "grit" .
+
+
+
+###  http://graffl.ai/kao#Document
+
+:Document rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/kao#Dreams
+
+:Dreams rdf:type owl:Class ;
+        
+        rdfs:label "Dreams" .
+
+
+
+###  http://graffl.ai/kao#Failure
+
+:Failure rdf:type owl:Class ;
+         
+         rdfs:label "Failure" .
+
+
+
+###  http://graffl.ai/kao#Improvement
+
+:Improvement rdf:type owl:Class ;
+             
+             rdfs:label "Improvement" ;
+             
+             rdfs:seeAlso "become better" .
+
+
+
+###  http://graffl.ai/kao#Inspiration
+
+:Inspiration rdf:type owl:Class ;
+             
+             rdfs:label "Inspiration" .
+
+
+
+###  http://graffl.ai/kao#Learning
+
+:Learning rdf:type owl:Class ;
+          
+          rdfs:label "Learning" ;
+          
+          rdfs:seeAlso "Learning Process" .
+
+
+
+###  http://graffl.ai/kao#Learning_By_Failure
+
+:Learning_By_Failure rdf:type owl:Class ;
+                     
+                     rdfs:label "Learning by Failure" ;
+                     
+                     rdfs:subClassOf :Learning ;
+                     
+                     rdfs:seeAlso "okay to fail" ,
+                                  "failure is part of the learning process" ,
+                                  "Learning from our failures" ,
+                                  "okay with failing" .
+
+
+
+###  http://graffl.ai/kao#Michael_Jordan
+
+:Michael_Jordan rdf:type owl:Class ;
+                
+                rdfs:label "Michael Jordan" ;
+                
+                rdfs:seeAlso "Michael Jordan's" .
+
+
+
+###  http://graffl.ai/kao#Risk_Taking
+
+:Risk_Taking rdf:type owl:Class ;
+             
+             rdfs:label "Risk Taking" ;
+             
+             rdfs:seeAlso "willingness to fail" ,
+                          "taking risks" .
+
+
+
+###  http://graffl.ai/kao#Risk_and_Failure
+
+:Risk_and_Failure rdf:type owl:Class ;
+                  
+                  rdfs:subClassOf :Document .
+
+
+
+###  http://graffl.ai/kao#Success
+
+:Success rdf:type owl:Class ;
+         
+         rdfs:label "Success" ;
+         
+         rdfs:seeAlso "leads to greatness" ,
+                      "successful" .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://graffl.ai/kao#PRT_F53B69F5_C68D_11EC_B2FF_4C1D96716627
+
+:PRT_F53B69F5_C68D_11EC_B2FF_4C1D96716627 rdf:type owl:NamedIndividual ;
+                                          
+                                          rdfs:label "Michael Jordan's video is a great example of why taking risks is important for learning and being successful."^^xsd:string ;
+                                          
+                                          :implies :Learning ,
+                                                   :Michael_Jordan ,
+                                                   :Risk_Taking ;
+                                          
+                                          :locatedIn :Risk_and_Failure ;
+                                          
+                                          :implies :Success .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

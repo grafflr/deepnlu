@@ -1,0 +1,53 @@
+##############################################################################
+##
+## FILE DOCUMENTATION AND REFERENCE 
+## https://github.com/grafflr/graffl-core/issues/161
+##
+## File Maintenance Command:
+## .\scripts\Run-Clean-Synonyms.ps1 -FileName local.txt
+##
+##############################################################################
+
+# A
+apothecary~apothecaries
+association~assocations, associations
+american~americans
+
+# C
+course~course work, courses, coursework, courseworks
+college~colleges
+clinic~clinics
+
+# D
+department~departments
+
+# E
+evaluation~evaluations
+
+# H
+home~homes
+hospital~hospitals
+
+# N
+nurse~nursed, nurses
+nursing~"rn"
+
+# O
+outcome~outcomes
+
+# P
+provider~providers
+practice~practices
+
+# R
+rule~rules
+regulation~regs, regulations
+room~rooms
+
+# S
+spain~spains, spanish
+school~schools
+site~sites
+
+# T
+training~trained

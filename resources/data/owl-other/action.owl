@@ -1,0 +1,274 @@
+@prefix : <https://w3id.org/MON/action.owl#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/MON/action.owl> .
+
+<https://w3id.org/MON/action.owl> rdf:type owl:Ontology ;
+                                  
+                                  dc:title "Action Ontology"@en ;
+                                  
+                                  dc:description """The MON’s Action module is meant to implement the  <a href=\"http://ontologydesignpatterns.org/wiki/Submissions:TaskExecution\">Task Execution Ontology Design Pattern</a>. 
+This module allows to keep track of the actions performed either by the robot or by its users. 
+Actions execute and are classified by tasks. 
+The class <tt>action:Task</tt> aims at collecting all the behaviors of the robot.
+
+<b>Example of Usage</b>
+
+We provide an example of usage of the Action ontology for specifying the following scenario.
+X is a social robot can entertain its users by ​playing music, showing videos or telling jokes.
+On 23 April 2015 from 3pm to 4p,, X played some music for Monica.
+
+<pre>
+@prefix action: &#60;https://w3id.org/MON/action.owl&#62;
+@prefix time: &#60;https://w3id.org/MON/time.owl#&#62;
+
+:April23015Beg a time:Instant ;
+   time:inXSDDateTime \"2015-04-23T15:00:00+02:00\" .
+
+
+:April23015End a time:Instant ;
+   time:inXSDDateTime \"2015-04-23T16:00:00+02:00\" .
+
+:April23015 a time:Interval ;
+   time:hasBeginning :April23015Beg ;
+   time:hasEnd  :April23015End .
+
+:MusicBehavior a action:Behavior .
+
+:X a action:Agent .
+
+:Monica a action:Agent .
+
+:PlayMusicForMonica a action:Action ;
+  time:atTime :April23015 ;
+  action:byAgent :X ;
+  action:executesTask :MusicBehavior ;
+  action:hasParticipant :Monica .
+
+</pre>"""@en ,
+                                                 <https://raw.githubusercontent.com/luigi-asprino/MON/main/src/Action.png> ;
+                                  
+                                  owl:imports <https://w3id.org/MON/time.owl> .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://purl.org/dc/elements/1.1/description
+
+dc:description rdf:type owl:AnnotationProperty .
+
+
+
+###  http://purl.org/dc/elements/1.1/title
+
+dc:title rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Object Properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/action.owl#byAgent
+
+:byAgent rdf:type owl:ObjectProperty ;
+         
+         rdfs:label "by agent"@en ;
+         
+         rdfs:comment "The Agent who performs the Action."@en ;
+         
+         rdfs:domain :Action ;
+         
+         rdfs:range :Agent ;
+         
+         rdfs:subPropertyOf :hasParticipant .
+
+
+
+###  https://w3id.org/MON/action.owl#executesTask
+
+:executesTask rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "executes task"@en ;
+              
+              rdfs:comment "A relation between an action and the executed task, e.g. 'putting some water in a pot and putting the pot on a fire until the water starts bubbling' executes the task 'boiling'."@en ;
+              
+              rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#executesTask> ;
+              
+              rdfs:domain :Action ;
+              
+              rdfs:range :Task .
+
+
+
+###  https://w3id.org/MON/action.owl#hasParameter
+
+:hasParameter rdf:type owl:ObjectProperty ;
+              
+              rdfs:label "has parameter"@en ;
+              
+              rdfs:comment "It associates the Task with its parameters."@en ;
+              
+              rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#associatedWith> ;
+              
+              rdfs:domain :Behavior ;
+              
+              rdfs:range :BehaviorParameter .
+
+
+
+###  https://w3id.org/MON/action.owl#hasParticipant
+
+:hasParticipant rdf:type owl:ObjectProperty ;
+                
+                rdfs:label "has participant"@en ;
+                
+                rdfs:comment "The participant to a certain Action."@en ;
+                
+                rdfs:subPropertyOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#hasParticipant> .
+
+
+
+###  https://w3id.org/MON/action.owl#hasPatient
+
+:hasPatient rdf:type owl:ObjectProperty ;
+            
+            rdfs:label "has patient"@en ;
+            
+            rdfs:comment "It denotes something that is affected or acted upon by the action."@en ;
+            
+            rdfs:subPropertyOf :hasParticipant .
+
+
+
+
+
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  https://w3id.org/MON/generic.owl#name
+
+<https://w3id.org/MON/generic.owl#name> rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  https://w3id.org/MON/action.owl#Action
+
+:Action rdf:type owl:Class ;
+        
+        rdfs:label "Action"@en ;
+        
+        rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Action> ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty <https://w3id.org/MON/time.owl#atTime> ;
+                          owl:someValuesFrom <https://w3id.org/MON/time.owl#TemporalEntity>
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :executesTask ;
+                          owl:someValuesFrom :Task
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :byAgent ;
+                          owl:someValuesFrom :Agent
+                        ] ;
+        
+        owl:disjointWith :Agent ,
+                         :Task ,
+                         <https://w3id.org/MON/time.owl#TemporalEntity> ;
+        
+        rdfs:comment "The fact or process of doing something, typically to achieve an aim."@en .
+
+
+
+###  https://w3id.org/MON/action.owl#Agent
+
+:Agent rdf:type owl:Class ;
+       
+       rdfs:label "Agent"@en ;
+       
+       rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Agent> ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty <https://w3id.org/MON/generic.owl#name> ;
+                         owl:someValuesFrom xsd:string
+                       ] ;
+       
+       owl:disjointWith :Task ,
+                        <https://w3id.org/MON/time.owl#TemporalEntity> ;
+       
+       rdfs:comment "Any agentive Object , either physical (e.g. a whale, a robot, an oak), or social (e.g. a corporation, an institution, a community)."@en .
+
+
+
+###  https://w3id.org/MON/action.owl#Behavior
+
+:Behavior rdf:type owl:Class ;
+          
+          rdfs:label "Behavior"@en ;
+          
+          rdfs:subClassOf :Task ;
+          
+          rdfs:comment "A Behavior is a task, implemented in as software artifact, that aims to realize a specific goal."@en .
+
+
+
+###  https://w3id.org/MON/action.owl#BehaviorParameter
+
+:BehaviorParameter rdf:type owl:Class ;
+                   
+                   rdfs:label "Behavior parameter"@en ;
+                   
+                   rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Parameter> ;
+                   
+                   rdfs:comment "A parameter of a behavior."@en .
+
+
+
+###  https://w3id.org/MON/action.owl#Task
+
+:Task rdf:type owl:Class ;
+      
+      rdfs:label "Task"@en ;
+      
+      rdfs:subClassOf <http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#Task> ;
+      
+      owl:disjointWith <https://w3id.org/MON/time.owl#TemporalEntity> ;
+      
+      rdfs:comment "Any EventType that aims at releasing a goal."@en .
+
+
+
+###  https://w3id.org/MON/time.owl#TemporalEntity
+
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

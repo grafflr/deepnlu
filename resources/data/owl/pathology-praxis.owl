@@ -1,0 +1,2960 @@
+@prefix : <http://graffl.ai/pathology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://graffl.ai/pathology> .
+
+<http://graffl.ai/pathology> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://graffl.ai/askada#affects
+
+:affects rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/askada#effects
+
+:effects rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/askada#implies
+
+:implies rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/askada#locatedIn
+
+:locatedIn rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/askada#meansOf
+
+:meansOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/askada#measures
+
+:measures rdf:type owl:AnnotationProperty ;
+          
+          rdfs:subPropertyOf :uses .
+
+
+
+###  http://graffl.ai/askada#nluComment
+
+:nluComment rdf:type owl:AnnotationProperty ;
+            
+            rdfs:subPropertyOf rdfs:comment .
+
+
+
+###  http://graffl.ai/askada#requires
+
+:requires rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/askada#similarTo
+
+:similarTo rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/askada#uses
+
+:uses rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/askada#worksIn
+
+:worksIn rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+##  http://graffl.ai/pathology#sound_disorder
+            :sound_disorder rdf:type owl:Class ;
+            rdfs:label "Sound Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#speech_sound_disorder
+            :speech_sound_disorder rdf:type owl:Class ;
+            rdfs:label "Speech Sound Disorder" ;
+            rdfs:subClassOf :sound_disorder .
+###  http://graffl.ai/pathology#sound_disorder
+            :sound_disorder rdf:type owl:Class ;
+            rdfs:label "Sound Disorder" .
+###  http://graffl.ai/pathology#language_development
+            :language_development rdf:type owl:Class ;
+            rdfs:label "Language Development" ;
+            rdfs:subClassOf :development .
+###  http://graffl.ai/pathology#development
+            :development rdf:type owl:Class ;
+            rdfs:label "Development" .
+###  http://graffl.ai/pathology#child_language_development
+            :child_language_development rdf:type owl:Class ;
+            rdfs:label "Child Language Development" ;
+            rdfs:subClassOf :language_development .
+###  http://graffl.ai/pathology#language_development
+            :language_development rdf:type owl:Class ;
+            rdfs:label "Language Development" .
+###  http://graffl.ai/pathology#production_error
+            :production_error rdf:type owl:Class ;
+            rdfs:label "Production Error" ;
+            rdfs:subClassOf :error .
+###  http://graffl.ai/pathology#error
+            :error rdf:type owl:Class ;
+            rdfs:label "Error" .
+###  http://graffl.ai/pathology#sound_production_error
+            :sound_production_error rdf:type owl:Class ;
+            rdfs:label "Sound Production Error" ;
+            rdfs:subClassOf :production_error .
+###  http://graffl.ai/pathology#production_error
+            :production_error rdf:type owl:Class ;
+            rdfs:label "Production Error" .
+###  http://graffl.ai/pathology#speech_sound_production_error
+            :speech_sound_production_error rdf:type owl:Class ;
+            rdfs:label "Speech Sound Production Error" ;
+            rdfs:subClassOf :sound_production_error .
+###  http://graffl.ai/pathology#sound_production_error
+            :sound_production_error rdf:type owl:Class ;
+            rdfs:label "Sound Production Error" .
+###  http://graffl.ai/pathology#language_pathologist
+            :language_pathologist rdf:type owl:Class ;
+            rdfs:label "Language Pathologist" ;
+            rdfs:subClassOf :pathologist .
+###  http://graffl.ai/pathology#pathologist
+            :pathologist rdf:type owl:Class ;
+            rdfs:label "Pathologist" .
+###  http://graffl.ai/pathology#speech_language_pathologist
+            :speech_language_pathologist rdf:type owl:Class ;
+            rdfs:label "Speech Language Pathologist" ;
+            rdfs:subClassOf :language_pathologist .
+###  http://graffl.ai/pathology#language_pathologist
+            :language_pathologist rdf:type owl:Class ;
+            rdfs:label "Language Pathologist" .
+###  http://graffl.ai/pathology#child_speech
+            :child_speech rdf:type owl:Class ;
+            rdfs:label "Child Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#speech_disorder
+            :speech_disorder rdf:type owl:Class ;
+            rdfs:label "Speech Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#motor_speech_disorder
+            :motor_speech_disorder rdf:type owl:Class ;
+            rdfs:label "Motor Speech Disorder" ;
+            rdfs:subClassOf :speech_disorder .
+###  http://graffl.ai/pathology#speech_disorder
+            :speech_disorder rdf:type owl:Class ;
+            rdfs:label "Speech Disorder" .
+###  http://graffl.ai/pathology#neurological_motor_speech_disorder
+            :neurological_motor_speech_disorder rdf:type owl:Class ;
+            rdfs:label "Neurological Motor Speech Disorder" ;
+            rdfs:subClassOf :motor_speech_disorder .
+###  http://graffl.ai/pathology#motor_speech_disorder
+            :motor_speech_disorder rdf:type owl:Class ;
+            rdfs:label "Motor Speech Disorder" .
+###  http://graffl.ai/pathology#control_deficit
+            :control_deficit rdf:type owl:Class ;
+            rdfs:label "Control Deficit" ;
+            rdfs:subClassOf :deficit .
+###  http://graffl.ai/pathology#deficit
+            :deficit rdf:type owl:Class ;
+            rdfs:label "Deficit" .
+###  http://graffl.ai/pathology#motor_control_deficit
+            :motor_control_deficit rdf:type owl:Class ;
+            rdfs:label "Motor Control Deficit" ;
+            rdfs:subClassOf :control_deficit .
+###  http://graffl.ai/pathology#control_deficit
+            :control_deficit rdf:type owl:Class ;
+            rdfs:label "Control Deficit" .
+###  http://graffl.ai/pathology#speech_motor_control_deficit
+            :speech_motor_control_deficit rdf:type owl:Class ;
+            rdfs:label "Speech Motor Control Deficit" ;
+            rdfs:subClassOf :motor_control_deficit .
+###  http://graffl.ai/pathology#motor_control_deficit
+            :motor_control_deficit rdf:type owl:Class ;
+            rdfs:label "Motor Control Deficit" .
+###  http://graffl.ai/pathology#genetic_speech_motor_control_deficit
+            :genetic_speech_motor_control_deficit rdf:type owl:Class ;
+            rdfs:label "Genetic Speech Motor Control Deficit" ;
+            rdfs:subClassOf :speech_motor_control_deficit .
+###  http://graffl.ai/pathology#speech_motor_control_deficit
+            :speech_motor_control_deficit rdf:type owl:Class ;
+            rdfs:label "Speech Motor Control Deficit" .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" ;
+            rdfs:subClassOf :skill .
+###  http://graffl.ai/pathology#skill
+            :skill rdf:type owl:Class ;
+            rdfs:label "Skill" .
+###  http://graffl.ai/pathology#receptive_language_skill
+            :receptive_language_skill rdf:type owl:Class ;
+            rdfs:label "Receptive Language Skill" ;
+            rdfs:subClassOf :language_skill .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" .
+###  http://graffl.ai/pathology#normal_receptive_language_skill
+            :normal_receptive_language_skill rdf:type owl:Class ;
+            rdfs:label "Normal Receptive Language Skill" ;
+            rdfs:subClassOf :receptive_language_skill .
+###  http://graffl.ai/pathology#receptive_language_skill
+            :receptive_language_skill rdf:type owl:Class ;
+            rdfs:label "Receptive Language Skill" .
+###  http://graffl.ai/pathology#disorder_treatment
+            :disorder_treatment rdf:type owl:Class ;
+            rdfs:label "Disorder Treatment" ;
+            rdfs:subClassOf :treatment .
+###  http://graffl.ai/pathology#treatment
+            :treatment rdf:type owl:Class ;
+            rdfs:label "Treatment" .
+###  http://graffl.ai/pathology#language_disorder_treatment
+            :language_disorder_treatment rdf:type owl:Class ;
+            rdfs:label "Language Disorder Treatment" ;
+            rdfs:subClassOf :disorder_treatment .
+###  http://graffl.ai/pathology#disorder_treatment
+            :disorder_treatment rdf:type owl:Class ;
+            rdfs:label "Disorder Treatment" .
+###  http://graffl.ai/pathology#language_function
+            :language_function rdf:type owl:Class ;
+            rdfs:label "Language Function" ;
+            rdfs:subClassOf :function .
+###  http://graffl.ai/pathology#function
+            :function rdf:type owl:Class ;
+            rdfs:label "Function" .
+###  http://graffl.ai/pathology#expressive_language_function
+            :expressive_language_function rdf:type owl:Class ;
+            rdfs:label "Expressive Language Function" ;
+            rdfs:subClassOf :language_function .
+###  http://graffl.ai/pathology#language_function
+            :language_function rdf:type owl:Class ;
+            rdfs:label "Language Function" .
+###  http://graffl.ai/pathology#brain_expressive_language_function
+            :brain_expressive_language_function rdf:type owl:Class ;
+            rdfs:label "Brain Expressive Language Function" ;
+            rdfs:subClassOf :expressive_language_function .
+###  http://graffl.ai/pathology#expressive_language_function
+            :expressive_language_function rdf:type owl:Class ;
+            rdfs:label "Expressive Language Function" .
+###  http://graffl.ai/pathology#language_function
+            :language_function rdf:type owl:Class ;
+            rdfs:label "Language Function" ;
+            rdfs:subClassOf :function .
+###  http://graffl.ai/pathology#function
+            :function rdf:type owl:Class ;
+            rdfs:label "Function" .
+###  http://graffl.ai/pathology#receptive_language_function
+            :receptive_language_function rdf:type owl:Class ;
+            rdfs:label "Receptive Language Function" ;
+            rdfs:subClassOf :language_function .
+###  http://graffl.ai/pathology#language_function
+            :language_function rdf:type owl:Class ;
+            rdfs:label "Language Function" .
+###  http://graffl.ai/pathology#brain_receptive_language_function
+            :brain_receptive_language_function rdf:type owl:Class ;
+            rdfs:label "Brain Receptive Language Function" ;
+            rdfs:subClassOf :receptive_language_function .
+###  http://graffl.ai/pathology#receptive_language_function
+            :receptive_language_function rdf:type owl:Class ;
+            rdfs:label "Receptive Language Function" .
+###  http://graffl.ai/pathology#language_use
+            :language_use rdf:type owl:Class ;
+            rdfs:label "Language Use" ;
+            rdfs:subClassOf :use .
+###  http://graffl.ai/pathology#use
+            :use rdf:type owl:Class ;
+            rdfs:label "Use" .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" ;
+            rdfs:subClassOf :skill .
+###  http://graffl.ai/pathology#skill
+            :skill rdf:type owl:Class ;
+            rdfs:label "Skill" .
+###  http://graffl.ai/pathology#normal_language_skill
+            :normal_language_skill rdf:type owl:Class ;
+            rdfs:label "Normal Language Skill" ;
+            rdfs:subClassOf :language_skill .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" .
+###  http://graffl.ai/pathology#language_disorder
+            :language_disorder rdf:type owl:Class ;
+            rdfs:label "Language Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#expressive_language_disorder
+            :expressive_language_disorder rdf:type owl:Class ;
+            rdfs:label "Expressive Language Disorder" ;
+            rdfs:subClassOf :language_disorder .
+###  http://graffl.ai/pathology#language_disorder
+            :language_disorder rdf:type owl:Class ;
+            rdfs:label "Language Disorder" .
+###  http://graffl.ai/pathology#language_disorder
+            :language_disorder rdf:type owl:Class ;
+            rdfs:label "Language Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#receptive_language_disorder
+            :receptive_language_disorder rdf:type owl:Class ;
+            rdfs:label "Receptive Language Disorder" ;
+            rdfs:subClassOf :language_disorder .
+###  http://graffl.ai/pathology#language_disorder
+            :language_disorder rdf:type owl:Class ;
+            rdfs:label "Language Disorder" .
+###  http://graffl.ai/pathology#speech_disorder
+            :speech_disorder rdf:type owl:Class ;
+            rdfs:label "Speech Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#functional_speech_disorder
+            :functional_speech_disorder rdf:type owl:Class ;
+            rdfs:label "Functional Speech Disorder" ;
+            rdfs:subClassOf :speech_disorder .
+###  http://graffl.ai/pathology#speech_disorder
+            :speech_disorder rdf:type owl:Class ;
+            rdfs:label "Speech Disorder" .
+###  http://graffl.ai/pathology#therapy_client
+            :therapy_client rdf:type owl:Class ;
+            rdfs:label "Therapy Client" ;
+            rdfs:subClassOf :client .
+###  http://graffl.ai/pathology#client
+            :client rdf:type owl:Class ;
+            rdfs:label "Client" .
+###  http://graffl.ai/pathology#speech_therapy_client
+            :speech_therapy_client rdf:type owl:Class ;
+            rdfs:label "Speech Therapy Client" ;
+            rdfs:subClassOf :therapy_client .
+###  http://graffl.ai/pathology#therapy_client
+            :therapy_client rdf:type owl:Class ;
+            rdfs:label "Therapy Client" .
+###  http://graffl.ai/pathology#muscle_programming
+            :muscle_programming rdf:type owl:Class ;
+            rdfs:label "Muscle Programming" ;
+            rdfs:subClassOf :programming .
+###  http://graffl.ai/pathology#programming
+            :programming rdf:type owl:Class ;
+            rdfs:label "Programming" .
+###  http://graffl.ai/pathology#speech_muscle_programming
+            :speech_muscle_programming rdf:type owl:Class ;
+            rdfs:label "Speech Muscle Programming" ;
+            rdfs:subClassOf :muscle_programming .
+###  http://graffl.ai/pathology#muscle_programming
+            :muscle_programming rdf:type owl:Class ;
+            rdfs:label "Muscle Programming" .
+###  http://graffl.ai/pathology#language_problem
+            :language_problem rdf:type owl:Class ;
+            rdfs:label "Language Problem" ;
+            rdfs:subClassOf :problem .
+###  http://graffl.ai/pathology#problem
+            :problem rdf:type owl:Class ;
+            rdfs:label "Problem" .
+###  http://graffl.ai/pathology#receptive_language_problem
+            :receptive_language_problem rdf:type owl:Class ;
+            rdfs:label "Receptive Language Problem" ;
+            rdfs:subClassOf :language_problem .
+###  http://graffl.ai/pathology#language_problem
+            :language_problem rdf:type owl:Class ;
+            rdfs:label "Language Problem" .
+###  http://graffl.ai/pathology#one_speech
+            :one_speech rdf:type owl:Class ;
+            rdfs:label "One Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#normal_dysfluencie
+            :normal_dysfluencie rdf:type owl:Class ;
+            rdfs:label "Normal Dysfluencie" ;
+            rdfs:subClassOf :dysfluencie .
+###  http://graffl.ai/pathology#dysfluencie
+            :dysfluencie rdf:type owl:Class ;
+            rdfs:label "Dysfluencie" .
+###  http://graffl.ai/pathology#child_normal_dysfluencie
+            :child_normal_dysfluencie rdf:type owl:Class ;
+            rdfs:label "Child Normal Dysfluencie" ;
+            rdfs:subClassOf :normal_dysfluencie .
+###  http://graffl.ai/pathology#normal_dysfluencie
+            :normal_dysfluencie rdf:type owl:Class ;
+            rdfs:label "Normal Dysfluencie" .
+###  http://graffl.ai/pathology#young_child_normal_dysfluencie
+            :young_child_normal_dysfluencie rdf:type owl:Class ;
+            rdfs:label "Young Child Normal Dysfluencie" ;
+            rdfs:subClassOf :child_normal_dysfluencie .
+###  http://graffl.ai/pathology#child_normal_dysfluencie
+            :child_normal_dysfluencie rdf:type owl:Class ;
+            rdfs:label "Child Normal Dysfluencie" .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" ;
+            rdfs:subClassOf :skill .
+###  http://graffl.ai/pathology#skill
+            :skill rdf:type owl:Class ;
+            rdfs:label "Skill" .
+###  http://graffl.ai/pathology#low_language_skill
+            :low_language_skill rdf:type owl:Class ;
+            rdfs:label "Low Language Skill" ;
+            rdfs:subClassOf :language_skill .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" .
+###  http://graffl.ai/pathology#speech_problem
+            :speech_problem rdf:type owl:Class ;
+            rdfs:label "Speech Problem" ;
+            rdfs:subClassOf :problem .
+###  http://graffl.ai/pathology#problem
+            :problem rdf:type owl:Class ;
+            rdfs:label "Problem" .
+###  http://graffl.ai/pathology#severe_speech_problem
+            :severe_speech_problem rdf:type owl:Class ;
+            rdfs:label "Severe Speech Problem" ;
+            rdfs:subClassOf :speech_problem .
+###  http://graffl.ai/pathology#speech_problem
+            :speech_problem rdf:type owl:Class ;
+            rdfs:label "Speech Problem" .
+###  http://graffl.ai/pathology#speech_therapist
+            :speech_therapist rdf:type owl:Class ;
+            rdfs:label "Speech Therapist" ;
+            rdfs:subClassOf :therapist .
+###  http://graffl.ai/pathology#therapist
+            :therapist rdf:type owl:Class ;
+            rdfs:label "Therapist" .
+###  http://graffl.ai/pathology#student_speech_therapist
+            :student_speech_therapist rdf:type owl:Class ;
+            rdfs:label "Student Speech Therapist" ;
+            rdfs:subClassOf :speech_therapist .
+###  http://graffl.ai/pathology#speech_therapist
+            :speech_therapist rdf:type owl:Class ;
+            rdfs:label "Speech Therapist" .
+###  http://graffl.ai/pathology#language_disorder
+            :language_disorder rdf:type owl:Class ;
+            rdfs:label "Language Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#neurogenic_language_disorder
+            :neurogenic_language_disorder rdf:type owl:Class ;
+            rdfs:label "Neurogenic Language Disorder" ;
+            rdfs:subClassOf :language_disorder .
+###  http://graffl.ai/pathology#language_disorder
+            :language_disorder rdf:type owl:Class ;
+            rdfs:label "Language Disorder" .
+###  http://graffl.ai/pathology#present_speech
+            :present_speech rdf:type owl:Class ;
+            rdfs:label "Present Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#student_present_speech
+            :student_present_speech rdf:type owl:Class ;
+            rdfs:label "Student Present Speech" ;
+            rdfs:subClassOf :present_speech .
+###  http://graffl.ai/pathology#present_speech
+            :present_speech rdf:type owl:Class ;
+            rdfs:label "Present Speech" .
+###  http://graffl.ai/pathology#child_hearing
+            :child_hearing rdf:type owl:Class ;
+            rdfs:label "Child Hearing" ;
+            rdfs:subClassOf :hearing .
+###  http://graffl.ai/pathology#hearing
+            :hearing rdf:type owl:Class ;
+            rdfs:label "Hearing" .
+###  http://graffl.ai/pathology#muscular_control
+            :muscular_control rdf:type owl:Class ;
+            rdfs:label "Muscular Control" ;
+            rdfs:subClassOf :control .
+###  http://graffl.ai/pathology#control
+            :control rdf:type owl:Class ;
+            rdfs:label "Control" .
+###  http://graffl.ai/pathology#speech_muscular_control
+            :speech_muscular_control rdf:type owl:Class ;
+            rdfs:label "Speech Muscular Control" ;
+            rdfs:subClassOf :muscular_control .
+###  http://graffl.ai/pathology#muscular_control
+            :muscular_control rdf:type owl:Class ;
+            rdfs:label "Muscular Control" .
+###  http://graffl.ai/pathology#production_skill
+            :production_skill rdf:type owl:Class ;
+            rdfs:label "Production Skill" ;
+            rdfs:subClassOf :skill .
+###  http://graffl.ai/pathology#skill
+            :skill rdf:type owl:Class ;
+            rdfs:label "Skill" .
+###  http://graffl.ai/pathology#language_production_skill
+            :language_production_skill rdf:type owl:Class ;
+            rdfs:label "Language Production Skill" ;
+            rdfs:subClassOf :production_skill .
+###  http://graffl.ai/pathology#production_skill
+            :production_skill rdf:type owl:Class ;
+            rdfs:label "Production Skill" .
+###  http://graffl.ai/pathology#motor_movement
+            :motor_movement rdf:type owl:Class ;
+            rdfs:label "Motor Movement" ;
+            rdfs:subClassOf :movement .
+###  http://graffl.ai/pathology#movement
+            :movement rdf:type owl:Class ;
+            rdfs:label "Movement" .
+###  http://graffl.ai/pathology#speech_motor_movement
+            :speech_motor_movement rdf:type owl:Class ;
+            rdfs:label "Speech Motor Movement" ;
+            rdfs:subClassOf :motor_movement .
+###  http://graffl.ai/pathology#motor_movement
+            :motor_movement rdf:type owl:Class ;
+            rdfs:label "Motor Movement" .
+###  http://graffl.ai/pathology#therapy_service
+            :therapy_service rdf:type owl:Class ;
+            rdfs:label "Therapy Service" ;
+            rdfs:subClassOf :service .
+###  http://graffl.ai/pathology#service
+            :service rdf:type owl:Class ;
+            rdfs:label "Service" .
+###  http://graffl.ai/pathology#speech_therapy_service
+            :speech_therapy_service rdf:type owl:Class ;
+            rdfs:label "Speech Therapy Service" ;
+            rdfs:subClassOf :therapy_service .
+###  http://graffl.ai/pathology#therapy_service
+            :therapy_service rdf:type owl:Class ;
+            rdfs:label "Therapy Service" .
+###  http://graffl.ai/pathology#graduate_program
+            :graduate_program rdf:type owl:Class ;
+            rdfs:label "Graduate Program" ;
+            rdfs:subClassOf :program .
+###  http://graffl.ai/pathology#program
+            :program rdf:type owl:Class ;
+            rdfs:label "Program" .
+###  http://graffl.ai/pathology#pathology_graduate_program
+            :pathology_graduate_program rdf:type owl:Class ;
+            rdfs:label "Pathology Graduate Program" ;
+            rdfs:subClassOf :graduate_program .
+###  http://graffl.ai/pathology#graduate_program
+            :graduate_program rdf:type owl:Class ;
+            rdfs:label "Graduate Program" .
+###  http://graffl.ai/pathology#language_pathology_graduate_program
+            :language_pathology_graduate_program rdf:type owl:Class ;
+            rdfs:label "Language Pathology Graduate Program" ;
+            rdfs:subClassOf :pathology_graduate_program .
+###  http://graffl.ai/pathology#pathology_graduate_program
+            :pathology_graduate_program rdf:type owl:Class ;
+            rdfs:label "Pathology Graduate Program" .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" ;
+            rdfs:subClassOf :skill .
+###  http://graffl.ai/pathology#skill
+            :skill rdf:type owl:Class ;
+            rdfs:label "Skill" .
+###  http://graffl.ai/pathology#preschool_language_skill
+            :preschool_language_skill rdf:type owl:Class ;
+            rdfs:label "Preschool Language Skill" ;
+            rdfs:subClassOf :language_skill .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" ;
+            rdfs:subClassOf :skill .
+###  http://graffl.ai/pathology#skill
+            :skill rdf:type owl:Class ;
+            rdfs:label "Skill" .
+###  http://graffl.ai/pathology#impaired_language_skill
+            :impaired_language_skill rdf:type owl:Class ;
+            rdfs:label "Impaired Language Skill" ;
+            rdfs:subClassOf :language_skill .
+###  http://graffl.ai/pathology#language_skill
+            :language_skill rdf:type owl:Class ;
+            rdfs:label "Language Skill" .
+###  http://graffl.ai/pathology#development_secondary
+            :development_secondary rdf:type owl:Class ;
+            rdfs:label "Development Secondary" ;
+            rdfs:subClassOf :secondary .
+###  http://graffl.ai/pathology#secondary
+            :secondary rdf:type owl:Class ;
+            rdfs:label "Secondary" .
+###  http://graffl.ai/pathology#language_development_secondary
+            :language_development_secondary rdf:type owl:Class ;
+            rdfs:label "Language Development Secondary" ;
+            rdfs:subClassOf :development_secondary .
+###  http://graffl.ai/pathology#development_secondary
+            :development_secondary rdf:type owl:Class ;
+            rdfs:label "Development Secondary" .
+###  http://graffl.ai/pathology#delayed_language_development_secondary
+            :delayed_language_development_secondary rdf:type owl:Class ;
+            rdfs:label "Delayed Language Development Secondary" ;
+            rdfs:subClassOf :language_development_secondary .
+###  http://graffl.ai/pathology#language_development_secondary
+            :language_development_secondary rdf:type owl:Class ;
+            rdfs:label "Language Development Secondary" .
+###  http://graffl.ai/pathology#wave_complete
+            :wave_complete rdf:type owl:Class ;
+            rdfs:label "Wave Complete" ;
+            rdfs:subClassOf :complete .
+###  http://graffl.ai/pathology#complete
+            :complete rdf:type owl:Class ;
+            rdfs:label "Complete" .
+###  http://graffl.ai/pathology#sound_wave_complete
+            :sound_wave_complete rdf:type owl:Class ;
+            rdfs:label "Sound Wave Complete" ;
+            rdfs:subClassOf :wave_complete .
+###  http://graffl.ai/pathology#wave_complete
+            :wave_complete rdf:type owl:Class ;
+            rdfs:label "Wave Complete" .
+###  http://graffl.ai/pathology#long_sound_wave_complete
+            :long_sound_wave_complete rdf:type owl:Class ;
+            rdfs:label "Long Sound Wave Complete" ;
+            rdfs:subClassOf :sound_wave_complete .
+###  http://graffl.ai/pathology#sound_wave_complete
+            :sound_wave_complete rdf:type owl:Class ;
+            rdfs:label "Sound Wave Complete" .
+###  http://graffl.ai/pathology#speech_plan
+            :speech_plan rdf:type owl:Class ;
+            rdfs:label "Speech Plan" ;
+            rdfs:subClassOf :plan .
+###  http://graffl.ai/pathology#plan
+            :plan rdf:type owl:Class ;
+            rdfs:label "Plan" .
+###  http://graffl.ai/pathology#phonetic_speech_plan
+            :phonetic_speech_plan rdf:type owl:Class ;
+            rdfs:label "Phonetic Speech Plan" ;
+            rdfs:subClassOf :speech_plan .
+###  http://graffl.ai/pathology#speech_plan
+            :speech_plan rdf:type owl:Class ;
+            rdfs:label "Speech Plan" .
+###  http://graffl.ai/pathology#abnormal_phonetic_speech_plan
+            :abnormal_phonetic_speech_plan rdf:type owl:Class ;
+            rdfs:label "Abnormal Phonetic Speech Plan" ;
+            rdfs:subClassOf :phonetic_speech_plan .
+###  http://graffl.ai/pathology#phonetic_speech_plan
+            :phonetic_speech_plan rdf:type owl:Class ;
+            rdfs:label "Phonetic Speech Plan" .
+###  http://graffl.ai/pathology#adult_speech
+            :adult_speech rdf:type owl:Class ;
+            rdfs:label "Adult Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#normal_speech
+            :normal_speech rdf:type owl:Class ;
+            rdfs:label "Normal Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#second_year
+            :second_year rdf:type owl:Class ;
+            rdfs:label "Second Year" ;
+            rdfs:subClassOf :year .
+###  http://graffl.ai/pathology#year
+            :year rdf:type owl:Class ;
+            rdfs:label "Year" .
+###  http://graffl.ai/pathology#child_second_year
+            :child_second_year rdf:type owl:Class ;
+            rdfs:label "Child Second Year" ;
+            rdfs:subClassOf :second_year .
+###  http://graffl.ai/pathology#second_year
+            :second_year rdf:type owl:Class ;
+            rdfs:label "Second Year" .
+###  http://graffl.ai/pathology#language_ability
+            :language_ability rdf:type owl:Class ;
+            rdfs:label "Language Ability" ;
+            rdfs:subClassOf :ability .
+###  http://graffl.ai/pathology#ability
+            :ability rdf:type owl:Class ;
+            rdfs:label "Ability" .
+###  http://graffl.ai/pathology#expressive_language_ability
+            :expressive_language_ability rdf:type owl:Class ;
+            rdfs:label "Expressive Language Ability" ;
+            rdfs:subClassOf :language_ability .
+###  http://graffl.ai/pathology#language_ability
+            :language_ability rdf:type owl:Class ;
+            rdfs:label "Language Ability" .
+###  http://graffl.ai/pathology#language_ability
+            :language_ability rdf:type owl:Class ;
+            rdfs:label "Language Ability" ;
+            rdfs:subClassOf :ability .
+###  http://graffl.ai/pathology#ability
+            :ability rdf:type owl:Class ;
+            rdfs:label "Ability" .
+###  http://graffl.ai/pathology#receptive_language_ability
+            :receptive_language_ability rdf:type owl:Class ;
+            rdfs:label "Receptive Language Ability" ;
+            rdfs:subClassOf :language_ability .
+###  http://graffl.ai/pathology#language_ability
+            :language_ability rdf:type owl:Class ;
+            rdfs:label "Language Ability" .
+###  http://graffl.ai/pathology#communication_disorder
+            :communication_disorder rdf:type owl:Class ;
+            rdfs:label "Communication Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#cognitive_communication_disorder
+            :cognitive_communication_disorder rdf:type owl:Class ;
+            rdfs:label "Cognitive Communication Disorder" ;
+            rdfs:subClassOf :communication_disorder .
+###  http://graffl.ai/pathology#communication_disorder
+            :communication_disorder rdf:type owl:Class ;
+            rdfs:label "Communication Disorder" .
+###  http://graffl.ai/pathology#attribute_cognitive_communication_disorder
+            :attribute_cognitive_communication_disorder rdf:type owl:Class ;
+            rdfs:label "Attribute Cognitive Communication Disorder" ;
+            rdfs:subClassOf :cognitive_communication_disorder .
+###  http://graffl.ai/pathology#cognitive_communication_disorder
+            :cognitive_communication_disorder rdf:type owl:Class ;
+            rdfs:label "Cognitive Communication Disorder" .
+###  http://graffl.ai/pathology#asha_attribute_cognitive_communication_disorder
+            :asha_attribute_cognitive_communication_disorder rdf:type owl:Class ;
+            rdfs:label "ASHA Attribute Cognitive Communication Disorder" ;
+            rdfs:subClassOf :attribute_cognitive_communication_disorder .
+###  http://graffl.ai/pathology#attribute_cognitive_communication_disorder
+            :attribute_cognitive_communication_disorder rdf:type owl:Class ;
+            rdfs:label "Attribute Cognitive Communication Disorder" .
+###  http://graffl.ai/pathology#communication_status
+            :communication_status rdf:type owl:Class ;
+            rdfs:label "Communication Status" ;
+            rdfs:subClassOf :status .
+###  http://graffl.ai/pathology#status
+            :status rdf:type owl:Class ;
+            rdfs:label "Status" .
+###  http://graffl.ai/pathology#child_communication_status
+            :child_communication_status rdf:type owl:Class ;
+            rdfs:label "Child Communication Status" ;
+            rdfs:subClassOf :communication_status .
+###  http://graffl.ai/pathology#communication_status
+            :communication_status rdf:type owl:Class ;
+            rdfs:label "Communication Status" .
+###  http://graffl.ai/pathology#avoidance_behavior
+            :avoidance_behavior rdf:type owl:Class ;
+            rdfs:label "Avoidance Behavior" ;
+            rdfs:subClassOf :behavior .
+###  http://graffl.ai/pathology#behavior
+            :behavior rdf:type owl:Class ;
+            rdfs:label "Behavior" .
+###  http://graffl.ai/pathology#speech_avoidance_behavior
+            :speech_avoidance_behavior rdf:type owl:Class ;
+            rdfs:label "Speech Avoidance Behavior" ;
+            rdfs:subClassOf :avoidance_behavior .
+###  http://graffl.ai/pathology#avoidance_behavior
+            :avoidance_behavior rdf:type owl:Class ;
+            rdfs:label "Avoidance Behavior" .
+###  http://graffl.ai/pathology#language_development
+            :language_development rdf:type owl:Class ;
+            rdfs:label "Language Development" ;
+            rdfs:subClassOf :development .
+###  http://graffl.ai/pathology#development
+            :development rdf:type owl:Class ;
+            rdfs:label "Development" .
+###  http://graffl.ai/pathology#universal_language_development
+            :universal_language_development rdf:type owl:Class ;
+            rdfs:label "Universal Language Development" ;
+            rdfs:subClassOf :language_development .
+###  http://graffl.ai/pathology#language_development
+            :language_development rdf:type owl:Class ;
+            rdfs:label "Language Development" .
+###  http://graffl.ai/pathology#child_parent
+            :child_parent rdf:type owl:Class ;
+            rdfs:label "Child Parent" ;
+            rdfs:subClassOf :parent .
+###  http://graffl.ai/pathology#parent
+            :parent rdf:type owl:Class ;
+            rdfs:label "Parent" .
+###  http://graffl.ai/pathology#control_language
+            :control_language rdf:type owl:Class ;
+            rdfs:label "Control Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#individual_speech
+            :individual_speech rdf:type owl:Class ;
+            rdfs:label "Individual Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#speech_movement
+            :speech_movement rdf:type owl:Class ;
+            rdfs:label "Speech Movement" ;
+            rdfs:subClassOf :movement .
+###  http://graffl.ai/pathology#movement
+            :movement rdf:type owl:Class ;
+            rdfs:label "Movement" .
+###  http://graffl.ai/pathology#involuntary_speech_movement
+            :involuntary_speech_movement rdf:type owl:Class ;
+            rdfs:label "Involuntary Speech Movement" ;
+            rdfs:subClassOf :speech_movement .
+###  http://graffl.ai/pathology#speech_movement
+            :speech_movement rdf:type owl:Class ;
+            rdfs:label "Speech Movement" .
+###  http://graffl.ai/pathology#children_speech
+            :children_speech rdf:type owl:Class ;
+            rdfs:label "Children Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#young_children_speech
+            :young_children_speech rdf:type owl:Class ;
+            rdfs:label "Young Children Speech" ;
+            rdfs:subClassOf :children_speech .
+###  http://graffl.ai/pathology#children_speech
+            :children_speech rdf:type owl:Class ;
+            rdfs:label "Children Speech" .
+###  http://graffl.ai/pathology#assessment_battery
+            :assessment_battery rdf:type owl:Class ;
+            rdfs:label "Assessment Battery" ;
+            rdfs:subClassOf :battery .
+###  http://graffl.ai/pathology#battery
+            :battery rdf:type owl:Class ;
+            rdfs:label "Battery" .
+###  http://graffl.ai/pathology#language_assessment_battery
+            :language_assessment_battery rdf:type owl:Class ;
+            rdfs:label "Language Assessment Battery" ;
+            rdfs:subClassOf :assessment_battery .
+###  http://graffl.ai/pathology#assessment_battery
+            :assessment_battery rdf:type owl:Class ;
+            rdfs:label "Assessment Battery" .
+###  http://graffl.ai/pathology#expressive_speech
+            :expressive_speech rdf:type owl:Class ;
+            rdfs:label "Expressive Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#fluent_expressive_speech
+            :fluent_expressive_speech rdf:type owl:Class ;
+            rdfs:label "Fluent Expressive Speech" ;
+            rdfs:subClassOf :expressive_speech .
+###  http://graffl.ai/pathology#expressive_speech
+            :expressive_speech rdf:type owl:Class ;
+            rdfs:label "Expressive Speech" .
+###  http://graffl.ai/pathology#need_child
+            :need_child rdf:type owl:Class ;
+            rdfs:label "Need Child" ;
+            rdfs:subClassOf :child .
+###  http://graffl.ai/pathology#child
+            :child rdf:type owl:Class ;
+            rdfs:label "Child" .
+###  http://graffl.ai/pathology#consonant_speech
+            :consonant_speech rdf:type owl:Class ;
+            rdfs:label "Consonant Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#different_sound
+            :different_sound rdf:type owl:Class ;
+            rdfs:label "Different Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#esophageal_speech
+            :esophageal_speech rdf:type owl:Class ;
+            rdfs:label "Esophageal Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#education_record
+            :education_record rdf:type owl:Class ;
+            rdfs:label "Education Record" ;
+            rdfs:subClassOf :record .
+###  http://graffl.ai/pathology#record
+            :record rdf:type owl:Class ;
+            rdfs:label "Record" .
+###  http://graffl.ai/pathology#child_education_record
+            :child_education_record rdf:type owl:Class ;
+            rdfs:label "Child Education Record" ;
+            rdfs:subClassOf :education_record .
+###  http://graffl.ai/pathology#education_record
+            :education_record rdf:type owl:Class ;
+            rdfs:label "Education Record" .
+###  http://graffl.ai/pathology#speech_movement
+            :speech_movement rdf:type owl:Class ;
+            rdfs:label "Speech Movement" ;
+            rdfs:subClassOf :movement .
+###  http://graffl.ai/pathology#movement
+            :movement rdf:type owl:Class ;
+            rdfs:label "Movement" .
+###  http://graffl.ai/pathology#uncoordinated_speech_movement
+            :uncoordinated_speech_movement rdf:type owl:Class ;
+            rdfs:label "Uncoordinated Speech Movement" ;
+            rdfs:subClassOf :speech_movement .
+###  http://graffl.ai/pathology#speech_movement
+            :speech_movement rdf:type owl:Class ;
+            rdfs:label "Speech Movement" .
+###  http://graffl.ai/pathology#language_deficit
+            :language_deficit rdf:type owl:Class ;
+            rdfs:label "Language Deficit" ;
+            rdfs:subClassOf :deficit .
+###  http://graffl.ai/pathology#deficit
+            :deficit rdf:type owl:Class ;
+            rdfs:label "Deficit" .
+###  http://graffl.ai/pathology#everyday_speech
+            :everyday_speech rdf:type owl:Class ;
+            rdfs:label "Everyday Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#stutterer_everyday_speech
+            :stutterer_everyday_speech rdf:type owl:Class ;
+            rdfs:label "Stutterer Everyday Speech" ;
+            rdfs:subClassOf :everyday_speech .
+###  http://graffl.ai/pathology#everyday_speech
+            :everyday_speech rdf:type owl:Class ;
+            rdfs:label "Everyday Speech" .
+###  http://graffl.ai/pathology#language_delay
+            :language_delay rdf:type owl:Class ;
+            rdfs:label "Language Delay" ;
+            rdfs:subClassOf :delay .
+###  http://graffl.ai/pathology#delay
+            :delay rdf:type owl:Class ;
+            rdfs:label "Delay" .
+###  http://graffl.ai/pathology#true_language_delay
+            :true_language_delay rdf:type owl:Class ;
+            rdfs:label "True Language Delay" ;
+            rdfs:subClassOf :language_delay .
+###  http://graffl.ai/pathology#language_delay
+            :language_delay rdf:type owl:Class ;
+            rdfs:label "Language Delay" .
+###  http://graffl.ai/pathology#speech_rate
+            :speech_rate rdf:type owl:Class ;
+            rdfs:label "Speech Rate" ;
+            rdfs:subClassOf :rate .
+###  http://graffl.ai/pathology#rate
+            :rate rdf:type owl:Class ;
+            rdfs:label "Rate" .
+###  http://graffl.ai/pathology#slow_speech_rate
+            :slow_speech_rate rdf:type owl:Class ;
+            rdfs:label "Slow Speech Rate" ;
+            rdfs:subClassOf :speech_rate .
+###  http://graffl.ai/pathology#speech_rate
+            :speech_rate rdf:type owl:Class ;
+            rdfs:label "Speech Rate" .
+###  http://graffl.ai/pathology#child_stutter
+            :child_stutter rdf:type owl:Class ;
+            rdfs:label "Child Stutter" ;
+            rdfs:subClassOf :stutter .
+###  http://graffl.ai/pathology#stutter
+            :stutter rdf:type owl:Class ;
+            rdfs:label "Stutter" .
+###  http://graffl.ai/pathology#language_therapy
+            :language_therapy rdf:type owl:Class ;
+            rdfs:label "Language Therapy" ;
+            rdfs:subClassOf :therapy .
+###  http://graffl.ai/pathology#therapy
+            :therapy rdf:type owl:Class ;
+            rdfs:label "Therapy" .
+###  http://graffl.ai/pathology#language_service
+            :language_service rdf:type owl:Class ;
+            rdfs:label "Language Service" ;
+            rdfs:subClassOf :service .
+###  http://graffl.ai/pathology#service
+            :service rdf:type owl:Class ;
+            rdfs:label "Service" .
+###  http://graffl.ai/pathology#communication_deficit
+            :communication_deficit rdf:type owl:Class ;
+            rdfs:label "Communication Deficit" ;
+            rdfs:subClassOf :deficit .
+###  http://graffl.ai/pathology#deficit
+            :deficit rdf:type owl:Class ;
+            rdfs:label "Deficit" .
+###  http://graffl.ai/pathology#individual_communication_deficit
+            :individual_communication_deficit rdf:type owl:Class ;
+            rdfs:label "Individual Communication Deficit" ;
+            rdfs:subClassOf :communication_deficit .
+###  http://graffl.ai/pathology#communication_deficit
+            :communication_deficit rdf:type owl:Class ;
+            rdfs:label "Communication Deficit" .
+###  http://graffl.ai/pathology#client_individual_communication_deficit
+            :client_individual_communication_deficit rdf:type owl:Class ;
+            rdfs:label "Client Individual Communication Deficit" ;
+            rdfs:subClassOf :individual_communication_deficit .
+###  http://graffl.ai/pathology#individual_communication_deficit
+            :individual_communication_deficit rdf:type owl:Class ;
+            rdfs:label "Individual Communication Deficit" .
+###  http://graffl.ai/pathology#language_structure
+            :language_structure rdf:type owl:Class ;
+            rdfs:label "Language Structure" ;
+            rdfs:subClassOf :structure .
+###  http://graffl.ai/pathology#structure
+            :structure rdf:type owl:Class ;
+            rdfs:label "Structure" .
+###  http://graffl.ai/pathology#fusional_language_structure
+            :fusional_language_structure rdf:type owl:Class ;
+            rdfs:label "Fusional Language Structure" ;
+            rdfs:subClassOf :language_structure .
+###  http://graffl.ai/pathology#language_structure
+            :language_structure rdf:type owl:Class ;
+            rdfs:label "Language Structure" .
+###  http://graffl.ai/pathology#language_screening
+            :language_screening rdf:type owl:Class ;
+            rdfs:label "Language Screening" ;
+            rdfs:subClassOf :screening .
+###  http://graffl.ai/pathology#screening
+            :screening rdf:type owl:Class ;
+            rdfs:label "Screening" .
+###  http://graffl.ai/pathology#sound_wave
+            :sound_wave rdf:type owl:Class ;
+            rdfs:label "Sound Wave" ;
+            rdfs:subClassOf :wave .
+###  http://graffl.ai/pathology#wave
+            :wave rdf:type owl:Class ;
+            rdfs:label "Wave" .
+###  http://graffl.ai/pathology#complex_sound_wave
+            :complex_sound_wave rdf:type owl:Class ;
+            rdfs:label "Complex Sound Wave" ;
+            rdfs:subClassOf :sound_wave .
+###  http://graffl.ai/pathology#sound_wave
+            :sound_wave rdf:type owl:Class ;
+            rdfs:label "Sound Wave" .
+###  http://graffl.ai/pathology#genetic_language
+            :genetic_language rdf:type owl:Class ;
+            rdfs:label "Genetic Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#adult_sound
+            :adult_sound rdf:type owl:Class ;
+            rdfs:label "Adult Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#speech_rate
+            :speech_rate rdf:type owl:Class ;
+            rdfs:label "Speech Rate" ;
+            rdfs:subClassOf :rate .
+###  http://graffl.ai/pathology#rate
+            :rate rdf:type owl:Class ;
+            rdfs:label "Rate" .
+###  http://graffl.ai/pathology#rapid_speech_rate
+            :rapid_speech_rate rdf:type owl:Class ;
+            rdfs:label "Rapid Speech Rate" ;
+            rdfs:subClassOf :speech_rate .
+###  http://graffl.ai/pathology#speech_rate
+            :speech_rate rdf:type owl:Class ;
+            rdfs:label "Speech Rate" .
+###  http://graffl.ai/pathology#age_child
+            :age_child rdf:type owl:Class ;
+            rdfs:label "Age Child" ;
+            rdfs:subClassOf :child .
+###  http://graffl.ai/pathology#child
+            :child rdf:type owl:Class ;
+            rdfs:label "Child" .
+###  http://graffl.ai/pathology#syndrome_child
+            :syndrome_child rdf:type owl:Class ;
+            rdfs:label "Syndrome Child" ;
+            rdfs:subClassOf :child .
+###  http://graffl.ai/pathology#child
+            :child rdf:type owl:Class ;
+            rdfs:label "Child" .
+###  http://graffl.ai/pathology#language_support
+            :language_support rdf:type owl:Class ;
+            rdfs:label "Language Support" ;
+            rdfs:subClassOf :support .
+###  http://graffl.ai/pathology#support
+            :support rdf:type owl:Class ;
+            rdfs:label "Support" .
+###  http://graffl.ai/pathology#tribal_language
+            :tribal_language rdf:type owl:Class ;
+            rdfs:label "Tribal Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#american_tribal_language
+            :american_tribal_language rdf:type owl:Class ;
+            rdfs:label "American Tribal Language" ;
+            rdfs:subClassOf :tribal_language .
+###  http://graffl.ai/pathology#tribal_language
+            :tribal_language rdf:type owl:Class ;
+            rdfs:label "Tribal Language" .
+###  http://graffl.ai/pathology#native_american_tribal_language
+            :native_american_tribal_language rdf:type owl:Class ;
+            rdfs:label "Native American Tribal Language" ;
+            rdfs:subClassOf :american_tribal_language .
+###  http://graffl.ai/pathology#american_tribal_language
+            :american_tribal_language rdf:type owl:Class ;
+            rdfs:label "American Tribal Language" .
+###  http://graffl.ai/pathology#speech_apraxia
+            :speech_apraxia rdf:type owl:Class ;
+            rdfs:label "Speech Apraxia" ;
+            rdfs:subClassOf :apraxia .
+###  http://graffl.ai/pathology#apraxia
+            :apraxia rdf:type owl:Class ;
+            rdfs:label "Apraxia" .
+###  http://graffl.ai/pathology#speech_resonance
+            :speech_resonance rdf:type owl:Class ;
+            rdfs:label "Speech Resonance" ;
+            rdfs:subClassOf :resonance .
+###  http://graffl.ai/pathology#resonance
+            :resonance rdf:type owl:Class ;
+            rdfs:label "Resonance" .
+###  http://graffl.ai/pathology#hypernasal_speech_resonance
+            :hypernasal_speech_resonance rdf:type owl:Class ;
+            rdfs:label "Hypernasal Speech Resonance" ;
+            rdfs:subClassOf :speech_resonance .
+###  http://graffl.ai/pathology#speech_resonance
+            :speech_resonance rdf:type owl:Class ;
+            rdfs:label "Speech Resonance" .
+###  http://graffl.ai/pathology#dysfluent_speech
+            :dysfluent_speech rdf:type owl:Class ;
+            rdfs:label "Dysfluent Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#stutterer_dysfluent_speech
+            :stutterer_dysfluent_speech rdf:type owl:Class ;
+            rdfs:label "Stutterer Dysfluent Speech" ;
+            rdfs:subClassOf :dysfluent_speech .
+###  http://graffl.ai/pathology#dysfluent_speech
+            :dysfluent_speech rdf:type owl:Class ;
+            rdfs:label "Dysfluent Speech" .
+###  http://graffl.ai/pathology#individual_sound
+            :individual_sound rdf:type owl:Class ;
+            rdfs:label "Individual Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#segment_individual_sound
+            :segment_individual_sound rdf:type owl:Class ;
+            rdfs:label "Segment Individual Sound" ;
+            rdfs:subClassOf :individual_sound .
+###  http://graffl.ai/pathology#individual_sound
+            :individual_sound rdf:type owl:Class ;
+            rdfs:label "Individual Sound" .
+###  http://graffl.ai/pathology#sound_wave
+            :sound_wave rdf:type owl:Class ;
+            rdfs:label "Sound Wave" ;
+            rdfs:subClassOf :wave .
+###  http://graffl.ai/pathology#wave
+            :wave rdf:type owl:Class ;
+            rdfs:label "Wave" .
+###  http://graffl.ai/pathology#intercept_sound_wave
+            :intercept_sound_wave rdf:type owl:Class ;
+            rdfs:label "Intercept Sound Wave" ;
+            rdfs:subClassOf :sound_wave .
+###  http://graffl.ai/pathology#sound_wave
+            :sound_wave rdf:type owl:Class ;
+            rdfs:label "Sound Wave" .
+###  http://graffl.ai/pathology#pinna_intercept_sound_wave
+            :pinna_intercept_sound_wave rdf:type owl:Class ;
+            rdfs:label "Pinna Intercept Sound Wave" ;
+            rdfs:subClassOf :intercept_sound_wave .
+###  http://graffl.ai/pathology#intercept_sound_wave
+            :intercept_sound_wave rdf:type owl:Class ;
+            rdfs:label "Intercept Sound Wave" .
+###  http://graffl.ai/pathology#spoken_language
+            :spoken_language rdf:type owl:Class ;
+            rdfs:label "Spoken Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#intelligible_spoken_language
+            :intelligible_spoken_language rdf:type owl:Class ;
+            rdfs:label "Intelligible Spoken Language" ;
+            rdfs:subClassOf :spoken_language .
+###  http://graffl.ai/pathology#spoken_language
+            :spoken_language rdf:type owl:Class ;
+            rdfs:label "Spoken Language" .
+###  http://graffl.ai/pathology#different_cause
+            :different_cause rdf:type owl:Class ;
+            rdfs:label "Different Cause" ;
+            rdfs:subClassOf :cause .
+###  http://graffl.ai/pathology#cause
+            :cause rdf:type owl:Class ;
+            rdfs:label "Cause" .
+###  http://graffl.ai/pathology#language_goal
+            :language_goal rdf:type owl:Class ;
+            rdfs:label "Language Goal" ;
+            rdfs:subClassOf :goal .
+###  http://graffl.ai/pathology#goal
+            :goal rdf:type owl:Class ;
+            rdfs:label "Goal" .
+###  http://graffl.ai/pathology#speech_therapist
+            :speech_therapist rdf:type owl:Class ;
+            rdfs:label "Speech Therapist" ;
+            rdfs:subClassOf :therapist .
+###  http://graffl.ai/pathology#therapist
+            :therapist rdf:type owl:Class ;
+            rdfs:label "Therapist" .
+###  http://graffl.ai/pathology#licensed_speech_therapist
+            :licensed_speech_therapist rdf:type owl:Class ;
+            rdfs:label "Licensed Speech Therapist" ;
+            rdfs:subClassOf :speech_therapist .
+###  http://graffl.ai/pathology#speech_therapist
+            :speech_therapist rdf:type owl:Class ;
+            rdfs:label "Speech Therapist" .
+###  http://graffl.ai/pathology#child_plenty
+            :child_plenty rdf:type owl:Class ;
+            rdfs:label "Child Plenty" ;
+            rdfs:subClassOf :plenty .
+###  http://graffl.ai/pathology#plenty
+            :plenty rdf:type owl:Class ;
+            rdfs:label "Plenty" .
+###  http://graffl.ai/pathology#young_child_plenty
+            :young_child_plenty rdf:type owl:Class ;
+            rdfs:label "Young Child Plenty" ;
+            rdfs:subClassOf :child_plenty .
+###  http://graffl.ai/pathology#child_plenty
+            :child_plenty rdf:type owl:Class ;
+            rdfs:label "Child Plenty" .
+###  http://graffl.ai/pathology#inadequate_functioning
+            :inadequate_functioning rdf:type owl:Class ;
+            rdfs:label "Inadequate Functioning" ;
+            rdfs:subClassOf :functioning .
+###  http://graffl.ai/pathology#functioning
+            :functioning rdf:type owl:Class ;
+            rdfs:label "Functioning" .
+###  http://graffl.ai/pathology#cause_inadequate_functioning
+            :cause_inadequate_functioning rdf:type owl:Class ;
+            rdfs:label "Cause Inadequate Functioning" ;
+            rdfs:subClassOf :inadequate_functioning .
+###  http://graffl.ai/pathology#inadequate_functioning
+            :inadequate_functioning rdf:type owl:Class ;
+            rdfs:label "Inadequate Functioning" .
+###  http://graffl.ai/pathology#incompetence_cause_inadequate_functioning
+            :incompetence_cause_inadequate_functioning rdf:type owl:Class ;
+            rdfs:label "Incompetence Cause Inadequate Functioning" ;
+            rdfs:subClassOf :cause_inadequate_functioning .
+###  http://graffl.ai/pathology#cause_inadequate_functioning
+            :cause_inadequate_functioning rdf:type owl:Class ;
+            rdfs:label "Cause Inadequate Functioning" .
+###  http://graffl.ai/pathology#velopharyngeal_incompetence_cause_inadequate_functioning
+            :velopharyngeal_incompetence_cause_inadequate_functioning rdf:type owl:Class ;
+            rdfs:label "Velopharyngeal Incompetence Cause Inadequate Functioning" ;
+            rdfs:subClassOf :incompetence_cause_inadequate_functioning .
+###  http://graffl.ai/pathology#incompetence_cause_inadequate_functioning
+            :incompetence_cause_inadequate_functioning rdf:type owl:Class ;
+            rdfs:label "Incompetence Cause Inadequate Functioning" .
+###  http://graffl.ai/pathology#language_easy
+            :language_easy rdf:type owl:Class ;
+            rdfs:label "Language Easy" ;
+            rdfs:subClassOf :easy .
+###  http://graffl.ai/pathology#easy
+            :easy rdf:type owl:Class ;
+            rdfs:label "Easy" .
+###  http://graffl.ai/pathology#analytic_language_easy
+            :analytic_language_easy rdf:type owl:Class ;
+            rdfs:label "Analytic Language Easy" ;
+            rdfs:subClassOf :language_easy .
+###  http://graffl.ai/pathology#language_easy
+            :language_easy rdf:type owl:Class ;
+            rdfs:label "Language Easy" .
+###  http://graffl.ai/pathology#second_language
+            :second_language rdf:type owl:Class ;
+            rdfs:label "Second Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#speech_pattern
+            :speech_pattern rdf:type owl:Class ;
+            rdfs:label "Speech Pattern" ;
+            rdfs:subClassOf :pattern .
+###  http://graffl.ai/pathology#pattern
+            :pattern rdf:type owl:Class ;
+            rdfs:label "Pattern" .
+###  http://graffl.ai/pathology#language_pattern
+            :language_pattern rdf:type owl:Class ;
+            rdfs:label "Language Pattern" ;
+            rdfs:subClassOf :pattern .
+###  http://graffl.ai/pathology#pattern
+            :pattern rdf:type owl:Class ;
+            rdfs:label "Pattern" .
+###  http://graffl.ai/pathology#complex_speech
+            :complex_speech rdf:type owl:Class ;
+            rdfs:label "Complex Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#language_delay
+            :language_delay rdf:type owl:Class ;
+            rdfs:label "Language Delay" ;
+            rdfs:subClassOf :delay .
+###  http://graffl.ai/pathology#delay
+            :delay rdf:type owl:Class ;
+            rdfs:label "Delay" .
+###  http://graffl.ai/pathology#real_language_delay
+            :real_language_delay rdf:type owl:Class ;
+            rdfs:label "Real Language Delay" ;
+            rdfs:subClassOf :language_delay .
+###  http://graffl.ai/pathology#language_delay
+            :language_delay rdf:type owl:Class ;
+            rdfs:label "Language Delay" .
+###  http://graffl.ai/pathology#child_record
+            :child_record rdf:type owl:Class ;
+            rdfs:label "Child Record" ;
+            rdfs:subClassOf :record .
+###  http://graffl.ai/pathology#record
+            :record rdf:type owl:Class ;
+            rdfs:label "Record" .
+###  http://graffl.ai/pathology#medical_history
+            :medical_history rdf:type owl:Class ;
+            rdfs:label "Medical History" ;
+            rdfs:subClassOf :history .
+###  http://graffl.ai/pathology#history
+            :history rdf:type owl:Class ;
+            rdfs:label "History" .
+###  http://graffl.ai/pathology#child_medical_history
+            :child_medical_history rdf:type owl:Class ;
+            rdfs:label "Child Medical History" ;
+            rdfs:subClassOf :medical_history .
+###  http://graffl.ai/pathology#medical_history
+            :medical_history rdf:type owl:Class ;
+            rdfs:label "Medical History" .
+###  http://graffl.ai/pathology#language_trouble
+            :language_trouble rdf:type owl:Class ;
+            rdfs:label "Language Trouble" ;
+            rdfs:subClassOf :trouble .
+###  http://graffl.ai/pathology#trouble
+            :trouble rdf:type owl:Class ;
+            rdfs:label "Trouble" .
+###  http://graffl.ai/pathology#pharyngeal_speech
+            :pharyngeal_speech rdf:type owl:Class ;
+            rdfs:label "Pharyngeal Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#speech_fluency
+            :speech_fluency rdf:type owl:Class ;
+            rdfs:label "Speech Fluency" ;
+            rdfs:subClassOf :fluency .
+###  http://graffl.ai/pathology#fluency
+            :fluency rdf:type owl:Class ;
+            rdfs:label "Fluency" .
+###  http://graffl.ai/pathology#speech_surpass
+            :speech_surpass rdf:type owl:Class ;
+            rdfs:label "Speech Surpass" ;
+            rdfs:subClassOf :surpass .
+###  http://graffl.ai/pathology#surpass
+            :surpass rdf:type owl:Class ;
+            rdfs:label "Surpass" .
+###  http://graffl.ai/pathology#fluent_speech_surpass
+            :fluent_speech_surpass rdf:type owl:Class ;
+            rdfs:label "Fluent Speech Surpass" ;
+            rdfs:subClassOf :speech_surpass .
+###  http://graffl.ai/pathology#speech_surpass
+            :speech_surpass rdf:type owl:Class ;
+            rdfs:label "Speech Surpass" .
+###  http://graffl.ai/pathology#language_meaning
+            :language_meaning rdf:type owl:Class ;
+            rdfs:label "Language Meaning" ;
+            rdfs:subClassOf :meaning .
+###  http://graffl.ai/pathology#meaning
+            :meaning rdf:type owl:Class ;
+            rdfs:label "Meaning" .
+###  http://graffl.ai/pathology#language_example
+            :language_example rdf:type owl:Class ;
+            rdfs:label "Language Example" ;
+            rdfs:subClassOf :example .
+###  http://graffl.ai/pathology#example
+            :example rdf:type owl:Class ;
+            rdfs:label "Example" .
+###  http://graffl.ai/pathology#consonant_sound
+            :consonant_sound rdf:type owl:Class ;
+            rdfs:label "Consonant Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#way_child
+            :way_child rdf:type owl:Class ;
+            rdfs:label "Way Child" ;
+            rdfs:subClassOf :child .
+###  http://graffl.ai/pathology#child
+            :child rdf:type owl:Class ;
+            rdfs:label "Child" .
+###  http://graffl.ai/pathology#sound_wave
+            :sound_wave rdf:type owl:Class ;
+            rdfs:label "Sound Wave" ;
+            rdfs:subClassOf :wave .
+###  http://graffl.ai/pathology#wave
+            :wave rdf:type owl:Class ;
+            rdfs:label "Wave" .
+###  http://graffl.ai/pathology#funnel_sound_wave
+            :funnel_sound_wave rdf:type owl:Class ;
+            rdfs:label "Funnel Sound Wave" ;
+            rdfs:subClassOf :sound_wave .
+###  http://graffl.ai/pathology#sound_wave
+            :sound_wave rdf:type owl:Class ;
+            rdfs:label "Sound Wave" .
+###  http://graffl.ai/pathology#variation_peculiar
+            :variation_peculiar rdf:type owl:Class ;
+            rdfs:label "Variation Peculiar" ;
+            rdfs:subClassOf :peculiar .
+###  http://graffl.ai/pathology#peculiar
+            :peculiar rdf:type owl:Class ;
+            rdfs:label "Peculiar" .
+###  http://graffl.ai/pathology#language_variation_peculiar
+            :language_variation_peculiar rdf:type owl:Class ;
+            rdfs:label "Language Variation Peculiar" ;
+            rdfs:subClassOf :variation_peculiar .
+###  http://graffl.ai/pathology#variation_peculiar
+            :variation_peculiar rdf:type owl:Class ;
+            rdfs:label "Variation Peculiar" .
+###  http://graffl.ai/pathology#processing_language
+            :processing_language rdf:type owl:Class ;
+            rdfs:label "Processing Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#regular_speech
+            :regular_speech rdf:type owl:Class ;
+            rdfs:label "Regular Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#clear_speech
+            :clear_speech rdf:type owl:Class ;
+            rdfs:label "Clear Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#bulb_obturator
+            :bulb_obturator rdf:type owl:Class ;
+            rdfs:label "Bulb Obturator" ;
+            rdfs:subClassOf :obturator .
+###  http://graffl.ai/pathology#obturator
+            :obturator rdf:type owl:Class ;
+            rdfs:label "Obturator" .
+###  http://graffl.ai/pathology#speech_bulb_obturator
+            :speech_bulb_obturator rdf:type owl:Class ;
+            rdfs:label "Speech Bulb Obturator" ;
+            rdfs:subClassOf :bulb_obturator .
+###  http://graffl.ai/pathology#bulb_obturator
+            :bulb_obturator rdf:type owl:Class ;
+            rdfs:label "Bulb Obturator" .
+###  http://graffl.ai/pathology#special_interest
+            :special_interest rdf:type owl:Class ;
+            rdfs:label "Special Interest" ;
+            rdfs:subClassOf :interest .
+###  http://graffl.ai/pathology#interest
+            :interest rdf:type owl:Class ;
+            rdfs:label "Interest" .
+###  http://graffl.ai/pathology#child_special_interest
+            :child_special_interest rdf:type owl:Class ;
+            rdfs:label "Child Special Interest" ;
+            rdfs:subClassOf :special_interest .
+###  http://graffl.ai/pathology#special_interest
+            :special_interest rdf:type owl:Class ;
+            rdfs:label "Special Interest" .
+###  http://graffl.ai/pathology#speech_abnormality
+            :speech_abnormality rdf:type owl:Class ;
+            rdfs:label "Speech Abnormality" ;
+            rdfs:subClassOf :abnormality .
+###  http://graffl.ai/pathology#abnormality
+            :abnormality rdf:type owl:Class ;
+            rdfs:label "Abnormality" .
+###  http://graffl.ai/pathology#old_child
+            :old_child rdf:type owl:Class ;
+            rdfs:label "Old Child" ;
+            rdfs:subClassOf :child .
+###  http://graffl.ai/pathology#child
+            :child rdf:type owl:Class ;
+            rdfs:label "Child" .
+###  http://graffl.ai/pathology#communication_disorder
+            :communication_disorder rdf:type owl:Class ;
+            rdfs:label "Communication Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#cognitive_communication_disorder
+            :cognitive_communication_disorder rdf:type owl:Class ;
+            rdfs:label "Cognitive Communication Disorder" ;
+            rdfs:subClassOf :communication_disorder .
+###  http://graffl.ai/pathology#communication_disorder
+            :communication_disorder rdf:type owl:Class ;
+            rdfs:label "Communication Disorder" .
+###  http://graffl.ai/pathology#tbi_cognitive_communication_disorder
+            :tbi_cognitive_communication_disorder rdf:type owl:Class ;
+            rdfs:label "Tbi Cognitive Communication Disorder" ;
+            rdfs:subClassOf :cognitive_communication_disorder .
+###  http://graffl.ai/pathology#cognitive_communication_disorder
+            :cognitive_communication_disorder rdf:type owl:Class ;
+            rdfs:label "Cognitive Communication Disorder" .
+###  http://graffl.ai/pathology#propose_child
+            :propose_child rdf:type owl:Class ;
+            rdfs:label "Propose Child" ;
+            rdfs:subClassOf :child .
+###  http://graffl.ai/pathology#child
+            :child rdf:type owl:Class ;
+            rdfs:label "Child" .
+###  http://graffl.ai/pathology#comprehensive_speech
+            :comprehensive_speech rdf:type owl:Class ;
+            rdfs:label "Comprehensive Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#language_status
+            :language_status rdf:type owl:Class ;
+            rdfs:label "Language Status" ;
+            rdfs:subClassOf :status .
+###  http://graffl.ai/pathology#status
+            :status rdf:type owl:Class ;
+            rdfs:label "Status" .
+###  http://graffl.ai/pathology#duck_speech
+            :duck_speech rdf:type owl:Class ;
+            rdfs:label "Duck Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#donald_duck_speech
+            :donald_duck_speech rdf:type owl:Class ;
+            rdfs:label "Donald Duck Speech" ;
+            rdfs:subClassOf :duck_speech .
+###  http://graffl.ai/pathology#duck_speech
+            :duck_speech rdf:type owl:Class ;
+            rdfs:label "Duck Speech" .
+###  http://graffl.ai/pathology#native_language
+            :native_language rdf:type owl:Class ;
+            rdfs:label "Native Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#speech_opportunity
+            :speech_opportunity rdf:type owl:Class ;
+            rdfs:label "Speech Opportunity" ;
+            rdfs:subClassOf :opportunity .
+###  http://graffl.ai/pathology#opportunity
+            :opportunity rdf:type owl:Class ;
+            rdfs:label "Opportunity" .
+###  http://graffl.ai/pathology#nasal_sound
+            :nasal_sound rdf:type owl:Class ;
+            rdfs:label "Nasal Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#past_speech
+            :past_speech rdf:type owl:Class ;
+            rdfs:label "Past Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#certain_sound
+            :certain_sound rdf:type owl:Class ;
+            rdfs:label "Certain Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#chinese_language
+            :chinese_language rdf:type owl:Class ;
+            rdfs:label "Chinese Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#language_task
+            :language_task rdf:type owl:Class ;
+            rdfs:label "Language Task" ;
+            rdfs:subClassOf :task .
+###  http://graffl.ai/pathology#task
+            :task rdf:type owl:Class ;
+            rdfs:label "Task" .
+###  http://graffl.ai/pathology#language_remediation
+            :language_remediation rdf:type owl:Class ;
+            rdfs:label "Language Remediation" ;
+            rdfs:subClassOf :remediation .
+###  http://graffl.ai/pathology#remediation
+            :remediation rdf:type owl:Class ;
+            rdfs:label "Remediation" .
+###  http://graffl.ai/pathology#understandable_speech
+            :understandable_speech rdf:type owl:Class ;
+            rdfs:label "Understandable Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#child_fluency
+            :child_fluency rdf:type owl:Class ;
+            rdfs:label "Child Fluency" ;
+            rdfs:subClassOf :fluency .
+###  http://graffl.ai/pathology#fluency
+            :fluency rdf:type owl:Class ;
+            rdfs:label "Fluency" .
+###  http://graffl.ai/pathology#speech_sample
+            :speech_sample rdf:type owl:Class ;
+            rdfs:label "Speech Sample" ;
+            rdfs:subClassOf :sample .
+###  http://graffl.ai/pathology#sample
+            :sample rdf:type owl:Class ;
+            rdfs:label "Sample" .
+###  http://graffl.ai/pathology#child_response
+            :child_response rdf:type owl:Class ;
+            rdfs:label "Child Response" ;
+            rdfs:subClassOf :response .
+###  http://graffl.ai/pathology#response
+            :response rdf:type owl:Class ;
+            rdfs:label "Response" .
+###  http://graffl.ai/pathology#speech_mechanism
+            :speech_mechanism rdf:type owl:Class ;
+            rdfs:label "Speech Mechanism" ;
+            rdfs:subClassOf :mechanism .
+###  http://graffl.ai/pathology#mechanism
+            :mechanism rdf:type owl:Class ;
+            rdfs:label "Mechanism" .
+###  http://graffl.ai/pathology#qualified_speech
+            :qualified_speech rdf:type owl:Class ;
+            rdfs:label "Qualified Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#foreign_language
+            :foreign_language rdf:type owl:Class ;
+            rdfs:label "Foreign Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#speech_pronunciation
+            :speech_pronunciation rdf:type owl:Class ;
+            rdfs:label "Speech Pronunciation" ;
+            rdfs:subClassOf :pronunciation .
+###  http://graffl.ai/pathology#pronunciation
+            :pronunciation rdf:type owl:Class ;
+            rdfs:label "Pronunciation" .
+###  http://graffl.ai/pathology#language_comprehension
+            :language_comprehension rdf:type owl:Class ;
+            rdfs:label "Language Comprehension" ;
+            rdfs:subClassOf :comprehension .
+###  http://graffl.ai/pathology#comprehension
+            :comprehension rdf:type owl:Class ;
+            rdfs:label "Comprehension" .
+###  http://graffl.ai/pathology#child_value
+            :child_value rdf:type owl:Class ;
+            rdfs:label "Child Value" ;
+            rdfs:subClassOf :value .
+###  http://graffl.ai/pathology#value
+            :value rdf:type owl:Class ;
+            rdfs:label "Value" .
+###  http://graffl.ai/pathology#conversational_speech
+            :conversational_speech rdf:type owl:Class ;
+            rdfs:label "Conversational Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#figurative_language
+            :figurative_language rdf:type owl:Class ;
+            rdfs:label "Figurative Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#human_child
+            :human_child rdf:type owl:Class ;
+            rdfs:label "Human Child" ;
+            rdfs:subClassOf :child .
+###  http://graffl.ai/pathology#child
+            :child rdf:type owl:Class ;
+            rdfs:label "Child" .
+###  http://graffl.ai/pathology#slp_report
+            :slp_report rdf:type owl:Class ;
+            rdfs:label "Slp Report" ;
+            rdfs:subClassOf :report .
+###  http://graffl.ai/pathology#report
+            :report rdf:type owl:Class ;
+            rdfs:label "Report" .
+###  http://graffl.ai/pathology#school_slp_report
+            :school_slp_report rdf:type owl:Class ;
+            rdfs:label "School Slp Report" ;
+            rdfs:subClassOf :slp_report .
+###  http://graffl.ai/pathology#slp_report
+            :slp_report rdf:type owl:Class ;
+            rdfs:label "Slp Report" .
+###  http://graffl.ai/pathology#few_school_slp_report
+            :few_school_slp_report rdf:type owl:Class ;
+            rdfs:label "Few School Slp Report" ;
+            rdfs:subClassOf :school_slp_report .
+###  http://graffl.ai/pathology#school_slp_report
+            :school_slp_report rdf:type owl:Class ;
+            rdfs:label "School Slp Report" .
+###  http://graffl.ai/pathology#childrens_speech
+            :childrens_speech rdf:type owl:Class ;
+            rdfs:label "Childrens Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#buccal_speech
+            :buccal_speech rdf:type owl:Class ;
+            rdfs:label "Buccal Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#pidgin_language
+            :pidgin_language rdf:type owl:Class ;
+            rdfs:label "Pidgin Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#english_language
+            :english_language rdf:type owl:Class ;
+            rdfs:label "English Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#isolated_speech
+            :isolated_speech rdf:type owl:Class ;
+            rdfs:label "Isolated Speech" ;
+            rdfs:subClassOf :speech .
+###  http://graffl.ai/pathology#speech
+            :speech rdf:type owl:Class ;
+            rdfs:label "Speech" .
+###  http://graffl.ai/pathology#inflected_language
+            :inflected_language rdf:type owl:Class ;
+            rdfs:label "Inflected Language" ;
+            rdfs:subClassOf :language .
+###  http://graffl.ai/pathology#language
+            :language rdf:type owl:Class ;
+            rdfs:label "Language" .
+###  http://graffl.ai/pathology#time_use
+            :time_use rdf:type owl:Class ;
+            rdfs:label "Time Use" ;
+            rdfs:subClassOf :use .
+###  http://graffl.ai/pathology#use
+            :use rdf:type owl:Class ;
+            rdfs:label "Use" .
+###  http://graffl.ai/pathology#child_capacity
+            :child_capacity rdf:type owl:Class ;
+            rdfs:label "Child Capacity" ;
+            rdfs:subClassOf :capacity .
+###  http://graffl.ai/pathology#capacity
+            :capacity rdf:type owl:Class ;
+            rdfs:label "Capacity" .
+###  http://graffl.ai/pathology#social_use
+            :social_use rdf:type owl:Class ;
+            rdfs:label "Social Use" ;
+            rdfs:subClassOf :use .
+###  http://graffl.ai/pathology#use
+            :use rdf:type owl:Class ;
+            rdfs:label "Use" .
+###  http://graffl.ai/pathology#vocal_sound
+            :vocal_sound rdf:type owl:Class ;
+            rdfs:label "Vocal Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#onset_time
+            :onset_time rdf:type owl:Class ;
+            rdfs:label "Onset Time" ;
+            rdfs:subClassOf :time .
+###  http://graffl.ai/pathology#time
+            :time rdf:type owl:Class ;
+            rdfs:label "Time" .
+###  http://graffl.ai/pathology#voice_onset_time
+            :voice_onset_time rdf:type owl:Class ;
+            rdfs:label "Voice Onset Time" ;
+            rdfs:subClassOf :onset_time .
+###  http://graffl.ai/pathology#onset_time
+            :onset_time rdf:type owl:Class ;
+            rdfs:label "Onset Time" .
+###  http://graffl.ai/pathology#different_voice_onset_time
+            :different_voice_onset_time rdf:type owl:Class ;
+            rdfs:label "Different Voice Onset Time" ;
+            rdfs:subClassOf :voice_onset_time .
+###  http://graffl.ai/pathology#voice_onset_time
+            :voice_onset_time rdf:type owl:Class ;
+            rdfs:label "Voice Onset Time" .
+###  http://graffl.ai/pathology#particular_child
+            :particular_child rdf:type owl:Class ;
+            rdfs:label "Particular Child" ;
+            rdfs:subClassOf :child .
+###  http://graffl.ai/pathology#child
+            :child rdf:type owl:Class ;
+            rdfs:label "Child" .
+###  http://graffl.ai/pathology#esophageal_muscle
+            :esophageal_muscle rdf:type owl:Class ;
+            rdfs:label "Esophageal Muscle" ;
+            rdfs:subClassOf :muscle .
+###  http://graffl.ai/pathology#muscle
+            :muscle rdf:type owl:Class ;
+            rdfs:label "Muscle" .
+###  http://graffl.ai/pathology#low_esophageal_muscle
+            :low_esophageal_muscle rdf:type owl:Class ;
+            rdfs:label "Low Esophageal Muscle" ;
+            rdfs:subClassOf :esophageal_muscle .
+###  http://graffl.ai/pathology#esophageal_muscle
+            :esophageal_muscle rdf:type owl:Class ;
+            rdfs:label "Esophageal Muscle" .
+###  http://graffl.ai/pathology#ell_child
+            :ell_child rdf:type owl:Class ;
+            rdfs:label "ELL Child" ;
+            rdfs:subClassOf :child .
+###  http://graffl.ai/pathology#child
+            :child rdf:type owl:Class ;
+            rdfs:label "Child" .
+###  http://graffl.ai/pathology#child_spaghetti
+            :child_spaghetti rdf:type owl:Class ;
+            rdfs:label "Child Spaghetti" ;
+            rdfs:subClassOf :spaghetti .
+###  http://graffl.ai/pathology#spaghetti
+            :spaghetti rdf:type owl:Class ;
+            rdfs:label "Spaghetti" .
+###  http://graffl.ai/pathology#neurological_cause
+            :neurological_cause rdf:type owl:Class ;
+            rdfs:label "Neurological Cause" ;
+            rdfs:subClassOf :cause .
+###  http://graffl.ai/pathology#cause
+            :cause rdf:type owl:Class ;
+            rdfs:label "Cause" .
+###  http://graffl.ai/pathology#school_student
+            :school_student rdf:type owl:Class ;
+            rdfs:label "School Student" ;
+            rdfs:subClassOf :student .
+###  http://graffl.ai/pathology#student
+            :student rdf:type owl:Class ;
+            rdfs:label "Student" .
+###  http://graffl.ai/pathology#high_school_student
+            :high_school_student rdf:type owl:Class ;
+            rdfs:label "High School Student" ;
+            rdfs:subClassOf :school_student .
+###  http://graffl.ai/pathology#school_student
+            :school_student rdf:type owl:Class ;
+            rdfs:label "School Student" .
+###  http://graffl.ai/pathology#process_disorder
+            :process_disorder rdf:type owl:Class ;
+            rdfs:label "Process Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#phonological_process_disorder
+            :phonological_process_disorder rdf:type owl:Class ;
+            rdfs:label "Phonological Process Disorder" ;
+            rdfs:subClassOf :process_disorder .
+###  http://graffl.ai/pathology#process_disorder
+            :process_disorder rdf:type owl:Class ;
+            rdfs:label "Process Disorder" .
+###  http://graffl.ai/pathology#hearing_aid
+            :hearing_aid rdf:type owl:Class ;
+            rdfs:label "Hearing Aid" ;
+            rdfs:subClassOf :aid .
+###  http://graffl.ai/pathology#aid
+            :aid rdf:type owl:Class ;
+            rdfs:label "Aid" .
+###  http://graffl.ai/pathology#test_hearing_aid
+            :test_hearing_aid rdf:type owl:Class ;
+            rdfs:label "Test Hearing Aid" ;
+            rdfs:subClassOf :hearing_aid .
+###  http://graffl.ai/pathology#hearing_aid
+            :hearing_aid rdf:type owl:Class ;
+            rdfs:label "Hearing Aid" .
+###  http://graffl.ai/pathology#damage_result
+            :damage_result rdf:type owl:Class ;
+            rdfs:label "Damage Result" ;
+            rdfs:subClassOf :result .
+###  http://graffl.ai/pathology#result
+            :result rdf:type owl:Class ;
+            rdfs:label "Result" .
+###  http://graffl.ai/pathology#brain_damage_result
+            :brain_damage_result rdf:type owl:Class ;
+            rdfs:label "Brain Damage Result" ;
+            rdfs:subClassOf :damage_result .
+###  http://graffl.ai/pathology#damage_result
+            :damage_result rdf:type owl:Class ;
+            rdfs:label "Damage Result" .
+###  http://graffl.ai/pathology#hemisphere_brain_damage_result
+            :hemisphere_brain_damage_result rdf:type owl:Class ;
+            rdfs:label "Hemisphere Brain Damage Result" ;
+            rdfs:subClassOf :brain_damage_result .
+###  http://graffl.ai/pathology#brain_damage_result
+            :brain_damage_result rdf:type owl:Class ;
+            rdfs:label "Brain Damage Result" .
+###  http://graffl.ai/pathology#function_secondary
+            :function_secondary rdf:type owl:Class ;
+            rdfs:label "Function Secondary" ;
+            rdfs:subClassOf :secondary .
+###  http://graffl.ai/pathology#secondary
+            :secondary rdf:type owl:Class ;
+            rdfs:label "Secondary" .
+###  http://graffl.ai/pathology#muscle_function_secondary
+            :muscle_function_secondary rdf:type owl:Class ;
+            rdfs:label "Muscle Function Secondary" ;
+            rdfs:subClassOf :function_secondary .
+###  http://graffl.ai/pathology#function_secondary
+            :function_secondary rdf:type owl:Class ;
+            rdfs:label "Function Secondary" .
+###  http://graffl.ai/pathology#impaired_muscle_function_secondary
+            :impaired_muscle_function_secondary rdf:type owl:Class ;
+            rdfs:label "Impaired Muscle Function Secondary" ;
+            rdfs:subClassOf :muscle_function_secondary .
+###  http://graffl.ai/pathology#muscle_function_secondary
+            :muscle_function_secondary rdf:type owl:Class ;
+            rdfs:label "Muscle Function Secondary" .
+###  http://graffl.ai/pathology#sound_perception
+            :sound_perception rdf:type owl:Class ;
+            rdfs:label "Sound Perception" ;
+            rdfs:subClassOf :perception .
+###  http://graffl.ai/pathology#perception
+            :perception rdf:type owl:Class ;
+            rdfs:label "Perception" .
+###  http://graffl.ai/pathology#common_cause
+            :common_cause rdf:type owl:Class ;
+            rdfs:label "Common Cause" ;
+            rdfs:subClassOf :cause .
+###  http://graffl.ai/pathology#cause
+            :cause rdf:type owl:Class ;
+            rdfs:label "Cause" .
+###  http://graffl.ai/pathology#clear_sound
+            :clear_sound rdf:type owl:Class ;
+            rdfs:label "Clear Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#loud_sound
+            :loud_sound rdf:type owl:Class ;
+            rdfs:label "Loud Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#different_muscle
+            :different_muscle rdf:type owl:Class ;
+            rdfs:label "Different Muscle" ;
+            rdfs:subClassOf :muscle .
+###  http://graffl.ai/pathology#muscle
+            :muscle rdf:type owl:Class ;
+            rdfs:label "Muscle" .
+###  http://graffl.ai/pathology#brain_area
+            :brain_area rdf:type owl:Class ;
+            rdfs:label "Brain Area" ;
+            rdfs:subClassOf :area .
+###  http://graffl.ai/pathology#area
+            :area rdf:type owl:Class ;
+            rdfs:label "Area" .
+###  http://graffl.ai/pathology#different_brain_area
+            :different_brain_area rdf:type owl:Class ;
+            rdfs:label "Different Brain Area" ;
+            rdfs:subClassOf :brain_area .
+###  http://graffl.ai/pathology#brain_area
+            :brain_area rdf:type owl:Class ;
+            rdfs:label "Brain Area" .
+###  http://graffl.ai/pathology#sound_quality
+            :sound_quality rdf:type owl:Class ;
+            rdfs:label "Sound Quality" ;
+            rdfs:subClassOf :quality .
+###  http://graffl.ai/pathology#quality
+            :quality rdf:type owl:Class ;
+            rdfs:label "Quality" .
+###  http://graffl.ai/pathology#sound_contrast
+            :sound_contrast rdf:type owl:Class ;
+            rdfs:label "Sound Contrast" ;
+            rdfs:subClassOf :contrast .
+###  http://graffl.ai/pathology#contrast
+            :contrast rdf:type owl:Class ;
+            rdfs:label "Contrast" .
+###  http://graffl.ai/pathology#sound_sensation
+            :sound_sensation rdf:type owl:Class ;
+            rdfs:label "Sound Sensation" ;
+            rdfs:subClassOf :sensation .
+###  http://graffl.ai/pathology#sensation
+            :sensation rdf:type owl:Class ;
+            rdfs:label "Sensation" .
+###  http://graffl.ai/pathology#adult_word
+            :adult_word rdf:type owl:Class ;
+            rdfs:label "Adult Word" ;
+            rdfs:subClassOf :word .
+###  http://graffl.ai/pathology#word
+            :word rdf:type owl:Class ;
+            rdfs:label "Word" .
+###  http://graffl.ai/pathology#recognizable_adult_word
+            :recognizable_adult_word rdf:type owl:Class ;
+            rdfs:label "Recognizable Adult Word" ;
+            rdfs:subClassOf :adult_word .
+###  http://graffl.ai/pathology#adult_word
+            :adult_word rdf:type owl:Class ;
+            rdfs:label "Adult Word" .
+###  http://graffl.ai/pathology#unvoiced_sound
+            :unvoiced_sound rdf:type owl:Class ;
+            rdfs:label "Unvoiced Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#hearing_process
+            :hearing_process rdf:type owl:Class ;
+            rdfs:label "Hearing Process" ;
+            rdfs:subClassOf :process .
+###  http://graffl.ai/pathology#process
+            :process rdf:type owl:Class ;
+            rdfs:label "Process" .
+###  http://graffl.ai/pathology#complete_hearing_process
+            :complete_hearing_process rdf:type owl:Class ;
+            rdfs:label "Complete Hearing Process" ;
+            rdfs:subClassOf :hearing_process .
+###  http://graffl.ai/pathology#hearing_process
+            :hearing_process rdf:type owl:Class ;
+            rdfs:label "Hearing Process" .
+###  http://graffl.ai/pathology#sound_spectrum
+            :sound_spectrum rdf:type owl:Class ;
+            rdfs:label "Sound Spectrum" ;
+            rdfs:subClassOf :spectrum .
+###  http://graffl.ai/pathology#spectrum
+            :spectrum rdf:type owl:Class ;
+            rdfs:label "Spectrum" .
+###  http://graffl.ai/pathology#hearing_problem
+            :hearing_problem rdf:type owl:Class ;
+            rdfs:label "Hearing Problem" ;
+            rdfs:subClassOf :problem .
+###  http://graffl.ai/pathology#problem
+            :problem rdf:type owl:Class ;
+            rdfs:label "Problem" .
+###  http://graffl.ai/pathology#therapy_program
+            :therapy_program rdf:type owl:Class ;
+            rdfs:label "Therapy Program" ;
+            rdfs:subClassOf :program .
+###  http://graffl.ai/pathology#program
+            :program rdf:type owl:Class ;
+            rdfs:label "Program" .
+###  http://graffl.ai/pathology#different_therapy_program
+            :different_therapy_program rdf:type owl:Class ;
+            rdfs:label "Different Therapy Program" ;
+            rdfs:subClassOf :therapy_program .
+###  http://graffl.ai/pathology#therapy_program
+            :therapy_program rdf:type owl:Class ;
+            rdfs:label "Therapy Program" .
+###  http://graffl.ai/pathology#intensity_sound
+            :intensity_sound rdf:type owl:Class ;
+            rdfs:label "Intensity Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#robotic_sound
+            :robotic_sound rdf:type owl:Class ;
+            rdfs:label "Robotic Sound" ;
+            rdfs:subClassOf :sound .
+###  http://graffl.ai/pathology#sound
+            :sound rdf:type owl:Class ;
+            rdfs:label "Sound" .
+###  http://graffl.ai/pathology#possible_cause
+            :possible_cause rdf:type owl:Class ;
+            rdfs:label "Possible Cause" ;
+            rdfs:subClassOf :cause .
+###  http://graffl.ai/pathology#cause
+            :cause rdf:type owl:Class ;
+            rdfs:label "Cause" .
+###  http://graffl.ai/pathology#word_change
+            :word_change rdf:type owl:Class ;
+            rdfs:label "Word Change" ;
+            rdfs:subClassOf :change .
+###  http://graffl.ai/pathology#change
+            :change rdf:type owl:Class ;
+            rdfs:label "Change" .
+###  http://graffl.ai/pathology#writing_skill
+            :writing_skill rdf:type owl:Class ;
+            rdfs:label "Writing Skill" ;
+            rdfs:subClassOf :skill .
+###  http://graffl.ai/pathology#skill
+            :skill rdf:type owl:Class ;
+            rdfs:label "Skill" .
+###  http://graffl.ai/pathology#scientific_writing_skill
+            :scientific_writing_skill rdf:type owl:Class ;
+            rdfs:label "Scientific Writing Skill" ;
+            rdfs:subClassOf :writing_skill .
+###  http://graffl.ai/pathology#writing_skill
+            :writing_skill rdf:type owl:Class ;
+            rdfs:label "Writing Skill" .
+###  http://graffl.ai/pathology#student_scientific_writing_skill
+            :student_scientific_writing_skill rdf:type owl:Class ;
+            rdfs:label "Student Scientific Writing Skill" ;
+            rdfs:subClassOf :scientific_writing_skill .
+###  http://graffl.ai/pathology#scientific_writing_skill
+            :scientific_writing_skill rdf:type owl:Class ;
+            rdfs:label "Scientific Writing Skill" .
+###  http://graffl.ai/pathology#phonetic_cause
+            :phonetic_cause rdf:type owl:Class ;
+            rdfs:label "Phonetic Cause" ;
+            rdfs:subClassOf :cause .
+###  http://graffl.ai/pathology#cause
+            :cause rdf:type owl:Class ;
+            rdfs:label "Cause" .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" ;
+            rdfs:subClassOf :loss .
+###  http://graffl.ai/pathology#loss
+            :loss rdf:type owl:Class ;
+            rdfs:label "Loss" .
+###  http://graffl.ai/pathology#great_hearing_loss
+            :great_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Great Hearing Loss" ;
+            rdfs:subClassOf :hearing_loss .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" .
+###  http://graffl.ai/pathology#skill_development
+            :skill_development rdf:type owl:Class ;
+            rdfs:label "Skill Development" ;
+            rdfs:subClassOf :development .
+###  http://graffl.ai/pathology#development
+            :development rdf:type owl:Class ;
+            rdfs:label "Development" .
+###  http://graffl.ai/pathology#motor_skill_development
+            :motor_skill_development rdf:type owl:Class ;
+            rdfs:label "Motor Skill Development" ;
+            rdfs:subClassOf :skill_development .
+###  http://graffl.ai/pathology#skill_development
+            :skill_development rdf:type owl:Class ;
+            rdfs:label "Skill Development" .
+###  http://graffl.ai/pathology#typical_motor_skill_development
+            :typical_motor_skill_development rdf:type owl:Class ;
+            rdfs:label "Typical Motor Skill Development" ;
+            rdfs:subClassOf :motor_skill_development .
+###  http://graffl.ai/pathology#motor_skill_development
+            :motor_skill_development rdf:type owl:Class ;
+            rdfs:label "Motor Skill Development" .
+###  http://graffl.ai/pathology#feature_use
+            :feature_use rdf:type owl:Class ;
+            rdfs:label "Feature Use" ;
+            rdfs:subClassOf :use .
+###  http://graffl.ai/pathology#use
+            :use rdf:type owl:Class ;
+            rdfs:label "Use" .
+###  http://graffl.ai/pathology#hearing_screening
+            :hearing_screening rdf:type owl:Class ;
+            rdfs:label "Hearing Screening" ;
+            rdfs:subClassOf :screening .
+###  http://graffl.ai/pathology#screening
+            :screening rdf:type owl:Class ;
+            rdfs:label "Screening" .
+###  http://graffl.ai/pathology#newborn_hearing_screening
+            :newborn_hearing_screening rdf:type owl:Class ;
+            rdfs:label "Newborn Hearing Screening" ;
+            rdfs:subClassOf :hearing_screening .
+###  http://graffl.ai/pathology#hearing_screening
+            :hearing_screening rdf:type owl:Class ;
+            rdfs:label "Hearing Screening" .
+###  http://graffl.ai/pathology#universal_newborn_hearing_screening
+            :universal_newborn_hearing_screening rdf:type owl:Class ;
+            rdfs:label "Universal Newborn Hearing Screening" ;
+            rdfs:subClassOf :newborn_hearing_screening .
+###  http://graffl.ai/pathology#newborn_hearing_screening
+            :newborn_hearing_screening rdf:type owl:Class ;
+            rdfs:label "Newborn Hearing Screening" .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" ;
+            rdfs:subClassOf :loss .
+###  http://graffl.ai/pathology#loss
+            :loss rdf:type owl:Class ;
+            rdfs:label "Loss" .
+###  http://graffl.ai/pathology#bilateral_hearing_loss
+            :bilateral_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Bilateral Hearing Loss" ;
+            rdfs:subClassOf :hearing_loss .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" .
+###  http://graffl.ai/pathology#profound_bilateral_hearing_loss
+            :profound_bilateral_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Profound Bilateral Hearing Loss" ;
+            rdfs:subClassOf :bilateral_hearing_loss .
+###  http://graffl.ai/pathology#bilateral_hearing_loss
+            :bilateral_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Bilateral Hearing Loss" .
+###  http://graffl.ai/pathology#primary_cause
+            :primary_cause rdf:type owl:Class ;
+            rdfs:label "Primary Cause" ;
+            rdfs:subClassOf :cause .
+###  http://graffl.ai/pathology#cause
+            :cause rdf:type owl:Class ;
+            rdfs:label "Cause" .
+###  http://graffl.ai/pathology#articulation_disorder
+            :articulation_disorder rdf:type owl:Class ;
+            rdfs:label "Articulation Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#functional_articulation_disorder
+            :functional_articulation_disorder rdf:type owl:Class ;
+            rdfs:label "Functional Articulation Disorder" ;
+            rdfs:subClassOf :articulation_disorder .
+###  http://graffl.ai/pathology#articulation_disorder
+            :articulation_disorder rdf:type owl:Class ;
+            rdfs:label "Articulation Disorder" .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" ;
+            rdfs:subClassOf :loss .
+###  http://graffl.ai/pathology#loss
+            :loss rdf:type owl:Class ;
+            rdfs:label "Loss" .
+###  http://graffl.ai/pathology#progressive_hearing_loss
+            :progressive_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Progressive Hearing Loss" ;
+            rdfs:subClassOf :hearing_loss .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" ;
+            rdfs:subClassOf :loss .
+###  http://graffl.ai/pathology#loss
+            :loss rdf:type owl:Class ;
+            rdfs:label "Loss" .
+###  http://graffl.ai/pathology#mild_hearing_loss
+            :mild_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Mild Hearing Loss" ;
+            rdfs:subClassOf :hearing_loss .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" ;
+            rdfs:subClassOf :loss .
+###  http://graffl.ai/pathology#loss
+            :loss rdf:type owl:Class ;
+            rdfs:label "Loss" .
+###  http://graffl.ai/pathology#sensorineural_hearing_loss
+            :sensorineural_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Sensorineural Hearing Loss" ;
+            rdfs:subClassOf :hearing_loss .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" .
+###  http://graffl.ai/pathology#profound_sensorineural_hearing_loss
+            :profound_sensorineural_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Profound Sensorineural Hearing Loss" ;
+            rdfs:subClassOf :sensorineural_hearing_loss .
+###  http://graffl.ai/pathology#sensorineural_hearing_loss
+            :sensorineural_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Sensorineural Hearing Loss" .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" ;
+            rdfs:subClassOf :loss .
+###  http://graffl.ai/pathology#loss
+            :loss rdf:type owl:Class ;
+            rdfs:label "Loss" .
+###  http://graffl.ai/pathology#new_hearing_loss
+            :new_hearing_loss rdf:type owl:Class ;
+            rdfs:label "New Hearing Loss" ;
+            rdfs:subClassOf :hearing_loss .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" .
+###  http://graffl.ai/pathology#social_word
+            :social_word rdf:type owl:Class ;
+            rdfs:label "Social Word" ;
+            rdfs:subClassOf :word .
+###  http://graffl.ai/pathology#word
+            :word rdf:type owl:Class ;
+            rdfs:label "Word" .
+###  http://graffl.ai/pathology#obstructive_cause
+            :obstructive_cause rdf:type owl:Class ;
+            rdfs:label "Obstructive Cause" ;
+            rdfs:subClassOf :cause .
+###  http://graffl.ai/pathology#cause
+            :cause rdf:type owl:Class ;
+            rdfs:label "Cause" .
+###  http://graffl.ai/pathology#normal_hearing
+            :normal_hearing rdf:type owl:Class ;
+            rdfs:label "Normal Hearing" ;
+            rdfs:subClassOf :hearing .
+###  http://graffl.ai/pathology#hearing
+            :hearing rdf:type owl:Class ;
+            rdfs:label "Hearing" .
+###  http://graffl.ai/pathology#tongue_muscle
+            :tongue_muscle rdf:type owl:Class ;
+            rdfs:label "Tongue Muscle" ;
+            rdfs:subClassOf :muscle .
+###  http://graffl.ai/pathology#muscle
+            :muscle rdf:type owl:Class ;
+            rdfs:label "Muscle" .
+###  http://graffl.ai/pathology#intrinsic_tongue_muscle
+            :intrinsic_tongue_muscle rdf:type owl:Class ;
+            rdfs:label "Intrinsic Tongue Muscle" ;
+            rdfs:subClassOf :tongue_muscle .
+###  http://graffl.ai/pathology#tongue_muscle
+            :tongue_muscle rdf:type owl:Class ;
+            rdfs:label "Tongue Muscle" .
+###  http://graffl.ai/pathology#adequate_use
+            :adequate_use rdf:type owl:Class ;
+            rdfs:label "Adequate Use" ;
+            rdfs:subClassOf :use .
+###  http://graffl.ai/pathology#use
+            :use rdf:type owl:Class ;
+            rdfs:label "Use" .
+###  http://graffl.ai/pathology#main_cause
+            :main_cause rdf:type owl:Class ;
+            rdfs:label "Main Cause" ;
+            rdfs:subClassOf :cause .
+###  http://graffl.ai/pathology#cause
+            :cause rdf:type owl:Class ;
+            rdfs:label "Cause" .
+###  http://graffl.ai/pathology#word_stage
+            :word_stage rdf:type owl:Class ;
+            rdfs:label "Word Stage" ;
+            rdfs:subClassOf :stage .
+###  http://graffl.ai/pathology#stage
+            :stage rdf:type owl:Class ;
+            rdfs:label "Stage" .
+###  http://graffl.ai/pathology#neurological_disorder
+            :neurological_disorder rdf:type owl:Class ;
+            rdfs:label "Neurological Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#progressive_neurological_disorder
+            :progressive_neurological_disorder rdf:type owl:Class ;
+            rdfs:label "Progressive Neurological Disorder" ;
+            rdfs:subClassOf :neurological_disorder .
+###  http://graffl.ai/pathology#neurological_disorder
+            :neurological_disorder rdf:type owl:Class ;
+            rdfs:label "Neurological Disorder" .
+###  http://graffl.ai/pathology#neuron_type
+            :neuron_type rdf:type owl:Class ;
+            rdfs:label "Neuron Type" ;
+            rdfs:subClassOf :type .
+###  http://graffl.ai/pathology#type
+            :type rdf:type owl:Class ;
+            rdfs:label "Type" .
+###  http://graffl.ai/pathology#motor_neuron_type
+            :motor_neuron_type rdf:type owl:Class ;
+            rdfs:label "Motor Neuron Type" ;
+            rdfs:subClassOf :neuron_type .
+###  http://graffl.ai/pathology#neuron_type
+            :neuron_type rdf:type owl:Class ;
+            rdfs:label "Neuron Type" .
+###  http://graffl.ai/pathology#upper_motor_neuron_type
+            :upper_motor_neuron_type rdf:type owl:Class ;
+            rdfs:label "Upper Motor Neuron Type" ;
+            rdfs:subClassOf :motor_neuron_type .
+###  http://graffl.ai/pathology#motor_neuron_type
+            :motor_neuron_type rdf:type owl:Class ;
+            rdfs:label "Motor Neuron Type" .
+###  http://graffl.ai/pathology#unilateral_upper_motor_neuron_type
+            :unilateral_upper_motor_neuron_type rdf:type owl:Class ;
+            rdfs:label "Unilateral Upper Motor Neuron Type" ;
+            rdfs:subClassOf :upper_motor_neuron_type .
+###  http://graffl.ai/pathology#upper_motor_neuron_type
+            :upper_motor_neuron_type rdf:type owl:Class ;
+            rdfs:label "Upper Motor Neuron Type" .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" ;
+            rdfs:subClassOf :loss .
+###  http://graffl.ai/pathology#loss
+            :loss rdf:type owl:Class ;
+            rdfs:label "Loss" .
+###  http://graffl.ai/pathology#profound_hearing_loss
+            :profound_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Profound Hearing Loss" ;
+            rdfs:subClassOf :hearing_loss .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" ;
+            rdfs:subClassOf :loss .
+###  http://graffl.ai/pathology#loss
+            :loss rdf:type owl:Class ;
+            rdfs:label "Loss" .
+###  http://graffl.ai/pathology#conductive_hearing_loss
+            :conductive_hearing_loss rdf:type owl:Class ;
+            rdfs:label "Conductive Hearing Loss" ;
+            rdfs:subClassOf :hearing_loss .
+###  http://graffl.ai/pathology#hearing_loss
+            :hearing_loss rdf:type owl:Class ;
+            rdfs:label "Hearing Loss" .
+###  http://graffl.ai/pathology#communication_skill
+            :communication_skill rdf:type owl:Class ;
+            rdfs:label "Communication Skill" ;
+            rdfs:subClassOf :skill .
+###  http://graffl.ai/pathology#skill
+            :skill rdf:type owl:Class ;
+            rdfs:label "Skill" .
+###  http://graffl.ai/pathology#functional_communication_skill
+            :functional_communication_skill rdf:type owl:Class ;
+            rdfs:label "Functional Communication Skill" ;
+            rdfs:subClassOf :communication_skill .
+###  http://graffl.ai/pathology#communication_skill
+            :communication_skill rdf:type owl:Class ;
+            rdfs:label "Communication Skill" .
+###  http://graffl.ai/pathology#muscular_control
+            :muscular_control rdf:type owl:Class ;
+            rdfs:label "Muscular Control" ;
+            rdfs:subClassOf :control .
+###  http://graffl.ai/pathology#control
+            :control rdf:type owl:Class ;
+            rdfs:label "Control" .
+###  http://graffl.ai/pathology#brain_muscular_control
+            :brain_muscular_control rdf:type owl:Class ;
+            rdfs:label "Brain Muscular Control" ;
+            rdfs:subClassOf :muscular_control .
+###  http://graffl.ai/pathology#muscular_control
+            :muscular_control rdf:type owl:Class ;
+            rdfs:label "Muscular Control" .
+###  http://graffl.ai/pathology#frequent_cause
+            :frequent_cause rdf:type owl:Class ;
+            rdfs:label "Frequent Cause" ;
+            rdfs:subClassOf :cause .
+###  http://graffl.ai/pathology#cause
+            :cause rdf:type owl:Class ;
+            rdfs:label "Cause" .
+###  http://graffl.ai/pathology#temporary_use
+            :temporary_use rdf:type owl:Class ;
+            rdfs:label "Temporary Use" ;
+            rdfs:subClassOf :use .
+###  http://graffl.ai/pathology#use
+            :use rdf:type owl:Class ;
+            rdfs:label "Use" .
+###  http://graffl.ai/pathology#slp_client
+            :slp_client rdf:type owl:Class ;
+            rdfs:label "Slp Client" ;
+            rdfs:subClassOf :client .
+###  http://graffl.ai/pathology#client
+            :client rdf:type owl:Class ;
+            rdfs:label "Client" .
+###  http://graffl.ai/pathology#muscle_tone
+            :muscle_tone rdf:type owl:Class ;
+            rdfs:label "Muscle Tone" ;
+            rdfs:subClassOf :tone .
+###  http://graffl.ai/pathology#tone
+            :tone rdf:type owl:Class ;
+            rdfs:label "Tone" .
+###  http://graffl.ai/pathology#overall_muscle_tone
+            :overall_muscle_tone rdf:type owl:Class ;
+            rdfs:label "Overall Muscle Tone" ;
+            rdfs:subClassOf :muscle_tone .
+###  http://graffl.ai/pathology#muscle_tone
+            :muscle_tone rdf:type owl:Class ;
+            rdfs:label "Muscle Tone" .
+###  http://graffl.ai/pathology#poor_overall_muscle_tone
+            :poor_overall_muscle_tone rdf:type owl:Class ;
+            rdfs:label "Poor Overall Muscle Tone" ;
+            rdfs:subClassOf :overall_muscle_tone .
+###  http://graffl.ai/pathology#overall_muscle_tone
+            :overall_muscle_tone rdf:type owl:Class ;
+            rdfs:label "Overall Muscle Tone" .
+###  http://graffl.ai/pathology#certain_word
+            :certain_word rdf:type owl:Class ;
+            rdfs:label "Certain Word" ;
+            rdfs:subClassOf :word .
+###  http://graffl.ai/pathology#word
+            :word rdf:type owl:Class ;
+            rdfs:label "Word" .
+###  http://graffl.ai/pathology#slp_student
+            :slp_student rdf:type owl:Class ;
+            rdfs:label "Slp Student" ;
+            rdfs:subClassOf :student .
+###  http://graffl.ai/pathology#student
+            :student rdf:type owl:Class ;
+            rdfs:label "Student" .
+###  http://graffl.ai/pathology#help_people
+            :help_people rdf:type owl:Class ;
+            rdfs:label "Help People" ;
+            rdfs:subClassOf :people .
+###  http://graffl.ai/pathology#people
+            :people rdf:type owl:Class ;
+            rdfs:label "People" .
+###  http://graffl.ai/pathology#loss_fluctuate
+            :loss_fluctuate rdf:type owl:Class ;
+            rdfs:label "Loss Fluctuate" ;
+            rdfs:subClassOf :fluctuate .
+###  http://graffl.ai/pathology#fluctuate
+            :fluctuate rdf:type owl:Class ;
+            rdfs:label "Fluctuate" .
+###  http://graffl.ai/pathology#hearing_loss_fluctuate
+            :hearing_loss_fluctuate rdf:type owl:Class ;
+            rdfs:label "Hearing Loss Fluctuate" ;
+            rdfs:subClassOf :loss_fluctuate .
+###  http://graffl.ai/pathology#loss_fluctuate
+            :loss_fluctuate rdf:type owl:Class ;
+            rdfs:label "Loss Fluctuate" .
+###  http://graffl.ai/pathology#base_rate
+            :base_rate rdf:type owl:Class ;
+            rdfs:label "Base Rate" ;
+            rdfs:subClassOf :rate .
+###  http://graffl.ai/pathology#rate
+            :rate rdf:type owl:Class ;
+            rdfs:label "Rate" .
+###  http://graffl.ai/pathology#disorder_base_rate
+            :disorder_base_rate rdf:type owl:Class ;
+            rdfs:label "Disorder Base Rate" ;
+            rdfs:subClassOf :base_rate .
+###  http://graffl.ai/pathology#base_rate
+            :base_rate rdf:type owl:Class ;
+            rdfs:label "Base Rate" .
+###  http://graffl.ai/pathology#expressive_one
+            :expressive_one rdf:type owl:Class ;
+            rdfs:label "Expressive One" ;
+            rdfs:subClassOf :one .
+###  http://graffl.ai/pathology#one
+            :one rdf:type owl:Class ;
+            rdfs:label "One" .
+###  http://graffl.ai/pathology#english_word
+            :english_word rdf:type owl:Class ;
+            rdfs:label "English Word" ;
+            rdfs:subClassOf :word .
+###  http://graffl.ai/pathology#word
+            :word rdf:type owl:Class ;
+            rdfs:label "Word" .
+###  http://graffl.ai/pathology#plural_english_word
+            :plural_english_word rdf:type owl:Class ;
+            rdfs:label "Plural English Word" ;
+            rdfs:subClassOf :english_word .
+###  http://graffl.ai/pathology#english_word
+            :english_word rdf:type owl:Class ;
+            rdfs:label "English Word" .
+###  http://graffl.ai/pathology#muscular_control
+            :muscular_control rdf:type owl:Class ;
+            rdfs:label "Muscular Control" ;
+            rdfs:subClassOf :control .
+###  http://graffl.ai/pathology#control
+            :control rdf:type owl:Class ;
+            rdfs:label "Control" .
+###  http://graffl.ai/pathology#normal_muscular_control
+            :normal_muscular_control rdf:type owl:Class ;
+            rdfs:label "Normal Muscular Control" ;
+            rdfs:subClassOf :muscular_control .
+###  http://graffl.ai/pathology#muscular_control
+            :muscular_control rdf:type owl:Class ;
+            rdfs:label "Muscular Control" .
+###  http://graffl.ai/pathology#early_word
+            :early_word rdf:type owl:Class ;
+            rdfs:label "Early Word" ;
+            rdfs:subClassOf :word .
+###  http://graffl.ai/pathology#word
+            :word rdf:type owl:Class ;
+            rdfs:label "Word" .
+###  http://graffl.ai/pathology#voice_disorder
+            :voice_disorder rdf:type owl:Class ;
+            rdfs:label "Voice Disorder" ;
+            rdfs:subClassOf :disorder .
+###  http://graffl.ai/pathology#disorder
+            :disorder rdf:type owl:Class ;
+            rdfs:label "Disorder" .
+###  http://graffl.ai/pathology#test_result
+            :test_result rdf:type owl:Class ;
+            rdfs:label "Test Result" ;
+            rdfs:subClassOf :result .
+###  http://graffl.ai/pathology#result
+            :result rdf:type owl:Class ;
+            rdfs:label "Result" .
+###  http://graffl.ai/pathology#standardized_test_result
+            :standardized_test_result rdf:type owl:Class ;
+            rdfs:label "Standardized Test Result" ;
+            rdfs:subClassOf :test_result .
+###  http://graffl.ai/pathology#test_result
+            :test_result rdf:type owl:Class ;
+            rdfs:label "Test Result" .
+###  http://graffl.ai/pathology#normative_standardized_test_result
+            :normative_standardized_test_result rdf:type owl:Class ;
+            rdfs:label "Normative Standardized Test Result" ;
+            rdfs:subClassOf :standardized_test_result .
+###  http://graffl.ai/pathology#standardized_test_result
+            :standardized_test_result rdf:type owl:Class ;
+            rdfs:label "Standardized Test Result" .
+###  http://graffl.ai/pathology#clinical_report
+            :clinical_report rdf:type owl:Class ;
+            rdfs:label "Clinical Report" ;
+            rdfs:subClassOf :report .
+###  http://graffl.ai/pathology#report
+            :report rdf:type owl:Class ;
+            rdfs:label "Report" .
+###  http://graffl.ai/pathology#student_clinical_report
+            :student_clinical_report rdf:type owl:Class ;
+            rdfs:label "Student Clinical Report" ;
+            rdfs:subClassOf :clinical_report .
+###  http://graffl.ai/pathology#clinical_report
+            :clinical_report rdf:type owl:Class ;
+            rdfs:label "Clinical Report" .
+###  http://graffl.ai/pathology#device_performance
+            :device_performance rdf:type owl:Class ;
+            rdfs:label "Device Performance" ;
+            rdfs:subClassOf :performance .
+###  http://graffl.ai/pathology#performance
+            :performance rdf:type owl:Class ;
+            rdfs:label "Performance" .
+###  http://graffl.ai/pathology#hearing_device_performance
+            :hearing_device_performance rdf:type owl:Class ;
+            rdfs:label "Hearing Device Performance" ;
+            rdfs:subClassOf :device_performance .
+###  http://graffl.ai/pathology#device_performance
+            :device_performance rdf:type owl:Class ;
+            rdfs:label "Device Performance" .
+###  http://graffl.ai/pathology#support_program
+            :support_program rdf:type owl:Class ;
+            rdfs:label "Support Program" ;
+            rdfs:subClassOf :program .
+###  http://graffl.ai/pathology#program
+            :program rdf:type owl:Class ;
+            rdfs:label "Program" .
+###  http://graffl.ai/pathology#behavioral_support_program
+            :behavioral_support_program rdf:type owl:Class ;
+            rdfs:label "Behavioral Support Program" ;
+            rdfs:subClassOf :support_program .
+###  http://graffl.ai/pathology#support_program
+            :support_program rdf:type owl:Class ;
+            rdfs:label "Support Program" .
+###  http://graffl.ai/pathology#positive_behavioral_support_program
+            :positive_behavioral_support_program rdf:type owl:Class ;
+            rdfs:label "Positive Behavioral Support Program" ;
+            rdfs:subClassOf :behavioral_support_program .
+###  http://graffl.ai/pathology#behavioral_support_program
+            :behavioral_support_program rdf:type owl:Class ;
+            rdfs:label "Behavioral Support Program" .
+###  http://graffl.ai/pathology#adult_human
+            :adult_human rdf:type owl:Class ;
+            rdfs:label "Adult Human" ;
+            rdfs:subClassOf :human .
+###  http://graffl.ai/pathology#human
+            :human rdf:type owl:Class ;
+            rdfs:label "Human" .
+###  http://graffl.ai/pathology#normal_adult_human
+            :normal_adult_human rdf:type owl:Class ;
+            rdfs:label "Normal Adult Human" ;
+            rdfs:subClassOf :adult_human .
+###  http://graffl.ai/pathology#adult_human
+            :adult_human rdf:type owl:Class ;
+            rdfs:label "Adult Human" .
+###  http://graffl.ai/pathology#slp_treatment
+            :slp_treatment rdf:type owl:Class ;
+            rdfs:label "Slp Treatment" ;
+            rdfs:subClassOf :treatment .
+###  http://graffl.ai/pathology#treatment
+            :treatment rdf:type owl:Class ;
+            rdfs:label "Treatment" .
+###  http://graffl.ai/pathology#communication_deficit
+            :communication_deficit rdf:type owl:Class ;
+            rdfs:label "Communication Deficit" ;
+            rdfs:subClassOf :deficit .
+###  http://graffl.ai/pathology#deficit
+            :deficit rdf:type owl:Class ;
+            rdfs:label "Deficit" .
+###  http://graffl.ai/pathology#cognitive_communication_deficit
+            :cognitive_communication_deficit rdf:type owl:Class ;
+            rdfs:label "Cognitive Communication Deficit" ;
+            rdfs:subClassOf :communication_deficit .
+###  http://graffl.ai/pathology#communication_deficit
+            :communication_deficit rdf:type owl:Class ;
+            rdfs:label "Communication Deficit" .
+###  http://graffl.ai/pathology#word_question
+            :word_question rdf:type owl:Class ;
+            rdfs:label "Word Question" ;
+            rdfs:subClassOf :question .
+###  http://graffl.ai/pathology#question
+            :question rdf:type owl:Class ;
+            rdfs:label "Question" .
+###  http://graffl.ai/pathology#learning_theory
+            :learning_theory rdf:type owl:Class ;
+            rdfs:label "Learning Theory" ;
+            rdfs:subClassOf :theory .
+###  http://graffl.ai/pathology#theory
+            :theory rdf:type owl:Class ;
+            rdfs:label "Theory" .
+###  http://graffl.ai/pathology#social_learning_theory
+            :social_learning_theory rdf:type owl:Class ;
+            rdfs:label "Social Learning Theory" ;
+            rdfs:subClassOf :learning_theory .
+###  http://graffl.ai/pathology#learning_theory
+            :learning_theory rdf:type owl:Class ;
+            rdfs:label "Learning Theory" .
+###  http://graffl.ai/pathology#word_order
+            :word_order rdf:type owl:Class ;
+            rdfs:label "Word Order" ;
+            rdfs:subClassOf :order .
+###  http://graffl.ai/pathology#order
+            :order rdf:type owl:Class ;
+            rdfs:label "Order" .
+###  http://graffl.ai/pathology#understandable_word_order
+            :understandable_word_order rdf:type owl:Class ;
+            rdfs:label "Understandable Word Order" ;
+            rdfs:subClassOf :word_order .
+###  http://graffl.ai/pathology#word_order
+            :word_order rdf:type owl:Class ;
+            rdfs:label "Word Order" .
+###  http://graffl.ai/pathology#muscle_movement
+            :muscle_movement rdf:type owl:Class ;
+            rdfs:label "Muscle Movement" ;
+            rdfs:subClassOf :movement .
+###  http://graffl.ai/pathology#movement
+            :movement rdf:type owl:Class ;
+            rdfs:label "Movement" .
+###  http://graffl.ai/pathology#emission_specific
+            :emission_specific rdf:type owl:Class ;
+            rdfs:label "Emission Specific" ;
+            rdfs:subClassOf :specific .
+###  http://graffl.ai/pathology#specific
+            :specific rdf:type owl:Class ;
+            rdfs:label "Specific" .
+###  http://graffl.ai/pathology#air_emission_specific
+            :air_emission_specific rdf:type owl:Class ;
+            rdfs:label "Air Emission Specific" ;
+            rdfs:subClassOf :emission_specific .
+###  http://graffl.ai/pathology#emission_specific
+            :emission_specific rdf:type owl:Class ;
+            rdfs:label "Emission Specific" .
+###  http://graffl.ai/pathology#nasal_air_emission_specific
+            :nasal_air_emission_specific rdf:type owl:Class ;
+            rdfs:label "Nasal Air Emission Specific" ;
+            rdfs:subClassOf :air_emission_specific .
+###  http://graffl.ai/pathology#air_emission_specific
+            :air_emission_specific rdf:type owl:Class ;
+            rdfs:label "Air Emission Specific" .
+###  http://graffl.ai/pathology#encoding_skill
+            :encoding_skill rdf:type owl:Class ;
+            rdfs:label "Encoding Skill" ;
+            rdfs:subClassOf :skill .
+###  http://graffl.ai/pathology#skill
+            :skill rdf:type owl:Class ;
+            rdfs:label "Skill" .
+###  http://graffl.ai/pathology#phonological_encoding_skill
+            :phonological_encoding_skill rdf:type owl:Class ;
+            rdfs:label "Phonological Encoding Skill" ;
+            rdfs:subClassOf :encoding_skill .
+###  http://graffl.ai/pathology#encoding_skill
+            :encoding_skill rdf:type owl:Class ;
+            rdfs:label "Encoding Skill" .
+###  http://graffl.ai/pathology#poor_phonological_encoding_skill
+            :poor_phonological_encoding_skill rdf:type owl:Class ;
+            rdfs:label "Poor Phonological Encoding Skill" ;
+            rdfs:subClassOf :phonological_encoding_skill .
+###  http://graffl.ai/pathology#phonological_encoding_skill
+            :phonological_encoding_skill rdf:type owl:Class ;
+            rdfs:label "Phonological Encoding Skill" .
+###  http://graffl.ai/pathology#mouth_movement
+            :mouth_movement rdf:type owl:Class ;
+            rdfs:label "Mouth Movement" ;
+            rdfs:subClassOf :movement .
+###  http://graffl.ai/pathology#movement
+            :movement rdf:type owl:Class ;
+            rdfs:label "Movement" .
+###  http://graffl.ai/pathology#different_mouth_movement
+            :different_mouth_movement rdf:type owl:Class ;
+            rdfs:label "Different Mouth Movement" ;
+            rdfs:subClassOf :mouth_movement .
+###  http://graffl.ai/pathology#mouth_movement
+            :mouth_movement rdf:type owl:Class ;
+            rdfs:label "Mouth Movement" .
+###  http://graffl.ai/pathology#graduate_student
+            :graduate_student rdf:type owl:Class ;
+            rdfs:label "Graduate Student" ;
+            rdfs:subClassOf :student .
+###  http://graffl.ai/pathology#student
+            :student rdf:type owl:Class ;
+            rdfs:label "Student" .
+###  http://graffl.ai/pathology#slp_graduate_student
+            :slp_graduate_student rdf:type owl:Class ;
+            rdfs:label "SLP Graduate Student" ;
+            rdfs:subClassOf :graduate_student .
+###  http://graffl.ai/pathology#graduate_student
+            :graduate_student rdf:type owl:Class ;
+            rdfs:label "Graduate Student" .
+###  http://graffl.ai/pathology#different_need
+            :different_need rdf:type owl:Class ;
+            rdfs:label "Different Need" ;
+            rdfs:subClassOf :need .
+###  http://graffl.ai/pathology#need
+            :need rdf:type owl:Class ;
+            rdfs:label "Need" .
+###  http://graffl.ai/pathology#constrictor_muscle
+            :constrictor_muscle rdf:type owl:Class ;
+            rdfs:label "Constrictor Muscle" ;
+            rdfs:subClassOf :muscle .
+###  http://graffl.ai/pathology#muscle
+            :muscle rdf:type owl:Class ;
+            rdfs:label "Muscle" .
+###  http://graffl.ai/pathology#pharynx_constrictor_muscle
+            :pharynx_constrictor_muscle rdf:type owl:Class ;
+            rdfs:label "Pharynx Constrictor Muscle" ;
+            rdfs:subClassOf :constrictor_muscle .
+###  http://graffl.ai/pathology#constrictor_muscle
+            :constrictor_muscle rdf:type owl:Class ;
+            rdfs:label "Constrictor Muscle" .
+###  http://graffl.ai/pathology#metabolic_function
+            :metabolic_function rdf:type owl:Class ;
+            rdfs:label "Metabolic Function" ;
+            rdfs:subClassOf :function .
+###  http://graffl.ai/pathology#function
+            :function rdf:type owl:Class ;
+            rdfs:label "Function" .
+###  http://graffl.ai/pathology#brain_metabolic_function
+            :brain_metabolic_function rdf:type owl:Class ;
+            rdfs:label "Brain Metabolic Function" ;
+            rdfs:subClassOf :metabolic_function .
+###  http://graffl.ai/pathology#metabolic_function
+            :metabolic_function rdf:type owl:Class ;
+            rdfs:label "Metabolic Function" .
+###  http://graffl.ai/pathology#communication_problem
+            :communication_problem rdf:type owl:Class ;
+            rdfs:label "Communication Problem" ;
+            rdfs:subClassOf :problem .
+###  http://graffl.ai/pathology#problem
+            :problem rdf:type owl:Class ;
+            rdfs:label "Problem" .
+###  http://graffl.ai/pathology#people_stutter
+            :people_stutter rdf:type owl:Class ;
+            rdfs:label "People Stutter" ;
+            rdfs:subClassOf :stutter .
+###  http://graffl.ai/pathology#stutter
+            :stutter rdf:type owl:Class ;
+            rdfs:label "Stutter" .
+###  http://graffl.ai/pathology#handed_people_stutter
+            :handed_people_stutter rdf:type owl:Class ;
+            rdfs:label "Handed People Stutter" ;
+            rdfs:subClassOf :people_stutter .
+###  http://graffl.ai/pathology#people_stutter
+            :people_stutter rdf:type owl:Class ;
+            rdfs:label "People Stutter" .
+###  http://graffl.ai/pathology#different_type
+            :different_type rdf:type owl:Class ;
+            rdfs:label "Different Type" ;
+            rdfs:subClassOf :type .
+###  http://graffl.ai/pathology#type
+            :type rdf:type owl:Class ;
+            rdfs:label "Type" .
+###  http://graffl.ai/pathology#cognitive_development
+            :cognitive_development rdf:type owl:Class ;
+            rdfs:label "Cognitive Development" ;
+            rdfs:subClassOf :development .
+###  http://graffl.ai/pathology#development
+            :development rdf:type owl:Class ;
+            rdfs:label "Development" .
+###  http://graffl.ai/pathology#children_cognitive_development
+            :children_cognitive_development rdf:type owl:Class ;
+            rdfs:label "Children Cognitive Development" ;
+            rdfs:subClassOf :cognitive_development .
+###  http://graffl.ai/pathology#cognitive_development
+            :cognitive_development rdf:type owl:Class ;
+            rdfs:label "Cognitive Development" .
+###  http://graffl.ai/pathology#young_children_cognitive_development
+            :young_children_cognitive_development rdf:type owl:Class ;
+            rdfs:label "Young Children Cognitive Development" ;
+            rdfs:subClassOf :children_cognitive_development .
+###  http://graffl.ai/pathology#children_cognitive_development
+            :children_cognitive_development rdf:type owl:Class ;
+            rdfs:label "Children Cognitive Development" .
+###  http://graffl.ai/pathology#preparation_program
+            :preparation_program rdf:type owl:Class ;
+            rdfs:label "Preparation Program" ;
+            rdfs:subClassOf :program .
+###  http://graffl.ai/pathology#program
+            :program rdf:type owl:Class ;
+            rdfs:label "Program" .
+###  http://graffl.ai/pathology#slp_preparation_program
+            :slp_preparation_program rdf:type owl:Class ;
+            rdfs:label "Slp Preparation Program" ;
+            rdfs:subClassOf :preparation_program .
+###  http://graffl.ai/pathology#preparation_program
+            :preparation_program rdf:type owl:Class ;
+            rdfs:label "Preparation Program" .
+###  http://graffl.ai/pathology#children_treatment
+            :children_treatment rdf:type owl:Class ;
+            rdfs:label "Children Treatment" ;
+            rdfs:subClassOf :treatment .
+###  http://graffl.ai/pathology#treatment
+            :treatment rdf:type owl:Class ;
+            rdfs:label "Treatment" .
+###  http://graffl.ai/pathology#age_children_treatment
+            :age_children_treatment rdf:type owl:Class ;
+            rdfs:label "Age Children Treatment" ;
+            rdfs:subClassOf :children_treatment .
+###  http://graffl.ai/pathology#children_treatment
+            :children_treatment rdf:type owl:Class ;
+            rdfs:label "Children Treatment" .
+###  http://graffl.ai/pathology#brain_activity
+            :brain_activity rdf:type owl:Class ;
+            rdfs:label "Brain Activity" ;
+            rdfs:subClassOf :activity .
+###  http://graffl.ai/pathology#activity
+            :activity rdf:type owl:Class ;
+            rdfs:label "Activity" .
+###  http://graffl.ai/pathology#metabolic_brain_activity
+            :metabolic_brain_activity rdf:type owl:Class ;
+            rdfs:label "Metabolic Brain Activity" ;
+            rdfs:subClassOf :brain_activity .
+###  http://graffl.ai/pathology#brain_activity
+            :brain_activity rdf:type owl:Class ;
+            rdfs:label "Brain Activity" .
+###  http://graffl.ai/pathology#relative_metabolic_brain_activity
+            :relative_metabolic_brain_activity rdf:type owl:Class ;
+            rdfs:label "Relative Metabolic Brain Activity" ;
+            rdfs:subClassOf :metabolic_brain_activity .
+###  http://graffl.ai/pathology#metabolic_brain_activity
+            :metabolic_brain_activity rdf:type owl:Class ;
+            rdfs:label "Metabolic Brain Activity" .
+###  http://graffl.ai/pathology#voice_problem
+            :voice_problem rdf:type owl:Class ;
+            rdfs:label "Voice Problem" ;
+            rdfs:subClassOf :problem .
+###  http://graffl.ai/pathology#problem
+            :problem rdf:type owl:Class ;
+            rdfs:label "Problem" .
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

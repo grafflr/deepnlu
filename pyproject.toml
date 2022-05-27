@@ -5,8 +5,9 @@ name = "deepnlu"
 version = "0.1.0"
 
 [tool.poetry.dependencies]
-ask-owl = "0.1.0"
+ask-owl = "0.1.1"
 baseblock = "0.1.1"
+nltk = "3.7"
 pandas = "^1.4.0"
 python = "3.8.5"
 scipy = "1.8.0"
