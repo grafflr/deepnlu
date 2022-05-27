@@ -3,7 +3,6 @@
 """ Generic Facade to Find Data in 1..* Ontology Models """
 
 
-from audioop import reverse
 from functools import lru_cache
 
 from baseblock import Enforcer
@@ -154,19 +153,19 @@ class FindOntologyData(BaseObject):
                    ner_type: str,
                    reverse: bool = False) -> dict:
 
-        def get_results(sparl_query: str) -> dict:
+        def get_results(sparql_query: str) -> dict:
             results = []
             for ontology_name in self._d_ontologies:
 
                 ask_owl_api = self._d_ontologies[ontology_name]
 
-                sparl_query = sparl_query.replace(
+                sparql_query = sparql_query.replace(
                     '$PREFIX', ask_owl_api.prefix())
-                sparl_query = sparl_query.replace(
+                sparql_query = sparql_query.replace(
                     '$NER', ner_type)
 
                 results.append(ask_owl_api.adhoc(
-                    sparl_query=sparl_query,
+                    sparql_query=sparql_query,
                     to_lowercase=True,
                     result_type=QueryResultType.DICT_OF_STR2LIST))
 
@@ -213,11 +212,11 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def spacy_ner(self) -> dict:
-        return self._ner('spacyNER')
+        return self._ner_label('spacyNER')
 
     @lru_cache
     def spacy_ner_rev(self) -> dict:
-        return self._ner('spacyNER', reverse=True)
+        return self._ner_label('spacyNER', reverse=True)
 
     def _ner_depth(self,
                    reverse: bool = False) -> dict:

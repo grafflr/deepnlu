@@ -65,10 +65,7 @@ class PerformSpanMatching(BaseObject):
     def _process(self,
                  tokens: list) -> list:
 
-        print("TOKENS: ", tokens)
-
         matching_rules = self._span_match_finder(tokens)
-        print("MATCHING RULES: ", matching_rules)
         if not matching_rules or not len(matching_rules):
             return tokens
 

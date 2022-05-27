@@ -19,7 +19,7 @@
 d_emoji_cluster_fwd_provenance = {}
 
 list_of_questions = [
-    ['"It\'s not what you know, it\'s who you know." Is that true?',
+    '"It\'s not what you know, it\'s who you know." Is that true?',
      'What was the last thing that blew your mind?',
      'If given the opportunity, would you have a psychic reading?',
      'Your colleagues have just given you a round of applause. What have you done?',
@@ -3799,11 +3799,5 @@ list_of_questions = [
      'Have you ever had a great idea that turned out to be a bad idea?',
      'What do you find a breeze that many others find a challenge?',
      "What's your best bounce-house story?",
-     'Do you believe in UFOs, and have you seen one?']
-
+     'Do you believe in UFOs, and have you seen one?'
 ]
-
-if __name__=="__main__":
-    for x in list_of_questions:
-        for z in x:
-            print (z)
