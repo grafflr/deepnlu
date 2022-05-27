@@ -140,18 +140,15 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def graffl_ner(self) -> dict:
-        # verified as k:list[str]
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def graffl_ner_rev(self) -> dict:
-        # verified as k:list[str]
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def infer_by_requires(self) -> dict:
-        # verified as complex/custom k:list[dict]
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def labels(self) -> dict:
@@ -175,45 +172,43 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def ner_depth(self) -> dict:
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def ner_depth_rev(self) -> dict:
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def ner_taxonomy(self) -> dict:
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def ner_taxonomy_rev(self) -> dict:
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def ner_spacy(self) -> dict:
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def ner_spacy_rev(self) -> dict:
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def spans(self) -> dict:
-        # complex/custom
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def synonyms(self) -> dict:
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def synonyms_rev(self) -> dict:
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def trie(self) -> dict:
-        # completed work
-        pass
+        raise NotImplementedError
 
     @lru_cache
     def types(self) -> dict:
