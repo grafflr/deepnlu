@@ -9,8 +9,10 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
-from deepnlu.datablock import FindNER
-from deepnlu.datablock import FindSynonyms
+# from deepnlu.datablock import FindNER
+# from deepnlu.datablock import FindSynonyms
+
+from deepnlu.owlblock.bp import FindOntologyData
 
 from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 
@@ -19,9 +21,7 @@ class ExactMatchSwapper(BaseObject):
     """ Perform Synonym Swapping with Exact Matches """
 
     def __init__(self,
-                 ner_finder: FindNER,
-                 syn_finder: FindSynonyms,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
         Created:
             6-Oct-2021
@@ -37,16 +37,21 @@ class ExactMatchSwapper(BaseObject):
             craig@grafflr.ai
             *   pass 'ontologies' as list param
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove all params in place of 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
+        # if self.isEnabledForDebug:
+        #     Enforcer.is_list(ontologies)
 
-        self._find_ner = ner_finder.find_ner
-        self._find_canon = syn_finder.find_canon
+        # self._find_ner = ner_finder.find_ner
+        # self._find_canon = syn_finder.find_canon
         self._create_swap = SwapTokenGenerator(ontologies).process
 
     def process(self,

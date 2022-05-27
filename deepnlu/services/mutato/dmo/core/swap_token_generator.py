@@ -6,6 +6,8 @@
 from baseblock import BaseObject
 from baseblock import Enforcer
 
+from deepnlu.owlblock.bp import FindOntologyData
+
 
 class SwapTokenGenerator(BaseObject):
     """ Generate a Swapped Token """
