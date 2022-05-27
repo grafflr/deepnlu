@@ -61,6 +61,14 @@ class FindOntologyData(BaseObject):
                     for value in d_result[k]:
                         if value not in d_merge[k]:
                             d_merge[k].append(value)
+            return d_merge
+
+        elif result_type == QueryResultType.DICT_OF_STR2DICT:
+            d_merge = {}
+            for d_result in results:
+                for k in d_result:
+                    for value in d_result[k]:
+                        d_merge[k].append(value)
 
             return d_merge
 
@@ -196,7 +204,15 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def spans(self) -> dict:
-        raise NotImplementedError
+        results = []
+        for ontology_name in self._d_ontologies:
+            results.append(self._d_ontologies[ontology_name].spans())
+
+        if not results:
+            return None
+        elif len(results) == 1:
+            return results[0]
+        return self._merge(results, QueryResultType.DICT_OF_STR2DICT)
 
     @lru_cache
     def synonyms(self) -> dict:

@@ -1,4 +1,5 @@
 import os
+from pprint import pprint
 from baseblock import Enforcer
 
 
@@ -36,9 +37,14 @@ def test_find_effects():
 def test_lookup():
     Enforcer.is_dict(bp.lookup())
 
+
 def test_synonyms():
     Enforcer.is_dict(bp.synonyms())
     Enforcer.is_dict(bp.synonyms_rev())
+
+
+def test_spans():
+    Enforcer.is_dict(bp.spans())
 
 
 def main():
@@ -48,7 +54,8 @@ def main():
     # test_find_effects_rev()
     # test_find_types()
     # test_lookup()
-    test_synonyms()
+    # test_synonyms()
+    test_spans()
 
 
 if __name__ == "__main__":
