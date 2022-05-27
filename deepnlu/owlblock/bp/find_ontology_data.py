@@ -240,7 +240,15 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def trie(self) -> dict:
-        raise NotImplementedError
+        results = []
+        for ontology_name in self._d_ontologies:
+            results.append(self._d_ontologies[ontology_name].trie())
+
+        if not results:
+            return None
+        elif len(results) == 1:
+            return results[0]
+        return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
 
     @lru_cache
     def types(self) -> dict:

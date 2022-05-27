@@ -46,6 +46,9 @@ def test_synonyms():
 def test_spans():
     Enforcer.is_dict(bp.spans())
 
+def test_trie():
+    Enforcer.is_dict(bp.trie())
+
 
 def main():
     # test_find_comments()
@@ -55,7 +58,8 @@ def main():
     # test_find_types()
     # test_lookup()
     # test_synonyms()
-    test_spans()
+    # test_spans()
+    test_trie()
 
 
 if __name__ == "__main__":
