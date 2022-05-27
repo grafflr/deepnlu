@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-""" View Generator: Associate NERs to Labels """
+""" View Generator: Generate NER Taxonomy """
 
 
 from collections import defaultdict
@@ -8,26 +8,21 @@ from collections import defaultdict
 from baseblock import BaseObject
 
 
-class GenerateViewNerLabel(BaseObject):
-    """ View Generator: Associate NERs to Labels """
+class ViewGeneratorNerTaxo(BaseObject):
+    """ View Generator: Generate NER Taxonomy """
 
     def __init__(self):
         """ Change History
 
         Created:
-            12-Oct-2021
+            27-Oct-2021
             craig.@grafflr.ai
-            *   https://github.com/grafflr/graffl-core/issues/38
-        Updated:
-            15-Oct-2021
-            craig.@grafflr.ai
-            *   renamed from 'spacy-ner-transform'
-                https://github.com/grafflr/graffl-core/issues/55
+            *   https://github.com/grafflr/graffl-core/issues/94
         Updated:
             27-May-2022
             craig@grafflr.ai
             *   ported to 'deepnlu'
-                https://github.com/grafflr/deepnlu/issues/10
+                https://github.com/grafflr/deepnlu/issues/12
         """
         BaseObject.__init__(self, __name__)
 
@@ -43,13 +38,13 @@ class GenerateViewNerLabel(BaseObject):
     def process(self,
                 d_results: dict,
                 reverse: bool) -> dict:
-        d = defaultdict(list)
+        d = {}
 
         for k in d_results:
             for ner in d_results[k]:
-                d[k.lower()].append(ner.upper().strip())
+                d[k.upper().strip()] = [ner.upper().strip()]
 
         if reverse:
             return self._reverse(d)
 
-        return dict(d)
+        return d

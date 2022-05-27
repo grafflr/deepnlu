@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: UTF-8 -*-
-""" View Generator: Graffl NER Types """
+""" View Generator: Associate NERs to Labels """
 
 
 from collections import defaultdict
@@ -8,8 +8,8 @@ from collections import defaultdict
 from baseblock import BaseObject
 
 
-class GenerateViewNerDepth(BaseObject):
-    """ View Generator: Graffl NER Types """
+class ViewGeneratorNerLabel(BaseObject):
+    """ View Generator: Associate NERs to Labels """
 
     def __init__(self):
         """ Change History
@@ -43,30 +43,13 @@ class GenerateViewNerDepth(BaseObject):
     def process(self,
                 d_results: dict,
                 reverse: bool) -> dict:
-        """Find the depth of each NER entity to root
-
-        The higher the associated number, the more specific the NER is
-
-        Args:
-            d_results (dict): [description]
-            Sample Format:
-                [
-                    'competency':   {'2': 'integer'},
-                    'condition':    {'0': 'integer'},
-                    'continent':    {'1': 'integer'},
-                ]
-
-        Returns:
-            dict: owl2py dictionary
-        """
-        d = {
-            'NER': '0'  # default
-        }
+        d = defaultdict(list)
 
         for k in d_results:
-            depth = int(d_results[k][0])
-            d[k.upper()] = str(depth + 1)
+            for ner in d_results[k]:
+                d[k.lower()].append(ner.upper().strip())
 
         if reverse:
             return self._reverse(d)
+
         return dict(d)

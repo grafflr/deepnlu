@@ -1,3 +1,3 @@
-from .generate_view_nerlabel import GenerateViewNerLabel
-from .generate_view_nerdepth import GenerateViewNerDepth
-from .generate_view_nertaxonomy import GenerateViewNerTaxonomy
+from .query_ner_label import QueryNerLabel
+from .query_ner_depth import QueryNerDepth
+from .query_ner_taxo import QueryNerTaxo

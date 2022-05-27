@@ -47,12 +47,9 @@ class ExactMatchSwapper(BaseObject):
             find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        # if self.isEnabledForDebug:
-        #     Enforcer.is_list(ontologies)
-
+        self._create_swap = SwapTokenGenerator(find_ontology_data).process
         # self._find_ner = ner_finder.find_ner
         # self._find_canon = syn_finder.find_canon
-        self._create_swap = SwapTokenGenerator(ontologies).process
 
     def process(self,
                 candidate_tokens: list) -> list:
