@@ -10,7 +10,6 @@ from baseblock import BaseObject
 
 from askowl.bp import AskOwlAPI
 from askowl.dto import QueryResultType
-from deepnlu.datablock.dmo import ner_pallete_lookup
 
 from deepnlu.owlblock.svc import QueryNerLabel
 from deepnlu.owlblock.svc import QueryNerDepth

@@ -3,14 +3,16 @@
 """ Transform deepNLU results to a pandas DataFrame """
 
 
+import os
+
+from baseblock import FileIO
 from baseblock import BaseObject
-from deepnlu.datablock.svc import FindLabels
+
+from deepnlu.owlblock.bp import FindOntologyData
 
 
 class ResultsAsDataFrame(BaseObject):
     """ Transform deepNLU results to a pandas DataFrame """
-
-    __d_finders = {}
 
     def __init__(self):
         """ Change History
@@ -34,15 +36,27 @@ class ResultsAsDataFrame(BaseObject):
         Returns:
             str: The Ontology that triggered this swap
         """
+
+        def entity_exists(ontology: str,
+                          input_text: str) -> bool:
+
+            absolute_path = os.path.normpath(
+                os.path.join(os.getcwd(), 'resources/data/owl'))
+            FileIO.exists_or_error(absolute_path)
+
+            finder = FindOntologyData(
+                ontologies=[ontology],
+                absolute_path=absolute_path)
+
+            return finder.entity_exists(input_text)
+
         ontologies = [x.strip() for x in
                       swap['swaps']['ontologies'][0].split(',')]
         if len(ontologies) == 1:
             return ontologies[0]
 
         for ontology in ontologies:
-            if ontology not in self.__d_finders:
-                self.__d_finders[ontology] = FindLabels(ontology)
-            if self.__d_finders[ontology].exists(swap['swaps']['canon']):
+            if entity_exists(swap['swaps']['canon']):
                 return ontology
 
         raise ValueError(swap['swaps']['canon'])

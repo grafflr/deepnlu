@@ -2,17 +2,11 @@
 # -*- coding: UTF-8 -*-
 
 
-import pprint
-from copy import deepcopy
 from collections import Counter
 
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-from deepnlu.datablock import FindSynonyms
-
-
-from deepnlu.services.portendo.dto import Markers
 
 
 class ComputerIncludeRecursive(BaseObject):
@@ -44,8 +38,8 @@ class ComputerIncludeRecursive(BaseObject):
         if token_type == "owl_local":
             token_name = f"local_{token_name}"
 
-        if marker_name in self._d_server['marker_types_rev']:
-            parent_name = self._d_server['marker_types_rev'][marker_name]
+        if token_name in self._d_server['marker_types_rev']:
+            parent_name = self._d_server['marker_types_rev'][token_name]
 
             if parent_name.startswith("local_"):
                 parent_name = parent_name[6:]
@@ -57,7 +51,7 @@ class ComputerIncludeRecursive(BaseObject):
     def _find_parent(self,
                      results: list,
                      token_name: str,
-                     tooken_type: str,
+                     token_type: str,
                      max_parent_level: int,
                      cur_parent_level: int) -> None:
         """ Purpose:
@@ -68,16 +62,16 @@ class ComputerIncludeRecursive(BaseObject):
             { computer_storage: owl_local }
         """
 
-        parent_name, parent_type = self._taxonomy_lookup(marker_name=token_name,
-                                                         marker_type=tooken_type)
+        parent_name, parent_type = self._taxonomy_lookup(token_name=token_name,
+                                                         token_type=token_type)
 
         if parent_name and parent_type:
             results.append((parent_name, parent_type))
 
             if cur_parent_level + 1 < max_parent_level:
                 self._find_parent(results=results,
-                                  marker_name=parent_name,
-                                  marker_type=parent_type,
+                                  token_name=parent_name,
+                                  token_type=parent_type,
                                   max_parent_level=max_parent_level,
                                   cur_parent_level=cur_parent_level+1)
 

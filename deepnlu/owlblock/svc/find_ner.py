@@ -55,28 +55,10 @@ class FindNER(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        # self._find_depth = NerDepthFinder(ontologies).process
-        # self._find_type = NerTypeFinder(ontologies)
-        # self._find_pallete = NerPalleteLookup(ontologies)
-        # self._find_taxonomy = NerTaxonomyFinder(ontologies)
         self._d_ner_depth = d_ner_depth
         self._d_ner_taxo = d_ner_taxo
         self._d_spacy_ner = d_spacy_ner
         self._d_graffl_ner = d_graffl_ner
-
-        # self._ner_pallete_colors = ner_pallete_cb.colors()
-        # self._ner_pallete_lookup = ner_pallete_cb.lookup
-
-    # def is_ner(self,
-    #            input_text: str) -> bool:
-    #     return input_text.lower() in self._d_ner_taxo
-
-    # def color(self,
-    #           ner: str) -> str:
-    #     return self._ner_pallete_lookup(ner)
-
-    # def colors(self):
-    #     return self._ner_pallete_colors
 
     def _depth(self,
                ner: str) -> int or None:

@@ -7,8 +7,6 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
-from deepnlu.datablock import FindNER
-from deepnlu.datablock import FindSynonyms
 
 from deepnlu.owlblock.bp import FindOntologyData
 

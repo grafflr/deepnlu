@@ -7,11 +7,6 @@ from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-# from deepnlu.datablock.svc import FindNER
-# from deepnlu.datablock.svc import FindTypes
-# from deepnlu.datablock.svc import FindLookup
-# from deepnlu.datablock.svc import FindSynonyms
-
 from deepnlu.owlblock.bp import FindOntologyData
 from deepnlu.services.mutato.svc import PerformExactMatching
 

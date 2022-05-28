@@ -3,13 +3,9 @@
 """ Perform Span Matching """
 
 
-from gettext import find
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
-
-from deepnlu.datablock.svc import FindNER
-from deepnlu.datablock.svc import FindSpans
 
 from deepnlu.owlblock.bp import FindOntologyData
 
@@ -59,8 +55,6 @@ class PerformSpanMatching(BaseObject):
         self._span_match_finder = SpanMatchFinder(
             d_spans=find_ontology_data.spans(),
             span_keys=find_ontology_data.span_keys()).process
-
-        print (">>>>>>>>>> ", type(find_ontology_data))
         self._span_match_swapper = SpanMatchSwapper(find_ontology_data)
 
     def _process(self,

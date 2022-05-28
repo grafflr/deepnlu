@@ -1,4 +1,4 @@
-
+from random import sample
 
 from deepnlu.services.erogito import ErogitoAPI
 
@@ -8,9 +8,9 @@ def driver(input_text: str):
     assert api
 
     if input_text == "random":
-        from deepnlu.datablock.svc import FindQuestions
-        input_text = FindQuestions().random()
-        print (input_text)
+        from deepnlu.datablock.os import list_of_questions
+        input_text = sample(list_of_questions, 1)[0]
+        print(input_text)
 
     result = api.keyterms(input_text)
 
