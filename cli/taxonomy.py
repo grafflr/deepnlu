@@ -2,14 +2,14 @@
 
 from baseblock import Enforcer
 
-from deepnlu.services.erogito import ErogitoAPI
+from deepnlu.services import AutoTaxoOrchestrator
 
 
 def driver(input_text: str):
-    api = ErogitoAPI()
+    api = AutoTaxoOrchestrator()
     assert api
 
-    result = api.taxonomy(input_text)
+    result = api.process(input_text)
     Enforcer.is_optional_list(result)
 
     [print(x) for x in result]

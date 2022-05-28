@@ -42,7 +42,6 @@ class ExtractTextacyKeyterms(BaseObject):
 
     def process(self,
                 top_n: int,
-                decompose: bool,
                 input_text: str) -> DataFrame:
 
         sw = Stopwatch()

@@ -77,13 +77,13 @@ class SentenceHandlerOneShot(BaseObject):
 
         self._stem = Stemmer().input_text
         self._normalize = Normalizer().input_text
-        self._tokenize = Tokenizer().input_text
-        self._parser = ParseInputTokens().process
+        self._string_tokenize = Tokenizer().input_text
+        self._parse = ParseInputTokens().process
 
     def _tokenize(self,
                   input_text: str) -> list:
 
-        tokens = self._tokenize(input_text)
+        tokens = self._string_tokenize(input_text)
         tokens = self._parse(tokens)
 
         for token in tokens:
@@ -118,7 +118,6 @@ class SentenceHandlerOneShot(BaseObject):
         sw = Stopwatch()
 
         tokens = self._tokenize(input_text)
-
         tokens = self._swap_synonyms(tokens)
 
         d_sentence = {

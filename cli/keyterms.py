@@ -1,20 +1,22 @@
 from random import sample
 
-from deepnlu.services.erogito import ErogitoAPI
+from deepnlu.services import ExtractTextacyKeyterms
 
 
 def driver(input_text: str):
-    api = ErogitoAPI()
-    assert api
+    svc = ExtractTextacyKeyterms()
+    assert svc
 
     if input_text == "random":
         from deepnlu.datablock.os import list_of_questions
         input_text = sample(list_of_questions, 1)[0]
         print(input_text)
 
-    result = api.keyterms(input_text)
+    results = svc.process(
+        top_n=5,
+        input_text=input_text)
 
-    [print(x) for x in result]
+    assert results
 
 
 def main(input_text):

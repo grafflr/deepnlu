@@ -29,7 +29,7 @@ def run(ontology_name, input_text):
     print(f"Ontologies: {ontologies}")
 
     if input_text == "random":
-        from deepnlu.datablock.os.qlists import list_of_questions
+        from deepnlu.datablock.os import list_of_questions
         input_text = sample(list_of_questions, 1)[0]
         print(f"Random Input Text: {input_text}")
 

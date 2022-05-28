@@ -1,4 +1,4 @@
-from deepnlu.services.erogito import ErogitoAPI
+from deepnlu.services.autotaxo import ExtractTextacyKeyterms
 
 
 def test_service():
@@ -15,6 +15,10 @@ Cognitive skills  of a typically developing 1-year-old include searching for obj
 Sensory skills  of a typical 1-year-old include moving his or her body to music and limitating adult sounds.
     """.strip()
 
-    api = ErogitoAPI()
-    results = api.keyterms(input_text)
+    svc = ExtractTextacyKeyterms()
+    assert svc
+
+    results = svc.process(
+        top_n=5,
+        input_text=input_text)
     assert results

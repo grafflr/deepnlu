@@ -1,6 +1,5 @@
 from .wordnet import *
 from .manifest import *
-from .qlists import *
 from .currency_kb import d_currency
 from .hyphens_kb import d_hyphens
 from .squotes_kb import d_squotes
@@ -12,3 +11,4 @@ from .stopwords_kb import stopwords
 from .pronouns_kb import first_person_pronouns
 from .pronouns_kb import second_person_pronouns
 from .pronouns_kb import third_person_pronouns
+from .random_questions import list_of_questions

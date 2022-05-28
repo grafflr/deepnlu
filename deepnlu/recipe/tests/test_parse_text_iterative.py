@@ -23,15 +23,6 @@ def test_process_input_text_1():
         absolute_path=ABSOLUTE_PATH)
     assert svc
 
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-
     svcresult = svc.process(input_text)
     assert svcresult
 
