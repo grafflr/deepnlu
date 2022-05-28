@@ -46,12 +46,9 @@ class PerformExactMatching(BaseObject):
         # if self.isEnabledForDebug:
         #     Enforcer.is_list(ontologies)
 
-        self._d_lookup_data = d_lookup_data
+        # self._d_lookup_data = d_lookup_data
 
-        self._exact_match_swapper = ExactMatchSwapper(
-            syn_finder=syn_finder,
-            ner_finder=ner_finder,
-            ontologies=ontologies).process
+        self._exact_match_swapper = ExactMatchSwapper(find_ontology_data).process
 
     def _process(self,
                  tokens: list) -> list:

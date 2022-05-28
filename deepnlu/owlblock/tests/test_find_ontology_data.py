@@ -88,11 +88,20 @@ def test_find_ner():
     bp.find_ner('staff')
     bp.find_ner('staff')
     bp.find_ner('staff')
-    bp.find_ner('staff')
+    bp.find_ner('staffing level')
     result = bp.find_ner('staff')
     print(str(sw))
 
     assert result == "AGENT"
+
+
+def test_find_synonyms():
+
+    assert bp.find_canon('set to close') == 'closure'
+    assert bp.find_variants('closure') == ['closure', 'set to close']
+
+    assert bp.is_canon('closure')
+    assert bp.is_variant('set to close')
 
 
 def main():
@@ -110,7 +119,8 @@ def main():
     # test_ner_depth()
     # test_ner_taxonomy()
     # test_ner_pallete_lookup()
-    test_find_ner()
+    # test_find_ner()
+    test_find_synonyms()
 
 
 if __name__ == "__main__":

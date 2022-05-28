@@ -16,6 +16,7 @@ from deepnlu.owlblock.svc import QueryNerLabel
 from deepnlu.owlblock.svc import QueryNerDepth
 from deepnlu.owlblock.svc import QueryNerTaxo
 from deepnlu.owlblock.svc import FindNER
+from deepnlu.owlblock.svc import FindSynonyms
 
 from deepnlu.owlblock.dmo import ModelResultMerge
 from deepnlu.owlblock.dmo import NerPalleteLookup
@@ -51,6 +52,9 @@ class FindOntologyData(BaseObject):
         self._query_ner_label = QueryNerLabel(self._d_ontologies).process
         self._query_ner_depth = QueryNerDepth(self._d_ontologies).process
         self._query_ner_taxo = QueryNerTaxo(self._d_ontologies).process
+        self._find_synonyms = FindSynonyms(
+            d_synonyms_fwd=self.synonyms(),
+            d_synonyms_rev=self.synonyms_rev())
 
     def ontologies(self) -> list:
         return self._ontologies
@@ -136,7 +140,59 @@ class FindOntologyData(BaseObject):
     def implies_rev(self) -> dict:
         return self._by_predicate_rev('implies')
 
-    @lru_cache
+    @lru_cache(maxsize=512, typed=False)
+    def is_canon(self,
+                 input_text: str) -> bool:
+        """Check if Input Text is Canonical Entity
+
+        Args:
+            input_text (str): any input string
+
+        Returns:
+            bool: True if the input string is a Nursing Entity
+        """
+        return self._find_synonyms.is_canon(input_text)
+
+    @lru_cache(maxsize=512, typed=False)
+    def find_canon(self,
+                   input_text: str) -> str or None:
+        """Find the Canonical Representation of the Input String
+
+        Args:
+            input_text (str): any input string
+
+        Returns:
+            str or None: The Canonical Entity
+        """
+        return self._find_synonyms.find_canon(input_text)
+
+    @lru_cache(maxsize=512, typed=False)
+    def is_variant(self,
+                   input_text: str) -> bool:
+        """Check if Input Text is known variant for at least one Canonical Entry
+
+        Args:
+            input_text (str): any input string
+
+        Returns:
+            bool: True if the input string is a known synonym to a Nursing Entity
+        """
+        return self._find_synonyms.is_variant(input_text)
+
+    @lru_cache(maxsize=512, typed=False)
+    def find_variants(self,
+                      input_text: str) -> list or None:
+        """Find the Synonyms for a known Entity
+
+        Args:
+            input_text (str): any input string
+
+        Returns:
+            list or None: a list of synonyms for the input entity
+        """
+        return self._find_synonyms.find_variants(input_text)
+
+    @lru_cache(maxsize=512, typed=False)
     def find_ner(self,
                  input_text: str) -> str or None:
 

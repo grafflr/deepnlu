@@ -63,10 +63,7 @@ class MutatoAPI(BaseObject):
         d_lookup_data = FindLookup(ontologies).data()
 
         self._perform_exact_matching = PerformExactMatching(
-            ner_finder=ner_finder,
-            syn_finder=syn_finder,
-            d_lookup_data=d_lookup_data,
-            ontologies=ontologies).process
+            find_ontology_data).process
 
         self._perform_span_matching = PerformSpanMatching(
             ner_finder=ner_finder,

@@ -48,6 +48,9 @@ class ExactMatchSwapper(BaseObject):
         """
         BaseObject.__init__(self, __name__)
         self._create_swap = SwapTokenGenerator(find_ontology_data).process
+
+        self._find_ner = find_ontology_data.find_ner
+        self._find_canon = find_ontology_data.find_canon
         # self._find_ner = ner_finder.find_ner
         # self._find_canon = syn_finder.find_canon
 
