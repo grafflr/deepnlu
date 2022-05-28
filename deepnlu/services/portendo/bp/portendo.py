@@ -23,7 +23,8 @@ class Portendo(BaseObject):
     """ Portendo performs Predictive Classification of deepNLU parsed ASTs """
 
     def __init__(self,
-                 schema_name: str):
+                 schema_name: str,
+                 absolute_path: str = None):
         """Initialize Portendo API
 
         Created:
@@ -40,11 +41,12 @@ class Portendo(BaseObject):
 
         self._schema_name = schema_name
 
-        absolute_path = os.path.normpath(
-            os.path.join(
-                EnvIO.str_or_exception('GRAFFLR_HOME'),
-                'apps/blocks/datablock/datablock/os/manifest',
-                'chitchat'))
+        if not absolute_path or not len(absolute_path):
+            absolute_path = os.path.normpath(
+                os.path.join(
+                    EnvIO.str_or_exception('GRAFFLR_HOME'),
+                    'apps/blocks/datablock/datablock/os/manifest',
+                    schema_name))
 
         self._indices = FindClassifications(
             schema_name=schema_name,
@@ -52,6 +54,18 @@ class Portendo(BaseObject):
 
         if self.isEnabledForDebug:
             self._indices.print()
+
+    def is_known_model(self,
+                       input_text: str) -> FindClassifications:
+        """ Check if Input Text is a known model
+
+        Args:
+            input_text (str): any input text of any length
+
+        Returns:
+            bool: True if this is a model that exists in the underlying mapping.py file
+        """
+        return self._indices.is_known_model(input_text)
 
     def _run(self,
              input_tokens: list) -> tuple:

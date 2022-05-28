@@ -1,3 +1,8 @@
+import os
+
+from baseblock import FileIO
+
+
 from deepnlu.services.portendo.bp import Portendo
 
 
@@ -15,7 +20,12 @@ def test_portendo():
         },
     ]
 
-    api = Portendo('chitchat')
+    absolute_path = os.path.normpath(
+        os.path.join(os.getcwd(), 'resources'))
+    FileIO.exists_or_error(absolute_path)
+
+    api = Portendo(schema_name='unitest',
+                   absolute_path=absolute_path)
     assert api
 
     svcresult = api.run(input_tokens)

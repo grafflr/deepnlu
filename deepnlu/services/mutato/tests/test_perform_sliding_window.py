@@ -8,11 +8,11 @@ from deepnlu.services.mutato.dmo import ExactMatchFinder
 
 
 absolute_path = os.path.normpath(
-    os.path.join(os.getcwd(), 'resources/data/owl'))
+    os.path.join(os.getcwd(), 'resources'))
 FileIO.exists_or_error(absolute_path)
 
 finder = FindOntologyData(
-    ontologies=['nursing'],
+    ontologies=['unitest'],
     absolute_path=absolute_path)
 
 lookup_data = finder.lookup()

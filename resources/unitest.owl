@@ -1,12 +1,12 @@
-@prefix : <http://graffl.ai/nursing#> .
+@prefix : <http://graffl.ai/unitest#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://graffl.ai/nursing> .
+@base <http://graffl.ai/unitest> .
 
-<http://graffl.ai/nursing> rdf:type owl:Ontology .
+<http://graffl.ai/unitest> rdf:type owl:Ontology .
 
 
 #################################################################
@@ -16,37 +16,37 @@
 #################################################################
 
 
-###  http://graffl.ai/nursing#affects
+###  http://graffl.ai/unitest#affects
 
 :affects rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/nursing#effects
+###  http://graffl.ai/unitest#effects
 
 :effects rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/nursing#implies
+###  http://graffl.ai/unitest#implies
 
 :implies rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/nursing#locatedIn
+###  http://graffl.ai/unitest#locatedIn
 
 :locatedIn rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/nursing#meansOf
+###  http://graffl.ai/unitest#meansOf
 
 :meansOf rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/nursing#measures
+###  http://graffl.ai/unitest#measures
 
 :measures rdf:type owl:AnnotationProperty ;
           
@@ -54,7 +54,7 @@
 
 
 
-###  http://graffl.ai/nursing#nluComment
+###  http://graffl.ai/unitest#nluComment
 
 :nluComment rdf:type owl:AnnotationProperty ;
             
@@ -62,25 +62,25 @@
 
 
 
-###  http://graffl.ai/nursing#requires
+###  http://graffl.ai/unitest#requires
 
 :requires rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/nursing#similarTo
+###  http://graffl.ai/unitest#similarTo
 
 :similarTo rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/nursing#uses
+###  http://graffl.ai/unitest#uses
 
 :uses rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/nursing#worksIn
+###  http://graffl.ai/unitest#worksIn
 
 :worksIn rdf:type owl:AnnotationProperty .
 
@@ -95,31 +95,31 @@
 #################################################################
 
 
-###  http://graffl.ai/nursing#caseSensitive
+###  http://graffl.ai/unitest#caseSensitive
 
 :caseSensitive rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/nursing#grafflNER
+###  http://graffl.ai/unitest#grafflNER
 
 :grafflNER rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/nursing#grafflSLOT
+###  http://graffl.ai/unitest#grafflSLOT
 
 :grafflSLOT rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/nursing#spacyNER
+###  http://graffl.ai/unitest#spacyNER
 
 :spacyNER rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/nursing#spanDirection
+###  http://graffl.ai/unitest#spanDirection
 
 :spanDirection rdf:type rdfs:Datatype .
 
@@ -134,7 +134,7 @@
 #################################################################
 
 
-###  http://graffl.ai/nursing#Activity
+###  http://graffl.ai/unitest#Activity
 
 :Activity rdf:type owl:Class ;
           
@@ -146,7 +146,7 @@
 
 
 
-###  http://graffl.ai/nursing#Acute_Care
+###  http://graffl.ai/unitest#Acute_Care
 
 :Acute_Care rdf:type owl:Class ;
             
@@ -156,7 +156,7 @@
 
 
 
-###  http://graffl.ai/nursing#Admission
+###  http://graffl.ai/unitest#Admission
 
 :Admission rdf:type owl:Class ;
            
@@ -166,7 +166,7 @@
 
 
 
-###  http://graffl.ai/nursing#Advanced_Practice_Registered_Nurse
+###  http://graffl.ai/unitest#Advanced_Practice_Registered_Nurse
 
 :Advanced_Practice_Registered_Nurse rdf:type owl:Class ;
                                     
@@ -180,7 +180,7 @@
 
 
 
-###  http://graffl.ai/nursing#Agent
+###  http://graffl.ai/unitest#Agent
 
 :Agent rdf:type owl:Class ;
        
@@ -190,7 +190,7 @@
 
 
 
-###  http://graffl.ai/nursing#Airport
+###  http://graffl.ai/unitest#Airport
 
 :Airport rdf:type owl:Class ;
          
@@ -200,7 +200,7 @@
 
 
 
-###  http://graffl.ai/nursing#American
+###  http://graffl.ai/unitest#American
 
 :American rdf:type owl:Class ;
           
@@ -210,7 +210,7 @@
 
 
 
-###  http://graffl.ai/nursing#American_Association_of_Colleges_of_Nursing
+###  http://graffl.ai/unitest#American_Association_of_Colleges_of_Nursing
 
 :American_Association_of_Colleges_of_Nursing rdf:type owl:Class ;
                                              
@@ -222,7 +222,7 @@
 
 
 
-###  http://graffl.ai/nursing#American_Nurses_Association
+###  http://graffl.ai/unitest#American_Nurses_Association
 
 :American_Nurses_Association rdf:type owl:Class ;
                              
@@ -235,7 +235,7 @@
 
 
 
-###  http://graffl.ai/nursing#Apothecary
+###  http://graffl.ai/unitest#Apothecary
 
 :Apothecary rdf:type owl:Class ;
             
@@ -247,7 +247,7 @@
 
 
 
-###  http://graffl.ai/nursing#Artifact
+###  http://graffl.ai/unitest#Artifact
 
 :Artifact rdf:type owl:Class ;
           
@@ -259,7 +259,7 @@
 
 
 
-###  http://graffl.ai/nursing#Associates_Degree
+###  http://graffl.ai/unitest#Associates_Degree
 
 :Associates_Degree rdf:type owl:Class ;
                    
@@ -272,7 +272,7 @@
 
 
 
-###  http://graffl.ai/nursing#Association
+###  http://graffl.ai/unitest#Association
 
 :Association rdf:type owl:Class ;
              
@@ -284,7 +284,7 @@
 
 
 
-###  http://graffl.ai/nursing#Bachelor_of_Arts
+###  http://graffl.ai/unitest#Bachelor_of_Arts
 
 :Bachelor_of_Arts rdf:type owl:Class ;
                   
@@ -294,7 +294,7 @@
 
 
 
-###  http://graffl.ai/nursing#Bachelor_of_Science
+###  http://graffl.ai/unitest#Bachelor_of_Science
 
 :Bachelor_of_Science rdf:type owl:Class ;
                      
@@ -304,7 +304,7 @@
 
 
 
-###  http://graffl.ai/nursing#Bachelor_of_Science_in_Nursing
+###  http://graffl.ai/unitest#Bachelor_of_Science_in_Nursing
 
 :Bachelor_of_Science_in_Nursing rdf:type owl:Class ;
                                 
@@ -316,7 +316,7 @@
 
 
 
-###  http://graffl.ai/nursing#Bachelors_Degree
+###  http://graffl.ai/unitest#Bachelors_Degree
 
 :Bachelors_Degree rdf:type owl:Class ;
                   
@@ -329,7 +329,7 @@
 
 
 
-###  http://graffl.ai/nursing#Bias
+###  http://graffl.ai/unitest#Bias
 
 :Bias rdf:type owl:Class ;
       
@@ -339,7 +339,7 @@
 
 
 
-###  http://graffl.ai/nursing#Building
+###  http://graffl.ai/unitest#Building
 
 :Building rdf:type owl:Class ;
           
@@ -351,7 +351,7 @@
 
 
 
-###  http://graffl.ai/nursing#Cardinal
+###  http://graffl.ai/unitest#Cardinal
 
 :Cardinal rdf:type owl:Class ;
           
@@ -361,7 +361,7 @@
 
 
 
-###  http://graffl.ai/nursing#Care_Event
+###  http://graffl.ai/unitest#Care_Event
 
 :Care_Event rdf:type owl:Class ;
             
@@ -373,7 +373,7 @@
 
 
 
-###  http://graffl.ai/nursing#Catholic_Church
+###  http://graffl.ai/unitest#Catholic_Church
 
 :Catholic_Church rdf:type owl:Class ;
                  
@@ -385,7 +385,7 @@
 
 
 
-###  http://graffl.ai/nursing#Century
+###  http://graffl.ai/unitest#Century
 
 :Century rdf:type owl:Class ;
          
@@ -395,7 +395,7 @@
 
 
 
-###  http://graffl.ai/nursing#Certification
+###  http://graffl.ai/unitest#Certification
 
 :Certification rdf:type owl:Class ;
                
@@ -405,7 +405,7 @@
 
 
 
-###  http://graffl.ai/nursing#Chemist
+###  http://graffl.ai/unitest#Chemist
 
 :Chemist rdf:type owl:Class ;
          
@@ -415,7 +415,7 @@
 
 
 
-###  http://graffl.ai/nursing#Church
+###  http://graffl.ai/unitest#Church
 
 :Church rdf:type owl:Class ;
         
@@ -425,7 +425,7 @@
 
 
 
-###  http://graffl.ai/nursing#City
+###  http://graffl.ai/unitest#City
 
 :City rdf:type owl:Class ;
       
@@ -435,7 +435,7 @@
 
 
 
-###  http://graffl.ai/nursing#Clinic
+###  http://graffl.ai/unitest#Clinic
 
 :Clinic rdf:type owl:Class ;
         
@@ -445,7 +445,7 @@
 
 
 
-###  http://graffl.ai/nursing#Clinical_Competency
+###  http://graffl.ai/unitest#Clinical_Competency
 
 :Clinical_Competency rdf:type owl:Class ;
                      
@@ -455,7 +455,7 @@
 
 
 
-###  http://graffl.ai/nursing#Clinical_Evaluation
+###  http://graffl.ai/unitest#Clinical_Evaluation
 
 :Clinical_Evaluation rdf:type owl:Class ;
                      
@@ -465,7 +465,7 @@
 
 
 
-###  http://graffl.ai/nursing#Clinical_Outcome
+###  http://graffl.ai/unitest#Clinical_Outcome
 
 :Clinical_Outcome rdf:type owl:Class ;
                   
@@ -475,7 +475,7 @@
 
 
 
-###  http://graffl.ai/nursing#Clinical_Outcome_Evaluation
+###  http://graffl.ai/unitest#Clinical_Outcome_Evaluation
 
 :Clinical_Outcome_Evaluation rdf:type owl:Class ;
                              
@@ -487,7 +487,7 @@
 
 
 
-###  http://graffl.ai/nursing#Clinical_Training
+###  http://graffl.ai/unitest#Clinical_Training
 
 :Clinical_Training rdf:type owl:Class ;
                    
@@ -501,7 +501,7 @@
 
 
 
-###  http://graffl.ai/nursing#Closure
+###  http://graffl.ai/unitest#Closure
 
 :Closure rdf:type owl:Class ;
          
@@ -513,7 +513,7 @@
 
 
 
-###  http://graffl.ai/nursing#College
+###  http://graffl.ai/unitest#College
 
 :College rdf:type owl:Class ;
          
@@ -523,7 +523,7 @@
 
 
 
-###  http://graffl.ai/nursing#Company
+###  http://graffl.ai/unitest#Company
 
 :Company rdf:type owl:Class ;
          
@@ -533,7 +533,7 @@
 
 
 
-###  http://graffl.ai/nursing#Competency
+###  http://graffl.ai/unitest#Competency
 
 :Competency rdf:type owl:Class ;
             
@@ -543,7 +543,7 @@
 
 
 
-###  http://graffl.ai/nursing#Condition
+###  http://graffl.ai/unitest#Condition
 
 :Condition rdf:type owl:Class ;
            
@@ -556,7 +556,7 @@
 
 
 
-###  http://graffl.ai/nursing#Continent
+###  http://graffl.ai/unitest#Continent
 
 :Continent rdf:type owl:Class ;
            
@@ -566,7 +566,7 @@
 
 
 
-###  http://graffl.ai/nursing#Continuous_Learning
+###  http://graffl.ai/unitest#Continuous_Learning
 
 :Continuous_Learning rdf:type owl:Class ;
                      
@@ -578,7 +578,7 @@
 
 
 
-###  http://graffl.ai/nursing#Country
+###  http://graffl.ai/unitest#Country
 
 :Country rdf:type owl:Class ;
          
@@ -588,7 +588,7 @@
 
 
 
-###  http://graffl.ai/nursing#Course
+###  http://graffl.ai/unitest#Course
 
 :Course rdf:type owl:Class ;
         
@@ -598,7 +598,7 @@
 
 
 
-###  http://graffl.ai/nursing#Date
+###  http://graffl.ai/unitest#Date
 
 :Date rdf:type owl:Class ;
       
@@ -608,7 +608,7 @@
 
 
 
-###  http://graffl.ai/nursing#Department
+###  http://graffl.ai/unitest#Department
 
 :Department rdf:type owl:Class ;
             
@@ -618,7 +618,7 @@
 
 
 
-###  http://graffl.ai/nursing#Development
+###  http://graffl.ai/unitest#Development
 
 :Development rdf:type owl:Class ;
              
@@ -628,7 +628,7 @@
 
 
 
-###  http://graffl.ai/nursing#Diploma
+###  http://graffl.ai/unitest#Diploma
 
 :Diploma rdf:type owl:Class ;
          
@@ -640,7 +640,7 @@
 
 
 
-###  http://graffl.ai/nursing#Doctoral_Degree
+###  http://graffl.ai/unitest#Doctoral_Degree
 
 :Doctoral_Degree rdf:type owl:Class ;
                  
@@ -654,7 +654,7 @@
 
 
 
-###  http://graffl.ai/nursing#Education
+###  http://graffl.ai/unitest#Education
 
 :Education rdf:type owl:Class ;
            
@@ -664,7 +664,7 @@
 
 
 
-###  http://graffl.ai/nursing#Educator
+###  http://graffl.ai/unitest#Educator
 
 :Educator rdf:type owl:Class ;
           
@@ -674,7 +674,7 @@
 
 
 
-###  http://graffl.ai/nursing#Elapsed_Time
+###  http://graffl.ai/unitest#Elapsed_Time
 
 :Elapsed_Time rdf:type owl:Class ;
               
@@ -686,7 +686,7 @@
 
 
 
-###  http://graffl.ai/nursing#Elderly_Patient
+###  http://graffl.ai/unitest#Elderly_Patient
 
 :Elderly_Patient rdf:type owl:Class ;
                  
@@ -696,7 +696,7 @@
 
 
 
-###  http://graffl.ai/nursing#Emergency_Room
+###  http://graffl.ai/unitest#Emergency_Room
 
 :Emergency_Room rdf:type owl:Class ;
                 
@@ -708,7 +708,7 @@
 
 
 
-###  http://graffl.ai/nursing#Empathy
+###  http://graffl.ai/unitest#Empathy
 
 :Empathy rdf:type owl:Class ;
          
@@ -718,7 +718,7 @@
 
 
 
-###  http://graffl.ai/nursing#Ethical_Practice
+###  http://graffl.ai/unitest#Ethical_Practice
 
 :Ethical_Practice rdf:type owl:Class ;
                   
@@ -730,7 +730,7 @@
 
 
 
-###  http://graffl.ai/nursing#Europe
+###  http://graffl.ai/unitest#Europe
 
 :Europe rdf:type owl:Class ;
         
@@ -740,7 +740,7 @@
 
 
 
-###  http://graffl.ai/nursing#Evaluation
+###  http://graffl.ai/unitest#Evaluation
 
 :Evaluation rdf:type owl:Class ;
             
@@ -752,7 +752,7 @@
 
 
 
-###  http://graffl.ai/nursing#Event
+###  http://graffl.ai/unitest#Event
 
 :Event rdf:type owl:Class ;
        
@@ -762,7 +762,7 @@
 
 
 
-###  http://graffl.ai/nursing#Facility_Closure
+###  http://graffl.ai/unitest#Facility_Closure
 
 :Facility_Closure rdf:type owl:Class ;
                   
@@ -774,7 +774,7 @@
 
 
 
-###  http://graffl.ai/nursing#Fail_to_Rescue_Rate
+###  http://graffl.ai/unitest#Fail_to_Rescue_Rate
 
 :Fail_to_Rescue_Rate rdf:type owl:Class ;
                      
@@ -786,7 +786,7 @@
 
 
 
-###  http://graffl.ai/nursing#Fair_Pay
+###  http://graffl.ai/unitest#Fair_Pay
 
 :Fair_Pay rdf:type owl:Class ;
           
@@ -800,7 +800,7 @@
 
 
 
-###  http://graffl.ai/nursing#Family_Nurse_Practitioner
+###  http://graffl.ai/unitest#Family_Nurse_Practitioner
 
 :Family_Nurse_Practitioner rdf:type owl:Class ;
                            
@@ -812,7 +812,7 @@
 
 
 
-###  http://graffl.ai/nursing#Female_Patient
+###  http://graffl.ai/unitest#Female_Patient
 
 :Female_Patient rdf:type owl:Class ;
                 
@@ -822,7 +822,7 @@
 
 
 
-###  http://graffl.ai/nursing#Florence_Nightingale
+###  http://graffl.ai/unitest#Florence_Nightingale
 
 :Florence_Nightingale rdf:type owl:Class ;
                       
@@ -832,7 +832,7 @@
 
 
 
-###  http://graffl.ai/nursing#Gender_Bias
+###  http://graffl.ai/unitest#Gender_Bias
 
 :Gender_Bias rdf:type owl:Class ;
              
@@ -842,7 +842,7 @@
 
 
 
-###  http://graffl.ai/nursing#Geopolitical_Entity
+###  http://graffl.ai/unitest#Geopolitical_Entity
 
 :Geopolitical_Entity rdf:type owl:Class ;
                      
@@ -852,7 +852,7 @@
 
 
 
-###  http://graffl.ai/nursing#Group
+###  http://graffl.ai/unitest#Group
 
 :Group rdf:type owl:Class ;
        
@@ -864,7 +864,7 @@
 
 
 
-###  http://graffl.ai/nursing#Health
+###  http://graffl.ai/unitest#Health
 
 :Health rdf:type owl:Class ;
         
@@ -874,7 +874,7 @@
 
 
 
-###  http://graffl.ai/nursing#Health_Care
+###  http://graffl.ai/unitest#Health_Care
 
 :Health_Care rdf:type owl:Class ;
              
@@ -884,7 +884,7 @@
 
 
 
-###  http://graffl.ai/nursing#Health_Care_Education
+###  http://graffl.ai/unitest#Health_Care_Education
 
 :Health_Care_Education rdf:type owl:Class ;
                        
@@ -894,7 +894,7 @@
 
 
 
-###  http://graffl.ai/nursing#Health_Care_Provider
+###  http://graffl.ai/unitest#Health_Care_Provider
 
 :Health_Care_Provider rdf:type owl:Class ;
                       
@@ -904,7 +904,7 @@
 
 
 
-###  http://graffl.ai/nursing#Health_Care_Quality
+###  http://graffl.ai/unitest#Health_Care_Quality
 
 :Health_Care_Quality rdf:type owl:Class ;
                      
@@ -914,7 +914,7 @@
 
 
 
-###  http://graffl.ai/nursing#Health_Care_Reform
+###  http://graffl.ai/unitest#Health_Care_Reform
 
 :Health_Care_Reform rdf:type owl:Class ;
                     
@@ -924,7 +924,7 @@
 
 
 
-###  http://graffl.ai/nursing#Health_Care_Specialist
+###  http://graffl.ai/unitest#Health_Care_Specialist
 
 :Health_Care_Specialist rdf:type owl:Class ;
                         
@@ -936,7 +936,7 @@
 
 
 
-###  http://graffl.ai/nursing#Health_Department
+###  http://graffl.ai/unitest#Health_Department
 
 :Health_Department rdf:type owl:Class ;
                    
@@ -946,7 +946,7 @@
 
 
 
-###  http://graffl.ai/nursing#Historical_Nursing
+###  http://graffl.ai/unitest#Historical_Nursing
 
 :Historical_Nursing rdf:type owl:Class ;
                     
@@ -956,7 +956,7 @@
 
 
 
-###  http://graffl.ai/nursing#History
+###  http://graffl.ai/unitest#History
 
 :History rdf:type owl:Class ;
          
@@ -966,7 +966,7 @@
 
 
 
-###  http://graffl.ai/nursing#Home
+###  http://graffl.ai/unitest#Home
 
 :Home rdf:type owl:Class ;
       
@@ -976,7 +976,7 @@
 
 
 
-###  http://graffl.ai/nursing#Hospital
+###  http://graffl.ai/unitest#Hospital
 
 :Hospital rdf:type owl:Class ;
           
@@ -986,7 +986,7 @@
 
 
 
-###  http://graffl.ai/nursing#Johnson_and_Johnson
+###  http://graffl.ai/unitest#Johnson_and_Johnson
 
 :Johnson_and_Johnson rdf:type owl:Class ;
                      
@@ -999,7 +999,7 @@
 
 
 
-###  http://graffl.ai/nursing#Labor_Event
+###  http://graffl.ai/unitest#Labor_Event
 
 :Labor_Event rdf:type owl:Class ;
              
@@ -1009,7 +1009,7 @@
 
 
 
-###  http://graffl.ai/nursing#Language
+###  http://graffl.ai/unitest#Language
 
 :Language rdf:type owl:Class ;
           
@@ -1019,7 +1019,7 @@
 
 
 
-###  http://graffl.ai/nursing#Learning
+###  http://graffl.ai/unitest#Learning
 
 :Learning rdf:type owl:Class ;
           
@@ -1029,7 +1029,7 @@
 
 
 
-###  http://graffl.ai/nursing#Location
+###  http://graffl.ai/unitest#Location
 
 :Location rdf:type owl:Class ;
           
@@ -1039,7 +1039,7 @@
 
 
 
-###  http://graffl.ai/nursing#Long_Term_Health_Care
+###  http://graffl.ai/unitest#Long_Term_Health_Care
 
 :Long_Term_Health_Care rdf:type owl:Class ;
                        
@@ -1051,7 +1051,7 @@
 
 
 
-###  http://graffl.ai/nursing#Male_Patient
+###  http://graffl.ai/unitest#Male_Patient
 
 :Male_Patient rdf:type owl:Class ;
               
@@ -1061,7 +1061,7 @@
 
 
 
-###  http://graffl.ai/nursing#Master_of_Arts
+###  http://graffl.ai/unitest#Master_of_Arts
 
 :Master_of_Arts rdf:type owl:Class ;
                 
@@ -1071,7 +1071,7 @@
 
 
 
-###  http://graffl.ai/nursing#Master_of_Science
+###  http://graffl.ai/unitest#Master_of_Science
 
 :Master_of_Science rdf:type owl:Class ;
                    
@@ -1083,7 +1083,7 @@
 
 
 
-###  http://graffl.ai/nursing#Master_of_Science_in_Nursing
+###  http://graffl.ai/unitest#Master_of_Science_in_Nursing
 
 :Master_of_Science_in_Nursing rdf:type owl:Class ;
                               
@@ -1098,7 +1098,7 @@
 
 
 
-###  http://graffl.ai/nursing#Masters_Degree
+###  http://graffl.ai/unitest#Masters_Degree
 
 :Masters_Degree rdf:type owl:Class ;
                 
@@ -1111,7 +1111,7 @@
 
 
 
-###  http://graffl.ai/nursing#Medical_Building
+###  http://graffl.ai/unitest#Medical_Building
 
 :Medical_Building rdf:type owl:Class ;
                   
@@ -1121,7 +1121,7 @@
 
 
 
-###  http://graffl.ai/nursing#Medical_Facility_Closure
+###  http://graffl.ai/unitest#Medical_Facility_Closure
 
 :Medical_Facility_Closure rdf:type owl:Class ;
                           
@@ -1135,7 +1135,7 @@
 
 
 
-###  http://graffl.ai/nursing#Mental_Health
+###  http://graffl.ai/unitest#Mental_Health
 
 :Mental_Health rdf:type owl:Class ;
                
@@ -1145,7 +1145,7 @@
 
 
 
-###  http://graffl.ai/nursing#Modern_Nursing
+###  http://graffl.ai/unitest#Modern_Nursing
 
 :Modern_Nursing rdf:type owl:Class ;
                 
@@ -1155,7 +1155,7 @@
 
 
 
-###  http://graffl.ai/nursing#Money
+###  http://graffl.ai/unitest#Money
 
 :Money rdf:type owl:Class ;
        
@@ -1165,7 +1165,7 @@
 
 
 
-###  http://graffl.ai/nursing#Mortality_Rate
+###  http://graffl.ai/unitest#Mortality_Rate
 
 :Mortality_Rate rdf:type owl:Class ;
                 
@@ -1175,7 +1175,7 @@
 
 
 
-###  http://graffl.ai/nursing#National_Certification
+###  http://graffl.ai/unitest#National_Certification
 
 :National_Certification rdf:type owl:Class ;
                         
@@ -1185,7 +1185,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nationality
+###  http://graffl.ai/unitest#Nationality
 
 :Nationality rdf:type owl:Class ;
              
@@ -1195,7 +1195,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nurse
+###  http://graffl.ai/unitest#Nurse
 
 :Nurse rdf:type owl:Class ;
        
@@ -1209,7 +1209,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nurse_Educator
+###  http://graffl.ai/unitest#Nurse_Educator
 
 :Nurse_Educator rdf:type owl:Class ;
                 
@@ -1221,7 +1221,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nurse_Practitioner
+###  http://graffl.ai/unitest#Nurse_Practitioner
 
 :Nurse_Practitioner rdf:type owl:Class ;
                     
@@ -1236,7 +1236,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nursing
+###  http://graffl.ai/unitest#Nursing
 
 :Nursing rdf:type owl:Class ;
          
@@ -1246,7 +1246,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nursing_Diploma
+###  http://graffl.ai/unitest#Nursing_Diploma
 
 :Nursing_Diploma rdf:type owl:Class ;
                  
@@ -1258,7 +1258,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nursing_Education
+###  http://graffl.ai/unitest#Nursing_Education
 
 :Nursing_Education rdf:type owl:Class ;
                    
@@ -1268,7 +1268,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nursing_Home
+###  http://graffl.ai/unitest#Nursing_Home
 
 :Nursing_Home rdf:type owl:Class ;
               
@@ -1278,7 +1278,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nursing_School
+###  http://graffl.ai/unitest#Nursing_School
 
 :Nursing_School rdf:type owl:Class ;
                 
@@ -1294,7 +1294,7 @@
 
 
 
-###  http://graffl.ai/nursing#Nursing_Student
+###  http://graffl.ai/unitest#Nursing_Student
 
 :Nursing_Student rdf:type owl:Class ;
                  
@@ -1304,7 +1304,7 @@
 
 
 
-###  http://graffl.ai/nursing#Ordinal
+###  http://graffl.ai/unitest#Ordinal
 
 :Ordinal rdf:type owl:Class ;
          
@@ -1314,7 +1314,7 @@
 
 
 
-###  http://graffl.ai/nursing#Organization
+###  http://graffl.ai/unitest#Organization
 
 :Organization rdf:type owl:Class ;
               
@@ -1324,7 +1324,7 @@
 
 
 
-###  http://graffl.ai/nursing#Outcome
+###  http://graffl.ai/unitest#Outcome
 
 :Outcome rdf:type owl:Class ;
          
@@ -1334,7 +1334,7 @@
 
 
 
-###  http://graffl.ai/nursing#Outcome_Evaluation
+###  http://graffl.ai/unitest#Outcome_Evaluation
 
 :Outcome_Evaluation rdf:type owl:Class ;
                     
@@ -1344,7 +1344,7 @@
 
 
 
-###  http://graffl.ai/nursing#Patient
+###  http://graffl.ai/unitest#Patient
 
 :Patient rdf:type owl:Class ;
          
@@ -1354,7 +1354,7 @@
 
 
 
-###  http://graffl.ai/nursing#Patient_Care
+###  http://graffl.ai/unitest#Patient_Care
 
 :Patient_Care rdf:type owl:Class ;
               
@@ -1369,7 +1369,7 @@
 
 
 
-###  http://graffl.ai/nursing#Patient_Treatment
+###  http://graffl.ai/unitest#Patient_Treatment
 
 :Patient_Treatment rdf:type owl:Class ;
                    
@@ -1381,7 +1381,7 @@
 
 
 
-###  http://graffl.ai/nursing#Patient_Treatment_Plan
+###  http://graffl.ai/unitest#Patient_Treatment_Plan
 
 :Patient_Treatment_Plan rdf:type owl:Class ;
                         
@@ -1391,7 +1391,7 @@
 
 
 
-###  http://graffl.ai/nursing#Pay
+###  http://graffl.ai/unitest#Pay
 
 :Pay rdf:type owl:Class ;
      
@@ -1403,7 +1403,7 @@
 
 
 
-###  http://graffl.ai/nursing#Pediactric_Patient
+###  http://graffl.ai/unitest#Pediactric_Patient
 
 :Pediactric_Patient rdf:type owl:Class ;
                     
@@ -1413,7 +1413,7 @@
 
 
 
-###  http://graffl.ai/nursing#Peer_Review
+###  http://graffl.ai/unitest#Peer_Review
 
 :Peer_Review rdf:type owl:Class ;
              
@@ -1425,7 +1425,7 @@
 
 
 
-###  http://graffl.ai/nursing#Percent
+###  http://graffl.ai/unitest#Percent
 
 :Percent rdf:type owl:Class ;
          
@@ -1435,7 +1435,7 @@
 
 
 
-###  http://graffl.ai/nursing#Permanent
+###  http://graffl.ai/unitest#Permanent
 
 :Permanent rdf:type owl:Class ;
            
@@ -1447,7 +1447,7 @@
 
 
 
-###  http://graffl.ai/nursing#Person
+###  http://graffl.ai/unitest#Person
 
 :Person rdf:type owl:Class ;
         
@@ -1459,7 +1459,7 @@
 
 
 
-###  http://graffl.ai/nursing#Personal_Touch
+###  http://graffl.ai/unitest#Personal_Touch
 
 :Personal_Touch rdf:type owl:Class ;
                 
@@ -1469,7 +1469,7 @@
 
 
 
-###  http://graffl.ai/nursing#Pharmacist
+###  http://graffl.ai/unitest#Pharmacist
 
 :Pharmacist rdf:type owl:Class ;
             
@@ -1481,7 +1481,7 @@
 
 
 
-###  http://graffl.ai/nursing#Pharmacy
+###  http://graffl.ai/unitest#Pharmacy
 
 :Pharmacy rdf:type owl:Class ;
           
@@ -1491,7 +1491,7 @@
 
 
 
-###  http://graffl.ai/nursing#Physician
+###  http://graffl.ai/unitest#Physician
 
 :Physician rdf:type owl:Class ;
            
@@ -1503,7 +1503,7 @@
 
 
 
-###  http://graffl.ai/nursing#Plan
+###  http://graffl.ai/unitest#Plan
 
 :Plan rdf:type owl:Class ;
       
@@ -1514,7 +1514,7 @@
 
 
 
-###  http://graffl.ai/nursing#Political_Activity
+###  http://graffl.ai/unitest#Political_Activity
 
 :Political_Activity rdf:type owl:Class ;
                     
@@ -1524,7 +1524,7 @@
 
 
 
-###  http://graffl.ai/nursing#Political_Group
+###  http://graffl.ai/unitest#Political_Group
 
 :Political_Group rdf:type owl:Class ;
                  
@@ -1536,7 +1536,7 @@
 
 
 
-###  http://graffl.ai/nursing#Practice
+###  http://graffl.ai/unitest#Practice
 
 :Practice rdf:type owl:Class ;
           
@@ -1546,7 +1546,7 @@
 
 
 
-###  http://graffl.ai/nursing#Primary_Care
+###  http://graffl.ai/unitest#Primary_Care
 
 :Primary_Care rdf:type owl:Class ;
               
@@ -1556,7 +1556,7 @@
 
 
 
-###  http://graffl.ai/nursing#Product
+###  http://graffl.ai/unitest#Product
 
 :Product rdf:type owl:Class ;
          
@@ -1566,7 +1566,7 @@
 
 
 
-###  http://graffl.ai/nursing#Profession
+###  http://graffl.ai/unitest#Profession
 
 :Profession rdf:type owl:Class ;
             
@@ -1576,7 +1576,7 @@
 
 
 
-###  http://graffl.ai/nursing#Professional_Development
+###  http://graffl.ai/unitest#Professional_Development
 
 :Professional_Development rdf:type owl:Class ;
                           
@@ -1586,7 +1586,7 @@
 
 
 
-###  http://graffl.ai/nursing#Protestant_Church
+###  http://graffl.ai/unitest#Protestant_Church
 
 :Protestant_Church rdf:type owl:Class ;
                    
@@ -1596,7 +1596,7 @@
 
 
 
-###  http://graffl.ai/nursing#Provider
+###  http://graffl.ai/unitest#Provider
 
 :Provider rdf:type owl:Class ;
           
@@ -1606,7 +1606,7 @@
 
 
 
-###  http://graffl.ai/nursing#Psychiatric_Mental_Health_Nurse_Practitioner
+###  http://graffl.ai/unitest#Psychiatric_Mental_Health_Nurse_Practitioner
 
 :Psychiatric_Mental_Health_Nurse_Practitioner rdf:type owl:Class ;
                                               
@@ -1618,7 +1618,7 @@
 
 
 
-###  http://graffl.ai/nursing#Public_Health_Department
+###  http://graffl.ai/unitest#Public_Health_Department
 
 :Public_Health_Department rdf:type owl:Class ;
                           
@@ -1628,7 +1628,7 @@
 
 
 
-###  http://graffl.ai/nursing#Quality
+###  http://graffl.ai/unitest#Quality
 
 :Quality rdf:type owl:Class ;
          
@@ -1640,7 +1640,7 @@
 
 
 
-###  http://graffl.ai/nursing#Quantifiable_Measurement
+###  http://graffl.ai/unitest#Quantifiable_Measurement
 
 :Quantifiable_Measurement rdf:type owl:Class ;
                           
@@ -1652,7 +1652,7 @@
 
 
 
-###  http://graffl.ai/nursing#Quantity
+###  http://graffl.ai/unitest#Quantity
 
 :Quantity rdf:type owl:Class ;
           
@@ -1662,7 +1662,7 @@
 
 
 
-###  http://graffl.ai/nursing#Racial_Bias
+###  http://graffl.ai/unitest#Racial_Bias
 
 :Racial_Bias rdf:type owl:Class ;
              
@@ -1674,7 +1674,7 @@
 
 
 
-###  http://graffl.ai/nursing#Readmission
+###  http://graffl.ai/unitest#Readmission
 
 :Readmission rdf:type owl:Class ;
              
@@ -1684,7 +1684,7 @@
 
 
 
-###  http://graffl.ai/nursing#Readmission_Rate
+###  http://graffl.ai/unitest#Readmission_Rate
 
 :Readmission_Rate rdf:type owl:Class ;
                   
@@ -1696,7 +1696,7 @@
 
 
 
-###  http://graffl.ai/nursing#Receiver
+###  http://graffl.ai/unitest#Receiver
 
 :Receiver rdf:type owl:Class ;
           
@@ -1706,7 +1706,7 @@
 
 
 
-###  http://graffl.ai/nursing#Reform
+###  http://graffl.ai/unitest#Reform
 
 :Reform rdf:type owl:Class ;
         
@@ -1718,7 +1718,7 @@
 
 
 
-###  http://graffl.ai/nursing#Registered_Nurse
+###  http://graffl.ai/unitest#Registered_Nurse
 
 :Registered_Nurse rdf:type owl:Class ;
                   
@@ -1732,7 +1732,7 @@
 
 
 
-###  http://graffl.ai/nursing#Regulation
+###  http://graffl.ai/unitest#Regulation
 
 :Regulation rdf:type owl:Class ;
             
@@ -1744,7 +1744,7 @@
 
 
 
-###  http://graffl.ai/nursing#Religious_Group
+###  http://graffl.ai/unitest#Religious_Group
 
 :Religious_Group rdf:type owl:Class ;
                  
@@ -1756,7 +1756,7 @@
 
 
 
-###  http://graffl.ai/nursing#Room
+###  http://graffl.ai/unitest#Room
 
 :Room rdf:type owl:Class ;
       
@@ -1766,7 +1766,7 @@
 
 
 
-###  http://graffl.ai/nursing#Rule
+###  http://graffl.ai/unitest#Rule
 
 :Rule rdf:type owl:Class ;
       
@@ -1779,7 +1779,7 @@
 
 
 
-###  http://graffl.ai/nursing#School
+###  http://graffl.ai/unitest#School
 
 :School rdf:type owl:Class ;
         
@@ -1789,7 +1789,7 @@
 
 
 
-###  http://graffl.ai/nursing#Shortage
+###  http://graffl.ai/unitest#Shortage
 
 :Shortage rdf:type owl:Class ;
           
@@ -1799,7 +1799,7 @@
 
 
 
-###  http://graffl.ai/nursing#Site
+###  http://graffl.ai/unitest#Site
 
 :Site rdf:type owl:Class ;
       
@@ -1809,7 +1809,7 @@
 
 
 
-###  http://graffl.ai/nursing#Skill
+###  http://graffl.ai/unitest#Skill
 
 :Skill rdf:type owl:Class ;
        
@@ -1819,7 +1819,7 @@
 
 
 
-###  http://graffl.ai/nursing#Soft_Skill
+###  http://graffl.ai/unitest#Soft_Skill
 
 :Soft_Skill rdf:type owl:Class ;
             
@@ -1829,7 +1829,7 @@
 
 
 
-###  http://graffl.ai/nursing#Spain
+###  http://graffl.ai/unitest#Spain
 
 :Spain rdf:type owl:Class ;
        
@@ -1839,7 +1839,7 @@
 
 
 
-###  http://graffl.ai/nursing#Spanish
+###  http://graffl.ai/unitest#Spanish
 
 :Spanish rdf:type owl:Class ;
          
@@ -1849,7 +1849,7 @@
 
 
 
-###  http://graffl.ai/nursing#Spanish_Hospital
+###  http://graffl.ai/unitest#Spanish_Hospital
 
 :Spanish_Hospital rdf:type owl:Class ;
                   
@@ -1861,7 +1861,7 @@
 
 
 
-###  http://graffl.ai/nursing#Specialist
+###  http://graffl.ai/unitest#Specialist
 
 :Specialist rdf:type owl:Class ;
             
@@ -1871,7 +1871,7 @@
 
 
 
-###  http://graffl.ai/nursing#Staff
+###  http://graffl.ai/unitest#Staff
 
 :Staff rdf:type owl:Class ;
        
@@ -1881,7 +1881,7 @@
 
 
 
-###  http://graffl.ai/nursing#Staffing
+###  http://graffl.ai/unitest#Staffing
 
 :Staffing rdf:type owl:Class ;
           
@@ -1893,7 +1893,7 @@
 
 
 
-###  http://graffl.ai/nursing#Staffing_Level
+###  http://graffl.ai/unitest#Staffing_Level
 
 :Staffing_Level rdf:type owl:Class ;
                 
@@ -1905,7 +1905,7 @@
 
 
 
-###  http://graffl.ai/nursing#Staffing_Shortage
+###  http://graffl.ai/unitest#Staffing_Shortage
 
 :Staffing_Shortage rdf:type owl:Class ;
                    
@@ -1916,7 +1916,7 @@
 
 
 
-###  http://graffl.ai/nursing#Strike
+###  http://graffl.ai/unitest#Strike
 
 :Strike rdf:type owl:Class ;
         
@@ -1930,7 +1930,7 @@
 
 
 
-###  http://graffl.ai/nursing#Student
+###  http://graffl.ai/unitest#Student
 
 :Student rdf:type owl:Class ;
          
@@ -1940,7 +1940,7 @@
 
 
 
-###  http://graffl.ai/nursing#Surgeon
+###  http://graffl.ai/unitest#Surgeon
 
 :Surgeon rdf:type owl:Class ;
          
@@ -1952,7 +1952,7 @@
 
 
 
-###  http://graffl.ai/nursing#Surgery
+###  http://graffl.ai/unitest#Surgery
 
 :Surgery rdf:type owl:Class ;
          
@@ -1962,7 +1962,7 @@
 
 
 
-###  http://graffl.ai/nursing#Temporary
+###  http://graffl.ai/unitest#Temporary
 
 :Temporary rdf:type owl:Class ;
            
@@ -1974,7 +1974,7 @@
 
 
 
-###  http://graffl.ai/nursing#Time
+###  http://graffl.ai/unitest#Time
 
 :Time rdf:type owl:Class ;
       
@@ -1984,7 +1984,7 @@
 
 
 
-###  http://graffl.ai/nursing#Training
+###  http://graffl.ai/unitest#Training
 
 :Training rdf:type owl:Class ;
           
@@ -1994,7 +1994,7 @@
 
 
 
-###  http://graffl.ai/nursing#Training_Event
+###  http://graffl.ai/unitest#Training_Event
 
 :Training_Event rdf:type owl:Class ;
                 
@@ -2004,7 +2004,7 @@
 
 
 
-###  http://graffl.ai/nursing#Treatment_Event
+###  http://graffl.ai/unitest#Treatment_Event
 
 :Treatment_Event rdf:type owl:Class ;
                  
@@ -2014,7 +2014,7 @@
 
 
 
-###  http://graffl.ai/nursing#Urgent_Care
+###  http://graffl.ai/unitest#Urgent_Care
 
 :Urgent_Care rdf:type owl:Class ;
              
@@ -2027,7 +2027,7 @@
 
 
 
-###  http://graffl.ai/nursing#Work_of_Art
+###  http://graffl.ai/unitest#Work_of_Art
 
 :Work_of_Art rdf:type owl:Class ;
              

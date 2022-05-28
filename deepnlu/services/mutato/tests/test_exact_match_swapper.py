@@ -11,14 +11,12 @@ from deepnlu.services.mutato.dmo import ExactMatchSwapper
 
 def test_component():
 
-    ont14n = 'chitchat'
-
     absolute_path = os.path.normpath(
-        os.path.join(os.getcwd(), 'resources/data/owl'))
+        os.path.join(os.getcwd(), 'resources'))
     FileIO.exists_or_error(absolute_path)
 
     finder = FindOntologyData(
-        ontologies=[ont14n],
+        ontologies=['unitest'],
         absolute_path=absolute_path)
 
     dmo = ExactMatchSwapper(finder)

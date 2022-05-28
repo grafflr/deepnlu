@@ -9,7 +9,7 @@ from deepnlu.recipe.svc import ParseTextIterative
 
 
 ABSOLUTE_PATH = os.path.normpath(
-    os.path.join(os.getcwd(), 'resources/data/owl'))
+    os.path.join(os.getcwd(), 'resources'))
 FileIO.exists_or_error(ABSOLUTE_PATH)
 
 
@@ -19,7 +19,7 @@ def test_process_input_text_1():
     assert type(input_text) == str
 
     svc = ParseTextIterative(
-        ontologies=['appraisal', 'ontologica'],
+        ontologies=['unitest', 'unitest2'],
         absolute_path=ABSOLUTE_PATH)
     assert svc
 
@@ -39,7 +39,7 @@ def test_process_input_text_2():
     assert type(input_text) == str
 
     svc = ParseTextIterative(
-        ontologies=['appraisal'],
+        ontologies=['unitest'],
         absolute_path=ABSOLUTE_PATH)
     assert svc
 

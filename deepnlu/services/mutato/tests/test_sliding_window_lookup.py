@@ -10,11 +10,11 @@ from deepnlu.services.mutato.dmo import SlidingWindowLookup
 
 def test_component():
     absolute_path = os.path.normpath(
-        os.path.join(os.getcwd(), 'resources/data/owl'))
+        os.path.join(os.getcwd(), 'resources'))
     FileIO.exists_or_error(absolute_path)
 
     finder = FindOntologyData(
-        ontologies=['chitchat'],
+        ontologies=['unitest'],
         absolute_path=absolute_path)
 
     candidates = [
