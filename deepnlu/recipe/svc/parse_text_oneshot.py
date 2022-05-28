@@ -16,8 +16,7 @@ class ParseTextOneShot(BaseObject):
     """ Execute the deepNLU Recipe on Input Text of any Length or Type """
 
     def __init__(self,
-                 ontologies: list,
-                 absolute_path: str):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -35,19 +34,10 @@ class ParseTextOneShot(BaseObject):
                 https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ontologies (list): list of ontologies to use for parsing
-            absolute_path (str): absolute path to OWL models
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
-            Enforcer.is_str(absolute_path)
-
-        self._finder = FindOntologyData(
-            ontologies=ontologies,
-            absolute_path=absolute_path)
-
-        self._handle_sentence = SentenceHandlerOneShot(ontologies).process
+        self._handle_sentence = SentenceHandlerOneShot(find_ontology_data).process
 
     def process(self,
                 input_text: str) -> list or None:

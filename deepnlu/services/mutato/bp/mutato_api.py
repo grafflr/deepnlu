@@ -49,7 +49,7 @@ class MutatoAPI(BaseObject):
                 https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
         # if self.isEnabledForDebug:

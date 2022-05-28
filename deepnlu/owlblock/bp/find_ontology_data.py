@@ -10,11 +10,15 @@ from baseblock import BaseObject
 
 from askowl.bp import AskOwlAPI
 from askowl.dto import QueryResultType
+from deepnlu.datablock.dmo import ner_pallete_lookup
 
-from deepnlu.owlblock.dmo import ModelResultMerge
 from deepnlu.owlblock.svc import QueryNerLabel
 from deepnlu.owlblock.svc import QueryNerDepth
 from deepnlu.owlblock.svc import QueryNerTaxo
+from deepnlu.owlblock.svc import FindNER
+
+from deepnlu.owlblock.dmo import ModelResultMerge
+from deepnlu.owlblock.dmo import NerPalleteLookup
 
 
 class FindOntologyData(BaseObject):
@@ -133,6 +137,18 @@ class FindOntologyData(BaseObject):
         return self._by_predicate_rev('implies')
 
     @lru_cache
+    def find_ner(self,
+                 input_text: str) -> str or None:
+
+        svc = FindNER(
+            d_ner_depth=self.ner_depth(),
+            d_ner_taxo=self.ner_taxonomy(),
+            d_graffl_ner=self.graffl_ner(),
+            d_spacy_ner=self.spacy_ner())
+
+        return svc.find_ner(input_text)
+
+    @lru_cache
     def graffl_ner(self) -> dict:
         return self._query_ner_label('grafflNER')
 
@@ -187,6 +203,15 @@ class FindOntologyData(BaseObject):
     @lru_cache
     def ner_taxonomy_rev(self) -> dict:
         return self._query_ner_taxo(reverse=True)
+
+    @lru_cache
+    def ner_pallete_lookup(self,
+                           input_text: str) -> dict:
+        return NerPalleteLookup(self.ner_taxonomy_rev()).lookup(input_text)
+
+    @lru_cache
+    def ner_pallete_colors(self) -> dict:
+        return NerPalleteLookup(self.ner_taxonomy_rev()).colors()
 
     @lru_cache
     def spans(self) -> dict:

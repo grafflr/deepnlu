@@ -10,6 +10,8 @@ from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
+from deepnlu.owlblock.bp import FindOntologyData
+
 from deepnlu.services.accipio import Tokenizer
 from deepnlu.services.accipio import Stemmer
 from deepnlu.services.accipio import Normalizer
@@ -34,7 +36,7 @@ class SentenceHandlerOneShot(BaseObject):
 #
 
     def __init__(self,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -65,15 +67,11 @@ class SentenceHandlerOneShot(BaseObject):
             ontologies (list): one-or-more Ontology models to use in processing
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
-
-        self._ontologies = ontologies
         self._stemmer = Stemmer()
         self._tokenizer = Tokenizer()
         self._normalizer = Normalizer()
         self._erogito_api = ErogitoAPI()
-        self._swap_synonyms = MutatoAPI(ontologies).swap
+        self._swap_synonyms = MutatoAPI(find_ontology_data).swap
 
     def _tokenize(self,
                   input_text: str) -> list:
