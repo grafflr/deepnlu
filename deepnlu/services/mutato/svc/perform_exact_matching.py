@@ -43,12 +43,10 @@ class PerformExactMatching(BaseObject):
             find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        # if self.isEnabledForDebug:
-        #     Enforcer.is_list(ontologies)
+        self._d_lookup = find_ontology_data.lookup()
 
-        # self._d_lookup_data = d_lookup_data
-
-        self._exact_match_swapper = ExactMatchSwapper(find_ontology_data).process
+        self._exact_match_swapper = ExactMatchSwapper(
+            find_ontology_data).process
 
     def _process(self,
                  tokens: list) -> list:
@@ -58,7 +56,7 @@ class PerformExactMatching(BaseObject):
 
             exact_match_finder = ExactMatchFinder(
                 gram_size=gram_size,
-                d_lookup=self._d_lookup_data).process
+                d_lookup=self._d_lookup).process
 
             results = exact_match_finder(tokens)
 
@@ -83,14 +81,17 @@ class PerformExactMatching(BaseObject):
 
     def process(self,
                 tokens: list) -> list:
-        Enforcer.is_list(tokens)
+
+        if self.isEnabledForDebug:
+            Enforcer.is_list(tokens)
 
         sw = Stopwatch()
 
         swaps = self._process(tokens)
 
-        self.logger.info('\n'.join([
-            "Exact Swapping Completed",
-            f"\tTotal Time: {str(sw)}"]))
+        if self.isEnabledForInfo:
+            self.logger.info('\n'.join([
+                "Exact Swapping Completed",
+                f"\tTotal Time: {str(sw)}"]))
 
         return swaps

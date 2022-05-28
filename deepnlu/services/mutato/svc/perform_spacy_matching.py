@@ -7,6 +7,8 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
+from deepnlu.owlblock.bp import FindOntologyData
+
 from deepnlu.services.mutato.dmo import SpacyMatchFinder
 from deepnlu.services.mutato.dmo import SpacyMatchSwapper
 
@@ -25,7 +27,7 @@ class PerformSpacyMatching(BaseObject):
     """
 
     def __init__(self,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -47,15 +49,18 @@ class PerformSpacyMatching(BaseObject):
             craig@grafflr.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove 'ontologies' and integrate 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
-
-        self._spacy_match_swapper = SpacyMatchSwapper(ontologies).process
+        self._spacy_match_swapper = SpacyMatchSwapper(
+            find_ontology_data).process
 
     def _process(self,
                  tokens: list) -> list:
@@ -71,14 +76,17 @@ class PerformSpacyMatching(BaseObject):
 
     def process(self,
                 tokens: list) -> list:
-        Enforcer.is_list(tokens)
+
+        if self.isEnabledForDebug:
+            Enforcer.is_list(tokens)
 
         sw = Stopwatch()
 
         swaps = self._process(tokens)
 
-        self.logger.info('\n'.join([
-            "spaCy Matching Completed",
-            f"\tTotal Time: {str(sw)}"]))
+        if self.isEnabledForInfo:
+            self.logger.info('\n'.join([
+                "spaCy Matching Completed",
+                f"\tTotal Time: {str(sw)}"]))
 
         return swaps

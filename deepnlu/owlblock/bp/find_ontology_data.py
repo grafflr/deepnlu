@@ -17,6 +17,7 @@ from deepnlu.owlblock.svc import QueryNerDepth
 from deepnlu.owlblock.svc import QueryNerTaxo
 from deepnlu.owlblock.svc import FindNER
 from deepnlu.owlblock.svc import FindSynonyms
+from deepnlu.owlblock.svc import FindTypes
 
 from deepnlu.owlblock.dmo import ModelResultMerge
 from deepnlu.owlblock.dmo import NerPalleteLookup
@@ -49,12 +50,18 @@ class FindOntologyData(BaseObject):
             absolute_path=absolute_path)
 
         self._merge = ModelResultMerge().process
+
         self._query_ner_label = QueryNerLabel(self._d_ontologies).process
         self._query_ner_depth = QueryNerDepth(self._d_ontologies).process
         self._query_ner_taxo = QueryNerTaxo(self._d_ontologies).process
+
         self._find_synonyms = FindSynonyms(
             d_synonyms_fwd=self.synonyms(),
             d_synonyms_rev=self.synonyms_rev())
+
+        self._find_types = FindTypes(
+            d_types_fwd=self.types(),
+            d_types_rev=self.types_rev())
 
     def ontologies(self) -> list:
         return self._ontologies
@@ -282,6 +289,15 @@ class FindOntologyData(BaseObject):
         return self._merge(results, QueryResultType.DICT_OF_STR2DICT)
 
     @lru_cache
+    def span_keys(self) -> list:
+        """ Return Span Keys sorted by Length
+
+        Returns:
+            list: list of span keys sorted by length
+        """
+        return sorted(self.spans().keys(), key=len)
+
+    @lru_cache
     def synonyms(self) -> dict:
         results = []
         for ontology_name in self._d_ontologies:
@@ -332,3 +348,68 @@ class FindOntologyData(BaseObject):
     @lru_cache
     def uses_rev(self) -> dict:
         return self._by_predicate_rev('uses')
+
+    @lru_cache
+    def has_parent(self,
+                   input_text: str,
+                   parent: str) -> bool:
+        return self._find_types.has_parent(
+            parent=parent,
+            input_text=input_text)
+
+    @lru_cache
+    def has_ancestor(self,
+                     input_text: str,
+                     parent: str) -> bool:
+        return self._find_types.has_ancestor(
+            parent=parent,
+            input_text=input_text)
+
+    @lru_cache
+    def entity_exists(self,
+                      input_text: str) -> bool:
+        """ Simple Truth check
+            Does this value exist anywhere in the Ontology?
+
+        Args:
+            input_text (str): a candidate concept
+
+        Returns:
+            bool: True if the concept exists in the Ontology
+        """
+        return self._find_types.exists(input_text)
+
+    @lru_cache
+    def children(self,
+                 input_text: str) -> list:
+        return self._find_types.children(input_text)
+
+    @lru_cache
+    def descendants(self,
+                    input_text: str) -> list:
+        return self._find_types.descendants(input_text)
+
+    @lru_cache
+    def descendants_and_self(self,
+                             input_text: str) -> list:
+        return self._find_types.descendants_and_self(input_text)
+
+    @lru_cache
+    def parents(self,
+                input_text: str) -> list:
+        return self._find_types.parents(input_text)
+
+    @lru_cache
+    def parents_and_self(self,
+                         input_text: str) -> list:
+        return self._find_types.parents_and_self(input_text)
+
+    @lru_cache
+    def ancestors(self,
+                  input_text: str) -> list:
+        return self._find_types.ancestors(input_text)
+
+    @lru_cache
+    def ancestors_and_self(self,
+                           input_text: str) -> list:
+        return self._find_types.ancestors_and_self(input_text)

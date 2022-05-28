@@ -3,12 +3,15 @@
 """ Perform Span Matching """
 
 
+from gettext import find
 from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
 from deepnlu.datablock.svc import FindNER
 from deepnlu.datablock.svc import FindSpans
+
+from deepnlu.owlblock.bp import FindOntologyData
 
 from deepnlu.services.mutato.dmo import SpanMatchFinder
 from deepnlu.services.mutato.dmo import SpanMatchSwapper
@@ -31,8 +34,7 @@ class PerformSpanMatching(BaseObject):
     """
 
     def __init__(self,
-                 ner_finder: FindNER,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -44,23 +46,23 @@ class PerformSpanMatching(BaseObject):
             craig@grafflr.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove 'ontologies' and integrate 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ner_finder (FindNER): instantiation of NER finder
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
-
-        span_finder = FindSpans(ontologies)
-
         self._span_match_finder = SpanMatchFinder(
-            finder=span_finder).process
+            d_spans=find_ontology_data.spans(),
+            span_keys=find_ontology_data.span_keys()).process
 
         self._span_match_swapper = SpanMatchSwapper(
-            ner_finder=ner_finder,
-            ontologies=ontologies)
+            ner_finder=find_ontology_data.find_ner,
+            ontologies=find_ontology_data.ontologies())
 
     def _process(self,
                  tokens: list) -> list:
