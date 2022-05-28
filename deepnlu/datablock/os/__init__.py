@@ -1,4 +1,3 @@
-from .owl import *
 from .wordnet import *
 from .manifest import *
 from .qlists import *
