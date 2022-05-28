@@ -79,7 +79,7 @@ class SpanContextCheck(BaseObject):
 
         matching_rules = self._process(tokens)
 
-        if self.logger.isEnabledFor(logging.DEBUG):
+        if self.isEnabledForDebug:
 
             self.logger.debug('\n'.join([
                 "Span Context Check Complete",

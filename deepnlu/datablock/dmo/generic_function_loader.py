@@ -65,7 +65,7 @@ class GenericFunctionLoader(BaseObject):
 
         finder = module_loader()
 
-        if self.logger.isEnabledFor(logging.DEBUG):
+        if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
                 "Loaded Function",
                 f"\tModule Name: {module_name}",

@@ -85,7 +85,7 @@ class ExactMatchFinder(BaseObject):
 
         results = self._process(tokens)
 
-        if self.logger.isEnabledFor(logging.INFO):
+        if self.isEnabledForInfo:
 
             def total_results() -> int:
                 if results:

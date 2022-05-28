@@ -6,7 +6,7 @@
 from baseblock import Enforcer
 from baseblock import BaseObject
 
-from deepnlu.services.accipio import Segmenter
+from deepnlu.services.segmenter import Segmenter
 from deepnlu.recipe.dmo import SentenceHandlerIterative
 
 

@@ -6,10 +6,9 @@
 from baseblock import Enforcer
 from baseblock import BaseObject
 
-
-from deepnlu.services.accipio import Segmenter
-from deepnlu.recipe.dmo import SentenceHandlerOneShot
 from deepnlu.owlblock.bp import FindOntologyData
+from deepnlu.recipe.dmo import SentenceHandlerOneShot
+from deepnlu.services.segmenter import Segmenter
 
 
 class ParseTextOneShot(BaseObject):
@@ -37,7 +36,8 @@ class ParseTextOneShot(BaseObject):
             find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        self._handle_sentence = SentenceHandlerOneShot(find_ontology_data).process
+        self._handle_sentence = SentenceHandlerOneShot(
+            find_ontology_data).process
 
     def process(self,
                 input_text: str) -> list or None:
