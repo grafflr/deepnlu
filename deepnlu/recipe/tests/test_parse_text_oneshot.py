@@ -13,11 +13,11 @@ from deepnlu.owlblock.bp import FindOntologyData
 def test_service():
 
     absolute_path = os.path.normpath(
-        os.path.join(os.getcwd(), 'resources/data/owl'))
+        os.path.join(os.getcwd(), 'resources/testing'))
     FileIO.exists_or_error(absolute_path)
 
     finder = FindOntologyData(
-        ontologies=['chitchat'],
+        ontologies=['unitest'],
         absolute_path=absolute_path)
 
     svc = ParseTextOneShot(finder)

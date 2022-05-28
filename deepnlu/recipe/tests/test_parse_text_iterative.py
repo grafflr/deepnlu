@@ -9,7 +9,7 @@ from deepnlu.recipe.svc import ParseTextIterative
 
 
 ABSOLUTE_PATH = os.path.normpath(
-    os.path.join(os.getcwd(), 'resources'))
+    os.path.join(os.getcwd(), 'resources/testing'))
 FileIO.exists_or_error(ABSOLUTE_PATH)
 
 

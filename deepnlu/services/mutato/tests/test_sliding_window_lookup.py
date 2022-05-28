@@ -10,7 +10,7 @@ from deepnlu.services.mutato.dmo import SlidingWindowLookup
 
 def test_component():
     absolute_path = os.path.normpath(
-        os.path.join(os.getcwd(), 'resources'))
+        os.path.join(os.getcwd(), 'resources/testing'))
     FileIO.exists_or_error(absolute_path)
 
     finder = FindOntologyData(

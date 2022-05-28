@@ -21,7 +21,7 @@ def test_portendo():
     ]
 
     absolute_path = os.path.normpath(
-        os.path.join(os.getcwd(), 'resources'))
+        os.path.join(os.getcwd(), 'resources/testing'))
     FileIO.exists_or_error(absolute_path)
 
     api = Portendo(schema_name='unitest',

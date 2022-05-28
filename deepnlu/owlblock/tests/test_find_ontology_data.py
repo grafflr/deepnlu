@@ -10,10 +10,10 @@ from deepnlu.owlblock.bp import FindOntologyData
 
 
 absolute_path = os.path.normpath(
-    os.path.join(os.getcwd(), 'resources/data/owl'))
+    os.path.join(os.getcwd(), 'resources/testing'))
 
 bp = FindOntologyData(
-    ontologies=['nursing'],
+    ontologies=['unitest'],
     absolute_path=absolute_path)
 assert bp
 
