@@ -18,7 +18,8 @@ class FindClassifications(BaseObject):
     __ndx_all_models = []
 
     def __init__(self,
-                 ontology_name: str):
+                 schema_name: str,
+                 absolute_path: str):
         """ Change History:
 
         Created:
@@ -32,18 +33,13 @@ class FindClassifications(BaseObject):
                 https://github.com/grafflr/graffl-core/issues/264
 
         Args:
-            ontology_name (str): name of the ontology to classify against
+            schema_name (str): name of the schema containing classification rules
+            absolute_path (str): absolute path to the directory containing these files
         """
         BaseObject.__init__(self, __name__)
-        self._ontology_name = ontology_name
+        self._schema_name = schema_name
 
-        subdir = os.path.normpath(
-            os.path.join(
-                os.getcwd(),
-                'deepnlu/datablock/os/manifest',
-                ontology_name))
-
-        loader = GenericFunctionLoader(subdir).load
+        loader = GenericFunctionLoader(absolute_path).load
 
         self.include_one_of = loader('include_one_of')
         self.include_all_of = loader('include_all_of')

@@ -3,6 +3,9 @@
 """ deepNLU Orchestrator """
 
 
+import os
+
+from baseblock import FileIO
 from baseblock import Enforcer
 from baseblock import BaseObject
 
@@ -10,6 +13,7 @@ from deepnlu.recipe.svc import ProcessInputFiles
 from deepnlu.recipe.svc import ParseTextOneShot
 from deepnlu.recipe.svc import ResultsAsDataFrame
 from deepnlu.recipe.dmo import InputPathReader
+from deepnlu.owlblock.bp import FindOntologyData
 
 
 class DeepNluAPI(BaseObject):
@@ -92,8 +96,10 @@ class DeepNluAPI(BaseObject):
             Enforcer.is_str(input_text)
             Enforcer.is_list(ontologies)
 
-        svc = ParseTextOneShot(
-            ontologies=ontologies,
+        finder = FindOntologyData(
+            ontologies=['chitchat'],
             absolute_path=absolute_path)
+
+        svc = ParseTextOneShot(finder)
 
         return svc.process(input_text)
