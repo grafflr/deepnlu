@@ -3,12 +3,14 @@
 """ Portendo performs Predictive Classification of deepNLU parsed ASTs """
 
 
+import os
 from pprint import pformat
 from pprint import pprint
 
+from baseblock import EnvIO
+from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
-from baseblock import Enforcer
 
 from deepnlu.datablock import FindClassifications
 
@@ -21,7 +23,7 @@ class Portendo(BaseObject):
     """ Portendo performs Predictive Classification of deepNLU parsed ASTs """
 
     def __init__(self,
-                 ontology_name: str):
+                 schema_name: str):
         """Initialize Portendo API
 
         Created:
@@ -30,13 +32,23 @@ class Portendo(BaseObject):
             *   https://github.com/grafflr/graffl-core/issues/169
 
         Args:
-            ontology_name (str): the Ontology provenance
+            schema_name (str): name of the schema containing classification rules
         """
         BaseObject.__init__(self, __name__)
-        Enforcer.is_str(ontology_name)
+        if self.isEnabledForDebug:
+            Enforcer.is_str(schema_name)
 
-        self._ontology_name = ontology_name
-        self._indices = FindClassifications(ontology_name)
+        self._schema_name = schema_name
+
+        absolute_path = os.path.normpath(
+            os.path.join(
+                EnvIO.str_or_exception('GRAFFLR_HOME'),
+                'apps/blocks/datablock/datablock/os/manifest',
+                'chitchat'))
+
+        self._indices = FindClassifications(
+            schema_name=schema_name,
+            absolute_path=absolute_path)
 
         if self.isEnabledForDebug:
             self._indices.print()
@@ -54,7 +66,7 @@ class Portendo(BaseObject):
 
         mapping = PredictMapping(
             indices=self._indices,
-            ontology_name=self._ontology_name).process(svcresult)
+            ontology_name=self._schema_name).process(svcresult)
 
         mapping = SelectMapping(
             results=mapping,

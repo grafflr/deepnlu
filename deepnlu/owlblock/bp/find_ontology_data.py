@@ -3,7 +3,6 @@
 """ Generic Facade to Find Data in 1..* Ontology Models """
 
 
-from audioop import reverse
 from functools import lru_cache
 
 from baseblock import Enforcer
@@ -12,9 +11,15 @@ from baseblock import BaseObject
 from askowl.bp import AskOwlAPI
 from askowl.dto import QueryResultType
 
-from deepnlu.owlblock.svc import GenerateViewNerLabel
-from deepnlu.owlblock.svc import GenerateViewNerDepth
-from deepnlu.owlblock.svc import GenerateViewNerTaxonomy
+from deepnlu.owlblock.svc import QueryNerLabel
+from deepnlu.owlblock.svc import QueryNerDepth
+from deepnlu.owlblock.svc import QueryNerTaxo
+from deepnlu.owlblock.svc import FindNER
+from deepnlu.owlblock.svc import FindSynonyms
+from deepnlu.owlblock.svc import FindTypes
+
+from deepnlu.owlblock.dmo import ModelResultMerge
+from deepnlu.owlblock.dmo import NerPalleteLookup
 
 
 class FindOntologyData(BaseObject):
@@ -38,9 +43,27 @@ class FindOntologyData(BaseObject):
         if self.isEnabledForDebug:
             Enforcer.is_list(ontologies)
 
+        self._ontologies = ontologies
         self._d_ontologies = self._load(
             ontologies=ontologies,
             absolute_path=absolute_path)
+
+        self._merge = ModelResultMerge().process
+
+        self._query_ner_label = QueryNerLabel(self._d_ontologies).process
+        self._query_ner_depth = QueryNerDepth(self._d_ontologies).process
+        self._query_ner_taxo = QueryNerTaxo(self._d_ontologies).process
+
+        self._find_synonyms = FindSynonyms(
+            d_synonyms_fwd=self.synonyms(),
+            d_synonyms_rev=self.synonyms_rev())
+
+        self._find_types = FindTypes(
+            d_types_fwd=self.types(),
+            d_types_rev=self.types_rev())
+
+    def ontologies(self) -> list:
+        return self._ontologies
 
     def _load(self,
               ontologies: list,
@@ -51,33 +74,6 @@ class FindOntologyData(BaseObject):
                 ontology_name=ontology_name,
                 absolute_path=absolute_path)
         return d
-
-    def _merge(results: list,
-               result_type: QueryResultType) -> list:
-
-        if result_type == QueryResultType.DICT_OF_STR2LIST:
-            d_merge = {}
-            for d_result in results:
-                for k in d_result:
-                    if k not in d_merge:
-                        d_merge[k] = []
-
-                    for value in d_result[k]:
-                        if value not in d_merge[k]:
-                            d_merge[k].append(value)
-            return d_merge
-
-        elif result_type == QueryResultType.DICT_OF_STR2DICT:
-            d_merge = {}
-            for d_result in results:
-                for k in d_result:
-                    for value in d_result[k]:
-                        d_merge[k].append(value)
-
-            return d_merge
-
-        else:
-            raise NotImplementedError
 
     @lru_cache
     def _by_predicate(self,
@@ -150,126 +146,93 @@ class FindOntologyData(BaseObject):
     def implies_rev(self) -> dict:
         return self._by_predicate_rev('implies')
 
-    def _ner_label(self,
-                   ner_type: str,
-                   reverse: bool = False) -> dict:
+    @lru_cache(maxsize=512, typed=False)
+    def is_canon(self,
+                 input_text: str) -> bool:
+        """Check if Input Text is Canonical Entity
 
-        def get_results(sparl_query: str) -> dict:
-            results = []
-            for ontology_name in self._d_ontologies:
+        Args:
+            input_text (str): any input string
 
-                ask_owl_api = self._d_ontologies[ontology_name]
-
-                sparl_query = sparl_query.replace(
-                    '$PREFIX', ask_owl_api.prefix())
-                sparl_query = sparl_query.replace(
-                    '$NER', ner_type)
-
-                results.append(ask_owl_api.adhoc(
-                    sparl_query=sparl_query,
-                    to_lowercase=True,
-                    result_type=QueryResultType.DICT_OF_STR2LIST))
-
-            if not results:
-                return None
-            elif len(results) == 1:
-                return results[0]
-            return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
-
-        sparql_query = """
-            SELECT 
-                ?label ?NER 
-            WHERE 
-            { 
-                ?entity owl:backwardCompatibleWith ?NER
-                {
-                    ?child rdfs:subClassOf* ?entity
-                    { ?child rdfs:label ?label }
-                    UNION
-                    { ?child rdfs:seeAlso ?label }
-                }
-                OPTIONAL
-                {
-                    { ?entity rdfs:label ?label }
-                    UNION
-                    { ?entity rdfs:seeAlso ?label }        
-                }
-                
-                FILTER 
-                ( 
-                    datatype(?NER) = $PREFIX:$NER
-                )
-            }
+        Returns:
+            bool: True if the input string is a Nursing Entity
         """
+        return self._find_synonyms.is_canon(input_text)
 
-        d_results = get_results(sparql_query)
-        return GenerateViewNerLabel().process(d_results, reverse)
+    @lru_cache(maxsize=512, typed=False)
+    def find_canon(self,
+                   input_text: str) -> str or None:
+        """Find the Canonical Representation of the Input String
 
+        Args:
+            input_text (str): any input string
+
+        Returns:
+            str or None: The Canonical Entity
+        """
+        return self._find_synonyms.find_canon(input_text)
+
+    @lru_cache(maxsize=512, typed=False)
+    def is_variant(self,
+                   input_text: str) -> bool:
+        """Check if Input Text is known variant for at least one Canonical Entry
+
+        Args:
+            input_text (str): any input string
+
+        Returns:
+            bool: True if the input string is a known synonym to a Nursing Entity
+        """
+        return self._find_synonyms.is_variant(input_text)
+
+    @lru_cache(maxsize=512, typed=False)
+    def find_variants(self,
+                      input_text: str) -> list or None:
+        """Find the Synonyms for a known Entity
+
+        Args:
+            input_text (str): any input string
+
+        Returns:
+            list or None: a list of synonyms for the input entity
+        """
+        return self._find_synonyms.find_variants(input_text)
+
+    @lru_cache(maxsize=512, typed=False)
+    def find_ner(self,
+                 input_text: str) -> str or None:
+
+        svc = FindNER(
+            d_ner_depth=self.ner_depth(),
+            d_ner_taxo=self.ner_taxonomy(),
+            d_graffl_ner=self.graffl_ner(),
+            d_spacy_ner=self.spacy_ner())
+
+        return svc.find_ner(input_text)
+
+    @lru_cache
     def graffl_ner(self) -> dict:
-        return self._ner_label('grafflNER')
+        return self._query_ner_label('grafflNER')
 
+    @lru_cache
     def graffl_ner_rev(self) -> dict:
-        return self._ner_label('grafflNER', reverse=True)
+        return self._query_ner_label('grafflNER', reverse=True)
 
     @lru_cache
     def spacy_ner(self) -> dict:
-        return self._ner('spacyNER')
+        return self._query_ner_label('spacyNER')
 
     @lru_cache
     def spacy_ner_rev(self) -> dict:
-        return self._ner('spacyNER', reverse=True)
-
-    def _ner_depth(self,
-                   reverse: bool = False) -> dict:
-
-        def get_results(sparl_query: str) -> dict:
-            results = []
-            for ontology_name in self._d_ontologies:
-                ask_owl_api = self._d_ontologies[ontology_name]
-
-                results.append(ask_owl_api.adhoc(
-                    to_lowercase=False,
-                    sparql_query=sparl_query,
-                    result_type=QueryResultType.DICT_OF_STR2LIST))
-
-            if not results:
-                return None
-            elif len(results) == 1:
-                return results[0]
-            return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
-
-        sparql_query = """
-            select ?ner (count(?mid)-1 as ?depth) {
-            #-- Select root classes (classes that have no
-            #-- superclasses other than themselves).
-            {
-                select ?root {
-                ?root a owl:Class
-                filter not exists {
-                    ?root rdfs:subClassOf ?superroot 
-                    filter ( ?root != ?superroot )
-                }
-                }
-            }
-
-            ?class owl:backwardCompatibleWith ?ner .
-            ?class rdfs:subClassOf* ?mid .
-            ?mid rdfs:subClassOf* ?root .
-            }
-            group by ?ner
-            order by ?depth
-        """
-
-        d_results = get_results(sparql_query)
-        return GenerateViewNerDepth().process(d_results, reverse)
+        return self._query_ner_label('spacyNER', reverse=True)
 
     @lru_cache
     def ner_depth(self) -> dict:
-        return self._ner_depth(reverse=False)
+        return self._query_ner_depth(reverse=False)
 
     @lru_cache
     def ner_depth_rev(self) -> dict:
-        return self._ner_depth(reverse=True)
+        return self._query_ner_depth(reverse=True)
 
     @lru_cache
     def infer_by_requires(self) -> dict:
@@ -295,46 +258,22 @@ class FindOntologyData(BaseObject):
             return results[0]
         return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
 
-    def _ner_taxonomy(self,
-                      reverse: bool = False) -> dict:
-
-        def get_results(sparl_query: str) -> dict:
-            results = []
-            for ontology_name in self._d_ontologies:
-                ask_owl_api = self._d_ontologies[ontology_name]
-
-                results.append(ask_owl_api.adhoc(
-                    to_lowercase=False,
-                    sparql_query=sparl_query,
-                    result_type=QueryResultType.DICT_OF_STR2LIST))
-
-            if not results:
-                return None
-            elif len(results) == 1:
-                return results[0]
-            return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
-
-        sparql_query = """
-            SELECT 
-                ?ner_1 ?ner_2
-            WHERE 
-            { 
-                ?a owl:backwardCompatibleWith ?ner_1 .
-                ?b owl:backwardCompatibleWith ?ner_2 .
-                ?a rdfs:subClassOf* ?b .
-            }
-        """
-
-        d_results = get_results(sparql_query)
-        return GenerateViewNerTaxonomy().process(d_results, reverse)
-
     @lru_cache
     def ner_taxonomy(self) -> dict:
-        return self._ner_taxonomy(reverse=False)
+        return self._query_ner_taxo(reverse=False)
 
     @lru_cache
     def ner_taxonomy_rev(self) -> dict:
-        return self._ner_taxonomy(reverse=True)
+        return self._query_ner_taxo(reverse=True)
+
+    @lru_cache
+    def ner_pallete_lookup(self,
+                           input_text: str) -> dict:
+        return NerPalleteLookup(self.ner_taxonomy_rev()).lookup(input_text)
+
+    @lru_cache
+    def ner_pallete_colors(self) -> dict:
+        return NerPalleteLookup(self.ner_taxonomy_rev()).colors()
 
     @lru_cache
     def spans(self) -> dict:
@@ -347,6 +286,15 @@ class FindOntologyData(BaseObject):
         elif len(results) == 1:
             return results[0]
         return self._merge(results, QueryResultType.DICT_OF_STR2DICT)
+
+    @lru_cache
+    def span_keys(self) -> list:
+        """ Return Span Keys sorted by Length
+
+        Returns:
+            list: list of span keys sorted by length
+        """
+        return sorted(self.spans().keys(), key=len)
 
     @lru_cache
     def synonyms(self) -> dict:
@@ -399,3 +347,68 @@ class FindOntologyData(BaseObject):
     @lru_cache
     def uses_rev(self) -> dict:
         return self._by_predicate_rev('uses')
+
+    @lru_cache
+    def has_parent(self,
+                   input_text: str,
+                   parent: str) -> bool:
+        return self._find_types.has_parent(
+            parent=parent,
+            input_text=input_text)
+
+    @lru_cache
+    def has_ancestor(self,
+                     input_text: str,
+                     parent: str) -> bool:
+        return self._find_types.has_ancestor(
+            parent=parent,
+            input_text=input_text)
+
+    @lru_cache
+    def entity_exists(self,
+                      input_text: str) -> bool:
+        """ Simple Truth check
+            Does this value exist anywhere in the Ontology?
+
+        Args:
+            input_text (str): a candidate concept
+
+        Returns:
+            bool: True if the concept exists in the Ontology
+        """
+        return self._find_types.exists(input_text)
+
+    @lru_cache
+    def children(self,
+                 input_text: str) -> list:
+        return self._find_types.children(input_text)
+
+    @lru_cache
+    def descendants(self,
+                    input_text: str) -> list:
+        return self._find_types.descendants(input_text)
+
+    @lru_cache
+    def descendants_and_self(self,
+                             input_text: str) -> list:
+        return self._find_types.descendants_and_self(input_text)
+
+    @lru_cache
+    def parents(self,
+                input_text: str) -> list:
+        return self._find_types.parents(input_text)
+
+    @lru_cache
+    def parents_and_self(self,
+                         input_text: str) -> list:
+        return self._find_types.parents_and_self(input_text)
+
+    @lru_cache
+    def ancestors(self,
+                  input_text: str) -> list:
+        return self._find_types.ancestors(input_text)
+
+    @lru_cache
+    def ancestors_and_self(self,
+                           input_text: str) -> list:
+        return self._find_types.ancestors_and_self(input_text)

@@ -10,11 +10,13 @@ from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from deepnlu.services.accipio import Tokenizer
-from deepnlu.services.accipio import Stemmer
-from deepnlu.services.accipio import Normalizer
-from deepnlu.services.erogito import ErogitoAPI
+from deepnlu.owlblock.bp import FindOntologyData
+
+from deepnlu.services.tokenizer import Tokenizer
+from deepnlu.services.stemmer import Stemmer
+from deepnlu.services.normalize import Normalizer
 from deepnlu.services.mutato import MutatoAPI
+from deepnlu.services.spacyparse.svc import ParseInputTokens
 
 
 class SentenceHandlerIterative(BaseObject):
@@ -27,7 +29,8 @@ class SentenceHandlerIterative(BaseObject):
     __tokcache = {}
 
     def __init__(self,
-                 ontologies: list):
+                 ontologies: list,
+                 absolute_path: str):
         """ Change History
 
         Created:
@@ -45,16 +48,19 @@ class SentenceHandlerIterative(BaseObject):
 
         Args:
             ontologies (list): one-or-more Ontology models to use in processing
+            absolute_path (str): absolute path to Ontology models
         """
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
             Enforcer.is_list(ontologies)
 
         self._ontologies = ontologies
-        self._stemmer = Stemmer()
-        self._tokenizer = Tokenizer()
-        self._normalizer = Normalizer()
-        self._erogito_api = ErogitoAPI()
+        self._absolute_path = absolute_path
+
+        self._stem = Stemmer().input_text
+        self._normalize = Normalizer().input_text
+        self._string_tokenize = Tokenizer().input_text
+        self._parse = ParseInputTokens().process
 
     def _tokenize(self,
                   input_text: str) -> list:
@@ -64,8 +70,8 @@ class SentenceHandlerIterative(BaseObject):
 
         def inner() -> list:
 
-            tokens = self._tokenizer.input_text(input_text)
-            tokens = self._erogito_api.parse(tokens)
+            tokens = self._string_tokenize(input_text)
+            tokens = self._parse(tokens)
 
             for token in tokens:
                 ## ---------------------------------------------------------- ##
@@ -73,13 +79,13 @@ class SentenceHandlerIterative(BaseObject):
                 # Reference:  https://github.com/grafflr/graffl-core/issues/46#issuecomment-943708492
                 # Old Code:   self._normalizer.input_text(token['lemma'])
                 ## ---------------------------------------------------------- ##
-                token['normal'] = self._normalizer.input_text(token['text'])
+                token['normal'] = self._normalize(token['text'])
 
                 if token['is_punct']:
                     token['stem'] = token['normal']
                 else:
                     token['stem'] = str(
-                        self._stemmer.input_text(token['normal']))
+                        self._stem(token['normal']))
                 del token['lemma']
 
             return tokens
@@ -107,8 +113,14 @@ class SentenceHandlerIterative(BaseObject):
         svcresult = []
 
         tokens = self._tokenize(input_text)
+
         for ontology in self._ontologies:
-            result = MutatoAPI([ontology]).swap(tokens)
+
+            finder = FindOntologyData(
+                ontologies=[ontology],
+                absolute_path=self._absolute_path)
+
+            result = MutatoAPI(finder).swap(tokens)
 
             def summary() -> list:
                 def is_valid(d_token: dict) -> bool:
@@ -132,7 +144,7 @@ class SentenceHandlerIterative(BaseObject):
 
             svcresult.append(d_sentence)
 
-        if self.logger.isEnabledFor(logging.DEBUG):
+        if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
                 "Sentence Analysis Completed",
                 f"\tTotal Tokens: {len(tokens)}",

@@ -1,5 +1,8 @@
 import os
 from pprint import pprint
+
+
+from baseblock import Stopwatch
 from baseblock import Enforcer
 
 
@@ -71,6 +74,36 @@ def test_ner_taxonomy():
     Enforcer.is_dict(bp.ner_taxonomy_rev())
 
 
+def test_ner_pallete_lookup():
+    """ Given a NER return a Hex Color Code """
+    result = bp.ner_pallete_lookup('EVENT')
+    Enforcer.is_str(result)
+    assert result.startswith('#')  # e.g., '#6fcb9f'
+    assert len(result) == 7
+
+
+def test_find_ner():
+
+    sw = Stopwatch()
+    bp.find_ner('staff')
+    bp.find_ner('staff')
+    bp.find_ner('staff')
+    bp.find_ner('staffing level')
+    result = bp.find_ner('staff')
+    print(str(sw))
+
+    assert result == "AGENT"
+
+
+def test_find_synonyms():
+
+    assert bp.find_canon('set to close') == 'closure'
+    assert bp.find_variants('closure') == ['closure', 'set to close']
+
+    assert bp.is_canon('closure')
+    assert bp.is_variant('set to close')
+
+
 def main():
     # test_find_comments()
     # test_find_labels()
@@ -84,7 +117,10 @@ def main():
     # test_graffl_ner()
     # test_spacy_ner()
     # test_ner_depth()
-    test_ner_taxonomy()
+    # test_ner_taxonomy()
+    # test_ner_pallete_lookup()
+    # test_find_ner()
+    test_find_synonyms()
 
 
 if __name__ == "__main__":

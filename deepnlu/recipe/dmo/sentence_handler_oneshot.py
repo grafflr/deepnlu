@@ -10,11 +10,13 @@ from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from deepnlu.services.accipio import Tokenizer
-from deepnlu.services.accipio import Stemmer
-from deepnlu.services.accipio import Normalizer
-from deepnlu.services.erogito import ErogitoAPI
+from deepnlu.owlblock.bp import FindOntologyData
+
+from deepnlu.services.tokenizer import Tokenizer
+from deepnlu.services.stemmer import Stemmer
+from deepnlu.services.normalize import Normalizer
 from deepnlu.services.mutato import MutatoAPI
+from deepnlu.services.spacyparse.svc import ParseInputTokens
 
 
 class SentenceHandlerOneShot(BaseObject):
@@ -34,7 +36,7 @@ class SentenceHandlerOneShot(BaseObject):
 #
 
     def __init__(self,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -60,26 +62,29 @@ class SentenceHandlerOneShot(BaseObject):
             craig@grafflr.ai
             *   renamed from 'deep-sentence-handler' for consistency with 'sentence-handler-oneshot'
                 https://github.com/grafflr/graffl-core/issues/193#issuecomment-1047303350
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove all params in place of 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
+        self._ontologies = find_ontology_data.ontologies()
+        self._swap_synonyms = MutatoAPI(find_ontology_data).swap
 
-        self._ontologies = ontologies
-        self._stemmer = Stemmer()
-        self._tokenizer = Tokenizer()
-        self._normalizer = Normalizer()
-        self._erogito_api = ErogitoAPI()
-        self._swap_synonyms = MutatoAPI(ontologies).swap
+        self._stem = Stemmer().input_text
+        self._normalize = Normalizer().input_text
+        self._string_tokenize = Tokenizer().input_text
+        self._parse = ParseInputTokens().process
 
     def _tokenize(self,
                   input_text: str) -> list:
 
-        tokens = self._tokenizer.input_text(input_text)
-        tokens = self._erogito_api.parse(tokens)
+        tokens = self._string_tokenize(input_text)
+        tokens = self._parse(tokens)
 
         for token in tokens:
             ## ---------------------------------------------------------- ##
@@ -87,13 +92,13 @@ class SentenceHandlerOneShot(BaseObject):
             # Reference:  https://github.com/grafflr/graffl-core/issues/46#issuecomment-943708492
             # Old Code:   self._normalizer.input_text(token['lemma'])
             ## ---------------------------------------------------------- ##
-            token['normal'] = self._normalizer.input_text(token['text'])
+            token['normal'] = self._normalize(token['text'])
 
             if token['is_punct']:
                 token['stem'] = token['normal']
             else:
                 token['stem'] = str(
-                    self._stemmer.input_text(token['normal']))
+                    self._stem(token['normal']))
             del token['lemma']
 
         return tokens
@@ -113,7 +118,6 @@ class SentenceHandlerOneShot(BaseObject):
         sw = Stopwatch()
 
         tokens = self._tokenize(input_text)
-
         tokens = self._swap_synonyms(tokens)
 
         d_sentence = {
@@ -122,7 +126,7 @@ class SentenceHandlerOneShot(BaseObject):
             "ontologies": self._ontologies,
             "tokens": tokens}
 
-        if self.logger.isEnabledFor(logging.DEBUG):
+        if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
                 "Sentence Analysis Completed",
                 f"\tTotal Tokens: {len(tokens)}",

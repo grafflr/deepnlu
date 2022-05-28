@@ -7,8 +7,8 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
-from deepnlu.datablock import FindNER
-from deepnlu.datablock import FindSynonyms
+
+from deepnlu.owlblock.bp import FindOntologyData
 
 from deepnlu.services.mutato.dmo import ExactMatchFinder
 from deepnlu.services.mutato.dmo import ExactMatchSwapper
@@ -18,10 +18,7 @@ class PerformExactMatching(BaseObject):
     """ Perform Exact Matching """
 
     def __init__(self,
-                 ner_finder: FindNER,
-                 syn_finder: FindSynonyms,
-                 d_lookup_data: dict,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -34,23 +31,19 @@ class PerformExactMatching(BaseObject):
             craig@grafflr.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove all params in place of 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ner_finder (FindNER): _description_
-            syn_finder (FindSynonyms): _description_
-            d_lookup_data (dict): _description_
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
-
-        self._d_lookup_data = d_lookup_data
-
+        self._d_lookup = find_ontology_data.lookup()
         self._exact_match_swapper = ExactMatchSwapper(
-            syn_finder=syn_finder,
-            ner_finder=ner_finder,
-            ontologies=ontologies).process
+            find_ontology_data).process
 
     def _process(self,
                  tokens: list) -> list:
@@ -60,7 +53,7 @@ class PerformExactMatching(BaseObject):
 
             exact_match_finder = ExactMatchFinder(
                 gram_size=gram_size,
-                d_lookup=self._d_lookup_data).process
+                d_lookup=self._d_lookup).process
 
             results = exact_match_finder(tokens)
 
@@ -85,14 +78,17 @@ class PerformExactMatching(BaseObject):
 
     def process(self,
                 tokens: list) -> list:
-        Enforcer.is_list(tokens)
+
+        if self.isEnabledForDebug:
+            Enforcer.is_list(tokens)
 
         sw = Stopwatch()
 
         swaps = self._process(tokens)
 
-        self.logger.info('\n'.join([
-            "Exact Swapping Completed",
-            f"\tTotal Time: {str(sw)}"]))
+        if self.isEnabledForInfo:
+            self.logger.info('\n'.join([
+                "Exact Swapping Completed",
+                f"\tTotal Time: {str(sw)}"]))
 
         return swaps

@@ -3,8 +3,8 @@
 """ Filter Extracted Candidate against known KBs """
 
 
-import pprint
 import logging
+from pprint import pformat
 
 from baseblock import Stopwatch
 from baseblock import BaseObject
@@ -38,13 +38,21 @@ class SlidingWindowLookup(BaseObject):
 
         return filtered
 
-    def process(self) -> list:
+    def process(self) -> list or None:
         sw = Stopwatch()
 
         results = self._process()
 
-        if self.logger.isEnabledFor(logging.DEBUG):
+        if not len(results):
+            if self.isEnabledForDebug:
+                self.logger.debug('\n'.join([
+                    "Sliding Window Lookup Completed",
+                    f"\tGram Size: {self._gram_size}",
+                    f"\tTotal Tokens: {len(results)}",
+                    f"\tTotal Time: {str(sw)}"]))
+            return None
 
+        if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
                 "Sliding Window Lookup Completed",
                 f"\tGram Size: {self._gram_size}",
@@ -54,6 +62,6 @@ class SlidingWindowLookup(BaseObject):
             if self._candidates != results:
                 self.logger.debug('\n'.join([
                     "Sliding Window Lookup Results",
-                    f"\tTokens: {pprint.pformat(results, indent=4)}"]))
+                    f"\tTokens: {pformat(results, indent=4)}"]))
 
         return results

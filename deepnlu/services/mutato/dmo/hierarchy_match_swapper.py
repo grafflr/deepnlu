@@ -10,6 +10,8 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
+from deepnlu.owlblock.bp import FindOntologyData
+
 from deepnlu.services.mutato.dmo import SwapTokenGenerator
 
 
@@ -17,8 +19,7 @@ class HierarchyMatchSwapper(BaseObject):
     """ Perform Synonym Swapping with Hierarchal Matches """
 
     def __init__(self,
-                 find_types_cb: Callable,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -30,17 +31,19 @@ class HierarchyMatchSwapper(BaseObject):
             craig@grafflr.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove 'ontologies' and integrate 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            find_types_cb (object): call back to the FindTypes object
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
-
-        self._find_types = find_types_cb
-        self._create_swap = SwapTokenGenerator(ontologies).process
+        self._exists = find_ontology_data.entity_exists
+        self._create_swap = SwapTokenGenerator(
+            find_ontology_data.ontologies()).process
 
     @staticmethod
     def _cartesian(matches: list) -> list:
@@ -149,7 +152,7 @@ class HierarchyMatchSwapper(BaseObject):
 
             for match in self._cartesian(matches):
                 match_text = '_'.join(match).strip().lower()
-                if self._find_types.exists(match_text):
+                if self._exists(match_text):
                     return self._perform_swap(tokens=tokens,
                                               gram_size=gram_size,
                                               match_text=match_text,

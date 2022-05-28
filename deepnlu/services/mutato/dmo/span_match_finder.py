@@ -3,12 +3,10 @@
 """ Find Candidate Span Matches """
 
 
-import pprint
 import logging
 
 from baseblock import Stopwatch
 from baseblock import BaseObject
-from deepnlu.datablock.svc import FindSpans
 
 from deepnlu.services.mutato.dmo.spans import SpanContentCheck
 from deepnlu.services.mutato.dmo.spans import SpanDistanceCheck
@@ -22,16 +20,29 @@ class SpanMatchFinder(BaseObject):
         https://github.com/grafflr/graffl-core/issues/77#issuecomment-947342784 """
 
     def __init__(self,
-                 finder: FindSpans):
-        """
+                 d_spans: dict,
+                 span_keys: list):
+        """_summary_
+
         Created:
             20-Oct-2021
             craig@grafflr.ai
             *   renamed from 'perform-sliding-window'
                 https://github.com/grafflr/graffl-core/issues/77
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   pass in-memory dictionaries in pursuit of
+                https://github.com/grafflr/deepnlu/issues/13
+
+        Args:
+            d_spans (dict): full dictionary of span data
+            span_keys (list): span dictionary keys sorted by length
         """
         BaseObject.__init__(self, __name__)
-        self._finder = finder
+        # self._finder = finder
+        self._d_spans = d_spans
+        self._span_keys = span_keys
 
     def _process(self,
                  tokens: list) -> list:
@@ -40,8 +51,8 @@ class SpanMatchFinder(BaseObject):
         # Find Candidate Spans via Content Matching
         ## ---------------------------------------------------------- ##
         matching_rules = SpanContentCheck(
-            d_rules=self._finder.data(),
-            rule_keys=self._finder.keys()).process(tokens)
+            d_rules=self._d_spans,
+            rule_keys=self._span_keys).process(tokens)
 
         if not matching_rules or not len(matching_rules):
             return None
@@ -72,7 +83,7 @@ class SpanMatchFinder(BaseObject):
 
         results = self._process(tokens)
 
-        if self.logger.isEnabledFor(logging.INFO):
+        if self.isEnabledForInfo:
 
             def total_results() -> int:
                 if results:

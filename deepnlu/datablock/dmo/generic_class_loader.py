@@ -64,7 +64,7 @@ class GenericClassLoader(BaseObject):
 
         finder = module_loader()
 
-        if self.logger.isEnabledFor(logging.DEBUG):
+        if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
                 "Loaded Class",
                 f"\tPackage Name: {package_name}",

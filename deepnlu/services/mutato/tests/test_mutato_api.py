@@ -1,11 +1,23 @@
+import os
 from pprint import pprint
 
+from baseblock import FileIO
+
+from deepnlu.owlblock.bp import FindOntologyData
 from deepnlu.services.mutato.bp import MutatoAPI
 
 
 def test_service():
 
-    bp = MutatoAPI(['chitchat'])
+    absolute_path = os.path.normpath(
+        os.path.join(os.getcwd(), 'resources/data/owl'))
+    FileIO.exists_or_error(absolute_path)
+
+    finder = FindOntologyData(
+        ontologies=['chitchat'],
+        absolute_path=absolute_path)
+
+    bp = MutatoAPI(finder)
     assert bp
 
     tokens = [

@@ -1,10 +1,16 @@
 # -*- coding: UTF-8 -*-
 
-
+import os
 from pprint import pprint
 
+from baseblock import FileIO
 
 from deepnlu.recipe.svc import ParseTextIterative
+
+
+ABSOLUTE_PATH = os.path.normpath(
+    os.path.join(os.getcwd(), 'resources/data/owl'))
+FileIO.exists_or_error(ABSOLUTE_PATH)
 
 
 def test_process_input_text_1():
@@ -12,17 +18,10 @@ def test_process_input_text_1():
     input_text = "please generate something similar to 'consistently achieves timely delivery'"
     assert type(input_text) == str
 
-    svc = ParseTextIterative(['appraisal', 'ontologica'])
+    svc = ParseTextIterative(
+        ontologies=['appraisal', 'ontologica'],
+        absolute_path=ABSOLUTE_PATH)
     assert svc
-
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
-    svc.process(input_text)
 
     svcresult = svc.process(input_text)
     assert svcresult
@@ -39,7 +38,9 @@ def test_process_input_text_2():
     Beth inspires and leads large, geographically dispersed analytic teams to develop and deliver cognitive analytic solutions that deliver actionable insights for IBM's clients."""
     assert type(input_text) == str
 
-    svc = ParseTextIterative(['appraisal'])
+    svc = ParseTextIterative(
+        ontologies=['appraisal'],
+        absolute_path=ABSOLUTE_PATH)
     assert svc
 
     svcresult = svc.process(input_text, 1)

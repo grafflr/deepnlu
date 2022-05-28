@@ -6,6 +6,8 @@
 from baseblock import Enforcer
 from baseblock import BaseObject
 
+from deepnlu.owlblock.bp import FindOntologyData
+
 
 from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 
@@ -14,7 +16,7 @@ class SpacyMatchSwapper(BaseObject):
     """ Perform Synonym Swapping with Spacy Entities """
 
     def __init__(self,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -27,15 +29,18 @@ class SpacyMatchSwapper(BaseObject):
             craig@grafflr.ai
             *   pass 'ontologies' as list param
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove 'ontologies' and integrate 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
-
-        self._create_swap = SwapTokenGenerator(ontologies).process
+        self._create_swap = SwapTokenGenerator(
+            find_ontology_data.ontologies()).process
 
     def process(self,
                 tokens: list,

@@ -74,8 +74,8 @@ class ExactMatchFinder(BaseObject):
             gram_size=self._gram_size,
             d_runtime_kb=self._d_lookup).process()
 
-        if not tokens or not len(candidates):
-            return candidates
+        if not candidates or not len(candidates):
+            return None
 
         return candidates
 
@@ -85,7 +85,7 @@ class ExactMatchFinder(BaseObject):
 
         results = self._process(tokens)
 
-        if self.logger.isEnabledFor(logging.INFO):
+        if self.isEnabledForInfo:
 
             def total_results() -> int:
                 if results:

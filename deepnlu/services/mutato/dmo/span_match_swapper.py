@@ -6,7 +6,7 @@
 from baseblock import Enforcer
 from baseblock import BaseObject
 
-from deepnlu.datablock.svc import FindNER
+from deepnlu.owlblock.bp import FindOntologyData
 
 from deepnlu.services.mutato.dmo.core import SwapTokenGenerator
 
@@ -15,8 +15,7 @@ class SpanMatchSwapper(BaseObject):
     """ Perform Synonym Swapping with Spanned Matches """
 
     def __init__(self,
-                 ner_finder: FindNER,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -29,17 +28,19 @@ class SpanMatchSwapper(BaseObject):
             craig@grafflr.ai
             *   pass 'ontologies' as list param
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove 'ontologies' and integrate 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ner_finder (FindNER): an instantiation of the FindNER object
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
-
-        self._find_ner = ner_finder.find_ner
-        self._create_swap = SwapTokenGenerator(ontologies).process
+        self._find_ner = find_ontology_data.find_ner
+        self._create_swap = SwapTokenGenerator(
+            find_ontology_data.ontologies()).process
 
     def process(self,
                 tokens: list,

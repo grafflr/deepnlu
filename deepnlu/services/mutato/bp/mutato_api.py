@@ -7,12 +7,9 @@ from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from deepnlu.datablock.svc import FindNER
-from deepnlu.datablock.svc import FindTypes
-from deepnlu.datablock.svc import FindLookup
-from deepnlu.datablock.svc import FindSynonyms
-
+from deepnlu.owlblock.bp import FindOntologyData
 from deepnlu.services.mutato.svc import PerformExactMatching
+
 from deepnlu.services.mutato.svc import PerformSpanMatching
 from deepnlu.services.mutato.svc import PerformSpacyMatching
 from deepnlu.services.mutato.svc import PerformHierarchyMatching
@@ -23,7 +20,7 @@ class MutatoAPI(BaseObject):
     """ Mutato API """
 
     def __init__(self,
-                 ontologies: list):
+                 find_ontology_data: FindOntologyData):
         """ Change History
 
         Created:
@@ -40,40 +37,34 @@ class MutatoAPI(BaseObject):
             craig@grafflr.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove 'ontologies' and integrate 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        if self.isEnabledForDebug:
-            Enforcer.is_list(ontologies)
-
-        ner_finder = FindNER(ontologies)
-
-        type_finder = FindTypes(ontologies)
-        syn_finder = FindSynonyms(ontologies)
-
-        d_lookup_data = FindLookup(ontologies).data()
 
         self._perform_exact_matching = PerformExactMatching(
-            ner_finder=ner_finder,
-            syn_finder=syn_finder,
-            d_lookup_data=d_lookup_data,
-            ontologies=ontologies).process
+            find_ontology_data).process
 
         self._perform_span_matching = PerformSpanMatching(
-            ner_finder=ner_finder,
-            ontologies=ontologies).process
+            find_ontology_data).process
 
         self._perform_hierarchal_matching = PerformHierarchyMatching(
-            ontologies=ontologies,
-            find_types_cb=type_finder).process
-
-        self._perform_spacy_matching = PerformSpacyMatching(
-            ontologies=ontologies).process
+            find_ontology_data).process
 
         self._augment_hierarchy = AugmentTokenHierarchy(
-            find_types_cb=type_finder).process
+            find_ontology_data).process
+
+        # Change Log:
+        # 20220214  Disable Environment Check
+        # 20220228  GRAFFL-205-1055059118   Disable Entire Service
+        # self._perform_spacy_matching = PerformSpacyMatching(
+        #     find_ontology_data).process
 
     def swap(self,
              tokens: list) -> list:

@@ -1,7 +1,3 @@
 from .generic_class_loader import GenericClassLoader
 from .generic_function_loader import GenericFunctionLoader
-from .ner_pallete_lookup import NerPalleteLookup
-from .ner_depth_finder import NerDepthFinder
-from .ner_type_finder import NerTypeFinder
 from .generic_data_finder import GenericDataFinder
-from .ner_taxonomy_finder import NerTaxonomyFinder

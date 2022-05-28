@@ -45,7 +45,7 @@ class SlidingWindowBlacklist(BaseObject):
 
         results = self._process()
 
-        if self.logger.isEnabledFor(logging.DEBUG):
+        if self.isEnabledForDebug:
 
             self.logger.debug('\n'.join([
                 "Sliding Window Blacklist Completed",
