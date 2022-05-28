@@ -47,14 +47,13 @@ class ExactMatchSwapper(BaseObject):
             find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        self._create_swap = SwapTokenGenerator(find_ontology_data).process
         self._find_ner = find_ontology_data.find_ner
         self._find_canon = find_ontology_data.find_canon
+        self._create_swap = SwapTokenGenerator(
+            find_ontology_data.ontologies()).process
 
     def process(self,
                 candidate_tokens: list) -> list:
-
-        sw = Stopwatch()
 
         for tokens in candidate_tokens:
 
@@ -83,7 +82,8 @@ class ExactMatchSwapper(BaseObject):
                 # Purpose:    Construct the NER tag
                 # Reference:  https://github.com/grafflr/graffl-core/issues/35#issuecomment-949988463
                 ## ---------------------------------------------------------- ##
-                return self._find_ner(canon)
+                # return self._find_ner(canon)
+                return None
 
             return self._create_swap(canon=canon,
                                      normal=normal(),

@@ -44,7 +44,6 @@ class PerformExactMatching(BaseObject):
         """
         BaseObject.__init__(self, __name__)
         self._d_lookup = find_ontology_data.lookup()
-
         self._exact_match_swapper = ExactMatchSwapper(
             find_ontology_data).process
 

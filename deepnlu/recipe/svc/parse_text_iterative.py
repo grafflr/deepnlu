@@ -22,7 +22,8 @@ class ParseTextIterative(BaseObject):
     """
 
     def __init__(self,
-                 ontologies: list):
+                 ontologies: list,
+                 absolute_path: str):
         """ Change History
 
         Created:
@@ -41,12 +42,15 @@ class ParseTextIterative(BaseObject):
 
         Args:
             ontologies (list): one-or-more Ontology models to use in processing
+            absolute_path (str): absolute path to Ontology models
         """
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
             Enforcer.is_list(ontologies)
 
-        self._handle_sentence = SentenceHandlerIterative(ontologies).process
+        self._handle_sentence = SentenceHandlerIterative(
+            ontologies=ontologies,
+            absolute_path=absolute_path).process
 
     def process(self,
                 input_text: str,

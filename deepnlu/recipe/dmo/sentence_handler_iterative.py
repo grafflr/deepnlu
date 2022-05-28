@@ -10,6 +10,8 @@ from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
+from deepnlu.owlblock.bp import FindOntologyData
+
 from deepnlu.services.accipio import Tokenizer
 from deepnlu.services.accipio import Stemmer
 from deepnlu.services.accipio import Normalizer
@@ -27,7 +29,8 @@ class SentenceHandlerIterative(BaseObject):
     __tokcache = {}
 
     def __init__(self,
-                 ontologies: list):
+                 ontologies: list,
+                 absolute_path: str):
         """ Change History
 
         Created:
@@ -45,12 +48,15 @@ class SentenceHandlerIterative(BaseObject):
 
         Args:
             ontologies (list): one-or-more Ontology models to use in processing
+            absolute_path (str): absolute path to Ontology models
         """
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
             Enforcer.is_list(ontologies)
 
         self._ontologies = ontologies
+        self._absolute_path = absolute_path
+
         self._stemmer = Stemmer()
         self._tokenizer = Tokenizer()
         self._normalizer = Normalizer()
@@ -108,7 +114,12 @@ class SentenceHandlerIterative(BaseObject):
 
         tokens = self._tokenize(input_text)
         for ontology in self._ontologies:
-            result = MutatoAPI([ontology]).swap(tokens)
+
+            finder = FindOntologyData(
+                ontologies=[ontology],
+                absolute_path=self._absolute_path)
+
+            result = MutatoAPI(finder).swap(tokens)
 
             def summary() -> list:
                 def is_valid(d_token: dict) -> bool:

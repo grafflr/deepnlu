@@ -3,16 +3,7 @@
 """ Find spaCy NER (Named Entity Recognition) Types """
 
 
-from pprint import pprint
-
-
-from baseblock import Enforcer
 from baseblock import BaseObject
-
-from deepnlu.datablock.dmo import NerTypeFinder
-from deepnlu.datablock.dmo import NerDepthFinder
-from deepnlu.datablock.dmo import NerPalleteLookup
-from deepnlu.datablock.dmo import NerTaxonomyFinder
 
 
 class FindNER(BaseObject):
@@ -101,6 +92,12 @@ class FindNER(BaseObject):
 
     def _find_spacy_ner(self,
                         input_text: str) -> list or None:
+
+        # this is neither wrong nor unusual
+        # it just means spaCy NERs were not defined in the OWL
+        if not self._d_spacy_ner or not len(self._d_spacy_ner):
+            return None
+
         input_text = self._cleanse(input_text)
         if input_text not in self._d_spacy_ner:
             return None
@@ -109,6 +106,12 @@ class FindNER(BaseObject):
 
     def _find_graffl_ner(self,
                          input_text: str) -> list or None:
+
+        # this is neither wrong nor unusual
+        # it just means Graffl NERs were not defined in the OWL
+        if not self._d_graffl_ner or not len(self._d_graffl_ner):
+            return None
+
         input_text = self._cleanse(input_text)
         if input_text not in self._d_graffl_ner:
             return None

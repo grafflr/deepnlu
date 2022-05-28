@@ -69,4 +69,5 @@ class ViewGeneratorNerDepth(BaseObject):
 
         if reverse:
             return self._reverse(d)
+
         return dict(d)

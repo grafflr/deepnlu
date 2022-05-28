@@ -56,22 +56,6 @@ class FindTypes(BaseObject):
         BaseObject.__init__(self, __name__)
         self._d_types_fwd = d_types_fwd
         self._d_types_rev = d_types_rev
-        # if self.isEnabledForDebug:
-        #     Enforcer.is_list(ontologies)
-
-        # self._finders_fwd = GenericDataFinder(class_suffix='Types',
-        #                                       module_suffix='types',
-        #                                       ontologies=ontologies)
-
-        # self._finders_rev = GenericDataFinder(class_suffix='TypesRev',
-        #                                       module_suffix='types_rev',
-        #                                       ontologies=ontologies)
-
-    # def fwd_data(self):
-    #     return self._d_types_fwd.data()
-
-    # def rev_data(self):
-    #     return self._d_types_rev.data()
 
     def has_parent(self,
                    input_text: str,
@@ -100,9 +84,9 @@ class FindTypes(BaseObject):
         if ' ' in input_text:
             input_text = input_text.replace(' ', '_')
 
-        if input_text in self._d_types_fwd():
+        if input_text in self._d_types_fwd:
             return True
-        if input_text in self._d_types_rev():
+        if input_text in self._d_types_rev:
             return True
         return bool(len(self.parents(input_text)))
 
@@ -110,8 +94,8 @@ class FindTypes(BaseObject):
                  input_text: str) -> list:
         input_text = input_text.lower().strip()
 
-        if input_text in self.rev_d_d_types_revata():
-            return self._d_types_rev()[input_text]
+        if input_text in self._d_types_rev:
+            return self._d_types_rev[input_text]
 
         if ' ' in input_text:
             return self.children(input_text.replace(' ', '_'))
@@ -124,8 +108,8 @@ class FindTypes(BaseObject):
         input_text = input_text.lower().strip()
 
         def _descendants(entity: str):
-            if entity in self._d_types_rev():
-                for child in self._d_types_rev()[entity]:
+            if entity in self._d_types_rev:
+                for child in self._d_types_rev[entity]:
                     results.append(child)
                     _descendants(child)
 
@@ -146,8 +130,8 @@ class FindTypes(BaseObject):
     def parents(self,
                 input_text: str) -> list:
         input_text = input_text.lower().strip()
-        if input_text in self._d_types_fwd():
-            return self._d_types_fwd()[input_text]
+        if input_text in self._d_types_fwd:
+            return self._d_types_fwd[input_text]
 
         if ' ' in input_text:
             return self.parents(input_text.replace(' ', '_'))
@@ -167,8 +151,8 @@ class FindTypes(BaseObject):
         input_text = input_text.lower().strip()
 
         def _ancestors(entity: str):
-            if entity in self._d_types_fwd():
-                for parent in self._d_types_fwd()[entity]:
+            if entity in self._d_types_fwd:
+                for parent in self._d_types_fwd[entity]:
                     results.append(parent)
                     _ancestors(parent)
 

@@ -85,11 +85,14 @@ class QueryNerLabel(BaseObject):
 
     def process(self,
                 ner_type: str,
-                reverse: bool = False) -> dict:
+                reverse: bool = False) -> dict or None:
 
         d_results = self._get_results(
             ner_type=ner_type,
             sparql_query=self.__SPARQL_QUERY)
+
+        if not d_results or not len(d_results):
+            return None
 
         return self._generate_view(
             reverse=reverse,

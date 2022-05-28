@@ -62,11 +62,17 @@ class SentenceHandlerOneShot(BaseObject):
             craig@grafflr.ai
             *   renamed from 'deep-sentence-handler' for consistency with 'sentence-handler-oneshot'
                 https://github.com/grafflr/graffl-core/issues/193#issuecomment-1047303350
+        Updated:
+            27-May-2022
+            craig@grafflr.ai
+            *   remove all params in place of 'find-ontology-data'
+                https://github.com/grafflr/deepnlu/issues/13
 
         Args:
-            ontologies (list): one-or-more Ontology models to use in processing
+            find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
+        self._ontologies = find_ontology_data.ontologies()
         self._stemmer = Stemmer()
         self._tokenizer = Tokenizer()
         self._normalizer = Normalizer()

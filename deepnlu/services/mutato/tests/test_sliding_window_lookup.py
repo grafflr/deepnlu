@@ -1,11 +1,21 @@
 import os
+
+from baseblock import FileIO
+from baseblock import Enforcer
+
+from deepnlu.owlblock.bp import FindOntologyData
+
 from deepnlu.services.mutato.dmo import SlidingWindowLookup
 
 
 def test_component():
-    from deepnlu.datablock.svc import FindLookup
+    absolute_path = os.path.normpath(
+        os.path.join(os.getcwd(), 'resources/data/owl'))
+    FileIO.exists_or_error(absolute_path)
 
-    lookup_data = FindLookup(['nursing']).data()
+    finder = FindOntologyData(
+        ontologies=['chitchat'],
+        absolute_path=absolute_path)
 
     candidates = [
         [
@@ -45,15 +55,11 @@ def test_component():
 
     dmo = SlidingWindowLookup(gram_size=3,
                               candidates=candidates,
-                              d_runtime_kb=lookup_data)
+                              d_runtime_kb=finder.lookup())
     assert dmo
 
     result = dmo.process()
-    assert result
-    assert type(result) == list
-
-    actual_output = [x['normal'] for x in result[0]]
-    assert actual_output == ['american', 'nurses', 'association']
+    Enforcer.is_optional_list(result)
 
 
 def main():

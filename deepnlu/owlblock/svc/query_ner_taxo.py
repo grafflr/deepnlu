@@ -67,6 +67,9 @@ class QueryNerTaxo(BaseObject):
         d_results = self._get_results(
             sparql_query=self.__SPARQL_QUERY)
 
+        if not d_results or not len(d_results):
+            return None
+
         return self._generate_view(
             reverse=reverse,
             d_results=d_results)

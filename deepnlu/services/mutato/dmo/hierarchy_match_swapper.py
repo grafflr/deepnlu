@@ -41,7 +41,6 @@ class HierarchyMatchSwapper(BaseObject):
             find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
-        # self._find_types = find_ontology_data.find
         self._exists = find_ontology_data.entity_exists
         self._create_swap = SwapTokenGenerator(
             find_ontology_data.ontologies()).process
@@ -153,7 +152,7 @@ class HierarchyMatchSwapper(BaseObject):
 
             for match in self._cartesian(matches):
                 match_text = '_'.join(match).strip().lower()
-                if self._find_types.exists(match_text):
+                if self._exists(match_text):
                     return self._perform_swap(tokens=tokens,
                                               gram_size=gram_size,
                                               match_text=match_text,

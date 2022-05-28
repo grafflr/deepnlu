@@ -60,9 +60,8 @@ class PerformSpanMatching(BaseObject):
             d_spans=find_ontology_data.spans(),
             span_keys=find_ontology_data.span_keys()).process
 
-        self._span_match_swapper = SpanMatchSwapper(
-            ner_finder=find_ontology_data.find_ner,
-            ontologies=find_ontology_data.ontologies())
+        print (">>>>>>>>>> ", type(find_ontology_data))
+        self._span_match_swapper = SpanMatchSwapper(find_ontology_data)
 
     def _process(self,
                  tokens: list) -> list:
