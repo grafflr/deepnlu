@@ -91,13 +91,20 @@ class LoadSynonyms(BaseObject):
         results = []
         for ontology_name in self._d_ontologies:
 
-            results.append(self._d_ontologies[ontology_name].synonyms())
-            results.append(self._d_external_fwd[ontology_name])
+            d_owl_synonyms = self._d_ontologies[ontology_name].synonyms()
+            if d_owl_synonyms and len(d_owl_synonyms):
+                results.append(d_owl_synonyms)
 
-        if not results:
+            d_txt_synonyms = self._d_external_fwd[ontology_name]
+            if d_txt_synonyms and len(d_txt_synonyms):
+                results.append(d_txt_synonyms)
+
+        if not results or not len(results):
             return None
         elif len(results) == 1:
             return results[0]
+
+        print(">> ", results)
         return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
 
     @lru_cache
@@ -105,8 +112,13 @@ class LoadSynonyms(BaseObject):
         results = []
         for ontology_name in self._d_ontologies:
 
-            results.append(self._d_ontologies[ontology_name].synonyms_rev())
-            results.append(self._d_external_rev[ontology_name])
+            d_owl_synonyms = self._d_ontologies[ontology_name].synonyms_rev()
+            if d_owl_synonyms and len(d_owl_synonyms):
+                results.append(d_owl_synonyms)
+
+            d_txt_synonyms = self._d_external_rev[ontology_name]
+            if d_txt_synonyms and len(d_txt_synonyms):
+                results.append(d_txt_synonyms)
 
         if not results:
             return None

@@ -273,12 +273,22 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def ner_pallete_lookup(self,
-                           input_text: str) -> dict:
-        return NerPalleteLookup(self.ner_taxonomy_rev()).lookup(input_text)
+                           input_text: str) -> dict  or None:
+        d_result = self.ner_taxonomy_rev()
+        
+        if not d_result or not len(d_result):
+            return None
+
+        return NerPalleteLookup(d_result).lookup(input_text)
 
     @lru_cache
-    def ner_pallete_colors(self) -> dict:
-        return NerPalleteLookup(self.ner_taxonomy_rev()).colors()
+    def ner_pallete_colors(self) -> dict  or None:
+        d_result = self.ner_taxonomy_rev()
+        
+        if not d_result or not len(d_result):
+            return None
+
+        return NerPalleteLookup(d_result).colors()
 
     @lru_cache
     def spans(self) -> dict:

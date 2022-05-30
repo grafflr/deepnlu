@@ -48,6 +48,11 @@ class FindSynonyms(BaseObject):
             craig@grafflr.ai
             *   migrated to 'owlblock' in pursuit of
                 https://github.com/grafflr/deepnlu/issues/13
+        Updated:
+            30-May-2022
+            craig@grafflr.ai
+            *   resilience testing
+                https://github.com/grafflr/deepnlu/issues/20
 
         Args:
             ontologies (list): one-or-more Ontology models to use in processing
@@ -68,6 +73,30 @@ class FindSynonyms(BaseObject):
             input_text = input_text.replace('_', ' ')
         return input_text.lower().strip()
 
+    def _has_synonyms_fwd(self) -> bool:
+        """ No Synonyms Exist
+        This result is unusual outside of unit-testing; but could happen
+
+        Reference:    
+            https://github.com/grafflr/deepnlu/issues/20
+
+        Returns:
+            bool: True if synonyms exist
+        """
+        return self._d_synonyms_fwd and len(self._d_synonyms_fwd)
+
+    def _has_synonyms_rev(self) -> bool:
+        """ No Synonyms Exist
+        This result is unusual outside of unit-testing; but could happen
+
+        Reference:    
+            https://github.com/grafflr/deepnlu/issues/20
+
+        Returns:
+            bool: True if synonyms exist
+        """
+        return self._d_synonyms_fwd and len(self._d_synonyms_fwd)
+
     def is_canon(self,
                  input_text: str) -> bool:
         """Check if Input Text is Canonical Entity
@@ -78,6 +107,9 @@ class FindSynonyms(BaseObject):
         Returns:
             bool: True if the input string is a Nursing Entity
         """
+        if not self._has_synonyms_fwd():
+            return False
+
         return self._cleanse_canon(input_text) in self._d_synonyms_fwd
 
     def is_variant(self,
@@ -90,6 +122,9 @@ class FindSynonyms(BaseObject):
         Returns:
             bool: True if the input string is a known synonym to a Nursing Entity
         """
+        if not self._has_synonyms_rev():
+            return False
+
         return self._cleanse_variant(input_text) in self._d_synonyms_rev
 
     def find_canon(self,
@@ -102,26 +137,28 @@ class FindSynonyms(BaseObject):
         Returns:
             str or None: The Canonical Entity
         """
+
         input_text = self._cleanse_canon(input_text)
+        if not input_text or not len(input_text):
+            return None
 
         def find() -> str or None:
 
             # is canon
-            if input_text in self._d_synonyms_fwd:
+            if self._has_synonyms_fwd() and input_text in self._d_synonyms_fwd:
                 return input_text
 
             # is variant
-            if input_text in self._d_synonyms_rev:
-                return self._d_synonyms_rev[input_text]
-
-            if '_' in input_text:
-                temp = input_text.replace('_', ' ')
-                if temp in self._d_synonyms_rev:
-                    return self._d_synonyms_rev[temp]
+            if self._has_synonyms_rev():
+                if input_text in self._d_synonyms_rev:
+                    return self._d_synonyms_rev[input_text]
+                if '_' in input_text:
+                    temp = input_text.replace('_', ' ')
+                    if temp in self._d_synonyms_rev:
+                        return self._d_synonyms_rev[temp]
 
         result = find()
-
-        if not result:
+        if not result or not len(result):
             return None  # no canonical form exists
 
         def get_result() -> str:
@@ -150,20 +187,25 @@ class FindSynonyms(BaseObject):
         Returns:
             list or None: a list of synonyms for the input entity
         """
+
         input_text = self._cleanse_variant(input_text)
+        if not input_text or not len(input_text):
+            return None
 
         def get_values() -> list:
 
             # is canon
-            if input_text in self._d_synonyms_fwd:
+
+            if self._has_synonyms_fwd() and input_text in self._d_synonyms_fwd:
                 return self._d_synonyms_fwd[input_text]
 
             # is variant
-            if input_text in self._d_synonyms_rev:
-                s = set()
-                for canon in self._d_synonyms_rev[input_text]:
-                    [s.add(x) for x in self._d_synonyms_fwd[canon]]
-                return sorted(s, key=len)
+            if self._has_synonyms_rev():
+                if input_text in self._d_synonyms_rev:
+                    s = set()
+                    for canon in self._d_synonyms_rev[input_text]:
+                        [s.add(x) for x in self._d_synonyms_fwd[canon]]
+                    return sorted(s, key=len)
 
             return []
 

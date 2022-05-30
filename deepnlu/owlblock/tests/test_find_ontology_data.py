@@ -1,126 +1,141 @@
 import os
-from pprint import pprint
 
-
-from baseblock import Stopwatch
+from baseblock import FileIO
 from baseblock import Enforcer
-
+from baseblock import Stopwatch
 
 from deepnlu.owlblock.bp import FindOntologyData
 
 
 absolute_path = os.path.normpath(
     os.path.join(os.getcwd(), 'resources/testing'))
-
-bp = FindOntologyData(
-    ontologies=['unitest'],
-    absolute_path=absolute_path)
-assert bp
+FileIO.exists_or_error(absolute_path)
 
 
-def test_find_comments():
-    Enforcer.is_dict(bp.comments())
+class TestFindOntologyData(object):
+
+    def __init__(self,
+                 ontology_name: str):
+        self.bp = FindOntologyData(
+            ontologies=[ontology_name],
+            absolute_path=absolute_path)
+        assert self.bp
+
+    def find_comments(self):
+        Enforcer.is_optional_dict(self.bp.comments())
+
+    def find_labels(self):
+        Enforcer.is_optional_dict(self.bp.labels())
+        Enforcer.is_optional_dict(self.bp.labels_rev())
+
+    def find_types(self):
+        Enforcer.is_optional_dict(self.bp.types())
+        Enforcer.is_optional_dict(self.bp.types_rev())
+
+    def find_effects(self):
+        Enforcer.is_optional_dict(self.bp.effects())
+        Enforcer.is_optional_dict(self.bp.effects_rev())
+
+    def lookup(self):
+        Enforcer.is_optional_dict(self.bp.lookup())
+
+    def synonyms(self):
+        Enforcer.is_optional_dict(self.bp.synonyms())
+        Enforcer.is_optional_dict(self.bp.synonyms_rev())
+
+    def spans(self):
+        Enforcer.is_optional_dict(self.bp.spans())
+
+    def trie(self):
+        Enforcer.is_optional_dict(self.bp.trie())
+
+    def graffl_ner(self):
+        Enforcer.is_optional_dict(self.bp.graffl_ner())
+        Enforcer.is_optional_dict(self.bp.graffl_ner_rev())
+
+    def spacy_ner(self):
+        Enforcer.is_optional_dict(self.bp.spacy_ner())
+        Enforcer.is_optional_dict(self.bp.spacy_ner_rev())
+
+    def ner_depth(self):
+        Enforcer.is_optional_dict(self.bp.ner_depth())
+        Enforcer.is_optional_dict(self.bp.ner_depth_rev())
+
+    def ner_taxonomy(self):
+        Enforcer.is_optional_dict(self.bp.ner_taxonomy())
+        Enforcer.is_optional_dict(self.bp.ner_taxonomy_rev())
+
+    def ner_pallete_lookup(self):
+        Enforcer.is_optional_str(self.bp.ner_pallete_lookup('EVENT'))
+
+    def find_ner(self):
+        Enforcer.is_optional_str(self.bp.find_ner('staff'))
+
+    def find_synonyms(self):
+        Enforcer.is_optional_str(self.bp.find_canon('set to close'))
+        Enforcer.is_optional_list(self.bp.find_variants('closure'))
+        Enforcer.is_bool(self.bp.is_canon('closure'))
+        Enforcer.is_bool(self.bp.is_variant('set to close'))
 
 
-def test_find_labels():
-    Enforcer.is_dict(bp.labels())
-    Enforcer.is_dict(bp.labels_rev())
+def runner(ontology_name: str) -> None:
+    bp = TestFindOntologyData(ontology_name)
+    bp.find_comments()
+    bp.find_labels()
+    bp.find_types()
+    bp.find_effects()
+    bp.lookup()
+    bp.synonyms()
+    bp.spans()
+    bp.trie()
+    bp.graffl_ner()
+    bp.spacy_ner()
+    bp.ner_depth()
+    bp.ner_taxonomy()
+    bp.ner_pallete_lookup()
+    bp.find_ner()
+    bp.find_synonyms()
 
 
-def test_find_types():
-    print(bp.types())
-    print(bp.types_rev())
+def test_normal_ontology():
+    """ This is considerd a 'typical' Ontology
+
+    and should flex out the primary functionality in a 'happy-path' manner 
+    """
+    runner('normal')
 
 
-def test_find_effects():
-    Enforcer.is_dict(bp.effects())
-    Enforcer.is_dict(bp.effects_rev())
+def test_sparse_ontology():
+    """ Test a Sparse Ontology
+
+    Very little information, but what does exist is accurate 
+    """
+    runner('sparse')
 
 
-def test_lookup():
-    Enforcer.is_dict(bp.lookup())
+def test_empty_ontology():
+    """ Test an empty Ontology 
+
+    Ensure that the askowl microservice does not throw unhandled exceptions
+    """
+    runner('empty')
 
 
-def test_synonyms():
-    Enforcer.is_dict(bp.synonyms())
-    Enforcer.is_dict(bp.synonyms_rev())
+def test_error_ontology():
+    """ Test an Ontology with Possible Errors or Mis-Configurations
 
+    This can be entities without equivalent rdfs:label objects, for example
 
-def test_spans():
-    Enforcer.is_dict(bp.spans())
-
-
-def test_trie():
-    Enforcer.is_dict(bp.trie())
-
-
-def test_graffl_ner():
-    Enforcer.is_dict(bp.graffl_ner())
-    Enforcer.is_dict(bp.graffl_ner_rev())
-
-
-def test_spacy_ner():
-    Enforcer.is_dict(bp.spacy_ner())
-    Enforcer.is_dict(bp.spacy_ner_rev())
-
-
-def test_ner_depth():
-    Enforcer.is_dict(bp.ner_depth())
-    Enforcer.is_dict(bp.ner_depth_rev())
-
-
-def test_ner_taxonomy():
-    Enforcer.is_dict(bp.ner_taxonomy())
-    Enforcer.is_dict(bp.ner_taxonomy_rev())
-
-
-def test_ner_pallete_lookup():
-    """ Given a NER return a Hex Color Code """
-    result = bp.ner_pallete_lookup('EVENT')
-    Enforcer.is_str(result)
-    assert result.startswith('#')  # e.g., '#6fcb9f'
-    assert len(result) == 7
-
-
-def test_find_ner():
-
-    sw = Stopwatch()
-    bp.find_ner('staff')
-    bp.find_ner('staff')
-    bp.find_ner('staff')
-    bp.find_ner('staffing level')
-    result = bp.find_ner('staff')
-    print(str(sw))
-
-    assert result == "AGENT"
-
-
-def test_find_synonyms():
-
-    assert bp.find_canon('set to close') == 'closure'
-    assert bp.find_variants('closure') == ['closure', 'set to close']
-
-    assert bp.is_canon('closure')
-    assert bp.is_variant('set to close')
+    Anything unexpected is placed in this OWL file
+    """
+    runner('error')
 
 
 def main():
-    # test_find_comments()
-    # test_find_labels()
-    # test_find_effects()
-    # test_find_effects_rev()
-    # test_find_types()
-    # test_lookup()
-    # test_synonyms()
-    # test_spans()
-    # test_trie()
-    # test_graffl_ner()
-    # test_spacy_ner()
-    # test_ner_depth()
-    # test_ner_taxonomy()
-    # test_ner_pallete_lookup()
-    # test_find_ner()
-    test_find_synonyms()
+    test_normal_ontology()
+    test_sparse_ontology()
+    test_empty_ontology()
+    test_error_ontology()
 
 
 if __name__ == "__main__":
