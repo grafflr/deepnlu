@@ -54,7 +54,7 @@ class Segmenter(BaseObject):
         """
 
         if self.isEnabledForDebug:
-            Enforcer.str(input_text)
+            Enforcer.is_str(input_text)
 
         sw = Stopwatch()
 

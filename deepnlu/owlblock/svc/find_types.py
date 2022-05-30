@@ -57,6 +57,36 @@ class FindTypes(BaseObject):
         self._d_types_fwd = d_types_fwd
         self._d_types_rev = d_types_rev
 
+    def _has_types_fwd(self) -> bool:
+        """ No Types Exist
+        This result is unusual outside of unit-testing; but could happen
+
+        It is possible to have a "flat" Taxonomy within the OWL model
+            where no parent/child (rdfs:subClassOf) relationships exist
+
+        Reference:    
+            https://github.com/grafflr/deepnlu/issues/20
+
+        Returns:
+            bool: True if types exist
+        """
+        return self._d_types_fwd and len(self._d_types_fwd)
+
+    def _has_types_rev(self) -> bool:
+        """ No Types Exist
+        This result is unusual outside of unit-testing; but could happen
+
+        It is possible to have a "flat" Taxonomy within the OWL model
+            where no parent/child (rdfs:subClassOf) relationships exist
+
+        Reference:    
+            https://github.com/grafflr/deepnlu/issues/20
+
+        Returns:
+            bool: True if types exist
+        """
+        return self._d_types_rev and len(self._d_types_rev)
+
     def has_parent(self,
                    input_text: str,
                    parent: str) -> bool:
@@ -80,18 +110,35 @@ class FindTypes(BaseObject):
         Returns:
             bool: True if the concept exists in the Ontology
         """
+
+        if not self._has_types_fwd() and not self._has_types_rev():
+            return False
+
         input_text = input_text.lower().strip()
         if ' ' in input_text:
             input_text = input_text.replace(' ', '_')
 
-        if input_text in self._d_types_fwd:
+        if self._has_types_fwd() and input_text in self._d_types_fwd:
             return True
-        if input_text in self._d_types_rev:
+        if self._has_types_rev() and input_text in self._d_types_rev:
             return True
+
         return bool(len(self.parents(input_text)))
 
     def children(self,
                  input_text: str) -> list:
+        """ Return the Children for an Entity
+
+        Args:
+            input_text (str): the input entity
+
+        Returns:
+            list: the list of results (if any)
+        """
+
+        if not self._has_types_rev():
+            return []
+
         input_text = input_text.lower().strip()
 
         if input_text in self._d_types_rev:
@@ -102,8 +149,27 @@ class FindTypes(BaseObject):
 
         return []
 
+    def children_and_self(self,
+                          input_text: str) -> list:
+        s = set()
+        s.add(input_text)
+        [s.add(x) for x in self.children(input_text)]
+        return sorted(s)
+
     def descendants(self,
                     input_text: str) -> list:
+        """ Return the Descendants for an Entity
+
+        Args:
+            input_text (str): the input entity
+
+        Returns:
+            list: the list of results (if any)
+        """
+
+        if not self._has_types_rev():
+            return []
+
         results = []
         input_text = input_text.lower().strip()
 
@@ -129,7 +195,20 @@ class FindTypes(BaseObject):
 
     def parents(self,
                 input_text: str) -> list:
+        """ Return the Parents for an Entity
+
+        Args:
+            input_text (str): the input entity
+
+        Returns:
+            list: the list of results (if any)
+        """
+
+        if not self._has_types_fwd():
+            return []
+
         input_text = input_text.lower().strip()
+
         if input_text in self._d_types_fwd:
             return self._d_types_fwd[input_text]
 
@@ -147,6 +226,18 @@ class FindTypes(BaseObject):
 
     def ancestors(self,
                   input_text: str) -> list:
+        """ Return the Ancestors for an Entity
+
+        Args:
+            input_text (str): the input entity
+
+        Returns:
+            list: the list of results (if any)
+        """
+
+        if not self._has_types_fwd():
+            return []
+
         results = []
         input_text = input_text.lower().strip()
 

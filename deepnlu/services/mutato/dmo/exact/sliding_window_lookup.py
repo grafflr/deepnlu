@@ -3,7 +3,7 @@
 """ Filter Extracted Candidate against known KBs """
 
 
-import logging
+from pprint import pprint
 from pprint import pformat
 
 from baseblock import Stopwatch
@@ -17,11 +17,17 @@ class SlidingWindowLookup(BaseObject):
                  candidates: list,
                  gram_size: int,
                  d_runtime_kb: dict):
-        """
+        """ Change History:
+
         Created:
             8-Oct-2021
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/14#issuecomment-939029052
+
+        Args:
+            candidates (list): _description_
+            gram_size (int): _description_
+            d_runtime_kb (dict): _description_
         """
         BaseObject.__init__(self, __name__)
         self._gram_size = gram_size

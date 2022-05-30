@@ -32,6 +32,27 @@ class TestFindOntologyData(object):
         Enforcer.is_optional_dict(self.bp.types())
         Enforcer.is_optional_dict(self.bp.types_rev())
 
+        Enforcer.is_bool(self.bp.has_parent('alpha', 'beta'))
+        Enforcer.is_bool(self.bp.has_ancestor('alpha', 'beta'))
+
+        Enforcer.is_bool(self.bp.entity_exists('nowayjoseicantexist'))
+
+        Enforcer.is_optional_list(self.bp.children('test_entity_1'))
+
+        Enforcer.is_optional_list(self.bp.descendants('test_entity_1'))
+        Enforcer.is_optional_list(
+            self.bp.descendants_and_self('test_entity_1'))
+
+        Enforcer.is_optional_list(self.bp.parents('test_entity_1'))
+        Enforcer.is_optional_list(self.bp.parents_and_self('test_entity_1'))
+
+        Enforcer.is_optional_list(self.bp.ancestors('test_entity_1'))
+        Enforcer.is_optional_list(self.bp.ancestors_and_self('test_entity_1'))
+
+    def find_uses(self):
+        Enforcer.is_optional_dict(self.bp.uses())
+        Enforcer.is_optional_dict(self.bp.uses_rev())
+
     def find_effects(self):
         Enforcer.is_optional_dict(self.bp.effects())
         Enforcer.is_optional_dict(self.bp.effects_rev())
@@ -80,11 +101,12 @@ class TestFindOntologyData(object):
 
 def runner(ontology_name: str) -> None:
     bp = TestFindOntologyData(ontology_name)
+    bp.lookup()
     bp.find_comments()
     bp.find_labels()
     bp.find_types()
+    bp.find_uses()
     bp.find_effects()
-    bp.lookup()
     bp.synonyms()
     bp.spans()
     bp.trie()

@@ -104,7 +104,6 @@ class LoadSynonyms(BaseObject):
         elif len(results) == 1:
             return results[0]
 
-        print(">> ", results)
         return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
 
     @lru_cache
