@@ -5,6 +5,7 @@
 
 from functools import lru_cache
 
+from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
@@ -52,14 +53,15 @@ class Segmenter(BaseObject):
                     Each inner list contains 1..* sentences
         """
 
-        if type(input_text) != str:
-            raise ValueError
+        if self.isEnabledForDebug:
+            Enforcer.str(input_text)
 
         sw = Stopwatch()
 
         paragraphs = self._input_text(input_text)
 
-        self.logger.info('\n'.join([
+        if self.isEnabledForInfo:
+            self.logger.info('\n'.join([
             "Segmentation of Input Text Complete",
             f"\tTotal Paragraphs: {len(paragraphs)}",
             f"\tTotal Time: {str(sw)}"]))

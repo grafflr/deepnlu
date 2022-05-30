@@ -200,6 +200,19 @@
 
 
 
+###  http://graffl.ai/unitest#Alpha
+
+:Alpha rdf:type owl:Class ;
+       
+       rdfs:label "Alpha" ;
+       
+       rdfs:seeAlso "Alpha1,Alpha2,Alpha3" ,
+                    "Alpha5" ,
+                    "Alpha4" ,
+                    "Alpha6" .
+
+
+
 ###  http://graffl.ai/unitest#American
 
 :American rdf:type owl:Class ;
@@ -496,8 +509,8 @@
                    rdfs:subClassOf :Health_Care_Education ,
                                    :Training ;
                    
-                   rdfs:seeAlso "Advanced Clinical Training" ,
-                                "clinical course" .
+                   rdfs:seeAlso "clinical course" ,
+                                "Advanced Clinical Training" .
 
 
 
@@ -648,9 +661,9 @@
                  
                  rdfs:subClassOf :Diploma ;
                  
-                 rdfs:seeAlso "doctoral" ,
-                              "phd" ,
-                              "doctoral degree program" .
+                 rdfs:seeAlso "doctoral degree program" ,
+                              "doctoral" ,
+                              "phd" .
 
 
 
@@ -1229,10 +1242,11 @@
                     
                     rdfs:subClassOf :Advanced_Practice_Registered_Nurse ;
                     
+                    rdfs:seeAlso "NPs" ;
+                    
                     rdfs:isDefinedBy "https://onlinedegrees.und.edu/blog/nurse-practitioner-vs-rn/" ;
                     
-                    rdfs:seeAlso "NPs" ,
-                                 "NP" .
+                    rdfs:seeAlso "NP" .
 
 
 
@@ -1286,9 +1300,9 @@
                 
                 rdfs:subClassOf :School ;
                 
-                :implies :Nurse_Educator ;
-                
                 :requires :Nurse_Educator ;
+                
+                :implies :Nurse_Educator ;
                 
                 :meansOf :Nursing_Education .
 
@@ -1770,8 +1784,7 @@
 
 :Rule rdf:type owl:Class ;
       
-      rdfs:label """Rule
-""" ;
+      rdfs:label "Rule" ;
       
       rdfs:subClassOf :Artifact ;
       

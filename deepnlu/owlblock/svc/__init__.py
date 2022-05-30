@@ -4,3 +4,4 @@ from .query_ner_taxo import QueryNerTaxo
 from .find_ner import FindNER
 from .find_synonyms import FindSynonyms
 from .find_types import FindTypes
+from .load_synonyms import LoadSynonyms

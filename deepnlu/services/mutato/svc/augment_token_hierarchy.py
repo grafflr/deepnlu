@@ -44,8 +44,6 @@ class AugmentTokenHierarchy(BaseObject):
     def _process(self,
                  tokens: list) -> list:
         for token in tokens:
-
-            print (">>> TOKEN: ", token)
             token['ancestors'] = self._find_ancestors(token['normal'])
             token['descendants'] = self._find_descendants(
                 token['normal'])

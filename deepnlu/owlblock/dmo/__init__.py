@@ -3,3 +3,4 @@ from .view_generator_nerlabel import ViewGeneratorNerLabel
 from .view_generator_nertaxo import ViewGeneratorNerTaxo
 from .model_result_merge import ModelResultMerge
 from .ner_pallete_lookup import NerPalleteLookup
+from .external_synonym_loader import ExternalSynonymLoader

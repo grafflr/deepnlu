@@ -17,6 +17,7 @@ from deepnlu.owlblock.svc import QueryNerTaxo
 from deepnlu.owlblock.svc import FindNER
 from deepnlu.owlblock.svc import FindSynonyms
 from deepnlu.owlblock.svc import FindTypes
+from deepnlu.owlblock.svc import LoadSynonyms
 
 from deepnlu.owlblock.dmo import ModelResultMerge
 from deepnlu.owlblock.dmo import NerPalleteLookup
@@ -53,6 +54,10 @@ class FindOntologyData(BaseObject):
         self._query_ner_label = QueryNerLabel(self._d_ontologies).process
         self._query_ner_depth = QueryNerDepth(self._d_ontologies).process
         self._query_ner_taxo = QueryNerTaxo(self._d_ontologies).process
+
+        self._load_synonyms = LoadSynonyms(
+            d_ontologies=self._d_ontologies,
+            model_result_merge=self._merge)
 
         self._find_synonyms = FindSynonyms(
             d_synonyms_fwd=self.synonyms(),
@@ -296,29 +301,21 @@ class FindOntologyData(BaseObject):
         """
         return sorted(self.spans().keys(), key=len)
 
-    @lru_cache
     def synonyms(self) -> dict:
-        results = []
-        for ontology_name in self._d_ontologies:
-            results.append(self._d_ontologies[ontology_name].synonyms())
+        """ Return Synonyms keyed by Entity Name
 
-        if not results:
-            return None
-        elif len(results) == 1:
-            return results[0]
-        return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
+        Returns:
+            dict: dictionary of entities associated to a list of zero-or-more synonyms
+        """
+        return self._load_synonyms.synonyms()
 
-    @lru_cache
     def synonyms_rev(self) -> dict:
-        results = []
-        for ontology_name in self._d_ontologies:
-            results.append(self._d_ontologies[ontology_name].synonyms_rev())
+        """ Return Entities keyed by Synonyms
 
-        if not results:
-            return None
-        elif len(results) == 1:
-            return results[0]
-        return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
+        Returns:
+            dict: dictionary of synonyms associated to a list of one-or-more entities
+        """
+        return self._load_synonyms.synonyms_rev()
 
     @lru_cache
     def trie(self) -> dict:

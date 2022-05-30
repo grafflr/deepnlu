@@ -55,6 +55,11 @@ class SwapTokenGenerator(BaseObject):
         if ner:
             ner = ner.upper()
 
+        def get_ontologies() -> list:
+            if type(self._ontologies) == list:
+                return self._ontologies
+            return [self._ontologies]
+
         return {
             'id': tokens[0]['id'],
             'x': tokens[0]['x'],
@@ -66,7 +71,7 @@ class SwapTokenGenerator(BaseObject):
                 "tokens": tokens,
                 "canon": canon,
                 "type": swap_type,
-                "ontologies": [self._ontologies],
+                "ontologies": get_ontologies(),
                 "confidence": confidence
             }
         }

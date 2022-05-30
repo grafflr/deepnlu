@@ -16,7 +16,6 @@ else
 	popd_cmd := popd
 	copy_lib := scripts/copy.sh
 endif
-
 # ----------------------------------------------------------------
 
 # Build Commands -------------------------------------------------
@@ -46,9 +45,8 @@ all:
 	poetry run python -m pip install --upgrade pip
 # -----------------------------------------------------------------
 
-# DEBUG Commands --------------------------------------------------
-info:
-	echo $(detected_OS)
-	echo $(os_string)
-	echo $(SHELL)
-# -----------------------------------------------------------------
+askowl:
+	$(os_shell) $(rm_lib_sh) "askowl"
+	poetry install
+	poetry build
+

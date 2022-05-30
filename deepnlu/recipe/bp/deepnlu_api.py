@@ -97,7 +97,7 @@ class DeepNluAPI(BaseObject):
             Enforcer.is_list(ontologies)
 
         finder = FindOntologyData(
-            ontologies=['chitchat'],
+            ontologies=ontologies,
             absolute_path=absolute_path)
 
         svc = ParseTextOneShot(finder)
