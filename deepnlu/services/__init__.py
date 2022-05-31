@@ -6,3 +6,4 @@ from .segmenter import *
 from .spacyparse import *
 from .stemmer import *
 from .tokenizer import *
+from .graphviz import *

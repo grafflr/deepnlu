@@ -1,0 +1,80 @@
+---
+nodes:
+  default:
+    size: 800,800
+    shape: box
+    colorscheme: oranges9
+    color: "7"
+    style: solid
+    fontcolor: black
+    fontsize: "10"
+  source:
+    size: 800,800
+    shape: component
+    color: darkorange2
+    style: solid
+    fontcolor: black
+    fontsize: "10"
+  text:
+    size: 800,800
+    shape: note
+    colorscheme: oranges9
+    color: "4"
+    style: solid
+    fontcolor: black
+    fontsize: "10"
+edges:
+  default:
+    colorscheme: paired9
+    color: "2"
+    arrowhead: vee
+    style: solid
+    arrowsize: "0.75"
+    fontsize: "8"
+    display_label: false
+  requires:
+    colorscheme: set28
+    color: "1"
+    arrowhead: vee
+    style: solid
+    arrowsize: "0.75"
+    fontsize: "8"
+    fontcolorscheme: set28
+    fontcolor: "1"
+    fontname: arial
+    label: "requires"
+    display_label: true
+  implies:
+    colorscheme: set28
+    color: "3"
+    arrowhead: vee
+    style: solid
+    arrowsize: "0.75"
+    fontsize: "8"
+    fontcolorscheme: set28
+    fontcolor: "1"
+    fontname: arial
+    label: "implies"
+    display_label: true
+  descendant:
+    colorscheme: set311
+    color: "10"
+    arrowhead: vee
+    style: dotted
+    arrowsize: "0.75"
+    fontsize: "8"
+    fontcolor: bisque4
+    fontname: arial
+    # label: subClassOf
+    display_label: false
+  ancestor:
+    colorscheme: set28
+    color: "7"
+    arrowhead: vee
+    style: dotted
+    arrowsize: "0.75"
+    fontsize: "8"
+    fontcolor: bisque4
+    fontname: arial
+    # label: subClassOf
+    display_label: false
