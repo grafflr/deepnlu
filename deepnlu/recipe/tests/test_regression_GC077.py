@@ -14,8 +14,8 @@ assert api
 
 def test_process():
     """ Test Entity Spans
-    
-    Reference:
+
+    Regression Test Reference:
         https://github.com/grafflr/graffl-core/issues/77
     """
 
@@ -25,7 +25,7 @@ def test_process():
 
     svcresult = api.handle_text(
         input_text="the president of Maryville university said this!",
-        ontologies=['spantest'],
+        ontologies=['TestGC077'],
         absolute_path=absolute_path)
 
     csvresult = api.to_csv(svcresult, include_position=False)
