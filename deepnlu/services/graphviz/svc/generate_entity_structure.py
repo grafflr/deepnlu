@@ -38,15 +38,46 @@ class GenerateEntityStructure(BaseObject):
             craig@grafflr.ai
             *   migrated from graffl-core
                 https://github.com/grafflr/graffl-core/issues/418
+        Updated:
+            1-Jun-2022
+            craig@grafflr.ai
+            *   add 'center-node-name' param
+                https://github.com/grafflr/deepnlu/issues/25
+
+        Args:
+            find_ontology_data (FindOntologyData): _description_
+            find_all_relationships (Callable): _description_
         """
         BaseObject.__init__(self, __name__)
         self._find_ontology_data = find_ontology_data
         self._find_all_relationships = find_all_relationships
 
     def process(self,
-                entity_names: list) -> list:
+                entity_names: list,
+                center_node_name: str = None) -> list:
+        """ Visualize Extracted Entities in a Graph
+
+        Args:
+            entity_names (list): the entity names to visualize in the graph
+            center_node_name (str, optional): the center node of the graph. Defaults to None.
+                Reference: https://github.com/grafflr/deepnlu/issues/25
+
+        Returns:
+            Digraph: the Graphviz graph
+        """
 
         results = []
+
+        if center_node_name:  # DEEPNLU-25
+            for entity_name in entity_names:
+                results.append({
+                    "Subject": center_node_name,
+                    "Predicate": 'attains',
+                    "Object": entity_name,
+                    "Ontology": self._find_ontology_data.ontologies()[0],
+                    "Depth": 1,
+                })
+
         for entity_name in entity_names:
             [results.append(x) for x in
                 self._find_all_relationships(entity_name=entity_name,

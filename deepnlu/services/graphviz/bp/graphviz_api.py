@@ -29,6 +29,11 @@ class GraphvizAPI(BaseObject):
             craig@grafflr.ai
             *   migrate to deepnlu and update absolute path
                 https://github.com/grafflr/graffl-core/issues/418
+        Updated:
+            1-Jun-2022
+            craig@grafflr.ai
+            *   add 'center-node-name' param
+                https://github.com/grafflr/deepnlu/issues/25
 
         Args:
             find_ontology_data (FindOntologyData): an instantiation of the class
@@ -37,7 +42,18 @@ class GraphvizAPI(BaseObject):
         self._find_ontology_data = find_ontology_data
 
     def generate(self,
-                 entity_names: list) -> Digraph:
+                 entity_names: list,
+                 center_node_name: str = None) -> Digraph:
+        """ Visualize Extracted Entities in a Graph
+
+        Args:
+            entity_names (list): the entity names to visualize in the graph
+            center_node_name (str, optional): the center node of the graph. Defaults to None.
+                Reference: https://github.com/grafflr/deepnlu/issues/25
+
+        Returns:
+            Digraph: the Graphviz graph
+        """
 
         find_all_relationships = FindAllRelationships(
             self._find_ontology_data).find
@@ -50,6 +66,11 @@ class GraphvizAPI(BaseObject):
         generate_graph = GenerateEntityGraph(
             absolute_path=self._find_ontology_data.absolute_path()).process
 
-        d_result = generate_structure(entity_names)
+        if center_node_name and center_node_name in entity_names:
+            entity_names = [x for x in entity_names if x != center_node_name]
+
+        d_result = generate_structure(
+            entity_names=entity_names,
+            center_node_name=center_node_name)
 
         return generate_graph(d_result)
