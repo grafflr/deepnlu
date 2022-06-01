@@ -661,9 +661,11 @@
                  
                  rdfs:label "Student Athlete" ;
                  
-                 rdfs:subClassOf :Role ;
+                 rdfs:subClassOf :Athlete ,
+                                 :Student ;
                  
-                 rdfs:seeAlso "student-athlete" .
+                 rdfs:seeAlso "Student - Athlete" ,
+                              "Student-Athlete" .
 
 
 

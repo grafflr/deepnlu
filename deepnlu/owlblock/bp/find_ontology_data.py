@@ -48,6 +48,8 @@ class FindOntologyData(BaseObject):
             Enforcer.is_list(ontologies)
 
         self._ontologies = ontologies
+        self._absolute_path = absolute_path
+
         self._d_ontologies = self._load(
             ontologies=ontologies,
             absolute_path=absolute_path)
@@ -72,6 +74,9 @@ class FindOntologyData(BaseObject):
 
     def ontologies(self) -> list:
         return self._ontologies
+
+    def absolute_path(self) -> str:
+        return self._absolute_path
 
     def find_all_relationships(self,
                                entities: list) -> list:
@@ -142,10 +147,28 @@ class FindOntologyData(BaseObject):
         return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
 
     def effects(self) -> dict:
+        """ Find Effects Relationships
+
+        Sample:
+            Given   ?a effects ?b
+            Return  ?a : [?b]
+
+        Returns:
+            list or None: a list of zero-or-more entities that the incoming entity effects
+        """
         return self._by_predicate('effects')
 
     @lru_cache
     def effects_rev(self) -> dict:
+        """ Find Effected By relationships
+
+        Sample:
+            Given   ?a effected by ?b
+            Return  ?b : [?a]
+
+        Returns:
+            dict: reverse of effected by function
+        """
         return self._by_predicate_rev('effects')
 
     @lru_cache
@@ -157,23 +180,9 @@ class FindOntologyData(BaseObject):
             Return  ?a : [?b]
 
         Returns:
-            dict: _description_
+            list or None: a list of zero-or-more entities that the incoming entity requires
         """
         return self._by_predicate('requires')
-
-    def requires_by_entity(self,
-                           input_text: str) -> list or None:
-        """ Retrict Requires Relationship to a Single Entity
-
-        Args:
-            input_text (str): the entity to search for
-
-        Returns:
-            list or None: a list of zero-or-more the incoming entity requires
-        """
-        input_text = self._to_entity_name(input_text)
-        if input_text in self.requires():
-            return self.requires()[input_text]
 
     @lru_cache
     def required_by(self) -> dict:
@@ -188,6 +197,20 @@ class FindOntologyData(BaseObject):
         """
         return self._by_predicate_rev('requires')
 
+    def requires_by_entity(self,
+                           input_text: str) -> list or None:
+        """ Retrict Requires Relationship to a Single Entity
+
+        Args:
+            input_text (str): the entity to search for
+
+        Returns:
+            list or None: a list of zero-or-more the incoming entity requires
+        """
+        input_text = self._to_entity_name(input_text)
+        if self.requires() and input_text in self.requires():
+            return self.requires()[input_text]
+
     def required_by_entity(self,
                            input_text: str) -> list or None:
         """ Retrict Required-By Relationship to a Single Entity
@@ -199,7 +222,7 @@ class FindOntologyData(BaseObject):
             list or None: a list of zero-or-more entities that the incoming entity is required by
         """
         input_text = self._to_entity_name(input_text)
-        if input_text in self.required_by():
+        if self.required_by() and input_text in self.required_by():
             return self.required_by()[input_text]
 
     @lru_cache

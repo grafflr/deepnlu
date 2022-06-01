@@ -24,6 +24,14 @@ class GraphvizAPI(BaseObject):
             5-Nov-2021
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/102
+        Updated:
+            31-May-2022
+            craig@grafflr.ai
+            *   migrate to deepnlu and update absolute path
+                https://github.com/grafflr/graffl-core/issues/418
+
+        Args:
+            find_ontology_data (FindOntologyData): an instantiation of the class
         """
         BaseObject.__init__(self, __name__)
         self._find_ontology_data = find_ontology_data
@@ -39,7 +47,8 @@ class GraphvizAPI(BaseObject):
             find_all_relationships=find_all_relationships,
         ).process
 
-        generate_graph = GenerateEntityGraph().process
+        generate_graph = GenerateEntityGraph(
+            absolute_path=self._find_ontology_data.absolute_path()).process
 
         d_result = generate_structure(entity_names)
 

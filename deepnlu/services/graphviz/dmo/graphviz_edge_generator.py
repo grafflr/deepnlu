@@ -23,6 +23,11 @@ class GraphvizEdgeGenerator(BaseObject):
             8-Nov-2021
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/102
+        Created:
+            31-May-2022
+            craig@grafflr.ai
+            *   refactored to return 'default' if no style found in pursuit of
+                https://github.com/grafflr/deepnlu/issues/23
 
         Args:
             graph (Digraph): the instantiated graph model
@@ -32,67 +37,54 @@ class GraphvizEdgeGenerator(BaseObject):
         self._graph = graph
         self._d_style = d_style
 
-    def _validate_styles(self,
-                         edges: List[dict]) -> None:
-        """ Validate that incoming Edges have corresponding Stylesheet definitions
+    def _get_edge_style(self,
+                        d_edge: dict) -> str:
+        if d_edge['Predicate'].lower() in self._d_style:
+            return deepcopy(self._d_style[d_edge['Predicate'].lower()])
 
-        Args:
-            edges (List[dict]): the incoming edges
+        if 'default' in self._d_style:
+            return deepcopy(self._d_style['default'])
 
-        Raises:
-            ValueError: the Stylesheet is missing an edge type
-        """
+        self.logger.error('\n'.join([
+            "Node Style Not Found",
+            f"\tNode Style: {d_edge['style']}",
+            f"\tNo Default Style Defined",
+            f"\tKnown Styles: {sorted(self._d_style.keys())}"]))
 
-        for edge in edges:
+        raise ValueError('Edge Style Exception')
 
-            if 'style' not in edge:
-                self.logger.error('\n'.join([
-                    "Edge Style Not Defined",
-                    f"\tEdge: {edge}"]))
-                raise ValueError('Edge Style Exception')
+    def _get_edge_label(self,
+                        d_edge: dict,
+                        d_style: dict) -> str:
 
-            if edge['style'] not in self._d_style:
-                self.logger.error('\n'.join([
-                    "Edge Style Not Found",
-                    f"\tEdge Style: {edge['style']}",
-                    f"\tKnown Styles: {sorted(self._d_style.keys())}"]))
-                raise ValueError('Edge Style Exception')
+        # should the label be displayed along the edge?
+        if 'display_label' in d_style:
+            result = d_style['display_label']
+            del d_style['display_label']
+            if not result:
+                return ""
+
+        # the preferred display label in the stylesheet
+        if 'label' in d_style:
+            result = d_style['label']
+            del d_style['label']
+            return result
+
+        return d_edge['label']
 
     def process(self,
                 edges: list) -> Digraph:
 
-        self._validate_styles(edges)
+        for d_edge in edges:
 
-        for edge in edges:
+            d_style = self._get_edge_style(d_edge)
 
-            def get_style() -> dict:
-                return deepcopy(self._d_style[edge['Predicate'].lower()])
-
-            d_style = get_style()
-
-            def label() -> bool:
-
-                # should the label be displayed along the edge?
-                if 'display_label' in d_style:
-                    result = d_style['display_label']
-                    del d_style['display_label']
-                    if not result:
-                        return ""
-
-                # the preferred display label in the stylesheet
-                if 'label' in d_style:
-                    result = d_style['label']
-                    del d_style['label']
-                    return result
-
-                return edge['label']
-
-            edge_label = label()
+            edge_label = self._get_edge_label(
+                d_edge=d_edge,
+                d_style=d_style)
 
             def get_tail_head() -> tuple:
-                # if edge['Predicate'].lower() == 'ancestor':
-                #     return edge['Object'], edge['Subject']
-                return edge['Subject'], edge['Object']
+                return d_edge['Subject'], d_edge['Object']
 
             tail_name, head_name = get_tail_head()
 

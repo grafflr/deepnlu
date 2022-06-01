@@ -17,7 +17,8 @@ from deepnlu.services.graphviz.dmo import GraphvizNodeGenerator
 class GenerateEntityGraph(BaseObject):
     """ Structure NER Graph """
 
-    def __init__(self):
+    def __init__(self,
+                 absolute_path: str):
         """ Change History
 
         Created:
@@ -25,9 +26,19 @@ class GenerateEntityGraph(BaseObject):
             craig@grafflr.ai
             *   cloned from 'generate-ner-graph'
                 https://github.com/grafflr/graffl-core/issues/384
+        Updated:
+            31-May-2022
+            craig@grafflr.ai
+            *   migrate to deepnlu and update absolute path
+                https://github.com/grafflr/graffl-core/issues/418
+
+        Args:
+            absolute_path (str): the absolute path to the location of the stylesheet resource
         """
         BaseObject.__init__(self, __name__)
-        self._d_style = GraphvizStyleLoader('nlu').style()
+        self._d_style = GraphvizStyleLoader(
+            stylesheet_name='nlu',
+            absolute_path=absolute_path).style()
 
     def process(self,
                 entities: list) -> Digraph:
