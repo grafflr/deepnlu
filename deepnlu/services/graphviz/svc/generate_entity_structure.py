@@ -38,15 +38,57 @@ class GenerateEntityStructure(BaseObject):
             craig@grafflr.ai
             *   migrated from graffl-core
                 https://github.com/grafflr/graffl-core/issues/418
+        Updated:
+            1-Jun-2022
+            craig@grafflr.ai
+            *   add 'center-node-name' param
+                https://github.com/grafflr/deepnlu/issues/25
+
+        Args:
+            find_ontology_data (FindOntologyData): _description_
+            find_all_relationships (Callable): _description_
         """
         BaseObject.__init__(self, __name__)
         self._find_ontology_data = find_ontology_data
         self._find_all_relationships = find_all_relationships
 
     def process(self,
-                entity_names: list) -> list:
+                entity_names: list,
+                enforced_triples: list = None) -> list:
+        """ Visualize Extracted Entities in a Graph
+
+        Args:
+            entity_names (list): the entity names to visualize in the graph
+            enforced_triples (list, optional): a set of enforced relationships that aren't found in the data. Defaults to None.
+                each item in the list is a tuple of (S,P,O)
+                Reference: https://github.com/grafflr/deepnlu/issues/25#issuecomment-1144190779
+
+        Returns:
+            Digraph: the Graphviz graph
+        """
 
         results = []
+
+        # if center_node_name:  # DEEPNLU-25
+        #     for entity_name in entity_names:
+        #         results.append({
+        #             "Subject": center_node_name,
+        #             "Predicate": 'attains',
+        #             "Object": entity_name,
+        #             "Ontology": self._find_ontology_data.ontologies()[0],
+        #             "Depth": 1,
+        #         })
+
+        if enforced_triples:
+            for enforced_triple in enforced_triples:
+                results.append({
+                    "Subject": enforced_triple[0],
+                    "Predicate": enforced_triple[1],
+                    "Object": enforced_triple[2],
+                    "Ontology": "enforced-triple",
+                    "Depth": 1,
+                })
+
         for entity_name in entity_names:
             [results.append(x) for x in
                 self._find_all_relationships(entity_name=entity_name,

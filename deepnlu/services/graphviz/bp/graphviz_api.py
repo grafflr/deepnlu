@@ -29,6 +29,11 @@ class GraphvizAPI(BaseObject):
             craig@grafflr.ai
             *   migrate to deepnlu and update absolute path
                 https://github.com/grafflr/graffl-core/issues/418
+        Updated:
+            1-Jun-2022
+            craig@grafflr.ai
+            *   add 'center-node-name' param
+                https://github.com/grafflr/deepnlu/issues/25
 
         Args:
             find_ontology_data (FindOntologyData): an instantiation of the class
@@ -37,7 +42,19 @@ class GraphvizAPI(BaseObject):
         self._find_ontology_data = find_ontology_data
 
     def generate(self,
-                 entity_names: list) -> Digraph:
+                 entity_names: list,
+                 enforced_triples: str = None) -> Digraph:
+        """ Visualize Extracted Entities in a Graph
+
+        Args:
+            entity_names (list): the entity names to visualize in the graph
+            enforced_triples (list, optional): a set of enforced relationships that aren't found in the data. Defaults to None.
+                each item in the list is a tuple of (S,P,O)
+                Reference: https://github.com/grafflr/deepnlu/issues/25#issuecomment-1144190779
+
+        Returns:
+            Digraph: the Graphviz graph
+        """
 
         find_all_relationships = FindAllRelationships(
             self._find_ontology_data).find
@@ -50,6 +67,8 @@ class GraphvizAPI(BaseObject):
         generate_graph = GenerateEntityGraph(
             absolute_path=self._find_ontology_data.absolute_path()).process
 
-        d_result = generate_structure(entity_names)
+        d_result = generate_structure(
+            entity_names=entity_names,
+            enforced_triples=enforced_triples)
 
         return generate_graph(d_result)
