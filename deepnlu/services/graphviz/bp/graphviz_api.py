@@ -43,13 +43,14 @@ class GraphvizAPI(BaseObject):
 
     def generate(self,
                  entity_names: list,
-                 center_node_name: str = None) -> Digraph:
+                 enforced_triples: str = None) -> Digraph:
         """ Visualize Extracted Entities in a Graph
 
         Args:
             entity_names (list): the entity names to visualize in the graph
-            center_node_name (str, optional): the center node of the graph. Defaults to None.
-                Reference: https://github.com/grafflr/deepnlu/issues/25
+            enforced_triples (list, optional): a set of enforced relationships that aren't found in the data. Defaults to None.
+                each item in the list is a tuple of (S,P,O)
+                Reference: https://github.com/grafflr/deepnlu/issues/25#issuecomment-1144190779
 
         Returns:
             Digraph: the Graphviz graph
@@ -66,11 +67,8 @@ class GraphvizAPI(BaseObject):
         generate_graph = GenerateEntityGraph(
             absolute_path=self._find_ontology_data.absolute_path()).process
 
-        if center_node_name and center_node_name in entity_names:
-            entity_names = [x for x in entity_names if x != center_node_name]
-
         d_result = generate_structure(
             entity_names=entity_names,
-            center_node_name=center_node_name)
+            enforced_triples=enforced_triples)
 
         return generate_graph(d_result)
