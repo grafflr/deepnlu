@@ -25,6 +25,11 @@ class GraphvizStyleLoader(BaseObject):
             9-Nov-2021
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/101
+        Updated:
+            31-May-2022
+            craig@grafflr.ai
+            *   migrate to deepnlu and update absolute path
+                https://github.com/grafflr/graffl-core/issues/418
 
         Args:
             stylesheet_name (str): name of the stylesheet that will be used
@@ -35,9 +40,13 @@ class GraphvizStyleLoader(BaseObject):
     def _load(self,
               stylesheet_name: str) -> dict:
 
+        # path = os.path.normpath(os.path.join(
+        #     EnvIO.str_or_exception('GRAFFLR_HOME'),
+        #     'apps/services/imaginor/resources'))
+
         path = os.path.normpath(os.path.join(
-            EnvIO.str_or_exception('GRAFFLR_HOME'),
-            'apps/services/imaginor/resources'))
+            os.getcwd(),
+            'resources'))
 
         files = FileIO.load_files(directory=path,
                                   extension="yaml")

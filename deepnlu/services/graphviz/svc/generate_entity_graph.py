@@ -9,9 +9,9 @@ from graphviz import Digraph
 from baseblock import BaseObject
 
 
-from imaginor.graphviz.dmo import GraphvizStyleLoader
-from imaginor.graphviz.dmo import GraphvizEdgeGenerator
-from imaginor.graphviz.dmo import GraphvizNodeGenerator
+from deepnlu.services.graphviz.dmo import GraphvizStyleLoader
+from deepnlu.services.graphviz.dmo import GraphvizEdgeGenerator
+from deepnlu.services.graphviz.dmo import GraphvizNodeGenerator
 
 
 class GenerateEntityGraph(BaseObject):

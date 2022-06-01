@@ -200,6 +200,20 @@
 
 
 
+###  http://graffl.ai/normal#Alpha
+
+:Alpha rdf:type owl:Class ;
+       
+       rdfs:label "Alpha" ;
+       
+       rdfs:subClassOf :Greek ;
+       
+       :requires :Beta ;
+       
+       :similarTo :Eta .
+
+
+
 ###  http://graffl.ai/normal#American
 
 :American rdf:type owl:Class ;
@@ -326,6 +340,18 @@
                   
                   rdfs:seeAlso "Bachelor Degree" ,
                                "baccalaureate level" .
+
+
+
+###  http://graffl.ai/normal#Beta
+
+:Beta rdf:type owl:Class ;
+      
+      rdfs:label "Beta" ;
+      
+      rdfs:subClassOf :Greek ;
+      
+      :requires :Gamma .
 
 
 
@@ -608,6 +634,16 @@
 
 
 
+###  http://graffl.ai/normal#Delta
+
+:Delta rdf:type owl:Class ;
+       
+       rdfs:label "Delta" ;
+       
+       rdfs:subClassOf :Greek .
+
+
+
 ###  http://graffl.ai/normal#Department
 
 :Department rdf:type owl:Class ;
@@ -625,6 +661,18 @@
              rdfs:label "Development" ;
              
              rdfs:subClassOf :Education .
+
+
+
+###  http://graffl.ai/normal#Digamma
+
+:Digamma rdf:type owl:Class ;
+         
+         rdfs:label "Digamma" ;
+         
+         rdfs:subClassOf :Greek ;
+         
+         :implies :Eta .
 
 
 
@@ -715,6 +763,28 @@
          rdfs:label "Empathy" ;
          
          rdfs:subClassOf :Soft_Skill .
+
+
+
+###  http://graffl.ai/normal#Epsilon
+
+:Epsilon rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Greek ;
+         
+         :requires "Epsilon" ;
+         
+         :implies :Beta .
+
+
+
+###  http://graffl.ai/normal#Eta
+
+:Eta rdf:type owl:Class ;
+     
+     rdfs:label "Eta" ;
+     
+     rdfs:subClassOf :Greek .
 
 
 
@@ -832,6 +902,18 @@
 
 
 
+###  http://graffl.ai/normal#Gamma
+
+:Gamma rdf:type owl:Class ;
+       
+       rdfs:label "Gamma" ;
+       
+       rdfs:subClassOf :Greek ;
+       
+       :requires :Delta .
+
+
+
 ###  http://graffl.ai/normal#Gender_Bias
 
 :Gender_Bias rdf:type owl:Class ;
@@ -849,6 +931,14 @@
                      rdfs:label "Geopolitical Entity" ;
                      
                      owl:backwardCompatibleWith "GEO"^^:spacyNER .
+
+
+
+###  http://graffl.ai/normal#Greek
+
+:Greek rdf:type owl:Class ;
+       
+       rdfs:label "Greek" .
 
 
 
@@ -1994,6 +2084,18 @@
            rdfs:subClassOf :Elapsed_Time ;
            
            rdfs:seeAlso "Temporarily" .
+
+
+
+###  http://graffl.ai/normal#Theta
+
+:Theta rdf:type owl:Class ;
+       
+       rdfs:label "Theta" ;
+       
+       rdfs:subClassOf :Greek ;
+       
+       :similarTo :Alpha .
 
 
 

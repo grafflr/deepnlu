@@ -5,23 +5,27 @@
 
 from uuid import uuid1
 from pprint import pprint
+from typing import Callable
 from graphviz import Digraph
 
 
 from baseblock import BaseObject
-from datablock import FindData
-from datablock import FindLabels
+# from datablock import FindData
+# from datablock import FindLabels
 
 
-from imaginor.graphviz.dmo import GraphvizStyleLoader
-from imaginor.graphviz.dmo import GraphvizEdgeGenerator
-from imaginor.graphviz.dmo import GraphvizNodeGenerator
+from deepnlu.owlblock.bp import FindOntologyData
+from deepnlu.services.graphviz.dmo import GraphvizStyleLoader
+from deepnlu.services.graphviz.dmo import GraphvizEdgeGenerator
+from deepnlu.services.graphviz.dmo import GraphvizNodeGenerator
 
 
 class GenerateEntityStructure(BaseObject):
     """ Generate a Graph Input Structure based on a list of entity name inputs """
 
-    def __init__(self):
+    def __init__(self,
+                 find_ontology_data: FindOntologyData,
+                 find_all_relationships: Callable):
         """ Change History
 
         Created:
@@ -29,33 +33,35 @@ class GenerateEntityStructure(BaseObject):
             craig@grafflr.ai
             *   cloned from 'generate-ner-graph'
                 https://github.com/grafflr/graffl-core/issues/384
+        Updated:
+            31-May-2022
+            craig@grafflr.ai
+            *   migrated from graffl-core
+                https://github.com/grafflr/graffl-core/issues/418
         """
         BaseObject.__init__(self, __name__)
-        self._find_data = FindData().find
+        self._find_ontology_data = find_ontology_data
+        self._find_all_relationships = find_all_relationships
 
     def process(self,
-                entity_names: list,
-                ontologies: list) -> list:
+                entity_names: list) -> list:
 
         results = []
-        for ontology_name in ontologies:
-            for entity_name in entity_names:
-                [results.append(x) for x in
-                 self._find_data(entity_name=entity_name,
-                                 ontology_name=ontology_name,
-                                 find_requires=True,
-                                 find_similar=True,
-                                 find_implies=True,
-                                 find_ancestors=True,
-                                 find_siblings=True,
-                                 find_descendants=True,
-                                 find_descendant_synonyms=False)]
+        for entity_name in entity_names:
+            [results.append(x) for x in
+                self._find_all_relationships(entity_name=entity_name,
+                                             find_requires=True,
+                                             find_similar=True,
+                                             find_implies=True,
+                                             find_ancestors=True,
+                                             find_descendants=True)]
 
         # add labels
         for result in results:
-            finder = FindLabels(result['Ontology'])
-            result['ObjectLabel'] = finder.label_or_self(result['Object'])
-            result['SubjectLabel'] = finder.label_or_self(result['Subject'])
+            result['ObjectLabel'] = self._find_ontology_data.label_by_entity(
+                result['Object'])
+            result['SubjectLabel'] = self._find_ontology_data.label_by_entity(
+                result['Subject'])
             result['style'] = result['Predicate'].lower().strip()
 
         # now we need to index this into

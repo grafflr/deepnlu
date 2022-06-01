@@ -142,7 +142,9 @@
           
           owl:backwardCompatibleWith "ACTIVITY"^^:grafflNER ;
           
-          rdfs:seeAlso "action" .
+          rdfs:seeAlso "action" ;
+          
+          :requires :Agent .
 
 
 
@@ -186,7 +188,9 @@
        
        rdfs:label "Agent" ;
        
-       owl:backwardCompatibleWith "AGENT"^^:grafflNER .
+       owl:backwardCompatibleWith "AGENT"^^:grafflNER ;
+       
+       :requires :Alpha .
 
 
 
@@ -209,7 +213,9 @@
        rdfs:seeAlso "Alpha1,Alpha2,Alpha3" ,
                     "Alpha5" ,
                     "Alpha4" ,
-                    "Alpha6" .
+                    "Alpha6" ;
+       
+       :requires :Artifact .
 
 
 
@@ -219,7 +225,11 @@
           
           rdfs:label "American" ;
           
-          rdfs:subClassOf :Nationality .
+          rdfs:subClassOf :Nationality ;
+          
+          :locatedIn :Condition ;
+          
+          :implies :Education .
 
 
 
@@ -268,7 +278,9 @@
           
           owl:backwardCompatibleWith "ARTIFACT"^^:grafflNER ;
           
-          rdfs:seeAlso "artefact" .
+          rdfs:seeAlso "artefact" ;
+          
+          :requires :Bias .
 
 
 
@@ -348,7 +360,9 @@
       
       rdfs:label "Bias" ;
       
-      owl:backwardCompatibleWith "BIAS"^^:grafflNER .
+      owl:backwardCompatibleWith "BIAS"^^:grafflNER ;
+      
+      :requires :Building .
 
 
 

@@ -78,3 +78,14 @@ edges:
     fontname: arial
     # label: subClassOf
     display_label: false
+  parent:
+    colorscheme: set28
+    color: "7"
+    arrowhead: vee
+    style: dotted
+    arrowsize: "0.75"
+    fontsize: "8"
+    fontcolor: bisque4
+    fontname: arial
+    # label: subClassOf
+    display_label: false

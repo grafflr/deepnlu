@@ -54,8 +54,8 @@ class GraphvizEdgeGenerator(BaseObject):
             if edge['style'] not in self._d_style:
                 self.logger.error('\n'.join([
                     "Edge Style Not Found",
-                    f"\tEdge: {edge}",
-                    f"\tStyle: {pformat(self._d_style)}"]))
+                    f"\tEdge Style: {edge['style']}",
+                    f"\tKnown Styles: {sorted(self._d_style.keys())}"]))
                 raise ValueError('Edge Style Exception')
 
     def process(self,

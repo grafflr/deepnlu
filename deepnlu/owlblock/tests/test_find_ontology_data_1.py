@@ -101,9 +101,9 @@ class TestFindOntologyData(object):
 
 def runner(ontology_name: str) -> None:
     bp = TestFindOntologyData(ontology_name)
+    bp.find_labels()
     bp.lookup()
     bp.find_comments()
-    bp.find_labels()
     bp.find_types()
     bp.find_uses()
     bp.find_effects()

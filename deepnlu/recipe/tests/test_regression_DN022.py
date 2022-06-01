@@ -32,6 +32,7 @@ def test_001():
 
     csvresult = api.to_csv(svcresult, include_position=False)
     entities = [x['Canon'] for x in csvresult]
+    print (entities)
 
     assert 'student_athlete_graduation_rate' in entities
 
@@ -46,6 +47,7 @@ def test_002():
 
     csvresult = api.to_csv(svcresult, include_position=False)
     entities = [x['Canon'] for x in csvresult]
+    print (entities)
 
     assert 'student_athlete_graduation_rate' in entities
 

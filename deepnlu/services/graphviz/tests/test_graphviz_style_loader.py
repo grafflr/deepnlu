@@ -3,7 +3,7 @@
 from baseblock import Enforcer
 
 
-from imaginor.graphviz.dmo import GraphvizStyleLoader
+from deepnlu.services.graphviz.dmo import GraphvizStyleLoader
 
 
 def test_component():
