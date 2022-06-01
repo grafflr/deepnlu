@@ -73,6 +73,10 @@ class FindOntologyData(BaseObject):
     def ontologies(self) -> list:
         return self._ontologies
 
+    def find_all_relationships(self,
+                               entities: list) -> list:
+        pass
+
     def _load(self,
               ontologies: list,
               absolute_path: str) -> dict:
@@ -83,13 +87,23 @@ class FindOntologyData(BaseObject):
                 absolute_path=absolute_path)
         return d
 
+    @staticmethod
+    def _to_entity_name(input_text: str) -> str:
+        input_text = input_text.lower().strip()
+        if ' ' in input_text:
+            input_text = input_text.replace(' ', '_')
+        return input_text
+
     @lru_cache
     def _by_predicate(self,
-                      predicate_name: str) -> dict:
+                      predicate_name: str,
+                      to_lowercase: bool = True) -> dict:
         results = []
         for ontology_name in self._d_ontologies:
             results.append(
-                self._d_ontologies[ontology_name].by_predicate(predicate_name))
+                self._d_ontologies[ontology_name].by_predicate(
+                    predicate=predicate_name,
+                    to_lowercase=to_lowercase))
 
         if not results:
             return None
@@ -99,11 +113,15 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def _by_predicate_rev(self,
-                          predicate_name: str) -> dict:
+                          predicate_name: str,
+                          to_lowercase: bool = True) -> dict:
         results = []
         for ontology_name in self._d_ontologies:
             results.append(
-                self._d_ontologies[ontology_name].by_predicate(predicate_name, reverse=True))
+                self._d_ontologies[ontology_name].by_predicate(
+                    reverse=True,
+                    predicate=predicate_name,
+                    to_lowercase=to_lowercase))
 
         if not results:
             return None
@@ -132,27 +150,170 @@ class FindOntologyData(BaseObject):
 
     @lru_cache
     def requires(self) -> dict:
+        """ Find Requires Relationships
+
+        Sample:
+            Given   ?a requires ?b
+            Return  ?a : [?b]
+
+        Returns:
+            dict: _description_
+        """
         return self._by_predicate('requires')
 
+    def requires_by_entity(self,
+                           input_text: str) -> list or None:
+        """ Retrict Requires Relationship to a Single Entity
+
+        Args:
+            input_text (str): the entity to search for
+
+        Returns:
+            list or None: a list of zero-or-more the incoming entity requires
+        """
+        input_text = self._to_entity_name(input_text)
+        if input_text in self.requires():
+            return self.requires()[input_text]
+
     @lru_cache
-    def requires_rev(self) -> dict:
+    def required_by(self) -> dict:
+        """ Find Required By relationships
+
+        Sample:
+            Given   ?a requires ?b
+            Return  ?b : [?a]
+
+        Returns:
+            dict: reverse of requires function
+        """
         return self._by_predicate_rev('requires')
+
+    def required_by_entity(self,
+                           input_text: str) -> list or None:
+        """ Retrict Required-By Relationship to a Single Entity
+
+        Args:
+            input_text (str): the entity to search for
+
+        Returns:
+            list or None: a list of zero-or-more entities that the incoming entity is required by
+        """
+        input_text = self._to_entity_name(input_text)
+        if input_text in self.required_by():
+            return self.required_by()[input_text]
 
     @lru_cache
     def similar(self) -> dict:
-        return self._by_predicate('similar')
+        """ Find Similar Relationships
+
+        Sample:
+            Given       ?a similar ?b
+            Return      ?a : [?b]
+
+        Returns:
+            list or None: a list of zero-or-more entities that the incoming entity is similar to
+        """
+        return self._by_predicate('similarTo')
 
     @lru_cache
     def similar_rev(self) -> dict:
-        return self._by_predicate_rev('similar')
+        """ Find Similar Inverse Relationships
+
+        Sample:
+            Given       ?a similar ?b
+            Return      ?b : [?a]
+
+        Returns:
+            list or None: a list of zero-or-more entities that the incoming entity is similar to
+       """
+        return self._by_predicate_rev('similarTo')
+
+    def similar_by_entity(self,
+                          input_text: str) -> dict:
+        """ Find Similarity Relationships on a per-Entity basis
+        This relationship is bi-directional
+
+        Sample:
+            Given       ?a similar ?b
+                        ?x similar ?a
+            Return      ?a : [?b, ?x]
+
+        Rationale:
+            if      ?x is similar to ?a
+            then    ?a is similar to ?x
+
+        Args:
+            input_text (str): the entity to search for
+
+        Returns:
+            list or None: a list of zero-or-more entities that the incoming entity is similar to
+        """
+        results = []
+        input_text = self._to_entity_name(input_text)
+
+        if self.similar() and input_text in self.similar():
+            [results.append(x) for x in self.similar()[input_text]]
+
+        if self.similar_rev() and input_text in self.similar_rev():
+            [results.append(x) for x in self.similar_rev()[input_text]]
+
+        return results
 
     @lru_cache
     def implies(self) -> dict:
+        """ Find Implied Relationships
+
+        Sample:
+            Given       ?a implies ?b
+            Return      ?a : [?b]
+
+        Returns:
+            list or None: a list of zero-or-more entities that the incoming entity implies
+        """
         return self._by_predicate('implies')
 
     @lru_cache
-    def implies_rev(self) -> dict:
+    def implies_by_entity(self,
+                          input_text: str) -> dict:
+        """ Retrict Implies Relationship to a Single Entity
+
+        Args:
+            input_text (str): the entity to search for
+
+        Returns:
+            list or None: a list of zero-or-more entities that the incoming entity implies
+        """
+        input_text = self._to_entity_name(input_text)
+        if self.implies() and input_text in self.implies():
+            return self.implies()[input_text]
+
+    @lru_cache
+    def implied_by(self) -> dict:
+        """ Find Implied By relationships
+
+        Sample:
+            Given   ?a requires ?b
+            Return  ?b : [?a]
+
+        Returns:
+            list or None: a list of zero-or-more entities that are implied by this entity 
+        """
         return self._by_predicate_rev('implies')
+
+    @lru_cache
+    def implied_by_entity(self,
+                          input_text: str) -> dict:
+        """ Retrict Implied By Relationship to a Single Entity
+
+        Args:
+            input_text (str): the entity to search for
+
+        Returns:
+            list or None: a list of zero-or-more entities that are implied by this entity 
+        """
+        input_text = self._to_entity_name(input_text)
+        if self.implied_by() and input_text in self.implied_by():
+            return self.implied_by()[input_text]
 
     @lru_cache(maxsize=512, typed=False)
     def is_canon(self,
@@ -247,12 +408,50 @@ class FindOntologyData(BaseObject):
         raise NotImplementedError
 
     @lru_cache
-    def labels(self) -> dict:
-        return self._by_predicate('rdfs:label')
+    def labels(self) -> dict or None:
+        """Find all the Labels keyed by Entity Name
+
+        Returns:
+            dict or None: a list of entity names with label string values
+        """
+        # the challenge with using 'to_lowercase=False' is that both the key and value retain their original case
+        d_labels = self._by_predicate('rdfs:label', to_lowercase=False)
+        if not d_labels or not len(d_labels):
+            return None
+
+        d = {}
+        for k in d_labels:
+            d[k.lower()] = d_labels[k]
+
+        return d
 
     @lru_cache
     def labels_rev(self) -> dict:
+        """Find all the Entity Names keyed by Label
+
+        Returns:
+            dict or None: a list of labels with entity name values
+        """
         return self._by_predicate_rev('rdfs:label')
+
+    def label_by_entity(self,
+                        input_text: str) -> str or None:
+        """Find the Label for a known Entity
+
+        Args:
+            input_text (str): any input string
+
+        Returns:
+            str or None: a label for the entity (if found)
+        """
+        input_text = self._to_entity_name(input_text)
+        if input_text not in self.labels():
+            pass
+
+        if input_text in self.labels():
+            results = self.labels()[input_text]
+            if results and len(results):
+                return results[0]
 
     @lru_cache
     def ner_taxonomy(self) -> dict:

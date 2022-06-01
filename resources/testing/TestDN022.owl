@@ -1,0 +1,712 @@
+@prefix : <http://graffl.ai/testdn022#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://graffl.ai/testdn022> .
+
+<http://graffl.ai/testdn022> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://graffl.ai/testdn022#implies
+
+:implies rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/testdn022#locatedIn
+
+:locatedIn rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/testdn022#meansOf
+
+:meansOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/testdn022#measures
+
+:measures rdf:type owl:AnnotationProperty ;
+          
+          rdfs:subPropertyOf :uses .
+
+
+
+###  http://graffl.ai/testdn022#partOf
+
+:partOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/testdn022#requires
+
+:requires rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/testdn022#similarTo
+
+:similarTo rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/testdn022#uses
+
+:uses rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/testdn022#worksIn
+
+:worksIn rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://graffl.ai/testdn022#caseSensitive
+
+:caseSensitive rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/testdn022#grafflNER
+
+:grafflNER rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/testdn022#grafflSLOT
+
+:grafflSLOT rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/testdn022#posNOUN
+
+:posNOUN rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/testdn022#posVERB
+
+:posVERB rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/testdn022#spacyNER
+
+:spacyNER rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/testdn022#spanDirection
+
+:spanDirection rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://graffl.ai/testdn022#Academic_Excellence
+
+:Academic_Excellence rdf:type owl:Class ;
+                     
+                     rdfs:label "Academic Excellence" ;
+                     
+                     rdfs:subClassOf :Excellence .
+
+
+
+###  http://graffl.ai/testdn022#Agent
+
+:Agent rdf:type owl:Class ;
+       
+       rdfs:label "Agent" .
+
+
+
+###  http://graffl.ai/testdn022#Apple
+
+:Apple rdf:type owl:Class ;
+       
+       rdfs:label "Apple" ;
+       
+       rdfs:subClassOf :Company .
+
+
+
+###  http://graffl.ai/testdn022#Apple_Distinguished_School
+
+:Apple_Distinguished_School rdf:type owl:Class ;
+                            
+                            rdfs:label "Apple Distinguished School" ;
+                            
+                            rdfs:subClassOf :Distinguished_School .
+
+
+
+###  http://graffl.ai/testdn022#Athlete
+
+:Athlete rdf:type owl:Class ;
+         
+         rdfs:label "Athlete" ;
+         
+         rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/testdn022#Author
+
+:Author rdf:type owl:Class ;
+        
+        rdfs:label "Author" ;
+        
+        rdfs:subClassOf :Event ,
+                        :Role .
+
+
+
+###  http://graffl.ai/testdn022#Award
+
+:Award rdf:type owl:Class ;
+       
+       rdfs:label "Award" ;
+       
+       rdfs:subClassOf :Recognition .
+
+
+
+###  http://graffl.ai/testdn022#Chairperson
+
+:Chairperson rdf:type owl:Class ;
+             
+             rdfs:label "Chairperson" ;
+             
+             rdfs:subClassOf :Role ;
+             
+             rdfs:seeAlso "the Chair, chair of" ,
+                          "Chair man, chairman, chair woman, chairwoman" .
+
+
+
+###  http://graffl.ai/testdn022#Chronicle_of_Higher_Education
+
+:Chronicle_of_Higher_Education rdf:type owl:Class ;
+                               
+                               rdfs:label "Chronicle of Higher Education" ;
+                               
+                               rdfs:subClassOf :Publisher .
+
+
+
+###  http://graffl.ai/testdn022#City
+
+:City rdf:type owl:Class ;
+      
+      rdfs:label "City" ;
+      
+      rdfs:subClassOf :Location .
+
+
+
+###  http://graffl.ai/testdn022#Commission
+
+:Commission rdf:type owl:Class ;
+            
+            rdfs:label "Commission" ;
+            
+            rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/testdn022#Company
+
+:Company rdf:type owl:Class ;
+         
+         rdfs:label "Company" ;
+         
+         rdfs:subClassOf :Agent .
+
+
+
+###  http://graffl.ai/testdn022#Distinguished_School
+
+:Distinguished_School rdf:type owl:Class ;
+                      
+                      rdfs:label "Distinguished School" ;
+                      
+                      rdfs:subClassOf :Recognition ,
+                                      :School .
+
+
+
+###  http://graffl.ai/testdn022#Diversity
+
+:Diversity rdf:type owl:Class ;
+           
+           rdfs:label "Diversity" ;
+           
+           rdfs:subClassOf :State .
+
+
+
+###  http://graffl.ai/testdn022#Educate_to_Careers
+
+:Educate_to_Careers rdf:type owl:Class ;
+                    
+                    rdfs:label "Educate to Careers" ;
+                    
+                    rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/testdn022#Education
+
+:Education rdf:type owl:Class ;
+           
+           rdfs:label "Education" ;
+           
+           rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/testdn022#Enrollment
+
+:Enrollment rdf:type owl:Class ;
+            
+            rdfs:label "Enrollment" ;
+            
+            rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/testdn022#Environment
+
+:Environment rdf:type owl:Class ;
+             
+             rdfs:label "Environment" .
+
+
+
+###  http://graffl.ai/testdn022#Equity
+
+:Equity rdf:type owl:Class ;
+        
+        rdfs:label "Equity" ;
+        
+        rdfs:subClassOf :State .
+
+
+
+###  http://graffl.ai/testdn022#Event
+
+:Event rdf:type owl:Class ;
+       
+       rdfs:label "Event" .
+
+
+
+###  http://graffl.ai/testdn022#Excellence
+
+:Excellence rdf:type owl:Class ;
+            
+            rdfs:label "Excellence" ;
+            
+            rdfs:subClassOf :Recognition .
+
+
+
+###  http://graffl.ai/testdn022#Graduation
+
+:Graduation rdf:type owl:Class ;
+            
+            rdfs:label "Graduation" ;
+            
+            rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/testdn022#Graduation_Rate
+
+:Graduation_Rate rdf:type owl:Class ;
+                 
+                 rdfs:label "Graduation Rate" ;
+                 
+                 rdfs:subClassOf :Metric .
+
+
+
+###  http://graffl.ai/testdn022#Higher_Education
+
+:Higher_Education rdf:type owl:Class ;
+                  
+                  rdfs:label "Higher Education" ;
+                  
+                  rdfs:subClassOf :Education .
+
+
+
+###  http://graffl.ai/testdn022#Increase
+
+:Increase rdf:type owl:Class ;
+          
+          rdfs:label "Increase" ;
+          
+          rdfs:subClassOf :Event ;
+          
+          rdfs:seeAlso "tripled" .
+
+
+
+###  http://graffl.ai/testdn022#Increase_Enrollment
+
+:Increase_Enrollment rdf:type owl:Class ;
+                     
+                     rdfs:label "Increase Enrollment" ;
+                     
+                     rdfs:subClassOf :Metric ;
+                     
+                     rdfs:seeAlso "fastest growing" ,
+                                  "fastest-growing" .
+
+
+
+###  http://graffl.ai/testdn022#Innovation
+
+:Innovation rdf:type owl:Class ;
+            
+            rdfs:label "Innovation" ;
+            
+            rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/testdn022#Leadership
+
+:Leadership rdf:type owl:Class ;
+            
+            rdfs:label "Leadership" ;
+            
+            rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/testdn022#Location
+
+:Location rdf:type owl:Class ;
+          
+          rdfs:label "Location" .
+
+
+
+###  http://graffl.ai/testdn022#Mark_Lombardi
+
+:Mark_Lombardi rdf:type owl:Class ;
+               
+               rdfs:label "Mark Lombardi" ;
+               
+               rdfs:subClassOf :Person ;
+               
+               rdfs:seeAlso "Dr. Lombardi" ,
+                            "Dr. Lombardis" ,
+                            "Dr. Lombardi’s" ,
+                            "Dr. Mark Lombardi" .
+
+
+
+###  http://graffl.ai/testdn022#Mentor
+
+:Mentor rdf:type owl:Class ;
+        
+        rdfs:label "Mentor" ;
+        
+        rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/testdn022#Metric
+
+:Metric rdf:type owl:Class ;
+        
+        rdfs:label "Metric" .
+
+
+
+###  http://graffl.ai/testdn022#Ncaa_Division
+
+:Ncaa_Division rdf:type owl:Class ;
+               
+               rdfs:label "NCAA Division" ;
+               
+               rdfs:seeAlso "NCAA Division I, NCAA Division II, NCAA Division III" .
+
+
+
+###  http://graffl.ai/testdn022#Organization
+
+:Organization rdf:type owl:Class ;
+              
+              rdfs:label "Organization" ;
+              
+              rdfs:subClassOf :Agent .
+
+
+
+###  http://graffl.ai/testdn022#Person
+
+:Person rdf:type owl:Class ;
+        
+        rdfs:label "Person" ;
+        
+        rdfs:subClassOf :Agent .
+
+
+
+###  http://graffl.ai/testdn022#President
+
+:President rdf:type owl:Class ;
+           
+           rdfs:label "President" ;
+           
+           rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/testdn022#President_Award
+
+:President_Award rdf:type owl:Class ;
+                 
+                 rdfs:label "President Award" ;
+                 
+                 rdfs:subClassOf :Award ;
+                 
+                 rdfs:seeAlso "presidents award" .
+
+
+
+###  http://graffl.ai/testdn022#Public_Speaking
+
+:Public_Speaking rdf:type owl:Class ;
+                 
+                 rdfs:label "Public Speaking" ;
+                 
+                 rdfs:subClassOf :Skill ;
+                 
+                 rdfs:seeAlso "interviews" ,
+                              "speeches" .
+
+
+
+###  http://graffl.ai/testdn022#Publish
+
+:Publish rdf:type owl:Class ;
+         
+         rdfs:label "Publish" ;
+         
+         rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/testdn022#Publisher
+
+:Publisher rdf:type owl:Class ;
+           
+           rdfs:label "Publisher" ;
+           
+           rdfs:subClassOf :Agent ,
+                           :Role .
+
+
+
+###  http://graffl.ai/testdn022#Recognition
+
+:Recognition rdf:type owl:Class ;
+             
+             rdfs:label "Recognition" ;
+             
+             rdfs:subClassOf :State .
+
+
+
+###  http://graffl.ai/testdn022#Remote_Environment
+
+:Remote_Environment rdf:type owl:Class ;
+                    
+                    rdfs:label "Remote Environment" ;
+                    
+                    rdfs:subClassOf :Environment ;
+                    
+                    rdfs:seeAlso "mobile learning environment" .
+
+
+
+###  http://graffl.ai/testdn022#Return_on_Investment
+
+:Return_on_Investment rdf:type owl:Class ;
+                      
+                      rdfs:label "Return on Investment" ;
+                      
+                      rdfs:subClassOf :Metric ;
+                      
+                      rdfs:seeAlso "ROI" .
+
+
+
+###  http://graffl.ai/testdn022#Role
+
+:Role rdf:type owl:Class ;
+      
+      rdfs:label "Role" .
+
+
+
+###  http://graffl.ai/testdn022#School
+
+:School rdf:type owl:Class ;
+        
+        rdfs:label "School" ;
+        
+        rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/testdn022#Skill
+
+:Skill rdf:type owl:Class ;
+       
+       rdfs:label "Skill" .
+
+
+
+###  http://graffl.ai/testdn022#Sports_Commission
+
+:Sports_Commission rdf:type owl:Class ;
+                   
+                   rdfs:label "Sports Commission" ;
+                   
+                   rdfs:subClassOf :Commission .
+
+
+
+###  http://graffl.ai/testdn022#St_Louis
+
+:St_Louis rdf:type owl:Class ;
+          
+          rdfs:label "St Louis" ;
+          
+          rdfs:subClassOf :City ;
+          
+          rdfs:seeAlso "St. Louis" .
+
+
+
+###  http://graffl.ai/testdn022#St_Louis_Sports_Commission
+
+:St_Louis_Sports_Commission rdf:type owl:Class ;
+                            
+                            rdfs:label "St. Louis Sports Commission" ;
+                            
+                            rdfs:subClassOf :Sports_Commission ;
+                            
+                            rdfs:seeAlso "St Louis Sports Commission" .
+
+
+
+###  http://graffl.ai/testdn022#State
+
+:State rdf:type owl:Class ;
+       
+       rdfs:label "State" .
+
+
+
+###  http://graffl.ai/testdn022#Student
+
+:Student rdf:type owl:Class ;
+         
+         rdfs:label "Student" ;
+         
+         rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/testdn022#Student_Athlete
+
+:Student_Athlete rdf:type owl:Class ;
+                 
+                 rdfs:label "Student Athlete" ;
+                 
+                 rdfs:subClassOf :Role ;
+                 
+                 rdfs:seeAlso "student-athlete" .
+
+
+
+###  http://graffl.ai/testdn022#Student_Athlete_Graduation_Rate
+
+:Student_Athlete_Graduation_Rate rdf:type owl:Class ;
+                                 
+                                 rdfs:label "Student Athlete Graduation Rate" ;
+                                 
+                                 rdfs:subClassOf :Graduation_Rate .
+
+
+
+###  http://graffl.ai/testdn022#Tenure
+
+:Tenure rdf:type owl:Class ;
+        
+        rdfs:label "Tenure" ;
+        
+        rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/testdn022#University
+
+:University rdf:type owl:Class ;
+            
+            rdfs:label "University" .
+
+
+
+###  http://graffl.ai/testdn022#University_President
+
+:University_President rdf:type owl:Class ;
+                      
+                      rdfs:label "University President" ;
+                      
+                      rdfs:subClassOf :President ;
+                      
+                      rdfs:seeAlso "President!University" .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

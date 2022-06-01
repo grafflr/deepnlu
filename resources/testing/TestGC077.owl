@@ -1,12 +1,12 @@
-@prefix : <http://graffl.ai/spantest#> .
+@prefix : <http://graffl.ai/TestGC077#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://graffl.ai/spantest> .
+@base <http://graffl.ai/TestGC077> .
 
-<http://graffl.ai/spantest> rdf:type owl:Ontology .
+<http://graffl.ai/TestGC077> rdf:type owl:Ontology .
 
 
 #################################################################
@@ -16,25 +16,25 @@
 #################################################################
 
 
-###  http://graffl.ai/spantest#wildcards
+###  http://graffl.ai/TestGC077#wildcards
 
 :implies rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/spantest#locatedIn
+###  http://graffl.ai/TestGC077#locatedIn
 
 :locatedIn rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/spantest#meansOf
+###  http://graffl.ai/TestGC077#meansOf
 
 :meansOf rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/spantest#measures
+###  http://graffl.ai/TestGC077#measures
 
 :measures rdf:type owl:AnnotationProperty ;
           
@@ -42,31 +42,31 @@
 
 
 
-###  http://graffl.ai/spantest#partOf
+###  http://graffl.ai/TestGC077#partOf
 
 :partOf rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/spantest#requires
+###  http://graffl.ai/TestGC077#requires
 
 :requires rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/spantest#similarTo
+###  http://graffl.ai/TestGC077#similarTo
 
 :similarTo rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/spantest#uses
+###  http://graffl.ai/TestGC077#uses
 
 :uses rdf:type owl:AnnotationProperty .
 
 
 
-###  http://graffl.ai/spantest#worksIn
+###  http://graffl.ai/TestGC077#worksIn
 
 :worksIn rdf:type owl:AnnotationProperty .
 
@@ -81,43 +81,43 @@
 #################################################################
 
 
-###  http://graffl.ai/spantest#caseSensitive
+###  http://graffl.ai/TestGC077#caseSensitive
 
 :caseSensitive rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/spantest#grafflNER
+###  http://graffl.ai/TestGC077#grafflNER
 
 :grafflNER rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/spantest#grafflSLOT
+###  http://graffl.ai/TestGC077#grafflSLOT
 
 :grafflSLOT rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/spantest#posNOUN
+###  http://graffl.ai/TestGC077#posNOUN
 
 :posNOUN rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/spantest#posVERB
+###  http://graffl.ai/TestGC077#posVERB
 
 :posVERB rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/spantest#spacyNER
+###  http://graffl.ai/TestGC077#spacyNER
 
 :spacyNER rdf:type rdfs:Datatype .
 
 
 
-###  http://graffl.ai/spantest#spanDirection
+###  http://graffl.ai/TestGC077#spanDirection
 
 :spanDirection rdf:type rdfs:Datatype .
 
@@ -132,7 +132,7 @@
 #################################################################
 
 
-###  http://graffl.ai/spantest#President
+###  http://graffl.ai/TestGC077#President
 
 :President rdf:type owl:Class ;
            
@@ -142,7 +142,7 @@
 
 
 
-###  http://graffl.ai/spantest#Role
+###  http://graffl.ai/TestGC077#Role
 
 :Role rdf:type owl:Class ;
       
@@ -150,7 +150,7 @@
 
 
 
-###  http://graffl.ai/spantest#School
+###  http://graffl.ai/TestGC077#School
 
 :School rdf:type owl:Class ;
         
@@ -158,7 +158,7 @@
 
 
 
-###  http://graffl.ai/spantest#Student
+###  http://graffl.ai/TestGC077#Student
 
 :Student rdf:type owl:Class ;
          
@@ -166,7 +166,7 @@
 
 
 
-###  http://graffl.ai/spantest#University
+###  http://graffl.ai/TestGC077#University
 
 :University rdf:type owl:Class ;
             
@@ -174,7 +174,7 @@
 
 
 
-###  http://graffl.ai/spantest#University_President
+###  http://graffl.ai/TestGC077#University_President
 
 :University_President rdf:type owl:Class ;
                       
