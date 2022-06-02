@@ -43,6 +43,7 @@ class ExactMatchSwapper(BaseObject):
         BaseObject.__init__(self, __name__)
         self._find_ner = find_ontology_data.find_ner
         self._find_canon = find_ontology_data.find_canon
+        self._find_variants = find_ontology_data.find_variants
         self._create_swap = SwapTokenGenerator(
             find_ontology_data.ontologies()).process
 
@@ -57,6 +58,11 @@ class ExactMatchSwapper(BaseObject):
             canon = self._find_canon(input_text)
             if self.isEnabledForDebug:
                 Enforcer.is_optional_str(canon)
+
+            if not canon:
+                print(input_text, self._find_variants(input_text))
+                _input_text = input_text.replace('_', ' ')
+                print(_input_text, self._find_variants(_input_text))
 
             if not canon:
                 self.logger.error('\n'.join([

@@ -61,6 +61,12 @@ class FindSynonyms(BaseObject):
         self._d_synonyms_fwd = d_synonyms_fwd
         self._d_synonyms_rev = d_synonyms_rev
 
+    def d_synonyms_fwd(self):
+        return self._d_synonyms_fwd
+
+    def d_synonyms_rev(self):
+        return self._d_synonyms_rev
+
     def _cleanse_canon(self,
                        input_text: str) -> str:
         if ' ' in input_text:

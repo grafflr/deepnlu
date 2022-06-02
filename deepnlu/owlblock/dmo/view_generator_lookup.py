@@ -6,8 +6,8 @@
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from askowl.dmo import OwlSpanGenerate
-from askowl.dmo import OwlSpanAugment
+from deepnlu.owlblock.dmo.span import OwlSpanGenerate
+from deepnlu.owlblock.dmo.span import OwlSpanAugment
 
 
 class ViewGeneratorLookup(BaseObject):

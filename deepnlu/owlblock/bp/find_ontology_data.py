@@ -78,10 +78,6 @@ class FindOntologyData(BaseObject):
     def absolute_path(self) -> str:
         return self._absolute_path
 
-    def find_all_relationships(self,
-                               entities: list) -> list:
-        pass
-
     def _load(self,
               ontologies: list,
               absolute_path: str) -> dict:

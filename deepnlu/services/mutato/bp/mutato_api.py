@@ -67,7 +67,8 @@ class MutatoAPI(BaseObject):
         #     find_ontology_data).process
 
     def swap(self,
-             tokens: list) -> list:
+             tokens: list,
+             ctr: int = 0) -> list:
 
         sw = Stopwatch()
 
@@ -80,6 +81,9 @@ class MutatoAPI(BaseObject):
         swaps = self._perform_exact_matching(tokens)
         swaps = self._perform_span_matching(swaps)
         swaps = self._perform_hierarchal_matching(swaps)
+
+        if ctr < 2:
+            swaps = self.swap(swaps, ctr + 1)
 
         # Change Log:
         # 20220214  Disable Environment Check
