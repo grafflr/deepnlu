@@ -132,6 +132,18 @@
 #################################################################
 
 
+###  http://graffl.ai/TestDN032#Associate
+
+:Associate rdf:type owl:Class ;
+           
+           rdfs:label "Associate" ;
+           
+           rdfs:subClassOf :Role ;
+           
+           rdfs:seeAlso "assoc" .
+
+
+
 ###  http://graffl.ai/TestDN032#Associate_Vice_President
 
 :Associate_Vice_President rdf:type owl:Class ;

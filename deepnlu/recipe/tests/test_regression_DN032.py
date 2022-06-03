@@ -65,10 +65,25 @@ def test_001():
 
     harness = TestHarness()
 
+    # test (vp=>vice president)
     harness.execute(
         input_text="Associate VP for Academic Affairs",
         entity_name="associate_vice_president",
         spanned_text="Associate VP"
+    )
+
+    # test (assoc=>association, vp=>vice president)
+    harness.execute(
+        input_text="assoc vp",
+        entity_name="associate_vice_president",
+        spanned_text="assoc vp"
+    )
+
+    # test tokenization
+    harness.execute(
+        input_text="assoc vp!!",
+        entity_name="associate_vice_president",
+        spanned_text="assoc vp"
     )
 
 
