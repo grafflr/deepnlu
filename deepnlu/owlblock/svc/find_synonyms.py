@@ -8,8 +8,8 @@ from pprint import pprint
 from baseblock import BaseObject
 from baseblock import Enforcer
 
-
 class FindSynonyms(BaseObject):
+
     """ Generic Facade to find Synonym Data on Disk """
 
     def __init__(self,

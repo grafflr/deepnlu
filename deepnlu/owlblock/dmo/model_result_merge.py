@@ -21,9 +21,9 @@ class ModelResultMerge(BaseObject):
         """
         BaseObject.__init__(self, __name__)
 
-    def process(self,
-                results: list,
-                result_type: QueryResultType) -> list:
+    def _merge(self,
+               results: list,
+               result_type: QueryResultType) -> list:
 
         if result_type == QueryResultType.DICT_OF_STR2LIST:
             d_merge = {}
@@ -48,3 +48,13 @@ class ModelResultMerge(BaseObject):
 
         else:
             raise NotImplementedError
+
+    def process(self,
+                results: list,
+                result_type: QueryResultType) -> list:
+
+        d_model = self._merge(
+            results=results,
+            result_type=result_type)
+
+        return d_model

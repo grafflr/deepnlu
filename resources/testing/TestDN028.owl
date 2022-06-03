@@ -138,7 +138,8 @@
                
                rdfs:label "Mark Lombardi" ;
                
-               rdfs:seeAlso "Dr. Mark Lombardi" .
+               rdfs:seeAlso "Dr. Mark Lombardi" ,
+                            "Dr Mark Lombardi" .
 
 
 
