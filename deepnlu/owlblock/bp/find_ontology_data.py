@@ -509,6 +509,7 @@ class FindOntologyData(BaseObject):
             return None
         elif len(results) == 1:
             return results[0]
+        
         return self._merge(results, QueryResultType.DICT_OF_STR2DICT)
 
     @lru_cache
