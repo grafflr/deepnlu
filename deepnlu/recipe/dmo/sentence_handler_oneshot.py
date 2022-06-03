@@ -86,7 +86,7 @@ class SentenceHandlerOneShot(BaseObject):
         tokens = self._string_tokenize(input_text)
         from baseblock import FileIO
         tokens = self._parse(tokens)
-        FileIO.write_json(tokens, "c:/Users/Craig/Desktop/tokens.json")
+        #FileIO.write_json(tokens, "c:/Users/Craig/Desktop/tokens.json")
 
         for token in tokens:
             ## ---------------------------------------------------------- ##
