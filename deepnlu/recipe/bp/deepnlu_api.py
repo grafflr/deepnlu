@@ -100,9 +100,6 @@ class DeepNluAPI(BaseObject):
             ontologies=ontologies,
             absolute_path=absolute_path)
 
-        from pprint import pprint
-        pprint (finder.lookup())
-
         svc = ParseTextOneShot(finder)
 
         return svc.process(input_text)
