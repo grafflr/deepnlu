@@ -1,0 +1,1022 @@
+@prefix : <http://graffl.ai/TestDN031b#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://graffl.ai/TestDN031b> .
+
+<http://graffl.ai/TestDN031b> rdf:type owl:Ontology .
+
+
+#################################################################
+#
+#    Annotation properties
+#
+#################################################################
+
+
+###  http://graffl.ai/TestDN031b#implies
+
+:implies rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/TestDN031b#locatedIn
+
+:locatedIn rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/TestDN031b#meansOf
+
+:meansOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/TestDN031b#measures
+
+:measures rdf:type owl:AnnotationProperty ;
+          
+          rdfs:subPropertyOf :uses .
+
+
+
+###  http://graffl.ai/TestDN031b#partOf
+
+:partOf rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/TestDN031b#requires
+
+:requires rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/TestDN031b#similarTo
+
+:similarTo rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/TestDN031b#uses
+
+:uses rdf:type owl:AnnotationProperty .
+
+
+
+###  http://graffl.ai/TestDN031b#worksIn
+
+:worksIn rdf:type owl:AnnotationProperty .
+
+
+
+
+
+#################################################################
+#
+#    Datatypes
+#
+#################################################################
+
+
+###  http://graffl.ai/TestDN031b#caseSensitive
+
+:caseSensitive rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/TestDN031b#grafflNER
+
+:grafflNER rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/TestDN031b#grafflSLOT
+
+:grafflSLOT rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/TestDN031b#posNOUN
+
+:posNOUN rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/TestDN031b#posVERB
+
+:posVERB rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/TestDN031b#spacyNER
+
+:spacyNER rdf:type rdfs:Datatype .
+
+
+
+###  http://graffl.ai/TestDN031b#spanDirection
+
+:spanDirection rdf:type rdfs:Datatype .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://graffl.ai/TestDN031b#Ability
+
+:Ability rdf:type owl:Class ;
+         
+         rdfs:label "Ability" ;
+         
+         owl:backwardCompatibleWith "ABLE"^^:grafflNER ;
+         
+         rdfs:comment """Ability - able to do something.
+Skill - able to do something well.
+
+If you can do something you have an ability.
+If you can do something well, you have a skill.""" .
+
+
+
+###  http://graffl.ai/TestDN031b#Academic
+
+:Academic rdf:type owl:Class ;
+          
+          rdfs:label "Academic" ;
+          
+          rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/TestDN031b#Activist
+
+:Activist rdf:type owl:Class ;
+          
+          rdfs:label "Activist" ;
+          
+          rdfs:subClassOf :Role ;
+          
+          rdfs:seeAlso "activism" .
+
+
+
+###  http://graffl.ai/TestDN031b#Activity
+
+:Activity rdf:type owl:Class ;
+          
+          rdfs:label "Activity" .
+
+
+
+###  http://graffl.ai/TestDN031b#Advisor
+
+:Advisor rdf:type owl:Class ;
+         
+         rdfs:label "Advisor" ;
+         
+         rdfs:subClassOf :Role ;
+         
+         :implies :Thought_Leader .
+
+
+
+###  http://graffl.ai/TestDN031b#Advocate
+
+:Advocate rdf:type owl:Class ;
+          
+          rdfs:label "Advocate" ;
+          
+          rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/TestDN031b#Agenda
+
+:Agenda rdf:type owl:Class ;
+        
+        rdfs:label "Agenda" ;
+        
+        rdfs:subClassOf :Artifact .
+
+
+
+###  http://graffl.ai/TestDN031b#Artifact
+
+:Artifact rdf:type owl:Class ;
+          
+          rdfs:label "Artifact" ;
+          
+          owl:backwardCompatibleWith "ARTIFACT"^^:grafflNER .
+
+
+
+###  http://graffl.ai/TestDN031b#Author
+
+:Author rdf:type owl:Class ;
+        
+        rdfs:label "Author" ;
+        
+        rdfs:subClassOf :Writer .
+
+
+
+###  http://graffl.ai/TestDN031b#Beginner
+
+:Beginner rdf:type owl:Class ;
+          
+          rdfs:label "Beginner" ;
+          
+          rdfs:subClassOf :Skill_Level ;
+          
+          rdfs:seeAlso "Novice" .
+
+
+
+###  http://graffl.ai/TestDN031b#Board_Chair
+
+:Board_Chair rdf:type owl:Class ;
+             
+             rdfs:label "Board Chair" ;
+             
+             rdfs:subClassOf :Business_Role .
+
+
+
+###  http://graffl.ai/TestDN031b#Business_Academic
+
+:Business_Academic rdf:type owl:Class ;
+                   
+                   rdfs:label "Business Academic" ;
+                   
+                   rdfs:subClassOf :Academic .
+
+
+
+###  http://graffl.ai/TestDN031b#Business_Creativity
+
+:Business_Creativity rdf:type owl:Class ;
+                     
+                     rdfs:label "Business Creativity" ;
+                     
+                     rdfs:subClassOf :Creative .
+
+
+
+###  http://graffl.ai/TestDN031b#Business_Role
+
+:Business_Role rdf:type owl:Class ;
+               
+               rdfs:label "Business Role" ;
+               
+               rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/TestDN031b#Business_School
+
+:Business_School rdf:type owl:Class ;
+                 
+                 rdfs:label "Business School" ;
+                 
+                 rdfs:subClassOf :School .
+
+
+
+###  http://graffl.ai/TestDN031b#CTO
+
+:CTO rdf:type owl:Class ;
+     
+     rdfs:label "CTO" ;
+     
+     rdfs:subClassOf :Business_Role ;
+     
+     rdfs:seeAlso "Chief Technical Officer" .
+
+
+
+###  http://graffl.ai/TestDN031b#Ceo
+
+:Ceo rdf:type owl:Class ;
+     
+     rdfs:label "CEO" ;
+     
+     rdfs:subClassOf :Business_Role ;
+     
+     rdfs:seeAlso "Chief Executive Officer" .
+
+
+
+###  http://graffl.ai/TestDN031b#Chief_Strategy_Officer
+
+:Chief_Strategy_Officer rdf:type owl:Class ;
+                        
+                        rdfs:label "Chief Strategy Officer" ;
+                        
+                        rdfs:subClassOf :Cxo .
+
+
+
+###  http://graffl.ai/TestDN031b#Communication
+
+:Communication rdf:type owl:Class ;
+               
+               rdfs:label "Communication" ;
+               
+               rdfs:subClassOf :Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Company
+
+:Company rdf:type owl:Class ;
+         
+         rdfs:label "Company" ;
+         
+         rdfs:subClassOf :Organization ;
+         
+         owl:backwardCompatibleWith "INC"^^:grafflNER .
+
+
+
+###  http://graffl.ai/TestDN031b#Council
+
+:Council rdf:type owl:Class ;
+         
+         rdfs:label "Council" ;
+         
+         rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/TestDN031b#Creative
+
+:Creative rdf:type owl:Class ;
+          
+          rdfs:label "Creative" ;
+          
+          rdfs:subClassOf :Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Cxo
+
+:Cxo rdf:type owl:Class ;
+     
+     rdfs:label "CxO" ;
+     
+     rdfs:subClassOf :Title .
+
+
+
+###  http://graffl.ai/TestDN031b#Deliver
+
+:Deliver rdf:type owl:Class ;
+         
+         rdfs:label "Deliver" ;
+         
+         rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/TestDN031b#Delivery
+
+:Delivery rdf:type owl:Class ;
+          
+          rdfs:label "Delivery" ;
+          
+          rdfs:subClassOf :Skill ;
+          
+          :implies :Deliver .
+
+
+
+###  http://graffl.ai/TestDN031b#Economic_Policy
+
+:Economic_Policy rdf:type owl:Class ;
+                 
+                 rdfs:label "Economic Policy" ;
+                 
+                 rdfs:subClassOf :Policy .
+
+
+
+###  http://graffl.ai/TestDN031b#Empathy
+
+:Empathy rdf:type owl:Class ;
+         
+         rdfs:label "Empathy" ;
+         
+         rdfs:subClassOf :Soft_Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Enroll
+
+:Enroll rdf:type owl:Class ;
+        
+        rdfs:label "Enroll" ;
+        
+        rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/TestDN031b#Entrepreneur
+
+:Entrepreneur rdf:type owl:Class ;
+              
+              rdfs:label "Entrepreneur" ;
+              
+              rdfs:subClassOf :Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Event
+
+:Event rdf:type owl:Class ;
+       
+       rdfs:label "Event" ;
+       
+       owl:backwardCompatibleWith "EVENT"^^:grafflNER .
+
+
+
+###  http://graffl.ai/TestDN031b#Expert
+
+:Expert rdf:type owl:Class ;
+        
+        rdfs:label "Expert" ;
+        
+        rdfs:subClassOf :Skill_Level .
+
+
+
+###  http://graffl.ai/TestDN031b#Facilitate
+
+:Facilitate rdf:type owl:Class ;
+            
+            rdfs:label "Facilitate" ;
+            
+            rdfs:subClassOf :Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Facilitator
+
+:Facilitator rdf:type owl:Class ;
+             
+             rdfs:label "Facilitator" ;
+             
+             rdfs:subClassOf :Role ;
+             
+             :implies :Facilitate .
+
+
+
+###  http://graffl.ai/TestDN031b#Forbes
+
+:Forbes rdf:type owl:Class ;
+        
+        rdfs:label "Forbes" ;
+        
+        rdfs:subClassOf :Publisher ;
+        
+        rdfs:seeAlso "Forbes.com" .
+
+
+
+###  http://graffl.ai/TestDN031b#Forum
+
+:Forum rdf:type owl:Class ;
+       
+       rdfs:label "Forum" ;
+       
+       rdfs:subClassOf :Organization .
+
+
+
+###  http://graffl.ai/TestDN031b#Founder
+
+:Founder rdf:type owl:Class ;
+         
+         rdfs:label "Founder" ;
+         
+         rdfs:subClassOf :Role ;
+         
+         rdfs:seeAlso "Inagural Member" .
+
+
+
+###  http://graffl.ai/TestDN031b#Global_Innovation_Council
+
+:Global_Innovation_Council rdf:type owl:Class ;
+                           
+                           rdfs:label "Global Innovation Council" ;
+                           
+                           rdfs:subClassOf :Council ;
+                           
+                           :meansOf :World_Economic_Forum .
+
+
+
+###  http://graffl.ai/TestDN031b#Government
+
+:Government rdf:type owl:Class ;
+            
+            rdfs:label "Government" ;
+            
+            rdfs:subClassOf :Organization ;
+            
+            owl:backwardCompatibleWith "GOV"^^:grafflNER .
+
+
+
+###  http://graffl.ai/TestDN031b#Harvard_Business_School
+
+:Harvard_Business_School rdf:type owl:Class ;
+                         
+                         rdfs:label "Harvard Business School" ;
+                         
+                         rdfs:subClassOf :Business_School ;
+                         
+                         :partOf :Harvard_University .
+
+
+
+###  http://graffl.ai/TestDN031b#Harvard_University
+
+:Harvard_University rdf:type owl:Class ;
+                    
+                    rdfs:label "Harvard University" ;
+                    
+                    rdfs:subClassOf :University .
+
+
+
+###  http://graffl.ai/TestDN031b#Increase
+
+:Increase rdf:type owl:Class ;
+          
+          rdfs:label "Increase" ;
+          
+          rdfs:subClassOf :Activity .
+
+
+
+###  http://graffl.ai/TestDN031b#Influence
+
+:Influence rdf:type owl:Class ;
+           
+           rdfs:label "Influence" ;
+           
+           rdfs:subClassOf :Event .
+
+
+
+###  http://graffl.ai/TestDN031b#Influencer
+
+:Influencer rdf:type owl:Class ;
+            
+            rdfs:label "Influencer" ;
+            
+            rdfs:subClassOf :Skill ;
+            
+            :implies :Influence .
+
+
+
+###  http://graffl.ai/TestDN031b#Innovation_Agenda
+
+:Innovation_Agenda rdf:type owl:Class ;
+                   
+                   rdfs:label "Innovation Agenda" ;
+                   
+                   rdfs:subClassOf :Agenda ;
+                   
+                   rdfs:seeAlso "Innovator Agenda" .
+
+
+
+###  http://graffl.ai/TestDN031b#Innovator
+
+:Innovator rdf:type owl:Class ;
+           
+           rdfs:label "Innovator" ;
+           
+           rdfs:subClassOf :Skill ;
+           
+           rdfs:seeAlso "Serial Innovator" .
+
+
+
+###  http://graffl.ai/TestDN031b#Inventor
+
+:Inventor rdf:type owl:Class ;
+          
+          rdfs:label "Inventor" ;
+          
+          rdfs:subClassOf :Skill ;
+          
+          rdfs:seeAlso "Serial Inventor" .
+
+
+
+###  http://graffl.ai/TestDN031b#Law
+
+:Law rdf:type owl:Class ;
+     
+     rdfs:label "Law" ;
+     
+     rdfs:subClassOf :Artifact ;
+     
+     owl:backwardCompatibleWith "LAW"^^:grafflNER ;
+     
+     rdfs:seeAlso "Legislation" .
+
+
+
+###  http://graffl.ai/TestDN031b#Lecturer
+
+:Lecturer rdf:type owl:Class ;
+          
+          rdfs:label "Lecturer" ;
+          
+          rdfs:subClassOf :Role ;
+          
+          rdfs:seeAlso "lectures, lectured, lecturing at" ,
+                       "she lectures, he lectures, she has lectured, he has lectured" ;
+          
+          :requires :Communication ;
+          
+          :worksIn :School .
+
+
+
+###  http://graffl.ai/TestDN031b#Maryville_University
+
+:Maryville_University rdf:type owl:Class ;
+                      
+                      rdfs:label "Maryville University" ;
+                      
+                      rdfs:subClassOf :University ;
+                      
+                      rdfs:seeAlso "Maryville" .
+
+
+
+###  http://graffl.ai/TestDN031b#Master_Inventor
+
+:Master_Inventor rdf:type owl:Class ;
+                 
+                 rdfs:label "Master Inventor" ;
+                 
+                 rdfs:subClassOf :Inventor .
+
+
+
+###  http://graffl.ai/TestDN031b#Mediate
+
+:Mediate rdf:type owl:Class ;
+         
+         rdfs:label "Mediate" ;
+         
+         rdfs:subClassOf :Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Mentor
+
+:Mentor rdf:type owl:Class ;
+        
+        rdfs:label "Mentor" ;
+        
+        rdfs:subClassOf :Role ;
+        
+        owl:backwardCompatibleWith "MENTOR"^^:grafflNER ;
+        
+        rdfs:seeAlso "to support those" .
+
+
+
+###  http://graffl.ai/TestDN031b#Musician
+
+:Musician rdf:type owl:Class ;
+          
+          rdfs:label "Musician" ;
+          
+          rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/TestDN031b#National_Economic_Policy
+
+:National_Economic_Policy rdf:type owl:Class ;
+                          
+                          rdfs:label "National Economic Policy" ;
+                          
+                          rdfs:subClassOf :Economic_Policy .
+
+
+
+###  http://graffl.ai/TestDN031b#Negotiate
+
+:Negotiate rdf:type owl:Class ;
+           
+           rdfs:label "Negotiate" ;
+           
+           rdfs:subClassOf :Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Organization
+
+:Organization rdf:type owl:Class ;
+              
+              rdfs:label "Organization" ;
+              
+              owl:backwardCompatibleWith "ORG"^^:spacyNER .
+
+
+
+###  http://graffl.ai/TestDN031b#Personal_Touch
+
+:Personal_Touch rdf:type owl:Class ;
+                
+                rdfs:label "Personal Touch" ;
+                
+                rdfs:subClassOf :Soft_Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Perspective
+
+:Perspective rdf:type owl:Class ;
+             
+             rdfs:label "Perspective" ;
+             
+             rdfs:subClassOf :Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Policy
+
+:Policy rdf:type owl:Class ;
+        
+        rdfs:label "Policy" ;
+        
+        rdfs:subClassOf :Artifact .
+
+
+
+###  http://graffl.ai/TestDN031b#Practitioner
+
+:Practitioner rdf:type owl:Class ;
+              
+              rdfs:label "Practitioner" ;
+              
+              rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/TestDN031b#President
+
+:President rdf:type owl:Class ;
+           
+           rdfs:subClassOf :Title .
+
+
+
+###  http://graffl.ai/TestDN031b#Produce
+
+:Produce rdf:type owl:Class ;
+         
+         rdfs:subClassOf :Event ;
+         
+         rdfs:comment "Produce"^^:posVERB .
+
+
+
+###  http://graffl.ai/TestDN031b#Producer
+
+:Producer rdf:type owl:Class ;
+          
+          rdfs:label "Producer" ;
+          
+          rdfs:subClassOf :Skill ;
+          
+          :implies :Produce .
+
+
+
+###  http://graffl.ai/TestDN031b#Professor
+
+:Professor rdf:type owl:Class ;
+           
+           rdfs:label "Professor" ;
+           
+           rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/TestDN031b#Psychiatrist
+
+:Psychiatrist rdf:type owl:Class ;
+              
+              rdfs:label "Psychiatrist" ;
+              
+              rdfs:subClassOf :Role .
+
+
+
+###  http://graffl.ai/TestDN031b#Publisher
+
+:Publisher rdf:type owl:Class ;
+           
+           rdfs:label "Publisher" ;
+           
+           rdfs:subClassOf :Organization ;
+           
+           owl:backwardCompatibleWith "PUB"^^:grafflNER .
+
+
+
+###  http://graffl.ai/TestDN031b#Role
+
+:Role rdf:type owl:Class ;
+      
+      rdfs:label "Role" ;
+      
+      owl:backwardCompatibleWith "ROLE"^^:grafflNER .
+
+
+
+###  http://graffl.ai/TestDN031b#School
+
+:School rdf:type owl:Class ;
+        
+        rdfs:label "School" ;
+        
+        rdfs:subClassOf :Organization ;
+        
+        owl:backwardCompatibleWith "LEARN"^^:grafflNER .
+
+
+
+###  http://graffl.ai/TestDN031b#Senior_Advisor
+
+:Senior_Advisor rdf:type owl:Class ;
+                
+                rdfs:label "Senior Advisor" ;
+                
+                rdfs:subClassOf :Advisor .
+
+
+
+###  http://graffl.ai/TestDN031b#Senior_Inventor
+
+:Senior_Inventor rdf:type owl:Class ;
+                 
+                 rdfs:label "Senior Inventor" ;
+                 
+                 rdfs:subClassOf :Inventor .
+
+
+
+###  http://graffl.ai/TestDN031b#Skill
+
+:Skill rdf:type owl:Class ;
+       
+       rdfs:label "Skill" ;
+       
+       rdfs:subClassOf :Ability ;
+       
+       owl:backwardCompatibleWith "SKILL"^^:grafflNER .
+
+
+
+###  http://graffl.ai/TestDN031b#Skill_Level
+
+:Skill_Level rdf:type owl:Class ;
+             
+             rdfs:label "Skill Level" ;
+             
+             owl:backwardCompatibleWith "SKILL"^^:grafflNER .
+
+
+
+###  http://graffl.ai/TestDN031b#Social_Media_Influencer
+
+:Social_Media_Influencer rdf:type owl:Class ;
+                         
+                         rdfs:label "Social Media Influencer" ;
+                         
+                         rdfs:subClassOf :Influencer .
+
+
+
+###  http://graffl.ai/TestDN031b#Soft_Skill
+
+:Soft_Skill rdf:type owl:Class ;
+            
+            rdfs:label "Soft Skill" ;
+            
+            rdfs:subClassOf :Skill .
+
+
+
+###  http://graffl.ai/TestDN031b#Startup
+
+:Startup rdf:type owl:Class ;
+         
+         rdfs:label "Startup" ;
+         
+         rdfs:subClassOf :Company .
+
+
+
+###  http://graffl.ai/TestDN031b#The_Economist
+
+:The_Economist rdf:type owl:Class ;
+               
+               rdfs:label "The Economist" ;
+               
+               rdfs:subClassOf :Publisher .
+
+
+
+###  http://graffl.ai/TestDN031b#Thought_Leader
+
+:Thought_Leader rdf:type owl:Class ;
+                
+                rdfs:label "Thought Leader" ;
+                
+                rdfs:subClassOf :Skill_Level .
+
+
+
+###  http://graffl.ai/TestDN031b#Title
+
+:Title rdf:type owl:Class .
+
+
+
+###  http://graffl.ai/TestDN031b#Trusted_Advisor
+
+:Trusted_Advisor rdf:type owl:Class ;
+                 
+                 rdfs:label "Trusted Advisor" ;
+                 
+                 rdfs:subClassOf :Senior_Advisor .
+
+
+
+###  http://graffl.ai/TestDN031b#University
+
+:University rdf:type owl:Class ;
+            
+            rdfs:label "University" ;
+            
+            rdfs:subClassOf :School .
+
+
+
+###  http://graffl.ai/TestDN031b#Vice_President
+
+:Vice_President rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Title .
+
+
+
+###  http://graffl.ai/TestDN031b#World_Economic_Forum
+
+:World_Economic_Forum rdf:type owl:Class ;
+                      
+                      rdfs:label "World Economic Forum" ;
+                      
+                      rdfs:subClassOf :Forum .
+
+
+
+###  http://graffl.ai/TestDN031b#Writer
+
+:Writer rdf:type owl:Class ;
+        
+        rdfs:label "Writer" ;
+        
+        rdfs:subClassOf :Role .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+
