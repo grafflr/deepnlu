@@ -24,33 +24,45 @@ class TestHarness(BaseObject):
 
     def __init__(self):
         BaseObject.__init__(self, __name__)
-
+        self.api = DeepNluAPI()
+        assert self.api
         self.absolute_path = os.path.normpath(
             os.path.join(os.getcwd(), 'resources/testing'))
         FileIO.exists_or_error(self.absolute_path)
-
-        self.api = DeepNluAPI()
-
-        self.finder = FindOntologyData(
-            ontologies=ONTOLOGIES,
-            absolute_path=self.absolute_path)
-
-    def parse(self,
-              input_text: str) -> list:
-        svcresult = self.api.handle_text(
-            input_text=input_text,
-            ontologies=ONTOLOGIES,
-            absolute_path=self.absolute_path)
-
-        to_csv = self.api.to_csv(svcresult)
-        print (to_csv)
 
     def execute(self,
                 input_text: str,
                 entity_name: str,
                 spanned_text: str) -> None:
 
-        self.parse(input_text)
+        svcresult = self.api.handle_text(
+            input_text=input_text,
+            ontologies=ONTOLOGIES,
+            absolute_path=self.absolute_path)
+
+        actual_texts = [x['text'].strip() for x in svcresult[0][0]['tokens']]
+
+        csvresult = self.api.to_csv(svcresult, include_position=False)
+        entities = [x['Canon'] for x in csvresult]
+
+        failures = 0
+
+        if spanned_text not in actual_texts:
+            self.logger.error('\n'.join([
+                "Spanned Match Failure",
+                f"\tActual Texts: {actual_texts}",
+                f"\tExpected Text: {spanned_text}"]))
+            failures += 1
+
+        if entity_name not in entities:
+            self.logger.error('\n'.join([
+                "Entity Match Failure",
+                f"\tActual Entities: {entities}",
+                f"\tExpected Entity: {entity_name}"]))
+            failures += 1
+
+        if failures > 0:
+            raise ValueError(f"Total Failures: {failures}")
 
 
 def test_001():
