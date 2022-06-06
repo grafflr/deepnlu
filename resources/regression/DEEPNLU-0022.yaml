@@ -1,0 +1,17 @@
+run:
+  function: "round_trip"
+  comparator: "round_trip"
+
+## ---------------------------------------------------------- ##
+## Purpose:     Parsing Defect for "Student Athlete Graduation Rate"
+## Reference:   https://github.com/grafflr/deepnlu/issues/22
+## ---------------------------------------------------------- ##
+
+cases:
+  - input: "Presidents’ Award percent student-athlete graduation rate."
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'student_athlete_graduation_rate'1
+    ## ---------------------------------------------------------- ##
+    output:
+      - canon: "student_athlete_graduation_rate"
+        text: "student-athlete graduation rate"
