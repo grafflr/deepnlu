@@ -27,6 +27,8 @@ class ModelResultMerge(BaseObject):
                results: list,
                result_type: QueryResultType) -> list:
 
+        results = [x for x in results if x is not None and len(x)]
+
         if result_type == QueryResultType.DICT_OF_STR2LIST:
             d_merge = defaultdict(list)
             for d_result in results:
@@ -37,7 +39,7 @@ class ModelResultMerge(BaseObject):
                     for value in d_result[k]:
                         if value not in d_merge[k]:
                             d_merge[k].append(value)
-            
+
             return dict(d_merge)
 
         elif result_type == QueryResultType.DICT_OF_STR2DICT:
