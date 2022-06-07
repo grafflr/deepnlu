@@ -2,6 +2,8 @@
 """ Comparator of Actual vs Expected Values for the "Round-Trip" Engine """
 
 
+from pprint import pprint
+
 from baseblock import BaseObject
 
 
@@ -15,6 +17,6 @@ class RoundTripComparator(BaseObject):
                 actual_results: object,
                 expected_results: object) -> None:
 
-        print(actual_results)
+        pprint(actual_results)
         print('-'*100)
-        print(expected_results)
+        pprint(expected_results)
