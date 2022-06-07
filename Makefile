@@ -7,6 +7,7 @@ ifeq ($(OS),Windows_NT)
 	pushd_cmd := powershell Push-Location
 	popd_cmd := powershell Pop-Location
 	copy_lib := .\resources\scripts\copy.ps1
+	regression_cmd := .\resources\scripts\run_regression.ps1
 else
     detected_OS := $(shell uname)
 	os_string := nix
@@ -39,9 +40,13 @@ clean:
 copy:
 	$(os_shell) $(copy_lib)
 
+regression_test:
+	powershell .\resources\scripts\run_regression.ps1
+
 all:
 	make clean
 	make build
+	make regression_test
 	poetry run python -m pip install --upgrade pip
 # -----------------------------------------------------------------
 
