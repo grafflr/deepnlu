@@ -29,7 +29,7 @@ class FilterRegressionTests(BaseObject):
             return d_test_cases
 
         # return [x for x in test_cases if filter_on in x]
-        return {k: v for k, v in d_test_cases if filter_on in k}
+        return {k: d_test_cases[k] for k in d_test_cases if filter_on in k}
 
     def process(self,
                 d_test_cases: dict) -> dict:

@@ -19,3 +19,39 @@ cases:
     output:
       - canon: "mark_lombardi"
         text: "Mark Lombardi"
+
+  - id: 28-02
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'mark_lombardi'
+    ## ---------------------------------------------------------- ##
+    input: "Dr Mark Lombardi"
+    output:
+      - canon: "mark_lombardi"
+        text: "Dr Mark Lombardi"
+
+  - id: 28-03
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'mark_lombardi'
+    ## ---------------------------------------------------------- ##
+    input: "Dr. Mark Lombardi"
+    output:
+      - canon: "mark_lombardi"
+        text: "Dr. Mark Lombardi"
+
+  - id: 28-04
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'mark_lombardi'
+    ## ---------------------------------------------------------- ##
+    input: "dr. Mark Lombardi"
+    output:
+      - canon: "mark_lombardi"
+        text: "dr. Mark Lombardi"
+
+  - id: 28-05
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'mark_lombardi'
+    ## ---------------------------------------------------------- ##
+    input: "dr . Mark Lombardi"
+    output:
+      - canon: "mark_lombardi"
+        text: "dr . Mark Lombardi"
