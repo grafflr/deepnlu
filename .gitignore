@@ -63,3 +63,4 @@ config.ps1
 Publish-to-PyPI.ps1
 copy.ps1
 copy.sh
+catalog-v001.xml
