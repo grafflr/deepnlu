@@ -35,26 +35,32 @@ class RoundTripComparator(BaseObject):
             return expected_results is None or not len(expected_results)
 
         has_empty_actual = is_empty_actual()
+
         has_empty_expected = is_empty_expected()
 
-        if has_empty_actual and has_empty_expected:
+        # if the test case doesn't define expected output, then pass the test automatically ...
+        if has_empty_expected:
             return True
-        if has_empty_actual and not has_empty_expected:
-            return False
-        if not has_empty_actual and has_empty_expected:
+
+        # output was expected, but none was provided ...
+        if not has_empty_expected and has_empty_actual:
             return False
 
         d_fail = defaultdict(list)
 
         for expected_result in expected_results:
 
-            if 'canon' in expected_result:
-                if expected_result['canon'] not in actual_results['canon']:
-                    d_fail['canon'].append(expected_result['canon'])
+            if 'canon' not in expected_result:
+                continue
+
+            if expected_result['canon'] not in actual_results['canon']:
+                d_fail['canon'].append(expected_result['canon'])
 
             if 'text' not in expected_result:
-                if expected_result['text'] not in actual_results['text']:
-                    d_fail['text'].append(expected_result['text'])
+                continue
+
+            if expected_result['text'] not in actual_results['text']:
+                d_fail['text'].append(expected_result['text'])
 
         if len(d_fail):
             self.logger.error('\n'.join([

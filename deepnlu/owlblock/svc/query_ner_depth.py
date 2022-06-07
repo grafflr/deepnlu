@@ -58,8 +58,6 @@ class QueryNerDepth(BaseObject):
         results = []
         for ontology_name in self._d_ontologies:
 
-            print ('with ontology name ', ontology_name, ' calling \n', sparql_query)
-
             ask_owl_api = self._d_ontologies[ontology_name]
 
             results.append(ask_owl_api.adhoc(
