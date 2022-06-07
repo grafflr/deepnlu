@@ -1,0 +1,41 @@
+engine:
+  runner: "round_trip"
+  comparator: "round_trip"
+  loglevel: ERROR
+  ontologies:
+    - TestDN032
+
+## ---------------------------------------------------------- ##
+## Purpose:     Demonstrate Recursive Synonym Processing
+## Reference:   https://github.com/grafflr/deepnlu/issues/32
+## ---------------------------------------------------------- ##
+
+cases:
+  - id: 32-01
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Demonstrate Recursion in Span Creation
+    ##              vp => vice president
+    ## ---------------------------------------------------------- ##
+    input: "Associate VP for Academic Affairs"
+    output:
+      - canon: "associate_vice_president"
+        text: "Associate VP"
+
+  - id: 32-02
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Demonstrate Recursion in Span Creation
+    ##              assoc => association, vp => vice president
+    ## ---------------------------------------------------------- ##
+    input: "assoc vp"
+    output:
+      - canon: "associate_vice_president"
+        text: "assoc vp"
+
+  - id: 32-03
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Demonstrate Recursion in Span Creation
+    ## ---------------------------------------------------------- ##
+    input: "assoc vp!!"
+    output:
+      - canon: "associate_vice_president"
+        text: "assoc vp"
