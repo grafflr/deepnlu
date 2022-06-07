@@ -8,11 +8,11 @@ from baseblock import EnvIO
 from baseblock import FileIO
 from baseblock import BaseObject
 
-from deepnlu.recipe.bp import DeepNluAPI
+from deepnlu.owlblock.bp import FindOntologyData
 
 
-class RoundTripRunner(BaseObject):
-    """ Execute the Recipe for the "Round-Trip" Engine """
+class FindOntologyDataRunner(BaseObject):
+    """ Execute the Recipe for the "Find-Ontology-Data" Engine """
 
     def __init__(self):
         """ Change History
@@ -20,7 +20,7 @@ class RoundTripRunner(BaseObject):
         Created:
             6-Jun-2022
             craig@grafflr.ai
-            *   https://github.com/grafflr/deepnlu/issues/34
+            *   https://github.com/grafflr/deepnlu/issues/38
         """
         BaseObject.__init__(self, __name__)
         self._absolute_path = self._get_absolute_path()
@@ -35,29 +35,30 @@ class RoundTripRunner(BaseObject):
     def process(self,
                 ontologies: list,
                 input_text: str) -> dict:
-        """ Execute the "Round-Trip" Recipe on the Input Text
+        """ Execute the "Find-Ontology-Data" Recipe on the Input Text
 
         Args:
             ontologies (list): a list of 1..* ontologies to test with
             input_text (str): input text of any size or content
 
         Returns:
-            _type_: the receipe result
+            dict: the finder results
         """
 
-        api = DeepNluAPI()
+        absolute_path = self._get_absolute_path()
 
-        svcresult = api.handle_text(
-            input_text=input_text,
+        finder = FindOntologyData(
             ontologies=ontologies,
-            absolute_path=self._absolute_path)
+            absolute_path=absolute_path)
 
-        actual_texts = [x['text'].strip() for x in svcresult[0][0]['tokens']]
-
-        csvresult = api.to_csv(svcresult, include_position=False)
-        entities = [x['Canon'] for x in csvresult]
+        canon = finder.find_canon(input_text)
+        variants = finder.find_variants(input_text)
+        is_canon = finder.is_canon(input_text)
+        is_variant = finder.is_variant(input_text)
 
         return {
-            'canon': entities,
-            'text': actual_texts
+            'is_canon': is_canon,
+            'is_variant': is_variant,
+            'canon': canon,
+            'variants': variants,
         }

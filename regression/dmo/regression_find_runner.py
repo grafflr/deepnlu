@@ -4,9 +4,11 @@
 
 
 from typing import Callable
+
 from baseblock import BaseObject
 
 from regression.dmo.runners import RoundTripRunner
+from regression.dmo.runners import FindOntologyDataRunner
 
 
 class RegressionFindRunner(BaseObject):
@@ -28,5 +30,8 @@ class RegressionFindRunner(BaseObject):
 
         if runner_name == "round_trip":
             return RoundTripRunner().process
+
+        if runner_name == "find_ontology_data":
+            return FindOntologyDataRunner().process
 
         raise NotImplementedError(runner_name)

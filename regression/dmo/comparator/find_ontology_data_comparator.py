@@ -1,5 +1,5 @@
 # -*- coding: UTF-8 -*-
-""" Comparator of Actual vs Expected Values for the "Round-Trip" Engine """
+""" Comparator of Actual vs Expected Values for the "Find-Ontology-Data" Engine """
 
 
 from pprint import pprint
@@ -9,8 +9,8 @@ from collections import defaultdict
 from baseblock import BaseObject
 
 
-class RoundTripComparator(BaseObject):
-    """ Comparator of Actual vs Expected Values for the "Round-Trip" Engine """
+class FindOntologyDataComparator(BaseObject):
+    """ Comparator of Actual vs Expected Values for the "Find-Ontology-Data" Engine """
 
     def __init__(self):
         """ Change History
@@ -18,7 +18,7 @@ class RoundTripComparator(BaseObject):
         Created:
             6-Jun-2022
             craig@grafflr.ai
-            *   https://github.com/grafflr/deepnlu/issues/34
+            *   https://github.com/grafflr/deepnlu/issues/38
         """
         BaseObject.__init__(self, __name__)
 
@@ -55,19 +55,21 @@ class RoundTripComparator(BaseObject):
 
         d_fail = defaultdict(list)
 
-        for expected_result in expected_results:
+        for k in expected_results:
 
-            if 'canon' not in expected_result:
-                continue
+            expected_value = expected_results[k]
 
-            if expected_result['canon'] not in actual_results['canon']:
-                d_fail['canon'].append(expected_result['canon'])
+            if k == 'is_canon' and expected_value != actual_results['is_canon']:
+                d_fail['is_canon'].append(expected_value)
 
-            if 'text' not in expected_result:
-                continue
+            if k == 'is_variant' and expected_value != actual_results['is_variant']:
+                d_fail['is_variant'].append(expected_value)
 
-            if expected_result['text'] not in actual_results['text']:
-                d_fail['text'].append(expected_result['text'])
+            if k == 'canon' and expected_value != actual_results['canon']:
+                d_fail['canon'].append(expected_value)
+
+            if k == 'variants' and expected_value != actual_results['variants']:
+                d_fail['variants'].append(expected_value)
 
         if len(d_fail):
             self.logger.error('\n'.join([

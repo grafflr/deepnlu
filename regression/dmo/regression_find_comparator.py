@@ -3,15 +3,12 @@
 """ Find the Comparator for a given Regression Test """
 
 
-import os
 from typing import Callable
 
-from baseblock import FileIO
-from baseblock import Stopwatch
 from baseblock import BaseObject
 
-
 from regression.dmo.comparator import RoundTripComparator
+from regression.dmo.comparator import FindOntologyDataComparator
 
 
 class RegressionFindComparator(BaseObject):
@@ -33,5 +30,8 @@ class RegressionFindComparator(BaseObject):
 
         if runner_name == "round_trip":
             return RoundTripComparator().process
+
+        if runner_name == "find_ontology_data":
+            return FindOntologyDataComparator().process
 
         raise NotImplementedError(runner_name)

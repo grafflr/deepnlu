@@ -7,7 +7,7 @@ from deepnlu.owlblock.bp import FindOntologyData
 
 
 absolute_path = os.path.normpath(
-    os.path.join(os.getcwd(), 'resources/testing'))
+    os.path.join(os.getcwd(), 'resources/regression/ontologies'))
 FileIO.exists_or_error(absolute_path)
 
 
