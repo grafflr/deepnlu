@@ -5,6 +5,7 @@
 
 import os
 
+from baseblock import EnvIO
 from baseblock import FileIO
 from baseblock import Stopwatch
 from baseblock import BaseObject
@@ -25,8 +26,9 @@ class LoadRegressionTests(BaseObject):
 
     @staticmethod
     def _absolute_path() -> str:
-        absolute_path = os.path.normpath(
-            os.path.join(os.getcwd(), 'resources/regression'))
+        absolute_path = os.path.normpath(os.path.join(
+            os.getcwd(),
+            EnvIO.str_or_exception('TEST_CASE_LOCATION')))
         FileIO.exists_or_error(absolute_path)
 
         return absolute_path

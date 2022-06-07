@@ -32,6 +32,8 @@ if ($FileName -eq $null -OR $FileName -eq '') {
 
 
 $env:REGRESSION_FILENAME = $FileName
+$env:TEST_CASE_LOCATION = "resources/regression/cases"
+$env:TEST_ONTO_LOCATION = "resources/regression/ontologies"
 
 poetry run python .\regression\router.py
 

@@ -4,6 +4,7 @@
 import os
 from pprint import pprint
 
+from baseblock import EnvIO
 from baseblock import FileIO
 from baseblock import BaseObject
 
@@ -18,8 +19,8 @@ class RoundTripRunner(BaseObject):
         self._absolute_path = self._get_absolute_path()
 
     def _get_absolute_path(self) -> str:
-        absolute_path = os.path.normpath(
-            os.path.join(os.getcwd(), 'resources/testing'))
+        absolute_path = os.path.normpath(os.path.join(
+            os.getcwd(), EnvIO.str_or_exception('TEST_ONTO_LOCATION')))
         FileIO.exists_or_error(absolute_path)
 
         return absolute_path
