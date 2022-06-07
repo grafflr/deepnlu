@@ -10,6 +10,8 @@ def run() -> None:
     api = RegressionAPI()
     assert api
 
+    api.process()
+
 
 def main():
     run()

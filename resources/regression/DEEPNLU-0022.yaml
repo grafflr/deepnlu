@@ -1,6 +1,7 @@
-run:
-  function: "round_trip"
+engine:
+  runner: "round_trip"
   comparator: "round_trip"
+  loglevel: ERROR
 
 ## ---------------------------------------------------------- ##
 ## Purpose:     Parsing Defect for "Student Athlete Graduation Rate"
@@ -8,10 +9,13 @@ run:
 ## ---------------------------------------------------------- ##
 
 cases:
-  - input: "Presidents’ Award percent student-athlete graduation rate."
+  - id: 22-01
     ## ---------------------------------------------------------- ##
-    ##  Purpose:    Span 'student_athlete_graduation_rate'1
+    ##  Purpose:    Span 'student_athlete_graduation_rate'
     ## ---------------------------------------------------------- ##
+    ontologies:
+      - TestDN022
+    input: "Presidents’ Award percent student-athlete graduation rate."
     output:
       - canon: "student_athlete_graduation_rate"
         text: "student-athlete graduation rate"
