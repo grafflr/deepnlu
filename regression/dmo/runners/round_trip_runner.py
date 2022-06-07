@@ -25,15 +25,23 @@ class RoundTripRunner(BaseObject):
         return absolute_path
 
     def process(self,
-                d_test_case: dict) -> None:
+                ontologies: list,
+                input_text: str) -> dict:
+        """ Execute the "Round-Trip" Recipe on the Input Text
+
+        Args:
+            ontologies (list): a list of 1..* ontologies to test with
+            input_text (str): input text of any size or content
+
+        Returns:
+            _type_: the receipe result
+        """
 
         api = DeepNluAPI()
 
-        pprint(d_test_case)
-
         svcresult = api.handle_text(
-            input_text=d_test_case['input'],
-            ontologies=d_test_case['ontologies'],
+            input_text=input_text,
+            ontologies=ontologies,
             absolute_path=self._absolute_path)
 
         actual_texts = [x['text'].strip() for x in svcresult[0][0]['tokens']]

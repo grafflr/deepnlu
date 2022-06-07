@@ -58,8 +58,11 @@ class RunRegressionTests(BaseObject):
 
         sw = Stopwatch()
 
-        errors = []
+        errors = 0
+        total_test_cases = 0
+
         for test_case_name in d_test_cases:
+            test_case_name_only = test_case_name.split("\\")[-1]
 
             # retrieve the test file
             d_test_file = d_test_cases[test_case_name]
@@ -69,8 +72,12 @@ class RunRegressionTests(BaseObject):
             runner = self._find_runner(d_test_file)
             comparator = self._find_comparator(d_test_file)
 
+            # a test file defines 1..* ontologies to test with
+            ontologies = d_test_file['engine']['ontologies']
+
             # a test file defines zero-or-more test cases
             test_cases = d_test_file['cases']
+            total_test_cases += len(test_cases)
 
             for d_test_case in test_cases:
 
@@ -78,6 +85,7 @@ class RunRegressionTests(BaseObject):
 
                 svcresult = self._execute_test_case(
                     runner=runner,
+                    ontologies=ontologies,
                     d_test_case=d_test_case)
 
                 is_valid = self._validate_output(
@@ -85,19 +93,27 @@ class RunRegressionTests(BaseObject):
                     actual_results=svcresult,
                     expected_results=expected_results)
 
-            # if not self._execute(d_test_case):
-            #     errors.append(d_test_case['id'])
+                if not is_valid:
+                    errors += 1
+                    self.logger.error('\n'.join([
+                        "\n" + "!"*100,
+                        f"!! Failed {test_case_name_only} @ {d_test_case['id']}",
+                        "!"*100 + "\n"]))
 
-        if len(errors):
+                else:
+                    self.logger.debug('\n'.join([
+                        "\n" + "-"*100,
+                        f"-- Passed {test_case_name_only} @ {d_test_case['id']}",
+                        "-"*100 + "\n"]))
+
+        if errors:
             self.logger.error('\n'.join([
                 "Regression Failure",
                 f"\tTotal Time: {str(sw)}",
-                f"\tTotal Errors: {len(errors)}",
-                f"\tError Files: {', '.join(errors)}"]))
-            raise ValueError("Failure")
+                f"\tTotal Errors: {errors} - {total_test_cases}"]))
 
-        if self.isEnabledForInfo:
+        elif self.isEnabledForInfo:
             self.logger.info('\n'.join([
                 "Regression Successful",
                 f"\tTotal Time: {str(sw)}",
-                f"\tTotal Files: {len(d_test_cases)}"]))
+                f"\tTotal Cases: {total_test_cases}"]))

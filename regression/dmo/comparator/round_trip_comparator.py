@@ -3,6 +3,8 @@
 
 
 from pprint import pprint
+from pprint import pformat
+from collections import defaultdict
 
 from baseblock import BaseObject
 
@@ -14,9 +16,50 @@ class RoundTripComparator(BaseObject):
         BaseObject.__init__(self, __name__)
 
     def process(self,
-                actual_results: object,
-                expected_results: object) -> None:
+                actual_results: dict,
+                expected_results: list) -> bool:
+        """ Compare Actual Results to Expected Resuilts
 
-        pprint(actual_results)
-        print('-'*100)
-        pprint(expected_results)
+        Args:
+            actual_results (object): a dictionary that contains two keys:
+                'canon':    [ ...list of entity names... ],
+                'text':     [ ...list of extracted text spans... ]
+            expected_results (object): a list of expected values
+                each list contains a dictionary that is optionally keyed by either 'canon' or 'text'
+        """
+
+        def is_empty_actual() -> bool:
+            return actual_results is None or not len(actual_results)
+
+        def is_empty_expected() -> bool:
+            return expected_results is None or not len(expected_results)
+
+        has_empty_actual = is_empty_actual()
+        has_empty_expected = is_empty_expected()
+
+        if has_empty_actual and has_empty_expected:
+            return True
+        if has_empty_actual and not has_empty_expected:
+            return False
+        if not has_empty_actual and has_empty_expected:
+            return False
+
+        d_fail = defaultdict(list)
+
+        for expected_result in expected_results:
+
+            if 'canon' in expected_result:
+                if expected_result['canon'] not in actual_results['canon']:
+                    d_fail['canon'].append(expected_result['canon'])
+
+            if 'text' not in expected_result:
+                if expected_result['text'] not in actual_results['text']:
+                    d_fail['text'].append(expected_result['text'])
+
+        if len(d_fail):
+            self.logger.error('\n'.join([
+                "Test Case Failure",
+                f"\t{pformat(dict(d_fail))}"]))
+            return False
+
+        return True

@@ -25,6 +25,10 @@ class RegressionExecuteRunner(BaseObject):
         BaseObject.__init__(self, __name__)
 
     def process(self,
+                ontologies: list,
                 d_test_case: dict,
                 runner: Callable) -> object:
-        return runner(d_test_case)
+
+        return runner(
+            ontologies=ontologies,
+            input_text=d_test_case['input'])
