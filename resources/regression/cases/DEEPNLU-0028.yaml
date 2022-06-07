@@ -1,0 +1,21 @@
+engine:
+  runner: "round_trip"
+  comparator: "round_trip"
+  loglevel: ERROR
+  ontologies:
+    - TestDN028
+
+## ---------------------------------------------------------- ##
+## Purpose:     Parsing Defect for "Mark Lombardi"
+## Reference:   https://github.com/grafflr/deepnlu/issues/28
+## ---------------------------------------------------------- ##
+
+cases:
+  - id: 28-01
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'mark_lombardi'
+    ## ---------------------------------------------------------- ##
+    input: "Mark Lombardi"
+    output:
+      - canon: "mark_lombardi"
+        text: "Mark Lombardi"

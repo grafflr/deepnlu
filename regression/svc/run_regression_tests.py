@@ -61,6 +61,8 @@ class RunRegressionTests(BaseObject):
         errors = 0
         total_test_cases = 0
 
+        print (">>> ", d_test_cases)
+
         for test_case_name in d_test_cases:
             test_case_name_only = test_case_name.split("\\")[-1]
 
