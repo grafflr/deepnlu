@@ -65,22 +65,16 @@ class QueryNerLabel(BaseObject):
 
             ask_owl_api = self._d_ontologies[ontology_name]
 
-            print("CURRENT Iteration is Ontology: ", ontology_name)
-            print("\tPREFIX is ", ask_owl_api.prefix)
-            # sparql_query = sparql_query.replace(
-            #     '$PREFIX', ask_owl_api.prefix())
             sparql_query = sparql_query.replace(
                 '$PREFIX', ontology_name)
 
             sparql_query = sparql_query.replace(
                 '$NER', ner_type)
 
-            print("heading to the adhoc query with ", sparql_query)
             results.append(ask_owl_api.adhoc(
                 sparql_query=sparql_query,
                 to_lowercase=True,
                 result_type=QueryResultType.DICT_OF_STR2LIST))
-            print("\tgot my results")
 
         if not results:
             return None
@@ -88,7 +82,6 @@ class QueryNerLabel(BaseObject):
         elif len(results) == 1:
             return results[0]
 
-        print('about to go with merge ... ')
         return self._merge(results, QueryResultType.DICT_OF_STR2LIST)
 
     def process(self,

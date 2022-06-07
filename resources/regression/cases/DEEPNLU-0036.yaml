@@ -1,0 +1,19 @@
+engine:
+  runner: "round_trip"
+  comparator: "round_trip"
+  loglevel: ERROR
+  ontologies:
+    - TestDN036
+
+## ---------------------------------------------------------- ##
+## Purpose:     Migrated Test Case: Parse Text One Shot
+## Reference:   https://github.com/grafflr/deepnlu/issues/36
+## ---------------------------------------------------------- ##
+
+cases:
+  - id: 36-01
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Simple Spanning Solution
+    ## ---------------------------------------------------------- ##
+    input: "registered nurse"
+    output: # not of concern ...

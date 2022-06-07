@@ -1,0 +1,21 @@
+engine:
+  runner: "round_trip"
+  comparator: "round_trip"
+  loglevel: ERROR
+  ontologies:
+    - TestDN035
+
+## ---------------------------------------------------------- ##
+## Purpose:     Demonstrate Simple Long Distance Matching
+## Reference:   https://github.com/grafflr/deepnlu/issues/35
+##              https://github.com/grafflr/graffl-core/issues/77
+## ---------------------------------------------------------- ##
+
+cases:
+  - id: 35-01
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Demonstrate Long Distance Matching ('president of Maryville university')
+    ## ---------------------------------------------------------- ##
+    input: "the president of Maryville university said this!"
+    output:
+      - canon: "university_president"

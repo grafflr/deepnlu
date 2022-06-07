@@ -1,0 +1,24 @@
+engine:
+  runner: "round_trip"
+  comparator: "round_trip"
+  loglevel: ERROR
+  ontologies:
+    - TestDN031a
+    - TestDN031b
+
+## ---------------------------------------------------------- ##
+## Purpose:     Demonstrate Dual Ontologies
+## Reference:   https://github.com/grafflr/deepnlu/issues/31
+## ---------------------------------------------------------- ##
+
+cases:
+  - id: 31-01
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'academic_affairs'
+    ##              the Primary Purpose is to ensure deepNLU doesn't crash 
+    ##                when supplied with two Ontology models
+    ## ---------------------------------------------------------- ##
+    input: "Associate VP for Academic Affairs"
+    output:
+      - canon: "academic_affairs"
+        text: "Academic Affairs"

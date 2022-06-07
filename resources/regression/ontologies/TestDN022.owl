@@ -347,7 +347,9 @@
             
             rdfs:label "Graduation" ;
             
-            rdfs:subClassOf :Event .
+            rdfs:subClassOf :Event ;
+            
+            rdfs:seeAlso "grad" .
 
 
 

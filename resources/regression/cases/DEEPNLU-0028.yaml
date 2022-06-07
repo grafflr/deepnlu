@@ -1,0 +1,58 @@
+engine:
+  runner: "round_trip"
+  comparator: "round_trip"
+  loglevel: ERROR
+  ontologies:
+    - TestDN028
+
+## ---------------------------------------------------------- ##
+## Purpose:     Parsing Defect for "Mark Lombardi"
+## Reference:   https://github.com/grafflr/deepnlu/issues/28
+## ---------------------------------------------------------- ##
+
+cases:
+  - id: 28-01
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'mark_lombardi'
+    ## ---------------------------------------------------------- ##
+    input: "Mark Lombardi"
+    output:
+      - canon: "mark_lombardi"
+        text: "Mark Lombardi"
+
+  - id: 28-02
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'mark_lombardi'
+    ## ---------------------------------------------------------- ##
+    input: "Dr Mark Lombardi"
+    output:
+      - canon: "mark_lombardi"
+        text: "Dr Mark Lombardi"
+
+  - id: 28-03
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'mark_lombardi'
+    ## ---------------------------------------------------------- ##
+    input: "Dr. Mark Lombardi"
+    output:
+      - canon: "mark_lombardi"
+        text: "Dr. Mark Lombardi"
+
+  - id: 28-04
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'mark_lombardi'
+    ## ---------------------------------------------------------- ##
+    input: "dr. Mark Lombardi"
+    output:
+      - canon: "mark_lombardi"
+        text: "dr. Mark Lombardi"
+
+  #   this is a known failure (system boundary):
+  # - id: 28-05
+  #   ## ---------------------------------------------------------- ##
+  #   ##  Purpose:    Span 'mark_lombardi'
+  #   ## ---------------------------------------------------------- ##
+  #   input: "dr . Mark Lombardi"
+  #   output:
+  #     - canon: "mark_lombardi"
+  #       text: "dr . Mark Lombardi"

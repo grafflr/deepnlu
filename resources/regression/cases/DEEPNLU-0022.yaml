@@ -1,0 +1,39 @@
+engine:
+  runner: "round_trip"
+  comparator: "round_trip"
+  loglevel: ERROR
+  ontologies:
+    - TestDN022
+
+## ---------------------------------------------------------- ##
+## Purpose:     Parsing Defect for "Student Athlete Graduation Rate"
+## Reference:   https://github.com/grafflr/deepnlu/issues/22
+## ---------------------------------------------------------- ##
+
+cases:
+  - id: 22-01
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Span 'student_athlete_graduation_rate'
+    ## ---------------------------------------------------------- ##
+    input: "Presidents’ Award percent student-athlete graduation rate."
+    output:
+      - canon: "student_athlete_graduation_rate"
+        text: "student-athlete graduation rate"
+
+  - id: 22-02
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Ensure Span without hyphenated 'student athlete'
+    ## ---------------------------------------------------------- ##
+    input: "Presidents Award percent student athlete graduation rate."
+    output:
+      - canon: "student_athlete_graduation_rate"
+        text: "student athlete graduation rate"
+
+  - id: 22-03
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Ensure Span with 'grad' synonym
+    ## ---------------------------------------------------------- ##
+    input: "Presidents Award percent student athlete grad rate."
+    output:
+      - canon: "student_athlete_graduation_rate"
+        text: "student athlete grad rate"
