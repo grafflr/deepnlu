@@ -1,6 +1,7 @@
 import os
 
 from baseblock import FileIO
+from deepnlu.services.portendo import svc
 
 
 from deepnlu.services.portendo.bp import Portendo
@@ -10,6 +11,12 @@ def test_portendo():
     input_tokens = [
         {
             "normal": "my",
+        },
+        {
+            "normal": "late",
+        },
+        {
+            "normal": "transport",
         },
         {
             "normal": "late_transport",
@@ -35,6 +42,12 @@ def test_portendo():
     assert keys == ['result', 'tokens']
 
     assert type(svcresult['tokens']) == dict
+
+    expected_classification = {
+        'classification': 'Late_Transport', 'confidence': 99}
+    actual_classification = svcresult['result'][0]
+
+    assert expected_classification == actual_classification
 
 
 def main():

@@ -34,7 +34,7 @@ class ComputerStartsWith(BaseObject):
         """
         BaseObject.__init__(self, __name__)
         self._mapping = d_index['mapping']
-        self._d_exclude_allof = d_index['startswith']
+        self._d_startswith = d_index['startswith']
 
     def _coverage(self,
                   weight: int,

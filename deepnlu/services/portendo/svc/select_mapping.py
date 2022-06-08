@@ -19,12 +19,19 @@ class SelectMapping(BaseObject):
 
     def __init__(self,
                  results: dict,
-                 scoring: object):
-        """
+                 d_index: dict):
+        """ Change History
+
         Created:
             7-Feb-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/169
+        Updated:
+            8-Jun-2022
+            craig@grafflr.ai
+            *   eliminate callback and pass d-index in pursuit of
+                https://github.com/grafflr/deepnlu/issues/45
+
         :param results:
             relevant section of mapping ruleset
         :param scoring:
@@ -33,13 +40,13 @@ class SelectMapping(BaseObject):
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
             Enforcer.is_dict(results)
-
+            Enforcer.is_dict(d_index)
             self.logger.debug('\n'.join([
                 "Initialized Service",
                 f"\tTotal Results: {len(results)}"]))
 
         self._results = results
-        self._scoring = scoring
+        self._d_index = d_index
 
     def process(self) -> MappingResult:
 
@@ -47,7 +54,7 @@ class SelectMapping(BaseObject):
 
         score_candidates = MappingScoreCandidates(
             results=self._results,
-            scoring=self._scoring).process
+            d_index=self._d_index).process
 
         dedupe_candidates = MappingRemoveDuplicates(self._results).process
 

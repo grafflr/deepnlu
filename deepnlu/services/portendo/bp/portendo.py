@@ -49,7 +49,9 @@ class Portendo(BaseObject):
 
         self._schema_name = schema_name
 
-        ReadMapping()
+        self._d_index = ReadMapping(
+            schema_name=schema_name,
+            absolute_path=absolute_path).index()
 
     def _run(self,
              input_tokens: list) -> tuple:
@@ -63,17 +65,18 @@ class Portendo(BaseObject):
         }
 
         mapping = PredictMapping(
-            indices=self._indices,
+            d_index=self._d_index,
             ontology_name=self._schema_name).process(svcresult)
 
         mapping = SelectMapping(
             results=mapping,
-            scoring=self._indices.score).process()
+            d_index=self._d_index).process()
 
-        self.logger.debug('\n'.join([
-            "Mapping Completed",
-            f"\tInput:\n{pformat(input_tokens)}",
-            f"\tOutput:\n{pformat(mapping)}"]))
+        if self.isEnabledForDebug:
+            self.logger.debug('\n'.join([
+                "Mapping Completed",
+                f"\tInput:\n{pformat(input_tokens)}",
+                f"\tOutput:\n{pformat(mapping)}"]))
 
         if not len(mapping):
             return {

@@ -32,7 +32,7 @@ class ComputerIncludeAllOf(BaseObject):
         """
         BaseObject.__init__(self, __name__)
         self._mapping = d_index['mapping']
-        self._d_exclude_allof = d_index['include_all_of']
+        self._d_include_allof = d_index['include_all_of']
 
     def _find_candidates(self,
                          d_input_tokens: dict) -> list:

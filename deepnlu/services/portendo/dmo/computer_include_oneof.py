@@ -32,7 +32,7 @@ class ComputerIncludeOneOf(BaseObject):
         """
         BaseObject.__init__(self, __name__)
         self._mapping = d_index['mapping']
-        self._d_exclude_allof = d_index['include_one_of']
+        self._d_include_oneof = d_index['include_one_of']
 
     def _coverage(self,
                   weight: int,

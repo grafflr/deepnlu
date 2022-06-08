@@ -15,21 +15,33 @@ class MappingScoreCandidates(BaseObject):
 
     def __init__(self,
                  results: dict,
-                 scoring: object):
+                 d_index: dict):
         """
         Created:
             7-Feb-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/169
-        Created:
+        Updated:
             10-Feb-2022
             craig@grafflr.ai
             *   integrate scoring dictionary
                 https://github.com/grafflr/graffl-core/issues/176
+        Updated:
+            8-Jun-2022
+            craig@grafflr.ai
+            *   eliminate callback and include 'by-category' function directly in pursuit of
+                https://github.com/grafflr/deepnlu/issues/45
+
         """
         BaseObject.__init__(self, __name__)
         self._results = results
-        self._scoring = scoring
+        self._d_index = d_index
+
+    def _by_category(self,
+                     category: str) -> float:
+        if category in self._d_index['scoring']:
+            return self._d_index['scoring'][category]
+        raise NotImplementedError(category)
 
     def _score(self,
                category: str,
@@ -49,7 +61,7 @@ class MappingScoreCandidates(BaseObject):
             elif d_result['recursion'] >= 3:
                 confidence -= 50
 
-            confidence += self._scoring(category)
+            confidence += self._by_category(category)
 
             # Deductions (or Increases) for Weight (weighted coverage)
             if d_result['weight'] > 3:

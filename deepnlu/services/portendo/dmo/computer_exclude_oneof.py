@@ -31,7 +31,7 @@ class ComputerExcludeOneOf(BaseObject):
         """
         BaseObject.__init__(self, __name__)
         self._mapping = d_index['mapping']
-        self._d_exclude_allof = d_index['exclude_one_of']
+        self._d_exclude_oneof = d_index['exclude_one_of']
 
     def process(self,
                 d_input_tokens: dict) -> set:
