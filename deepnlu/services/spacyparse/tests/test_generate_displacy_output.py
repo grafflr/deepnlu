@@ -14,27 +14,26 @@ from deepnlu.owlblock.bp import FindOntologyData
 
 def execute(input_text: str):
 
-    
+    # handle_sentence = SentenceHandlerOneShot(
+    #     FindOntologyData()).process
 
-    handle_sentence = SentenceHandlerOneShot(
-        FindOntologyData()).process
+    # paragraphs = []
+    # for input_sentence in Segmenter().input_text(input_text):
+    #     paragraphs.append([handle_sentence(x)
+    #                        for x in input_sentence])
 
-    paragraphs = []
-    for input_sentence in Segmenter().input_text(input_text):
-        paragraphs.append([handle_sentence(x)
-                           for x in input_sentence])
+    # parser = ParseInputTokens()
+    # assert parser
 
-    parser = ParseInputTokens()
-    assert parser
+    # displacy = GenerateDisplacyOutput()
+    # assert displacy
 
-    displacy = GenerateDisplacyOutput()
-    assert displacy
+    # result_1 = parser.process(paragraphs)
+    # Enforcer.is_list(result_1)
 
-    result_1 = parser.process(paragraphs)
-    Enforcer.is_list(result_1)
-
-    result_2 = displacy.process(result_1)
-    pprint(result_2)
+    # result_2 = displacy.process(result_1)
+    # pprint(result_2)
+    pass
 
 
 def test_parse_input_tokens():
