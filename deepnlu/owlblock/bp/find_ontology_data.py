@@ -3,8 +3,6 @@
 """ Generic Facade to Find Data in 1..* Ontology Models """
 
 
-from ast import Return
-from pprint import pprint
 from functools import lru_cache
 
 from baseblock import Enforcer
@@ -509,7 +507,7 @@ class FindOntologyData(BaseObject):
             return None
         elif len(results) == 1:
             return results[0]
-        
+
         return self._merge(results, QueryResultType.DICT_OF_STR2DICT)
 
     @lru_cache

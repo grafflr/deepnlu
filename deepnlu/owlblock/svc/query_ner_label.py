@@ -58,12 +58,13 @@ class QueryNerLabel(BaseObject):
         self._generate_view = ViewGeneratorNerLabel().process
 
     def _get_results(self,
-                     ner_type: str,
-                     sparql_query: str) -> list:
+                     ner_type: str) -> list:
         results = []
         for ontology_name in self._d_ontologies:
 
             ask_owl_api = self._d_ontologies[ontology_name]
+
+            sparql_query = self.__SPARQL_QUERY
 
             sparql_query = sparql_query.replace(
                 '$PREFIX', ontology_name)
@@ -88,9 +89,7 @@ class QueryNerLabel(BaseObject):
                 ner_type: str,
                 reverse: bool = False) -> dict or None:
 
-        d_results = self._get_results(
-            ner_type=ner_type,
-            sparql_query=self.__SPARQL_QUERY)
+        d_results = self._get_results(ner_type)
 
         if not d_results or not len(d_results):
             return None

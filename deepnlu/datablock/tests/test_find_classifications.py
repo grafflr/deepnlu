@@ -14,9 +14,11 @@ def test_load() -> None:
 
     absolute_path = os.path.normpath(
         os.path.join(
-            EnvIO.str_or_exception('GRAFFLR_HOME'),
-            'apps/blocks/datablock/datablock/os/manifest',
-            'chitchat'))
+            # EnvIO.str_or_exception('GRAFFLR_HOME'),
+            os.getcwd(),
+            # 'apps/blocks/datablock/datablock/os/manifest',
+            'deepnlu/datablock/os/manifest/chitchat'))
+    # 'chitchat'))
 
     FileIO.exists_or_error(absolute_path)
 
