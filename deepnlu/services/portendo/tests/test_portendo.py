@@ -24,7 +24,7 @@ def test_portendo():
         os.path.join(os.getcwd(), 'resources/testing'))
     FileIO.exists_or_error(absolute_path)
 
-    api = Portendo(schema_name='unitest',
+    api = Portendo(schema_name='test_intents',
                    absolute_path=absolute_path)
     assert api
 

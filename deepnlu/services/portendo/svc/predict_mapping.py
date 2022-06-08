@@ -9,7 +9,6 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
-from deepnlu.datablock import FindClassifications
 
 from deepnlu.services.portendo.dto import ExplainResult
 from deepnlu.services.portendo.dto import MappingResult
@@ -29,45 +28,36 @@ class PredictMapping(BaseObject):
 
     def __init__(self,
                  ontology_name: str,
-                 indices: FindClassifications):
+                 d_index: dict):
         """ Initialize Service
 
         Created:
             7-Feb-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/169
+        Updated:
+            8-Jun-2022
+            craig@grafflr.ai
+            *   read schema in-memory 
+                https://github.com/grafflr/deepnlu/issues/45
 
         Args:
             ontology_name (str):
-            d_classifications (dict): [description]
+            d_index (dict): the indexed schema
         """
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
             Enforcer.is_str(ontology_name)
-
+            Enforcer.is_dict(d_index)
             self.logger.debug('\n'.join([
                 "Initialized Service",
                 f"\tOntology Name: {ontology_name}"]))
 
-        self._include_one_of = ComputerIncludeOneOf(
-            d_mapping=indices.mapping,
-            d_include_oneof=indices.include_one_of).process
-
-        self._include_all_of = ComputerIncludeAllOf(
-            d_mapping=indices.mapping,
-            d_include_allof=indices.include_all_of).process
-
-        self._exclude_one_of = ComputerExcludeOneOf(
-            d_mapping=indices.mapping,
-            d_exclude_oneof=indices.exclude_one_of).process
-
-        self._exclude_all_of = ComputerExcludeAllOf(
-            d_mapping=indices.mapping,
-            d_exclude_allof=indices.exclude_all_of).process
-
-        self._startswith = ComputerStartsWith(
-            d_mapping=indices.mapping,
-            d_startswith=indices.startswith).process
+        self._include_one_of = ComputerIncludeOneOf(d_index).process
+        self._include_all_of = ComputerIncludeAllOf(d_index).process
+        self._exclude_one_of = ComputerExcludeOneOf(d_index).process
+        self._exclude_all_of = ComputerExcludeAllOf(d_index).process
+        self._startswith = ComputerStartsWith(d_index).process
 
     def _process(self,
                  d_tokens: dict) -> MappingResults:

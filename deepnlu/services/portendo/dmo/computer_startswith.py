@@ -16,19 +16,25 @@ class ComputerStartsWith(BaseObject):
     """
 
     def __init__(self,
-                 d_mapping: dict,
-                 d_startswith: dict):
-        """
+                 d_index: dict):
+        """ Change History
+
         Created:
             5-Apr-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/264
-        :param d_startswith:
-            relevant section of mapping ruleset
+        Updated:
+            8-Jun-2022
+            craig@grafflr.ai
+            *   read schema in-memory 
+                https://github.com/grafflr/deepnlu/issues/45
+
+        Args:
+            d_index (dict): the in-memory schema
         """
         BaseObject.__init__(self, __name__)
-        self._mapping = d_mapping
-        self._d_startswith = d_startswith
+        self._mapping = d_index['mapping']
+        self._d_exclude_allof = d_index['startswith']
 
     def _coverage(self,
                   weight: int,

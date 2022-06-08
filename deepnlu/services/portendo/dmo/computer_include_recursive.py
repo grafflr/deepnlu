@@ -13,23 +13,27 @@ class ComputerIncludeRecursive(BaseObject):
     """ Establish Recursive Mappings """
 
     def __init__(self,
-                 indices: dict,
-                 ontology_name: str,
+                 d_index: dict,
                  recursion_level: int):
-        """
+        """ Change History
+
         Created:
             7-Feb-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/169
-        :param d_include_oneof:
-            relevant section of mapping ruleset
+        Updated:
+            8-Jun-2022
+            craig@grafflr.ai
+            *   read schema in-memory 
+                https://github.com/grafflr/deepnlu/issues/45
+
+        Args:
+            d_index (dict): the in-memory schema
         """
         BaseObject.__init__(self, __name__)
-        Enforcer.is_int(recursion_level)
-
-        self._mapping = indices['mapping']
+        self._mapping = d_index['mapping']
         self._recursion_level = recursion_level
-        self._d_include_oneof = indices['include_one_of']
+        self._d_exclude_allof = d_index['include_one_of']
 
     def _taxonomy_lookup(self,
                          token_name: str,
@@ -117,28 +121,29 @@ class ComputerIncludeRecursive(BaseObject):
 
     def process(self,
                 d_input_tokens: dict) -> set:
-        sw = Stopwatch()
+        # sw = Stopwatch()
 
-        s_mapping = set(self._d_include_oneof.keys())
-        d_parents = self._to_parents(input_tokens)
+        # s_mapping = set(self._d_include_oneof.keys())
+        # d_parents = self._to_parents(input_tokens)
 
-        s_markers = set(d_parents.keys())
-        common = s_mapping.intersection(s_markers)
+        # s_markers = set(d_parents.keys())
+        # common = s_mapping.intersection(s_markers)
 
-        d_results = {}
+        # d_results = {}
 
-        d_weights = self._weight(common)
-        for mapping_name in d_weights:
-            weight = d_weights[mapping_name]
-            coverage = self._coverage(weight=weight,
-                                      mapping_name=mapping_name)
-            d_results[mapping_name] = {"weight": weight,
-                                       "coverage": coverage}
+        # d_weights = self._weight(common)
+        # for mapping_name in d_weights:
+        #     weight = d_weights[mapping_name]
+        #     coverage = self._coverage(weight=weight,
+        #                               mapping_name=mapping_name)
+        #     d_results[mapping_name] = {"weight": weight,
+        #                                "coverage": coverage}
 
-        self.logger.debug('\n'.join([
-            "Computation Complete: Include Recursive",
-            f"\tTotal Markers: {len(markers)}",
-            f"\tTotal Results: {len(d_results)}",
-            f"\tTotal Time: {str(sw)}"]))
+        # self.logger.debug('\n'.join([
+        #     "Computation Complete: Include Recursive",
+        #     f"\tTotal Markers: {len(markers)}",
+        #     f"\tTotal Results: {len(d_results)}",
+        #     f"\tTotal Time: {str(sw)}"]))
 
-        return d_results
+        # return d_results
+        raise NotImplementedError

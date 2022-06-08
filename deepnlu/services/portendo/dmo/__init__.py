@@ -13,3 +13,9 @@ from .computer_include_allof import ComputerIncludeAllOf
 from .computer_exclude_oneof import ComputerExcludeOneOf
 from .computer_exclude_allof import ComputerExcludeAllOf
 from .computer_startswith import ComputerStartsWith
+from .index_exclude_allof import IndexExcludeAllOf
+from .index_exclude_oneof import IndexExcludeOneOf
+from .index_include_allof import IndexIncludeAllOf
+from .index_include_oneof import IndexIncludeOneOf
+from .index_scoring import IndexScoring
+from .index_startswith import IndexStartsWith

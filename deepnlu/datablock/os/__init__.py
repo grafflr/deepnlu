@@ -1,5 +1,4 @@
 from .wordnet import *
-from .manifest import *
 from .currency_kb import d_currency
 from .hyphens_kb import d_hyphens
 from .squotes_kb import d_squotes

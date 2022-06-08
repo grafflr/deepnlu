@@ -14,22 +14,25 @@ class ComputerIncludeAllOf(BaseObject):
     """ Compute INCLUDE_ALL_OF Rulesets """
 
     def __init__(self,
-                 d_mapping: dict,
-                 d_include_allof: dict):
-        """ Initialize Component
+                 d_index: dict):
+        """ Change History
 
         Created:
             7-Feb-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/169
+        Updated:
+            8-Jun-2022
+            craig@grafflr.ai
+            *   read schema in-memory 
+                https://github.com/grafflr/deepnlu/issues/45
 
         Args:
-            indices (dict): the indexed rule set
+            d_index (dict): the in-memory schema
         """
-
         BaseObject.__init__(self, __name__)
-        self._mapping = d_mapping
-        self._d_include_allof = d_include_allof
+        self._mapping = d_index['mapping']
+        self._d_exclude_allof = d_index['include_all_of']
 
     def _find_candidates(self,
                          d_input_tokens: dict) -> list:

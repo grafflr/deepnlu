@@ -32,7 +32,7 @@ class ServicesAPI(BaseObject):
     """ API for all DeepNLU Services """
 
     def __init__(self):
-        """ Change Log
+        """ Change History
 
         Created:
             16-Apr-2022

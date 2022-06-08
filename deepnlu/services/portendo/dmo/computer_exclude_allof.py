@@ -12,18 +12,25 @@ from baseblock import BaseObject
 class ComputerExcludeAllOf(BaseObject):
 
     def __init__(self,
-                 d_mapping: dict,
-                 d_exclude_allof: dict):
-        """
+                 d_index: dict):
+        """ Change History
+
         Created:
             7-Feb-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/169
-        :param indices:
+        Updated:
+            8-Jun-2022
+            craig@grafflr.ai
+            *   read schema in-memory 
+                https://github.com/grafflr/deepnlu/issues/45
+
+        Args:
+            d_index (dict): the in-memory schema
         """
         BaseObject.__init__(self, __name__)
-        self._mapping = d_mapping
-        self._d_exclude_allof = d_exclude_allof
+        self._mapping = d_index['mapping']
+        self._d_exclude_allof = d_index['exclude_all_of']
 
     def process(self,
                 d_input_tokens: dict) -> set:

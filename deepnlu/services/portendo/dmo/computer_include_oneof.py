@@ -14,19 +14,25 @@ from deepnlu.services.portendo.dto import Markers
 class ComputerIncludeOneOf(BaseObject):
 
     def __init__(self,
-                 d_mapping: dict,
-                 d_include_oneof: dict):
-        """
+                 d_index: dict):
+        """ Change History
+
         Created:
             7-Feb-2022
             craig@grafflr.ai
             *   https://github.com/grafflr/graffl-core/issues/169
-        :param d_include_oneof:
-            relevant section of mapping ruleset
+        Updated:
+            8-Jun-2022
+            craig@grafflr.ai
+            *   read schema in-memory 
+                https://github.com/grafflr/deepnlu/issues/45
+
+        Args:
+            d_index (dict): the in-memory schema
         """
         BaseObject.__init__(self, __name__)
-        self._mapping = d_mapping
-        self._d_include_oneof = d_include_oneof
+        self._mapping = d_index['mapping']
+        self._d_exclude_allof = d_index['include_one_of']
 
     def _coverage(self,
                   weight: int,
