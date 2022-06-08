@@ -12,7 +12,7 @@
     None.
 
     .EXAMPLE
-    PS> .\Poetry-Remove-Lib.ps1
+    PS> .\poetry_remove_lib.ps1
 #>
 
 param(
