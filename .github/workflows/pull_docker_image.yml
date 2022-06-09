@@ -35,6 +35,7 @@ jobs:
         password: ${{ secrets.ECR_PASSWORD }}
     steps:
       - run: echo "Inside a container pulled from ECR \o/"
+      - run: echo "$GRAFFLR_HOME"
 
 
 
