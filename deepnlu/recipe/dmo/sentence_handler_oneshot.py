@@ -83,10 +83,11 @@ class SentenceHandlerOneShot(BaseObject):
     def _tokenize(self,
                   input_text: str) -> list:
 
+        if self.isEnabledForDebug:
+            Enforcer.is_str(input_text)
+
         tokens = self._string_tokenize(input_text)
-        from baseblock import FileIO
-        tokens = self._parse(tokens)
-        #FileIO.write_json(tokens, "c:/Users/Craig/Desktop/tokens.json")
+        tokens, _ = self._parse(tokens)
 
         for token in tokens:
             ## ---------------------------------------------------------- ##

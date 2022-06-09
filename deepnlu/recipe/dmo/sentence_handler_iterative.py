@@ -5,6 +5,7 @@
 
 import logging
 from pprint import pprint
+from functools import lru_cache
 
 from baseblock import Enforcer
 from baseblock import Stopwatch
@@ -25,8 +26,6 @@ class SentenceHandlerIterative(BaseObject):
     Sample Call and Output:
         https://github.com/grafflr/graffl-core/issues/193#issuecomment-1047320212
     """
-
-    __tokcache = {}
 
     def __init__(self,
                  ontologies: list,
@@ -62,37 +61,31 @@ class SentenceHandlerIterative(BaseObject):
         self._string_tokenize = Tokenizer().input_text
         self._parse = ParseInputTokens().process
 
+    @lru_cache(maxsize=5196, typed=True)
     def _tokenize(self,
                   input_text: str) -> list:
+        if self.isEnabledForDebug:
+            Enforcer.is_str(input_text)
 
-        if input_text in self.__tokcache:
-            return self.__tokcache[input_text]
+        tokens = self._string_tokenize(input_text)
+        tokens, _ = self._parse(tokens)
 
-        def inner() -> list:
+        for token in tokens:
+            ## ---------------------------------------------------------- ##
+            # Update:     DO NOT use lemma as basis for 'normal' form
+            # Reference:  https://github.com/grafflr/graffl-core/issues/46#issuecomment-943708492
+            # Old Code:   self._normalizer.input_text(token['lemma'])
+            ## ---------------------------------------------------------- ##
+            token['normal'] = self._normalize(token['text'])
 
-            tokens = self._string_tokenize(input_text)
-            tokens = self._parse(tokens)
+            if token['is_punct']:
+                token['stem'] = token['normal']
+            else:
+                token['stem'] = str(
+                    self._stem(token['normal']))
+            del token['lemma']
 
-            for token in tokens:
-                ## ---------------------------------------------------------- ##
-                # Update:     DO NOT use lemma as basis for 'normal' form
-                # Reference:  https://github.com/grafflr/graffl-core/issues/46#issuecomment-943708492
-                # Old Code:   self._normalizer.input_text(token['lemma'])
-                ## ---------------------------------------------------------- ##
-                token['normal'] = self._normalize(token['text'])
-
-                if token['is_punct']:
-                    token['stem'] = token['normal']
-                else:
-                    token['stem'] = str(
-                        self._stem(token['normal']))
-                del token['lemma']
-
-            return tokens
-
-        self.__tokcache[input_text] = inner()
-
-        return self.__tokcache[input_text]
+        return tokens
 
     def process(self,
                 input_text: str,

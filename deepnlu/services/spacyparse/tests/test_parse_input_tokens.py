@@ -11,7 +11,7 @@ def execute(tokens: list):
     parser = ParseInputTokens()
     assert parser
 
-    svcresult = parser.process(tokens)
+    svcresult, _ = parser.process(tokens)
 
     txtresult = [x['text'] for x in svcresult]
 

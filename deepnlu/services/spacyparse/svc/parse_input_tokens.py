@@ -50,9 +50,10 @@ class ParseInputTokens(BaseObject):
         results = GrafflParserCoordinates().process(results)
         results = GrafflParserWordnet().process(results)
 
-        self.logger.info('\n'.join([
-            "Input Token Parsing Completed",
-            f"\tTotal Tokens: {len(results)}",
-            f"\tTotal Time: {str(sw)}"]))
+        if self.isEnabledForInfo:
+                self.logger.info('\n'.join([
+                "Input Token Parsing Completed",
+                f"\tTotal Tokens: {len(results)}",
+                f"\tTotal Time: {str(sw)}"]))
 
-        return results
+        return results, doc
