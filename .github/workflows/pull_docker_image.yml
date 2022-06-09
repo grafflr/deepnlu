@@ -42,8 +42,9 @@ jobs:
       with:
         path: resources/regression/cases
     - run: echo "$GITHUB_WORKSPACE"
-    - run: cd $GITHUB_WORKSPACE/resources/regression/cases/
-    - run: ls
+    - run: |
+        cd $GITHUB_WORKSPACE/resources/regression/cases/
+        ls
     - run: echo "Inside a container pulled from ECR \o/"
     - run: echo "$GRAFFLR_HOME"
 
