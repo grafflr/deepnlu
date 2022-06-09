@@ -18,14 +18,14 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: AWS_REGION
+          AWS_DEFAULT_REGION: US-EAST-1
           GH_API_ACCESS_TOKEN: ${{ secrets.GH_API_ACCESS_TOKEN }}
   # This 'test' job is usefull for fast debugging
   test:
     needs: login
     runs-on: ubuntu-latest
     container:
-      image: ACCOUNT.dkr.ecr.REGION.amazonaws.com/IMAGE:VERSION
+      image: 636748513078.dkr.ecr.us-east-1.amazonaws.com/demo/blatterbots:Latest
       credentials:
         username: AWS
         # Here is the password retrieved as a secret that is set by the `login` job
