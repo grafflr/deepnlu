@@ -40,7 +40,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
       with:
-        path: /resources/regression/cases
+        path: resources/regression/cases
 
     - run: echo "Inside a container pulled from ECR \o/"
     - run: echo "$GRAFFLR_HOME"
