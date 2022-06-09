@@ -35,9 +35,15 @@ jobs:
         username: AWS
         # Here is the password retrieved as a secret that is set by the `login` job
         password: ${{ secrets.ECR_PASSWORD }}
+
     steps:
-      - run: echo "Inside a container pulled from ECR \o/"
-      - run: echo "$GRAFFLR_HOME"
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        path: /resources/regression/cases
+
+    - run: echo "Inside a container pulled from ECR \o/"
+    - run: echo "$GRAFFLR_HOME"
 
 
 
