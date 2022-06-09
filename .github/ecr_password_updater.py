@@ -30,7 +30,7 @@ def get_ecr_password() -> str:
 
 if __name__ == '__main__':
 
-    get_public_key = requests.get('https://api.github.com/repos/ORG/REPOSITORY/actions/secrets/public-key',
+    get_public_key = requests.get('https://api.github.com/repos/grafflr/deepnlu/actions/secrets/public-key',
                                   headers={'Accept': 'application/vnd.github.v3+json',
                                            'Authorization': 'token ' + os.environ['GH_API_ACCESS_TOKEN']})
     if get_public_key.ok is False:
