@@ -43,7 +43,7 @@ if __name__ == '__main__':
 
     password = get_ecr_password()
     encrypted_password = encrypt(public_key_value, password)
-    update_password = requests.put('https://api.github.com/repos/ORG/REPOSITORY/actions/secrets/ECR_PASSWORD',
+    update_password = requests.put('https://api.github.com/repos/grafflr/deepnlu/actions/secrets/ECR_PASSWORD',
                                    headers={'Accept': 'application/vnd.github.v3+json',
                                             'Authorization': 'token ' + os.environ['GH_API_ACCESS_TOKEN']},
                                    data=json.dumps({'encrypted_value': encrypted_password, 'key_id': public_key_id,
