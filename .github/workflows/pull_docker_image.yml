@@ -2,7 +2,7 @@ name: ecr-login
 on:
   push:
       branches:
-      - 'deepnlu/resources/regression/cases/**'
+      - 'resources/regression/cases/**'
   # Every 6 hours, the password validity is 12 hours
   #schedule:
   #  - cron:  '0 */6 * * *'
