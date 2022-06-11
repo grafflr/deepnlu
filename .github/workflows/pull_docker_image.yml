@@ -40,12 +40,10 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - run: echo "$GITHUB_WORKSPACE"
     - run: |
         cd $GITHUB_WORKSPACE/resources/regression/cases/
         ls
-    - run: echo "Inside a container pulled from ECR \o/"
-    - run: echo "$GRAFFLR_HOME"
+        ./resources/scripts/run_regression.sh
 
 
 
