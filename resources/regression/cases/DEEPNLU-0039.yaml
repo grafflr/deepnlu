@@ -13,7 +13,7 @@ engine:
 cases:
   - id: 39-01
     ## ---------------------------------------------------------- ##
-    ##  Purpose:    Test Canonical form Lookup test
+    ##  Purpose:    Test Canonical form Lookup test2
     ## ---------------------------------------------------------- ##
     input: "set to close"
     output:
