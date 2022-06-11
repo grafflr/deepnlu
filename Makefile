@@ -16,6 +16,7 @@ else
 	pushd_cmd := pushd
 	popd_cmd := popd
 	copy_lib := resources/scripts/copy.sh
+	regression_cmd := ./resources/scripts/run_regression.sh
 endif
 # ----------------------------------------------------------------
 
@@ -41,7 +42,8 @@ copy:
 	$(os_shell) $(copy_lib)
 
 regression_test:
-	powershell .\resources\scripts\run_regression.ps1
+	$(os_shell) $(regression_cmd)
+
 
 all:
 	make clean
