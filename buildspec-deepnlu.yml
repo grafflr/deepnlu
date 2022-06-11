@@ -1,5 +1,11 @@
 version: 0.2
 
+env:
+  shell: bash
+  secrets-manager:
+    DOCKERHUB_USERNAME: "/dockerhub/credentials:dockerhub_username"
+    DOCKERHUB_PASSWORD: "/dockerhub/credentials:dockerhub_password"
+    
 phases:
   pre_build:
     commands:
