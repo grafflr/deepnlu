@@ -40,13 +40,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - run: |
-        cd $GITHUB_WORKSPACE/resources/regression/cases/
-        ls
-    - run: make all
-    - run: |
-        cd $GITHUB_WORKSPACE
-        ./resources/scripts/run_regression.sh
+
+    - run: ./resources/scripts/run_regression.sh
 
 
 
