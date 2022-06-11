@@ -43,6 +43,7 @@ jobs:
     - run: |
         cd $GITHUB_WORKSPACE/resources/regression/cases/
         ls
+    - run: make all
     - run: |
         cd $GITHUB_WORKSPACE
         ./resources/scripts/run_regression.sh
