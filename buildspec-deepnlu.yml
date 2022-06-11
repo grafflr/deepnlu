@@ -8,7 +8,6 @@ phases:
   build:
     commands:
       - echo Build started on `date` for deepnlu test image
-      - make build-john-bot
       - echo Docker specification for deepnlu test image
       - cat Dockerfile
       - echo Building the Docker image...
