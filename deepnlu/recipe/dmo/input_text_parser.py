@@ -30,10 +30,13 @@ class InputTextParser(BaseObject):
         self._parse = ParseInputTokens().process
 
     def _tokenize(self,
-                  input_text: str) -> list:
+                  input_text: str,
+                  strip_tokens: bool) -> list:
 
         tokens = self._string_tokenize(input_text)
-        tokens, _ = self._parse(tokens)
+        if strip_tokens:
+            tokens = [x.strip() for x in tokens]
+        tokens, doc = self._parse(tokens)
 
         for token in tokens:
             ## ---------------------------------------------------------- ##
@@ -50,15 +53,19 @@ class InputTextParser(BaseObject):
                     self._stem(token['normal']))
             del token['lemma']
 
-        return tokens
+        return tokens, doc
 
     def process(self,
-                input_text: str) -> dict:
-        """Run deepNLU on a single sentence
+                input_text: str,
+                strip_tokens: bool = True) -> dict:
+        """ Run deepNLU on a single sentence
 
         Args:
             input_text (str): An input string assumed to be a single sentence
                 no sentence segmentation will be performed on this inpu
+            strip_tokens (bool, optional): trim (strip) tokens to remove whitespace. Defaults to True.
+                set this to False to preserve original whitespace
+                set this to True to simplify spaCy dependency parsing
 
         Returns:
             dict: the processed result
@@ -66,7 +73,7 @@ class InputTextParser(BaseObject):
 
         sw = Stopwatch()
 
-        tokens = self._tokenize(input_text)
+        tokens, doc = self._tokenize(input_text, strip_tokens)
 
         if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
@@ -74,4 +81,4 @@ class InputTextParser(BaseObject):
                 f"\tTotal Time: {str(sw)}",
                 f"\tTotal Tokens: {len(tokens)}"]))
 
-        return tokens
+        return tokens, doc

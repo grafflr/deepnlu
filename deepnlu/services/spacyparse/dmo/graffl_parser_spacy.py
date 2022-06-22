@@ -5,11 +5,9 @@
 
 import spacy
 from spacy.tokens import Doc
-from spacy.lang.en import English
 
 
 from baseblock import BaseObject
-from deepnlu.datablock import FindWordnet
 
 
 class GrafflParserSpacy(BaseObject):
