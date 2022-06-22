@@ -1,0 +1,46 @@
+engine:
+  runner: "find_ontology_data"
+  comparator: "find_ontology_data"
+  loglevel: ERROR
+  ontologies:
+    - TestDN038
+
+## ---------------------------------------------------------- ##
+## Purpose:     Test 'Find Ontology Data'
+## Reference:   https://github.com/grafflr/deepnlu/issues/38
+## ---------------------------------------------------------- ##
+
+cases:
+  - id: 39-01
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Test Canonical form Lookup test3
+    ## ---------------------------------------------------------- ##
+    input: "set to close"
+    output:
+      canon: "closure"
+
+  - id: 39-02
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Test Variants Lookup
+    ## ---------------------------------------------------------- ##
+    input: "closure"
+    output:
+      variants:
+        - "closure"
+        - "set to close"
+
+  - id: 39-03
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Test Is-Canon Lookup
+    ## ---------------------------------------------------------- ##
+    input: "closure"
+    output:
+      is_canon: True
+
+  - id: 39-04
+    ## ---------------------------------------------------------- ##
+    ##  Purpose:    Test Is-Variant Lookup
+    ## ---------------------------------------------------------- ##
+    input: "set to close"
+    output:
+      is_variant: True

@@ -1,0 +1,55 @@
+name: Test Regression Cases
+on:
+  push:
+      paths:
+      - 'resources/regression/cases/**'
+  # Every 6 hours, the password validity is 12 hours
+  #schedule:
+  #  - cron:  '0 */6 * * *'
+jobs:
+  login:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Python 3.8
+        if: always()
+        uses: actions/setup-python@v2
+        with:
+            python-version: 3.8.5
+        continue-on-error: true
+        
+      - name: Install Poetry
+        if: always()
+        uses: snok/install-poetry@v1 
+        continue-on-error: true
+        
+      - name: Checkout
+        if: always()
+        uses: actions/checkout@v3
+        continue-on-error: true
+      
+      - name: Build Test Environment
+        if: always()
+        run: make all
+
+      - name: Regression Test
+        uses: GuillaumeFalourd/assert-command-line-output@v2
+        with:
+          command_line: ./resources/scripts/run_regression.sh
+          contains: Regression Successful
+          expected_result: PASSED     
+
+        
+        
+      - name: Report Status
+        if: always()
+        uses: ravsamhq/notify-slack-action@v1
+        with:
+          status: ${{ job.status }}
+          notify_when: 'success,failure,warnings'
+          notification_title: '{workflow} has {status_message}'
+          message_format: '{emoji} *{workflow}* {status_message} in <{repo_url}|{repo}>'
+          footer: 'Linked to Repo <{repo_url}|{repo}>'
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.ACTION_MONITORING_SLACK }}
+
+
