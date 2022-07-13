@@ -110,14 +110,15 @@ class SentenceHandlerOneShot(BaseObject):
         return tokens
 
     def _infer_entities(self,
-                        svcresult: list) -> dict:
+                        svcresult: list) -> list:
         """ Use Schema-less Inference via Portendo
 
         Args:
             svcresult (list): the deepNLU service result
 
         Returns:
-            dict: the optionally augmented deepNLU service result
+            list: the list of inferred entities
+                cardinality of return list is 0..*
         """
         input_tokens = [x['normal'] for x in svcresult if 'swaps' in x]
 
@@ -125,33 +126,13 @@ class SentenceHandlerOneShot(BaseObject):
             input_tokens=input_tokens,
             entity_names=self._entity_names)
 
-        return inferred_results
+        if not inferred_results:
+            return []
 
-        # if not inferred_results:
-        #     return svcresult
+        if not inferred_results['result']:
+            return []
 
-        # # the results have to be merged back into the svcresult
-        # for entity_name in inferred_results['result']:
-        #     # NOTE: this data structure may alter; as very little of it applies to inferred tokens
-        #     # much of the structure in the service result is for NER visualization in Jupyter
-        #     # but long-distance inference doesn't really convey adedquate notions of X,Y coords
-        #     svcresult.append({
-        #         'ancestors': [],
-        #         'descendants': [],
-        #         'id': None,
-        #         'ner': None,
-        #         'normal': entity_name,
-        #         'text': entity_name,
-        #         'x': None,
-        #         'y': None,
-        #         'swaps': {
-        #             'canon': entity_name,
-        #             'confidence': None,
-        #             'ontologies': self._ontologies,
-        #             'tokens': None,
-        #             'type': 'schemaless'}})
-
-        # return svcresult
+        return inferred_results['result']
 
     def process(self,
                 input_text: str) -> dict:

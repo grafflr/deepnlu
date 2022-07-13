@@ -7,6 +7,7 @@ from random import sample
 from baseblock import EnvIO
 from baseblock import FileIO
 from baseblock import Enforcer
+from deepnlu.recipe import svc
 
 from deepnlu.recipe.bp import DeepNluAPI
 
@@ -37,12 +38,14 @@ def run(ontology_name, input_text):
         input_text = sample(list_of_questions, 1)[0]
         print(f"Random Input Text: {input_text}")
 
-    svcresult = api.handle_text(input_text=input_text,
-                                ontologies=ontologies,
-                                absolute_path=absolute_path)
+    svcresult, tokens = api.handle_text(
+        input_text=input_text,
+        ontologies=ontologies,
+        absolute_path=absolute_path)
+    
     assert svcresult
+    assert tokens
 
-    tokens = [x['normal'] for x in svcresult[0][0]['tokens'] if 'swaps' in x]
     print(f"Extracted Tokens (total={len(tokens)})\n\t{tokens}")
 
 

@@ -81,7 +81,7 @@ class DeepNluAPI(BaseObject):
     def handle_text(self,
                     input_text: str,
                     ontologies: list,
-                    absolute_path: str) -> list or dict:
+                    absolute_path: str) -> tuple:
         """ DeepNLU on single line of input text
 
         Args:
@@ -90,7 +90,7 @@ class DeepNluAPI(BaseObject):
             absolute_path (str): absolute path to OWL models
 
         Returns:
-            list: the deepNLU result
+            tuple: the deepNLU result and tokens
         """
         if self.isEnabledForDebug:
             Enforcer.is_str(input_text)
@@ -101,5 +101,11 @@ class DeepNluAPI(BaseObject):
             absolute_path=absolute_path)
 
         svc = ParseTextOneShot(finder)
+        svcresult = svc.process(input_text)
 
-        return svc.process(input_text)
+        tokens = [x['normal'] for x in
+                  svcresult[0][0]['tokens'] if 'swaps' in x]
+        [tokens.append(x) for x in svcresult[0][0]['inferred']]
+        tokens = sorted(set(tokens), key=len, reverse=True)
+
+        return svcresult, tokens

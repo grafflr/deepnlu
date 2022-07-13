@@ -50,15 +50,12 @@ def test_synonyms():
         'tripled'  # << rdfs:seeAlso<CSV>
     ]
 
-    svcresult = api.handle_text(
+    _, tokens = api.handle_text(
         input_text="they tripled entrollment quickly",
         ontologies=ONTOLOGIES,
         absolute_path=absolute_path)
 
-    entities = [x['Canon'] for x in api.to_csv(svcresult)]
-    Enforcer.is_list(entities)
-
-    assert 'increase' in entities
+    assert 'increase' in tokens
 
 
 def main():

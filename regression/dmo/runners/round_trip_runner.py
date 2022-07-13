@@ -47,17 +47,14 @@ class RoundTripRunner(BaseObject):
 
         api = DeepNluAPI()
 
-        svcresult = api.handle_text(
+        svcresult, tokens = api.handle_text(
             input_text=input_text,
             ontologies=ontologies,
             absolute_path=self._absolute_path)
 
         actual_texts = [x['text'].strip() for x in svcresult[0][0]['tokens']]
 
-        csvresult = api.to_csv(svcresult, include_position=False)
-        entities = [x['Canon'] for x in csvresult]
-
         return {
-            'canon': entities,
+            'canon': tokens,
             'text': actual_texts
         }

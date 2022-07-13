@@ -44,11 +44,11 @@ copy:
 regression_test:
 	$(os_shell) $(regression_cmd)
 
-
 all:
 	make clean
 	make build
 	make regression_test
+	make copy
 	poetry run python -m pip install --upgrade pip
 # -----------------------------------------------------------------
 

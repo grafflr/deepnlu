@@ -4,6 +4,7 @@
 
 
 from baseblock import BaseObject
+from deepnlu.services.mutato import svc
 
 from deepnlu.services.portendo.schema.bp import SchemaOrchestrator
 from deepnlu.services.portendo.entity.bp import EntityOrchestrator
