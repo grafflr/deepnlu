@@ -35,11 +35,17 @@ class EntityOrchestrator(BaseObject):
         """
         BaseObject.__init__(self, __name__)
         if self.isEnabledForDebug:
-            Enforcer.is_list(entity_names)
+            Enforcer.is_list_of_str(entity_names)
 
         self._d_entities = AnalyzeEntityNames().process(entity_names)
         self._find_triggers = FindEntityTriggers(self._d_entities).process
         self._form_inference = FormEntityInference().process
+
+        if self.isEnabledForInfo:
+            self.logger.info('\n'.join([
+                "Initialized Orchestrator",
+                f"\tTotal Entity Names: {len(entity_names)}",
+                f"\tAnalyzed Entities: {self._d_entities}"]))
 
     def _run(self,
              input_tokens: list) -> tuple or None:
@@ -73,6 +79,9 @@ class EntityOrchestrator(BaseObject):
         Returns:
             tuple or None: the service result (if any)
         """
+
+        if self.isEnabledForDebug:
+            Enforcer.is_list_of_str(input_tokens)
 
         sw = Stopwatch()
 

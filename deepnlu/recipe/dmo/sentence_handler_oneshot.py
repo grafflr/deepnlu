@@ -3,19 +3,17 @@
 """ Execute the deepNLU stack on a single sentence """
 
 
-import logging
-from pprint import pprint
-
 from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
 from deepnlu.owlblock.bp import FindOntologyData
 
-from deepnlu.services.tokenizer import Tokenizer
 from deepnlu.services.stemmer import Stemmer
-from deepnlu.services.normalize import Normalizer
 from deepnlu.services.mutato import MutatoAPI
+from deepnlu.services.portendo import Portendo
+from deepnlu.services.tokenizer import Tokenizer
+from deepnlu.services.normalize import Normalizer
 from deepnlu.services.spacyparse.svc import ParseInputTokens
 
 
@@ -24,7 +22,7 @@ class SentenceHandlerOneShot(BaseObject):
 
     This implies that the caller has passed one-or-more Ontologies into the component
 
-    In the event of multiple Ontologies, 
+    In the event of multiple Ontologies,
     -   the underlying data dictionaries are automatically merged
     -   and collisions are resolved on a first-come-first-serve basis
 
@@ -72,6 +70,9 @@ class SentenceHandlerOneShot(BaseObject):
             find_ontology_data (FindOntologyData): an instantiation of this object
         """
         BaseObject.__init__(self, __name__)
+        self._entity_names = [x.lower() for x in
+                              find_ontology_data.labels() if '_' in x]
+
         self._ontologies = find_ontology_data.ontologies()
         self._swap_synonyms = MutatoAPI(find_ontology_data).swap
 
@@ -79,6 +80,8 @@ class SentenceHandlerOneShot(BaseObject):
         self._normalize = Normalizer().input_text
         self._string_tokenize = Tokenizer().input_text
         self._parse = ParseInputTokens().process
+
+        self._infer_tokens = Portendo().entity
 
     def _tokenize(self,
                   input_text: str) -> list:
@@ -106,6 +109,50 @@ class SentenceHandlerOneShot(BaseObject):
 
         return tokens
 
+    def _infer_entities(self,
+                        svcresult: list) -> dict:
+        """ Use Schema-less Inference via Portendo
+
+        Args:
+            svcresult (list): the deepNLU service result
+
+        Returns:
+            dict: the optionally augmented deepNLU service result
+        """
+        input_tokens = [x['normal'] for x in svcresult if 'swaps' in x]
+
+        inferred_results = self._infer_tokens(
+            input_tokens=input_tokens,
+            entity_names=self._entity_names)
+
+        return inferred_results
+
+        # if not inferred_results:
+        #     return svcresult
+
+        # # the results have to be merged back into the svcresult
+        # for entity_name in inferred_results['result']:
+        #     # NOTE: this data structure may alter; as very little of it applies to inferred tokens
+        #     # much of the structure in the service result is for NER visualization in Jupyter
+        #     # but long-distance inference doesn't really convey adedquate notions of X,Y coords
+        #     svcresult.append({
+        #         'ancestors': [],
+        #         'descendants': [],
+        #         'id': None,
+        #         'ner': None,
+        #         'normal': entity_name,
+        #         'text': entity_name,
+        #         'x': None,
+        #         'y': None,
+        #         'swaps': {
+        #             'canon': entity_name,
+        #             'confidence': None,
+        #             'ontologies': self._ontologies,
+        #             'tokens': None,
+        #             'type': 'schemaless'}})
+
+        # return svcresult
+
     def process(self,
                 input_text: str) -> dict:
         """Run deepNLU on a single sentence
@@ -121,13 +168,16 @@ class SentenceHandlerOneShot(BaseObject):
         sw = Stopwatch()
 
         tokens = self._tokenize(input_text)
-        tokens = self._swap_synonyms(tokens)
+        svcresult = self._swap_synonyms(tokens)
+        inferred = self._infer_entities(svcresult)
 
         d_sentence = {
             "type": "sentence",
             "text": input_text,
             "ontologies": self._ontologies,
-            "tokens": tokens}
+            "tokens": svcresult,
+            "inferred": inferred
+        }
 
         if self.isEnabledForDebug:
             self.logger.debug('\n'.join([
