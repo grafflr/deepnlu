@@ -11,14 +11,18 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 
 
-from deepnlu.services.portendo.svc import ReadMapping
-from deepnlu.services.portendo.svc import PredictMapping
-from deepnlu.services.portendo.svc import SelectMapping
-from deepnlu.services.portendo.dmo import InputTokensTransform
+from deepnlu.services.portendo.schema.svc import ReadMapping
+from deepnlu.services.portendo.schema.svc import PredictMapping
+from deepnlu.services.portendo.schema.svc import SelectMapping
+from deepnlu.services.portendo.schema.dmo import InputTokensTransform
 
 
-class Portendo(BaseObject):
-    """ Portendo performs Predictive Classification of deepNLU parsed ASTs """
+class SchemaOrchestrator(BaseObject):
+    """ Portendo performs Predictive Classification of deepNLU parsed ASTs 
+
+    This Orchestration sequence requires a pre-written schema for classification
+    Pre-written schemas are more complex and are capable of nuanced classification
+    """
 
     def __init__(self,
                  schema_name: str,
@@ -36,6 +40,11 @@ class Portendo(BaseObject):
                 https://github.com/grafflr/deepnlu/issues/44
             *   read classifications from memory (not python files)
                 https://github.com/grafflr/deepnlu/issues/45
+        Updated:
+            13-Jul-2022
+            craig@grafflr.ai
+            *   renamed from 'portendo' in pursuit of
+                https://github.com/grafflr/deepnlu/issues/48
 
         Args:
             schema_name (str): name of the schema containing classification rules
@@ -91,13 +100,23 @@ class Portendo(BaseObject):
 
     def run(self,
             input_tokens: list) -> tuple:
+        """ Run the Schema Orchestrator on Input Tokens
+
+        Args:
+            input_tokens (list): a flat list of tokens extracted from text
+            Sample Input:
+                ['network_topology', 'user', 'customer']
+
+        Returns:
+            tuple: the service result
+        """
 
         sw = Stopwatch()
 
         svcresult = self._run(input_tokens)
 
         self.logger.info('\n'.join([
-            "Portendo Service Completed",
+            "Portendo Schema Orchestrator Completed",
             f"\tTotal Time: {str(sw)}",
             f"\tResult:\n{pformat(svcresult)}"]))
 

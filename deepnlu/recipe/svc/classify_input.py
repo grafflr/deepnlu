@@ -47,7 +47,7 @@ class ClassifyInput(BaseObject):
 
         self._d_parse_ast = d_parse_ast
 
-        self._portendo = Portendo(
+        self._portendo = Portendo().schema(
             ontology_name=ontology_name,
             d_classification_rules=d_classification_rules).run
 

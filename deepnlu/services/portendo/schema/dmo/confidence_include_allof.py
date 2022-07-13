@@ -6,9 +6,9 @@ import pprint
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from deepnlu.services.portendo.dto import Markers
-from deepnlu.services.portendo.dto import ExplainResult
-from deepnlu.services.portendo.dto import MappingResult
+from deepnlu.services.portendo.schema.dto import Markers
+from deepnlu.services.portendo.schema.dto import ExplainResult
+from deepnlu.services.portendo.schema.dto import MappingResult
 
 
 class ConfidenceIncludeAllOf(BaseObject):

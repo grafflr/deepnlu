@@ -40,7 +40,6 @@ class SpanMatchFinder(BaseObject):
             span_keys (list): span dictionary keys sorted by length
         """
         BaseObject.__init__(self, __name__)
-        # self._finder = finder
         self._d_spans = d_spans
         self._span_keys = span_keys
 

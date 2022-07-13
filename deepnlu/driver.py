@@ -4,6 +4,7 @@
 import os
 from random import sample
 
+from baseblock import EnvIO
 from baseblock import FileIO
 from baseblock import Enforcer
 
@@ -15,11 +16,14 @@ logging.getLogger('deepnlu').setLevel(logging.WARNING)
 
 def run(ontology_name, input_text):
 
+    os.environ['SPAN_DISTANCE'] = '10'
+
     api = DeepNluAPI()
     assert api
 
-    absolute_path = os.path.normpath(
-        os.path.join(os.getcwd(), 'resources/data/owl'))
+    # absolute_path = os.path.normpath(
+    #     os.path.join(os.getcwd(), 'resources/data/owl'))
+    absolute_path = "C:/Users/Craig/git/graffl/datablock/resources/owl"
     FileIO.exists_or_error(absolute_path)
 
     ontologies = ontology_name.split(',')

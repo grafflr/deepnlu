@@ -9,12 +9,12 @@ from baseblock import FileIO
 from baseblock import Enforcer
 from baseblock import BaseObject
 
-from deepnlu.services.portendo.dmo import IndexScoring
-from deepnlu.services.portendo.dmo import IndexExcludeAllOf
-from deepnlu.services.portendo.dmo import IndexExcludeOneOf
-from deepnlu.services.portendo.dmo import IndexIncludeAllOf
-from deepnlu.services.portendo.dmo import IndexIncludeOneOf
-from deepnlu.services.portendo.dmo import IndexStartsWith
+from deepnlu.services.portendo.schema.dmo import IndexScoring
+from deepnlu.services.portendo.schema.dmo import IndexExcludeAllOf
+from deepnlu.services.portendo.schema.dmo import IndexExcludeOneOf
+from deepnlu.services.portendo.schema.dmo import IndexIncludeAllOf
+from deepnlu.services.portendo.schema.dmo import IndexIncludeOneOf
+from deepnlu.services.portendo.schema.dmo import IndexStartsWith
 
 
 class ReadMapping(BaseObject):

@@ -6,12 +6,12 @@
 from baseblock import Enforcer
 from baseblock import BaseObject
 
-from deepnlu.services.portendo.dmo import MappingFindCandidates
-from deepnlu.services.portendo.dmo import MappingRemoveDuplicates
-from deepnlu.services.portendo.dmo import MappingScoreCandidates
-from deepnlu.services.portendo.dmo import MappingSelectCandidates
+from deepnlu.services.portendo.schema.dmo import MappingFindCandidates
+from deepnlu.services.portendo.schema.dmo import MappingRemoveDuplicates
+from deepnlu.services.portendo.schema.dmo import MappingScoreCandidates
+from deepnlu.services.portendo.schema.dmo import MappingSelectCandidates
 
-from deepnlu.services.portendo.dto import MappingResult
+from deepnlu.services.portendo.schema.dto import MappingResult
 
 
 class SelectMapping(BaseObject):

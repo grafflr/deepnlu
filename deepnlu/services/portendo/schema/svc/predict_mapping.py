@@ -9,18 +9,17 @@ from baseblock import Stopwatch
 from baseblock import BaseObject
 from baseblock import Enforcer
 
-
-from deepnlu.services.portendo.dto import ExplainResult
-from deepnlu.services.portendo.dto import MappingResult
-from deepnlu.services.portendo.dto import MappingResults
-from deepnlu.services.portendo.dmo import ComputerIncludeOneOf
-from deepnlu.services.portendo.dmo import ComputerIncludeRecursive
-from deepnlu.services.portendo.dmo import ComputerIncludeAllOf
-from deepnlu.services.portendo.dmo import ComputerExcludeOneOf
-from deepnlu.services.portendo.dmo import ComputerExcludeAllOf
-from deepnlu.services.portendo.dmo import ConfidenceExcludeAllOf
-from deepnlu.services.portendo.dmo import ConfidenceIncludeAllOf
-from deepnlu.services.portendo.dmo import ComputerStartsWith
+from deepnlu.services.portendo.schema.dto import ExplainResult
+from deepnlu.services.portendo.schema.dto import MappingResult
+from deepnlu.services.portendo.schema.dto import MappingResults
+from deepnlu.services.portendo.schema.dmo import ComputerIncludeOneOf
+from deepnlu.services.portendo.schema.dmo import ComputerIncludeRecursive
+from deepnlu.services.portendo.schema.dmo import ComputerIncludeAllOf
+from deepnlu.services.portendo.schema.dmo import ComputerExcludeOneOf
+from deepnlu.services.portendo.schema.dmo import ComputerExcludeAllOf
+from deepnlu.services.portendo.schema.dmo import ConfidenceExcludeAllOf
+from deepnlu.services.portendo.schema.dmo import ConfidenceIncludeAllOf
+from deepnlu.services.portendo.schema.dmo import ComputerStartsWith
 
 
 class PredictMapping(BaseObject):

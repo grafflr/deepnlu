@@ -5,7 +5,7 @@ from pprint import pprint
 
 from baseblock import Enforcer
 
-from deepnlu.services.portendo.svc import ReadMapping
+from deepnlu.services.portendo.schema.svc import ReadMapping
 
 
 def test_service():

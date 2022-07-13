@@ -8,7 +8,7 @@ from collections import Counter
 from baseblock import Stopwatch
 from baseblock import BaseObject
 
-from deepnlu.services.portendo.dto import Markers
+from deepnlu.services.portendo.schema.dto import Markers
 
 
 class ComputerIncludeOneOf(BaseObject):

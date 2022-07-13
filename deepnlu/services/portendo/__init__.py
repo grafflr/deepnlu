@@ -1,4 +1,3 @@
-from .bp import *
-from .svc import *
-from .dmo import *
-from .dto import *
+from .entity import *
+from .schema import *
+from .portendo import Portendo

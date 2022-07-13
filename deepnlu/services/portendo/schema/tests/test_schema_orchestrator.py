@@ -1,10 +1,8 @@
 import os
 
 from baseblock import FileIO
-from deepnlu.services.portendo import svc
 
-
-from deepnlu.services.portendo.bp import Portendo
+from deepnlu.services.portendo.schema.bp import SchemaOrchestrator
 
 
 def test_portendo():
@@ -31,8 +29,8 @@ def test_portendo():
         os.path.join(os.getcwd(), 'resources/testing'))
     FileIO.exists_or_error(absolute_path)
 
-    api = Portendo(schema_name='test_intents',
-                   absolute_path=absolute_path)
+    api = SchemaOrchestrator(schema_name='test_intents',
+                             absolute_path=absolute_path)
     assert api
 
     svcresult = api.run(input_tokens)
