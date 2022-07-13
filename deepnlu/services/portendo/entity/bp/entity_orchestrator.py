@@ -5,10 +5,13 @@
 
 from pprint import pformat
 
-from baseblock import FileIO
 from baseblock import Enforcer
 from baseblock import Stopwatch
 from baseblock import BaseObject
+
+from deepnlu.services.portendo.entity.svc import AnalyzeEntityNames
+from deepnlu.services.portendo.entity.svc import FindEntityTriggers
+from deepnlu.services.portendo.entity.svc import FormEntityInference
 
 
 class EntityOrchestrator(BaseObject):
@@ -34,47 +37,31 @@ class EntityOrchestrator(BaseObject):
         if self.isEnabledForDebug:
             Enforcer.is_list(entity_names)
 
-        self._entity_names = entity_names
+        self._d_entities = AnalyzeEntityNames().process(entity_names)
+        self._find_triggers = FindEntityTriggers(self._d_entities).process
+        self._form_inference = FormEntityInference().process
 
     def _run(self,
-             input_tokens: list) -> tuple:
+             input_tokens: list) -> tuple or None:
 
-        # d_tokens = InputTokensTransform(input_tokens).process()
-        # input_tokens = [x for x in d_tokens]
+        triggers = self._find_triggers(input_tokens)
+        if not triggers:
+            return None
 
-        # svcresult = {
-        #     'transform': d_tokens,
-        #     'input': input_tokens
-        # }
+        d_candidates = {k: self._d_entities[k] for k in triggers}
 
-        # mapping = PredictMapping(
-        #     d_index=self._d_index,
-        #     ontology_name=self._schema_name).process(svcresult)
-
-        # mapping = SelectMapping(
-        #     results=mapping,
-        #     d_index=self._d_index).process()
-
-        # if self.isEnabledForDebug:
-        #     self.logger.debug('\n'.join([
-        #         "Mapping Completed",
-        #         f"\tInput:\n{pformat(input_tokens)}",
-        #         f"\tOutput:\n{pformat(mapping)}"]))
-
-        # if not len(mapping):
-        #     return {
-        #         'result': None,
-        #         'tokens': d_tokens
-        #     }
+        result = self._form_inference(
+            d_candidates=d_candidates,
+            input_tokens=input_tokens)
 
         return {
-            'result': None,
-            'tokens': None
+            'result': result,
+            'tokens': input_tokens
         }
 
     def run(self,
             input_tokens: list,
-            deepnlu: dict = None) -> tuple:
+            deepnlu: dict = None) -> tuple or None:
         """ Run the Entity Orchestrator
 
         Args:
@@ -84,16 +71,23 @@ class EntityOrchestrator(BaseObject):
                 if not provided, token inference will be performed without confidence intervals
 
         Returns:
-            tuple: the service result
+            tuple or None: the service result (if any)
         """
 
         sw = Stopwatch()
 
         svcresult = self._run(input_tokens)
 
-        self.logger.info('\n'.join([
-            "Portendo Entity Orchestrator Completed",
-            f"\tTotal Time: {str(sw)}",
-            f"\tResult:\n{pformat(svcresult)}"]))
+        if self.isEnabledForInfo:
+            if svcresult:
+                self.logger.info('\n'.join([
+                    "Portendo Entity Orchestrator Completed",
+                    f"\tTotal Time: {str(sw)}",
+                    f"\tResult:\n{pformat(svcresult)}"]))
+            else:
+                self.logger.info('\n'.join([
+                    "Portendo Entity Orchestrator Completed",
+                    f"\tTotal Time: {str(sw)}",
+                    f"\tNo Entity Inference Performed"]))
 
         return svcresult
