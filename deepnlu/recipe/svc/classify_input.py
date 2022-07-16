@@ -26,7 +26,7 @@ class ClassifyInput(BaseObject):
 
         Created:
             7-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/167
 
         Args:

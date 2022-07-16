@@ -27,16 +27,16 @@ class NerPalleteLookup(BaseObject):
 
         Created:
             27-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/94
         Updated:
             1-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   enforce ontologies as a list param in domain components
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   migrated into 'owlblock' in pursuit of 
                 https://github.com/grafflr/deepnlu/issues/13
 

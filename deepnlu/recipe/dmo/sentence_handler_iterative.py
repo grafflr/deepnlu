@@ -34,14 +34,14 @@ class SentenceHandlerIterative(BaseObject):
 
         Created:
             21-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactored out of 'deep-sentence-handler' 
                 with the additional of a tokenization cache for optimization and
                 a modification to the output structure to preserve ontological identity
                 https://github.com/grafflr/graffl-core/issues/193#issuecomment-1047303350
         Updated:
             28-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   update summary output in response to defect with spaCy types found in
                 https://github.com/grafflr/graffl-core/issues/205
 

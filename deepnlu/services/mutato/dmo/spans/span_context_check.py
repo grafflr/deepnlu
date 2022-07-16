@@ -32,7 +32,7 @@ class SpanContextCheck(BaseObject):
         """
         Created:
             20-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/70
         """
         BaseObject.__init__(self, __name__)

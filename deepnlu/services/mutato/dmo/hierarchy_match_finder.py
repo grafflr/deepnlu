@@ -17,7 +17,7 @@ class HierarchyMatchFinder(BaseObject):
         """
         Created:
             14-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/188
         """
         BaseObject.__init__(self, __name__)

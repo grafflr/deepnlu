@@ -23,11 +23,11 @@ class SpanContentCheck(BaseObject):
         """
         Created:
             20-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/70
         Updated:
             25-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/75
         """
         BaseObject.__init__(self, __name__)

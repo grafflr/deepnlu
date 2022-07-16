@@ -45,11 +45,11 @@ class SpacyMatchFinder(BaseObject):
         """
         Created:
             22-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/35
         Updated:
             29-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   Update for Recursive Processing
                 https://github.com/grafflr/graffl-core/issues/96
         """

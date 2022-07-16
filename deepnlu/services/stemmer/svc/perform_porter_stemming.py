@@ -17,7 +17,7 @@ class PerformPorterStemming(BaseObject):
         """
         Created:
             30-Sept-2021
-            craig@grafflr.ai
+            craig@graffl.ai
         """
         BaseObject.__init__(self, __name__)
         self._ps = PorterStemmer()

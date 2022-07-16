@@ -19,11 +19,11 @@ class ExternalSynonymLoader(BaseObject):
 
         Created:
             8-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/13#issuecomment-939103068
         Updated:
             29-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   migrated out of graffl-core in pursuit of 
                 https://github.com/grafflr/deepnlu/issues/18
 

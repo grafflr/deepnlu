@@ -42,7 +42,7 @@ class FindWordnet(BaseObject):
         """
         Created:
             5-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/2
         """
         BaseObject.__init__(self, __name__)

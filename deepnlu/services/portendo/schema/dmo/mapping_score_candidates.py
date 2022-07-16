@@ -19,16 +19,16 @@ class MappingScoreCandidates(BaseObject):
         """
         Created:
             7-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/169
         Updated:
             10-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   integrate scoring dictionary
                 https://github.com/grafflr/graffl-core/issues/176
         Updated:
             8-Jun-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   eliminate callback and include 'by-category' function directly in pursuit of
                 https://github.com/grafflr/deepnlu/issues/45
 

@@ -27,7 +27,7 @@ class LoadSynonyms(BaseObject):
 
         Created:
             29-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   in pursuit of
                 https://github.com/grafflr/deepnlu/issues/18
 

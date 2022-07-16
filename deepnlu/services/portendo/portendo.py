@@ -18,7 +18,7 @@ class Portendo(BaseObject):
 
         Created:
             13-Jul-2022
-            craig@grafflr.ai
+            craig@graffl.ai
                 https://github.com/grafflr/deepnlu/issues/48
         """
         self._schema_inference = None

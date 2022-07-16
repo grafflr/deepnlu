@@ -20,15 +20,15 @@ class ParseTextOneShot(BaseObject):
 
         Created:
             1-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
         Updated:
             24-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   add conditional check on input-text
                 https://github.com/grafflr/graffl-core/issues/395#issuecomment-1136369575
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   integrate 'find-ontology-data' and absolute path
                 https://github.com/grafflr/deepnlu/issues/13
 

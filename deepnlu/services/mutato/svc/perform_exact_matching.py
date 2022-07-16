@@ -23,17 +23,17 @@ class PerformExactMatching(BaseObject):
 
         Created:
             20-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactored out of 'mutato-api'
                 https://github.com/grafflr/graffl-core/issues/77
         Updated:
             26-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   remove all params in place of 'find-ontology-data'
                 https://github.com/grafflr/deepnlu/issues/13
 

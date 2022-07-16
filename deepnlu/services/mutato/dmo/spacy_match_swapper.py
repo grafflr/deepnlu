@@ -21,17 +21,17 @@ class SpacyMatchSwapper(BaseObject):
 
         Created:
             20-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   renamed from 'perform-sliding-window'
                 https://github.com/grafflr/graffl-core/issues/77
         Updated:
             1-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   pass 'ontologies' as list param
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   remove 'ontologies' and integrate 'find-ontology-data'
                 https://github.com/grafflr/deepnlu/issues/13
 

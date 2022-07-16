@@ -39,30 +39,30 @@ class SentenceHandlerOneShot(BaseObject):
 
         Created:
             1-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
         Updated:
             14-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   do not use lemma as basis for 'normal' form
                 https://github.com/grafflr/graffl-core/issues/46#issuecomment-943708492
         Updated:
             29-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   integrate intelligo-api
                 https://github.com/grafflr/graffl-core/issues/97
         Updated:
             1-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   enforce ontologies as a list parameter
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
         Updated:
             21-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   renamed from 'deep-sentence-handler' for consistency with 'sentence-handler-oneshot'
                 https://github.com/grafflr/graffl-core/issues/193#issuecomment-1047303350
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   remove all params in place of 'find-ontology-data'
                 https://github.com/grafflr/deepnlu/issues/13
 

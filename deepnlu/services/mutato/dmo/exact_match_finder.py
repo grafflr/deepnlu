@@ -27,11 +27,11 @@ class ExactMatchFinder(BaseObject):
         """
         Created:
             8-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/5
         Updated:
             20-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   renamed from 'perform-sliding-window'
                 https://github.com/grafflr/graffl-core/issues/77
         """

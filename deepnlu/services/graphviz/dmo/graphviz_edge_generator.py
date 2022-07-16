@@ -21,11 +21,11 @@ class GraphvizEdgeGenerator(BaseObject):
 
         Created:
             8-Nov-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/102
         Created:
             31-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactored to return 'default' if no style found in pursuit of
                 https://github.com/grafflr/deepnlu/issues/23
 

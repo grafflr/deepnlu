@@ -31,7 +31,7 @@ class MappingFindCandidates(BaseObject):
         """
         Created:
             7-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/169
         """
         BaseObject.__init__(self, __name__)

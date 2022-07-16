@@ -22,16 +22,16 @@ class GraphvizAPI(BaseObject):
 
         Created:
             5-Nov-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/102
         Updated:
             31-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   migrate to deepnlu and update absolute path
                 https://github.com/grafflr/graffl-core/issues/418
         Updated:
             1-Jun-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   add 'center-node-name' param
                 https://github.com/grafflr/deepnlu/issues/25
 

@@ -20,15 +20,15 @@ class FindAllRelationships(BaseObject):
 
         Created:
             2-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
         Updated:
             18-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactor in pursuit of
                 https://github.com/grafflr/graffl-core/issues/384
         Updated:
             31-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   migrated from graffl-core and renamed from 'find-data'
                 https://github.com/grafflr/graffl-core/issues/418
 

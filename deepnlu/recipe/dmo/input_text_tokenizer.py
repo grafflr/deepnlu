@@ -19,7 +19,7 @@ class InputTextTokenizer(BaseObject):
 
         Created:
             8-Jun-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactored out of 'sentence-handler-oneshot'
         """
         BaseObject.__init__(self, __name__)

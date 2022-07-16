@@ -22,7 +22,7 @@ class GenericFunctionLoader(BaseObject):
         """
         Created:
             11-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactored out of 'find-lookup' in pursuit of
                 https://github.com/grafflr/graffl-core/issues/30#issuecomment-940252993
         """

@@ -26,12 +26,12 @@ class SpanMatchFinder(BaseObject):
 
         Created:
             20-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   renamed from 'perform-sliding-window'
                 https://github.com/grafflr/graffl-core/issues/77
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   pass in-memory dictionaries in pursuit of
                 https://github.com/grafflr/deepnlu/issues/13
 

@@ -17,7 +17,7 @@ class FindEntityTriggers(BaseObject):
 
         Created:
             13-Jul-2022
-            craig@grafflr.ai
+            craig@graffl.ai
                 https://github.com/grafflr/deepnlu/issues/48
         """
         BaseObject.__init__(self, __name__)

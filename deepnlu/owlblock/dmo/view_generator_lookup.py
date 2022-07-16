@@ -18,11 +18,11 @@ class ViewGeneratorLookup(BaseObject):
 
         Created:
             26-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/ask-owl/issues/4
         Created:
             30-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   migrated from 'askowl' into 'deepnlu'
                 https://github.com/grafflr/deepnlu/issues/21#issuecomment-1141518333
         """

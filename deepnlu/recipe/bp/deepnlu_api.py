@@ -24,10 +24,10 @@ class DeepNluAPI(BaseObject):
 
         Created:
             1-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
         Updated:
             26-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
         """
@@ -103,9 +103,10 @@ class DeepNluAPI(BaseObject):
         svc = ParseTextOneShot(finder)
         svcresult = svc.process(input_text)
 
-        tokens = [x['normal'] for x in
-                  svcresult[0][0]['tokens'] if 'swaps' in x]
-        [tokens.append(x) for x in svcresult[0][0]['inferred']]
+        tokens = [x['Canon'] for x in self.to_csv(svcresult)]
+        # tokens = [x['normal'] for x in
+        #           svcresult[0][0]['tokens'] if 'swaps' in x]
+        # [tokens.append(x) for x in svcresult[0][0]['inferred']]
         tokens = sorted(set(tokens), key=len, reverse=True)
 
         return svcresult, tokens

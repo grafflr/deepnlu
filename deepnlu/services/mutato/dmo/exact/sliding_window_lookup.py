@@ -21,7 +21,7 @@ class SlidingWindowLookup(BaseObject):
 
         Created:
             8-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/14#issuecomment-939029052
 
         Args:

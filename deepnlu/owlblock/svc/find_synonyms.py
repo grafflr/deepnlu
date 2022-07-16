@@ -19,38 +19,38 @@ class FindSynonyms(BaseObject):
 
         Created:
             7-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/8
         Updated:
             11-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   support args for 1..* names in param
                 https://github.com/grafflr/graffl-core/issues/30#issuecomment-940252993
         Updated:
             25-Jan-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   pass ontology-name as optional param
                 https://github.com/grafflr/graffl-core/issues/135
         Updated:
             1-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   use baseblock ontology name loader
                 https://github.com/grafflr/graffl-core/issues/135
             *   a finder initialization is a contract
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027474785
         Updated:
             26-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   migrated to 'owlblock' in pursuit of
                 https://github.com/grafflr/deepnlu/issues/13
         Updated:
             30-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   resilience testing
                 https://github.com/grafflr/deepnlu/issues/20
 

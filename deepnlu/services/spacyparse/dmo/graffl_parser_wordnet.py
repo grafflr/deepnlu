@@ -14,7 +14,7 @@ class GrafflParserWordnet(BaseObject):
         """
         Created:
             13-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactored out of 'parse-input-tokens' in pursuit of
                 https://github.com/grafflr/graffl-core/issues/41
         """

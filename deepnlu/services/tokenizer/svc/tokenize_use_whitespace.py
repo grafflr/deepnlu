@@ -13,7 +13,7 @@ class TokenizeUseWhitespace(object):
         """
         Created:
             12-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
         """
         pass
 

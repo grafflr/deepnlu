@@ -19,7 +19,7 @@ class ResultsAsDataFrame(BaseObject):
 
         Created:
             13-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
         """
         BaseObject.__init__(self, __name__)
 
@@ -87,6 +87,13 @@ class ResultsAsDataFrame(BaseObject):
 
                 for k in range(len(sentence)):
                     token = sentence[k]
+
+                    for inferred in token['inferred']:  # deepnlu-48
+                        summary.append({
+                            "Canon": inferred,
+                            "Text": inferred,
+                            "Ontology": 'inference',
+                            "Sentence": sentence[0]['text']})
 
                     swaps = [x for x in token['tokens']
                              if 'swaps' in x]

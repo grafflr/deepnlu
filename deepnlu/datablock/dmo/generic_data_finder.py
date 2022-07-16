@@ -21,16 +21,16 @@ class GenericDataFinder(BaseObject):
         """
         Created:
             29-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/97
         Updated:
             25-Jan-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   pass ontology-name as optional param
                 https://github.com/grafflr/graffl-core/issues/135
         Updated:
             1-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   enforce division of responsibility between DMOs and SVCs
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027464370
         """

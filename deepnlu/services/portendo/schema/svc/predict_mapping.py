@@ -32,11 +32,11 @@ class PredictMapping(BaseObject):
 
         Created:
             7-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/169
         Updated:
             8-Jun-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   read schema in-memory 
                 https://github.com/grafflr/deepnlu/issues/45
 

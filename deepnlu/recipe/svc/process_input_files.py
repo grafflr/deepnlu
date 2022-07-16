@@ -24,7 +24,7 @@ class ProcessInputFiles(BaseObject):
 
         Created:
             10-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/5
 
         Args:

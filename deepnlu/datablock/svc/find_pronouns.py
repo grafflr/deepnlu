@@ -22,7 +22,7 @@ class FindPronouns(BaseObject):
 
         Created:
             3-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/345
         """
         BaseObject.__init__(self, __name__)

@@ -18,11 +18,11 @@ class IndexStartsWith(BaseObject):
 
         Created:
             5-Apr-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/264
         Updated:
             8-Jun-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/deepnlu/issues/45
 
         :param mapping

@@ -23,12 +23,12 @@ class GenerateEntityGraph(BaseObject):
 
         Created:
             18-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   cloned from 'generate-ner-graph'
                 https://github.com/grafflr/graffl-core/issues/384
         Updated:
             31-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   migrate to deepnlu and update absolute path
                 https://github.com/grafflr/graffl-core/issues/418
 

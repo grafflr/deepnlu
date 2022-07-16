@@ -17,7 +17,7 @@ class FindStopWords(BaseObject):
         """
         Created:
             12-Jan-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   in pursuit of 
                 https://github.com/grafflr/graffl-core/issues/120
         """

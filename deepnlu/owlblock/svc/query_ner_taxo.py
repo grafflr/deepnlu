@@ -31,7 +31,7 @@ class QueryNerTaxo(BaseObject):
 
         Created:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/deepnlu/issues/13
 
         Args:

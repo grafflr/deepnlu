@@ -36,17 +36,17 @@ class ServicesAPI(BaseObject):
 
         Created:
             16-Apr-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   in pursuit of
                 https://github.com/grafflr/graffl-core/issues/286
         Updated:
             2-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   in pursuit of
                 https://github.com/grafflr/graffl-core/issues/328
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactored into general purpose services-API
                 https://github.com/grafflr/deepnlu/issues/15
 

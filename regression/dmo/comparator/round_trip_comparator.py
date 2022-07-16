@@ -17,7 +17,7 @@ class RoundTripComparator(BaseObject):
 
         Created:
             6-Jun-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/deepnlu/issues/34
         """
         BaseObject.__init__(self, __name__)

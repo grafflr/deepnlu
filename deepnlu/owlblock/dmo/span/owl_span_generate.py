@@ -23,11 +23,11 @@ class OwlSpanGenerate(BaseObject):
 
         Created:
             26-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/ask-owl/issues/4
         Updated:
             1-Jun-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   add dedupe function
                 https://github.com/grafflr/deepnlu/issues/28#issuecomment-1144270515
 

@@ -26,15 +26,15 @@ class GraphvizNodeGenerator(BaseObject):
 
         Created:
             5-Nov-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/102
         Updated:
             9-Nov-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/101
         Updated:
             18-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   updated in pursuit of
                 https://github.com/grafflr/graffl-core/issues/384
 

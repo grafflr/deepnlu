@@ -20,7 +20,7 @@ class SlidingWindowBlacklist(BaseObject):
         """
         Created:
             8-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/14#issuecomment-939029052
         """
         BaseObject.__init__(self, __name__)

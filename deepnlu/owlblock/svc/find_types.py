@@ -19,34 +19,34 @@ class FindTypes(BaseObject):
 
         Created:
             29-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/97
         Updated:
             24-Oct-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   Update Finder Methods to Replace Spaces with Underscores 
                 when no other results are found
                 https://github.com/grafflr/graffl-core/issues/129
         Updated:
             25-Jan-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   pass ontology-name as optional param
                 https://github.com/grafflr/graffl-core/issues/135
         Updated:
             1-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   make ontology param consistent; permit multiple values
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027468040
             *   a finder initialization is a contract
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027474785
         Updated:
             26-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   migrated to 'owlblock' in pursuit of
                 https://github.com/grafflr/deepnlu/issues/13
 

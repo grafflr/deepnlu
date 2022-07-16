@@ -17,7 +17,7 @@ class Normalizer(BaseObject):
         """
         Created:
             1-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
         """
         BaseObject.__init__(self, __name__)
         self._svc = NormalizeText().process

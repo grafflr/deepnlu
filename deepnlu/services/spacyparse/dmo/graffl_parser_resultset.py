@@ -15,12 +15,12 @@ class GrafflParserResultSet(BaseObject):
         """
         Created:
             13-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactored out of 'parse-input-tokens' in pursuit of
                 https://github.com/grafflr/graffl-core/issues/41
         Updated:
             14-Oct-2021
-            craig.@grafflr.ai
+            craig.@graffl.ai
             *   retokenize spaces back into owning tokens
                 https://github.com/grafflr/graffl-core/issues/48#issuecomment-943793697
             *   ensure unique id and head values even when text is duplicated

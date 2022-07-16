@@ -19,7 +19,7 @@ class TokenizeUseSpacy(object):
         """
         Created:
             29-Sept-2021
-            craig@grafflr.ai
+            craig@graffl.ai
         :param input_text:
         """
         self._input_text = input_text

@@ -27,10 +27,10 @@ class ParseInputTokens(BaseObject):
         """
         Created:
             1-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
         Updated:
             13-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   refactored into component parts in pursuit of
                 https://github.com/grafflr/graffl-core/issues/41
         """

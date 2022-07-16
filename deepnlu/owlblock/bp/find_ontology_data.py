@@ -34,7 +34,7 @@ class FindOntologyData(BaseObject):
 
         Created:
             26-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/deepnlu/issues/2
 
         Args:

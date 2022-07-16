@@ -30,7 +30,7 @@ class InputTokensTransform(BaseObject):
         """
         Created:
             8-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/170
         :param input_tokens:
             the input AST

@@ -30,17 +30,17 @@ class GenerateEntityStructure(BaseObject):
 
         Created:
             18-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   cloned from 'generate-ner-graph'
                 https://github.com/grafflr/graffl-core/issues/384
         Updated:
             31-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   migrated from graffl-core
                 https://github.com/grafflr/graffl-core/issues/418
         Updated:
             1-Jun-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   add 'center-node-name' param
                 https://github.com/grafflr/deepnlu/issues/25
 

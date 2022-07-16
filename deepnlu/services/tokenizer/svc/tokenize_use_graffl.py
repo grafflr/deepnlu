@@ -25,10 +25,10 @@ class TokenizeUseGraffl(object):
         """
         Created:
             29-Sept-2021
-            craig@grafflr.ai
+            craig@graffl.ai
         Updated:
             14-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   added redelimit-spaces function
                 https://github.com/grafflr/graffl-core/issues/48#issuecomment-943776908
         """

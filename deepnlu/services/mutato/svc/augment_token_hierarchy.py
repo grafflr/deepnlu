@@ -21,16 +21,16 @@ class AugmentTokenHierarchy(BaseObject):
 
         Created:
             14-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/188
         Updated:
             26-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   remove 'ontology_name' as a param in pursuit of
                 https://github.com/grafflr/deepnlu/issues/7
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   remove 'ontologies' and integrate 'find-ontology-data'
                 https://github.com/grafflr/deepnlu/issues/13
 

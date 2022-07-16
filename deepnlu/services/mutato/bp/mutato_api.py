@@ -25,21 +25,21 @@ class MutatoAPI(BaseObject):
 
         Created:
             6-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/5
         Updated:
             1-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   a finder initialization is a contract
                 https://github.com/grafflr/graffl-core/issues/135#issuecomment-1027474785
         Updated:
             26-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   treat 'ontologies' param as a list
                 https://github.com/grafflr/deepnlu/issues/7
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   remove 'ontologies' and integrate 'find-ontology-data'
                 https://github.com/grafflr/deepnlu/issues/13
 

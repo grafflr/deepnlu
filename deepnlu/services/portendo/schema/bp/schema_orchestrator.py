@@ -31,18 +31,18 @@ class SchemaOrchestrator(BaseObject):
 
         Created:
             7-Feb-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/169
         Updated:
             8-Jun-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   make absolute_path a required parameter in pursuit of
                 https://github.com/grafflr/deepnlu/issues/44
             *   read classifications from memory (not python files)
                 https://github.com/grafflr/deepnlu/issues/45
         Updated:
             13-Jul-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   renamed from 'portendo' in pursuit of
                 https://github.com/grafflr/deepnlu/issues/48
 

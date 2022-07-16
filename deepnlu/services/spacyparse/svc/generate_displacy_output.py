@@ -18,11 +18,11 @@ class GenerateDisplacyOutput(BaseObject):
         """
         Created:
             12-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/26#issuecomment-941524282
         Updated:
             14-Oct-2021
-            craig@grafflr.ai
+            craig@graffl.ai
             *   remove recursive navigational call for finding tokens to display
                 https://github.com/grafflr/graffl-core/issues/52#issuecomment-943847367
         """

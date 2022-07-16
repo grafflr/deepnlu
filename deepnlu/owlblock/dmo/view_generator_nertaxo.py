@@ -16,11 +16,11 @@ class ViewGeneratorNerTaxo(BaseObject):
 
         Created:
             27-Oct-2021
-            craig.@grafflr.ai
+            craig.@graffl.ai
             *   https://github.com/grafflr/graffl-core/issues/94
         Updated:
             27-May-2022
-            craig@grafflr.ai
+            craig@graffl.ai
             *   ported to 'deepnlu'
                 https://github.com/grafflr/deepnlu/issues/12
         """
